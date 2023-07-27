@@ -7,24 +7,24 @@ const TrendingCard = ({ products }) => {
 
     return (
 
-           <div className="product-card">
+           <div className="product-card" style={{background:"white"}}>
             {/* trending card */}
-            <div className="product-tumb">
+            <div className="product-tumb" style={{background:"white"}}>
             <img style={{ width: "90%" }} src={products.images[0]?.url} alt={products.title} />
-                </div>
+            </div>
 
-                <div className="product-details" >
+                <div className="product-details" style={{height:"80%"}} >
                 <div className="clearfix mb-1 d-flex flex-column" style={{width:"100%"}}>
-                    <span title={products.title} className="product-catagory mt-1 mb-1 text-start" style={{width:"max-content", maxWidth:"94%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
+                    <span title={products.title} className="product-catagory m-0 text-start" style={{width:"max-content", maxWidth:"94%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
                     <strong className="float-end price-hp mt-1" style={{ fontSize: "70%", width:"max-content", alignSelf:"end" }}>$ {products.price}/-</strong>
                 </div>
 
                 <div className="product-links">
 
-                <h5 className="card-title px-0" style={{ fontSize: "80%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical" }}>{products.description}</h5>
+                <h5 className="card-title p-0 px-1 m-0 text-center" style={{ fontSize: "70%", width:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical" }}>{products.description}</h5>
 
 						<NavLink style={{marginRight:"3px", cursor:"pointer"}} to={`/details/${products._id}`}>
-                        <div className="text-center" style={{marginTop:"14px"}}>
+                        <div className="text-center" style={{marginTop:"8px"}}>
                             <span href="#" className="btn btn-warning px-2 py-1" style={{fontSize:"70%"}}>Veiw Details</span>
                         </div>
 						</NavLink>
