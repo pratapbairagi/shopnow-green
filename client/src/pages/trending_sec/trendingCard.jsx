@@ -9,19 +9,19 @@ const TrendingCard = ({ products }) => {
 
            <div className="product-card" style={{background:"white", border:"1px solid #edecec"}}>
             {/* trending card */}
-            <div className="product-tumb" style={{background:"white", padding:"5px 5px 2px 5px"}}>
+            <div className="product-tumb" style={{background:"white", padding:"3px 3px 2px 3px"}}>
             <img style={{ width: "90%" }} src={products.images[0]?.url} alt={products.title} />
             </div>
 
                 <div className="product-details" style={{height:"80%", padding:"5px 8px 8px 8px"}} >
                 <div className="clearfix mb-1 d-flex flex-column" style={{width:"100%"}}>
-                    <span title={products.title} className="product-catagory m-0 text-start" style={{width:"max-content", maxWidth:"94%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
-                    <strong className="float-end price-hp mt-1" style={{ fontSize: "70%", width:"max-content", alignSelf:"end" }}>$ {products.price}/-</strong>
+                    <span title={products.title} className="product-catagory m-0 text-start p-1 rounded-pill bg-primary" style={{width:"100%", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
+                    <strong className="float-end price-hp mt-1 p-0 px-1" style={{ fontSize: "70%", width:"max-content", alignSelf:"end" }}>₹{products.price}/-</strong>
                 </div>
 
                 <div className="product-links">
 
-                <h5 className="card-title p-0 px-1 m-0 text-center" style={{ fontSize: "70%", width:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical" }}>{products.description}</h5>
+                <h5 className="card-title p-0 px-1 m-0 text-center" style={{ fontSize: "70%", width:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical", color:"#edecec" }}>{products.description}</h5>
 
 						<NavLink style={{marginRight:"3px", cursor:"pointer"}} to={`/details/${products._id}`}>
                         <div className="text-center" style={{marginTop:"8px"}}>

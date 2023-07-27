@@ -18,7 +18,7 @@ const RecommendedCard = ({ products }) => {
 			<div className="product-details">
 				<span className="product-catagory mb-1" >{products.gender},{products.category}</span>
 				{/* <h4><a href="#">{products.title}</a></h4> */}
-				<h4><NavLink className="p-0 m-0" to={`/details/${products._id}`} >{products.title}</NavLink></h4>
+				<h4><NavLink to={`/details/${products._id}`} title={products.title} className="p-0 px-1 m-0" style={{width:"max-content", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical"}} >{products.title}</NavLink></h4>
 
 				<div className="product-bottom-details">
 					<div className="product-price">
