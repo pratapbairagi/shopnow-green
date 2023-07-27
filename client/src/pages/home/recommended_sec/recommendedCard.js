@@ -16,7 +16,7 @@ const RecommendedCard = ({ products }) => {
 				<img style={{ width: "90%" }} src={products.images[0].url} alt="" />
 			</div>
 			<div className="product-details">
-				<span className="product-catagory mb-1">{products.gender},{products.category}</span>
+				<span className="product-catagory mb-1" >{products.gender},{products.category}</span>
 				{/* <h4><a href="#">{products.title}</a></h4> */}
 				<h4><NavLink className="p-0 m-0" to={`/details/${products._id}`} >{products.title}</NavLink></h4>
 
@@ -40,9 +40,7 @@ const RecommendedCard = ({ products }) => {
 								<CartPlus fill="#fbb72c" />
 							</span>
 						}
-						{/* <span>
-                        <EyeFill/>
-                    </span> */}
+						
 					</div>
 				</div>
 			</div>
