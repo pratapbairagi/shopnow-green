@@ -1,0 +1,32 @@
+.cart-container .row .sec1{
+    height: 94vh;
+}
+.cart-container .row .sec1 .container{
+    height: 94vh;
+}
+.cart-container .row .sec2{
+    height: 94vh;
+
+}
+.cart-container .row .sec2 .container{
+    height: 94vh;
+}
+.cart-container .row .sec2 .container .row{
+    max-height: 94vh;
+}
+
+@media only screen and ( max-width : 767px){
+        .cart-container .row .sec1{
+            height: 65vh;
+        }
+.cart-container .row .sec2{
+    height: 30vh;
+}
+.cart-container .row .sec2 .container{
+    height: 30vh;
+}
+.cart-container .row .sec2 .container .row{
+    max-height: 30vh;
+}
+        
+    }
