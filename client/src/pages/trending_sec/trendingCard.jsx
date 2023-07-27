@@ -7,13 +7,13 @@ const TrendingCard = ({ products }) => {
 
     return (
 
-           <div className="product-card" style={{background:"white"}}>
+           <div className="product-card" style={{background:"white", border:"1px solid #edecec"}}>
             {/* trending card */}
-            <div className="product-tumb" style={{background:"white"}}>
+            <div className="product-tumb" style={{background:"white", padding:"5px 5px 2px 5px"}}>
             <img style={{ width: "90%" }} src={products.images[0]?.url} alt={products.title} />
             </div>
 
-                <div className="product-details" style={{height:"80%"}} >
+                <div className="product-details" style={{height:"80%", padding:"5px 8px 8px 8px"}} >
                 <div className="clearfix mb-1 d-flex flex-column" style={{width:"100%"}}>
                     <span title={products.title} className="product-catagory m-0 text-start" style={{width:"max-content", maxWidth:"94%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
                     <strong className="float-end price-hp mt-1" style={{ fontSize: "70%", width:"max-content", alignSelf:"end" }}>$ {products.price}/-</strong>
@@ -25,7 +25,7 @@ const TrendingCard = ({ products }) => {
 
 						<NavLink style={{marginRight:"3px", cursor:"pointer"}} to={`/details/${products._id}`}>
                         <div className="text-center" style={{marginTop:"8px"}}>
-                            <span href="#" className="btn btn-warning px-2 py-1" style={{fontSize:"70%"}}>Veiw Details</span>
+                            <button className="btn btn-outline-secondary btn-sm" style={{fontSize:"70%"}}>Veiw Details</button>
                         </div>
 						</NavLink>
 
