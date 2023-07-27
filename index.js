@@ -49,10 +49,10 @@ app.use("/website_ecommerce/app/api", productRoute);
 // })
 
 
-  app.use(express.static(path.join(__dirname, './client/build/')));
+  app.use(express.static(path.join(__dirname, './client/public/')));
 
   app.get('*', (req, res) =>{
-   return res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+   return res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'))
   });
 
 app.use(globalErrorHandler)
