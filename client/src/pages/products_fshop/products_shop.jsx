@@ -76,7 +76,7 @@ const ProductsShop = () => {
             <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%" }}>
                 <div className="row p-0 px-3">
 
-                    <div className="col col-12 col-md-3 col-lg-2 p-0">
+                    <div className="col col-12 col-md-3 col-lg-2 p-0 px-3 px-md-1">
                        <div className="row gap-0 bootdey_2nd_row" style={{ position:"relative"}}>
                         
                         {/* <div className="col">
@@ -87,7 +87,7 @@ const ProductsShop = () => {
                         </section>
                         </div> */}
 
-                        <div className="col-3  col-md-12 p-0 m-0 px-3 px-md-1 mb-2" style={{height:"max-content"}}>
+                        <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{height:"max-content"}}>
                         <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
                             <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Gender" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
                               <GenderAmbiguous size="10px" />  Gender
