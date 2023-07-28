@@ -87,7 +87,7 @@ const ProductsShop = () => {
                         </section>
                         </div> */}
 
-                        <div className="col-3  col-md-12 p-0" style={{height:"max-content"}}>
+                        <div className="col-3  col-md-12 p-0 m-0" style={{height:"max-content"}}>
                         <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
                             <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Gender" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%" }}>
                               <GenderAmbiguous size="10px" />  Gender
@@ -152,7 +152,7 @@ const ProductsShop = () => {
 
                         <div className="col-3  col-md-12 p-0" style={{ height:"max-content"}}>
                         <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Category" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%" }}>
+                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Category" ? e.currentTarget.innerText : null) } className="panel-heading p-0" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center" }}>
                               <UiChecksGrid size="10px"/>  Category
                             </header>
                             <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>
@@ -304,10 +304,10 @@ const ProductsShop = () => {
                     </div>
 
                     <div className="col-md-9 col-lg-10 position-relative" style={{maxWidth:"100vw"}}>
-                        <section className="panel bg-light py-0 px-2 m-0 bg-white" style={{ height: "12vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px" }} >
-                            <div className="panel-body p-0 m-0" style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
-                                <div className="pull-right m-0" style={{ width: "max-content", display: "flex", alignItems: "center" }}>
-                                    <ul className="pagination pagination-sm pro-page-list m-0 p-2" style={{ border: "1px solid whitesmoke", borderRadius: "3px" }}>
+                        <section className="panel bg-light py-0 px-2 m-0 bg-white" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px" }} >
+                            <div className="panel-body p-0 m-0 position-relative" style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
+                                <div className="pull-right m-0 position-relative" style={{ width: "max-content", display: "flex", alignItems: "center" }}>
+                                    <ul className="pagination pagination-sm pro-page-list m-0 p-2 position-relative" style={{ border: "1px solid whitesmoke", borderRadius: "3px" }}>
                                         <li><a href="#1">1</a></li>
                                         <li><a href="#2">2</a></li>
                                         <li><a href="#3">3</a></li>
@@ -337,7 +337,7 @@ const ProductsShop = () => {
                                         </div>
 
                                         <div className="panel-body position-relative text-center py-2">
-                                            <h4 className="py-1 pt-2 text-center m-0">
+                                            <h4 className="py-1 pt-2 text-center m-0 mt-2">
                                                 <span className="pro-title w-100 text-center p-0 m-0" style={{maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>
                                                     {v.title}
                                                 </span>
