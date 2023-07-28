@@ -7,9 +7,9 @@ const TrendingCard = ({ products }) => {
 
     return (
 
-           <div className="product-card" style={{background:"white", border:"1px solid #edecec"}}>
+           <div className="product-card py-2" style={{background:"white", border:"1px solid #edecec"}}>
             {/* trending card */}
-            <div className="product-tumb" style={{background:"white", padding:"3px 3px 2px 3px"}}>
+            <div className="product-tumb" style={{background:"white", padding:"2px", maxHeight:"90%"}}>
             <img style={{ width: "90%" }} src={products.images[0]?.url} alt={products.title} />
             </div>
 
