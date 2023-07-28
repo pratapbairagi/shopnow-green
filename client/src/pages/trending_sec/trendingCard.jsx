@@ -15,7 +15,7 @@ const TrendingCard = ({ products }) => {
 
                 <div className="product-details" style={{height:"80%", padding:"3px"}} >
                 <div className="clearfix mb-1 d-flex flex-column" style={{width:"100%"}}>
-                    <span title={products.title} className="product-catagory m-0 text-start px-2 rounded-pill bg-primary" style={{width:"100%", fontSize:"90%", height:"22px", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
+                    <span title={products.title} className="product-catagory m-0 text-start px-2 rounded-pill bg-primary" style={{width:"max-content", fontSize:"90%", height:"22px", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
                     <strong className="float-end price-hp mt-1 p-0 px-1" style={{ fontSize: "70%", width:"max-content", alignSelf:"end" }}>₹{products.price}/-</strong>
                 </div>
 
