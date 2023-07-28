@@ -26,7 +26,7 @@ const TrendingCard = ({ products }) => {
 
                     <NavLink style={{ marginRight: "3px", cursor: "pointer" }} to={`/details/${products._id}`}>
                         <div className="text-center" style={{ marginTop: "8px" }}>
-                            <button className="btn btn-outline-secondary btn-sm" style={{ fontSize: "70%" }}>Veiw Details</button>
+                            <button className="btn btn-sm text-primary" style={{ fontSize: "70%" }}>Veiw Details</button>
                         </div>
                     </NavLink>
 

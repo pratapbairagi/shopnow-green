@@ -76,7 +76,7 @@ const ProductsShop = () => {
             <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%" }}>
                 <div className="row p-0 px-3">
 
-                    <div className="col col-12 col-md-3 col-lg-2 p-0 px-3 px-md-1">
+                    <div className="col col-12 col-md-3 col-lg-2 p-0 px-4 px-md-1">
                        <div className="row gap-0 bootdey_2nd_row" style={{ position:"relative"}}>
                         
                         {/* <div className="col">
@@ -152,7 +152,7 @@ const ProductsShop = () => {
 
                         <div className="col-3  col-md-12 p-0" style={{ height:"max-content"}}>
                         <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Category" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
+                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Category" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px", maxWidth:"65px" }}>
                               <UiChecksGrid size="10px"/>  Category
                             </header>
                             <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>
