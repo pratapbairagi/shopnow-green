@@ -73,7 +73,7 @@ const ProductsShop = () => {
 
     return (
         <>
-            <div className="container bootdey bg-light py-4 mt-0" style={{ width: "100%" }}>
+            <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%" }}>
                 <div className="row p-0 px-3">
 
                     <div className="col col-12 col-md-3 col-lg-2 p-0">
@@ -89,7 +89,7 @@ const ProductsShop = () => {
 
                         <div className="col-3  col-md-12 p-0 m-0 px-3 px-md-1 mb-2" style={{height:"max-content"}}>
                         <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Gender" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%" }}>
+                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Gender" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
                               <GenderAmbiguous size="10px" />  Gender
                             </header>
                             <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Gender" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%" }}>
@@ -152,7 +152,7 @@ const ProductsShop = () => {
 
                         <div className="col-3  col-md-12 p-0" style={{ height:"max-content"}}>
                         <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Category" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center", gap:"3px" }}>
+                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Category" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
                               <UiChecksGrid size="10px"/>  Category
                             </header>
                             <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>
@@ -197,7 +197,7 @@ const ProductsShop = () => {
 
                         <div className="col-3  col-md-12 p-0" style={{ height:"max-content"}}>
                         <section className="panel mx-auto mt-4 py-2" style={{ height: "max-content", background: "white", width: "90%", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Price" ? e.currentTarget.innerText : null) } className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize:"80%" }}>
+                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Price" ? e.currentTarget.innerText : null) } className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
                                <CurrencyRupee size="10px"/> Price
                             </header>
 
@@ -215,7 +215,7 @@ const ProductsShop = () => {
 
                         <div className="col-3  col-md-12 p-0" style={{ height:"max-content"}}>
                         <section className="panel mx-auto mt-4 py-2" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Filter" ? e.currentTarget.innerText : null) } className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize:"80%" }}>
+                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Filter" ? e.currentTarget.innerText : null) } className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
                               <FunnelFill size="10px" />  Filter
                             </header>
                             <div className={`panel-body  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Filter" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>

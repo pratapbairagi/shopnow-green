@@ -14,9 +14,9 @@ const TrendingCard = ({ products }) => {
             </div>
 
             <div className="product-details" style={{ height: "80%", padding: "3px" }} >
-                <div className="clearfix mb-1 d-flex flex-column" style={{ width: "100%" }}>
+                <div className="clearfix mt-0 mb-1 d-flex flex-column" style={{ width: "100%" }}>
                     {/* <span title={products.title} className="product-catagory m-0 text-start px-2 rounded-pill bg-primary" style={{width:"max-content", fontSize:"70%", height:"max-content", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span> */}
-                    <h6 className="card-title py-1 px-2 m-0 text-start rounded-pill bg-primary" style={{ fontSize: "75%", width: "max-content", maxWidth:"100%", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "1", WebkitBoxOrient: "vertical", color: "white" }}>{products.title}</h6>
+                    <h6 className="card-title py-1 px-2 m-0 text-start rounded-pill bg-primary" style={{ fontSize: "75%", width: "max-content", maxWidth:"100%", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "1", WebkitBoxOrient: "vertical", color: "white", lineHeight:"110%" }}>{products.title}</h6>
                     <strong className="float-end price-hp mt-1 p-0 px-1" style={{ fontSize: "70%", width: "max-content", alignSelf: "end" }}>₹{products.price}/-</strong>
                 </div>
 
