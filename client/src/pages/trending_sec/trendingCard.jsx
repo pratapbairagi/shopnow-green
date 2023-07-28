@@ -7,19 +7,19 @@ const TrendingCard = ({ products }) => {
 
     return (
 
-           <div className="product-card py-2" style={{background:"white", border:"1px solid #edecec"}}>
+           <div className="product-card py-1" style={{background:"white", border:"1px solid #edecec"}}>
             {/* trending card */}
             <div className="product-tumb" style={{background:"white", padding:"2px", maxHeight:"90%"}}>
-            <img style={{ width: "90%" }} src={products.images[0]?.url} alt={products.title} />
+            <img style={{ width: "90%", height:"90%" }} src={products.images[0]?.url} alt={products.title} />
             </div>
 
-                <div className="product-details" style={{height:"80%", padding:"5px 8px 8px 8px"}} >
+                <div className="product-details" style={{height:"80%", padding:"3px"}} >
                 <div className="clearfix mb-1 d-flex flex-column" style={{width:"100%"}}>
-                    <span title={products.title} className="product-catagory m-0 text-start py-1 px-2 rounded-pill bg-primary" style={{width:"max-content", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
+                    <span title={products.title} className="product-catagory m-0 text-start py-1 px-2 rounded-pill bg-primary" style={{width:"100%", fontSize:"18px", height:"22px", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>{products.title}</span>
                     <strong className="float-end price-hp mt-1 p-0 px-1" style={{ fontSize: "70%", width:"max-content", alignSelf:"end" }}>₹{products.price}/-</strong>
                 </div>
 
-                <div className="product-links">
+                <div className="product-links mt-0">
 
                 <h5 className="card-title p-0 px-1 m-0 text-center" style={{ fontSize: "70%", width:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical", color:"grey" }}>{products.description}</h5>
 
