@@ -68,6 +68,7 @@ function App() {
           {/* <Route path='/about' element={<h4>About</h4>} /> */}
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details /> }/>
+          <Route path='/shop/details/:id' exact element={<Product_details /> }/>
           <Route path='/product' exact element={<Shop_product /> }/>
           <Route path='/about' exact element={<AboutUs /> }/>
           <Route path='/contact' exact element={<Contact /> }/>

@@ -317,7 +317,7 @@ const ProductsShop = () => {
                             </div>
                         </section>
 
-                        <div className="row product-list px-2">
+                        <div className="row product-list px-2" style={{minHeight:"75vh"}}>
                             {product.success && product.products.map((v, i) => {
 
                                 return <div className="col col-6 col-md-4 col-lg-3 p-0 p-1" key={v._id} >

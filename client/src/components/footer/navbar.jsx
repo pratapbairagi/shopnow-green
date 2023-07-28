@@ -61,7 +61,7 @@ const Navbar = () => {
             <GuestCart toggleCart={toggleCart} setToggleCart={setToggleCart} />
             <SearchBar toggleSearchBar={toggleSearchBar}/>
 
-            <div className="upperNav">
+            {/* <div className="upperNav">
                 <div className="admin-details" style={{ display: "flex", gap: "8px", width: "max-content" }}>
                     <span>+91 8287889123</span>
                     <span>admin@example.com</span>
@@ -80,7 +80,7 @@ const Navbar = () => {
                     </select>
                     <label htmlFor="lang">Language</label>
                 </div>
-            </div>
+            </div> */}
 
             <div className="nav pt-2">
 

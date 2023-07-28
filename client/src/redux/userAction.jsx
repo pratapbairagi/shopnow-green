@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import { ADMIN_USER_UPDATE_FAILED, ADMIN_USER_UPDATE_REQUEST, ADMIN_USER_UPDATE_SUCCESS, CLEAR_ERROR, CLEAR_SUCCESS, GET_ALL_USERS_FAILED, GET_ALL_USERS_REQUEST, GET_ALL_USERS_SUCCESS, GET_SINGLE_USER_FAILED, GET_SINGLE_USER_REQUEST, GET_SINGLE_USER_SUCCESS, USER_LOGGED_FAILED, USER_LOGGED_REQUEST, USER_LOGGED_SUCCESS, USER_LOGIN_FAILED, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT_FAILED, USER_LOGOUT_REQUEST, USER_LOGOUT_SUCCESS, USER_REGISTER_FAILED, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_FAILED, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from "./userType";
 import axios from "axios";
 
@@ -25,7 +26,9 @@ export const User_register_action = (user) => async (dispatch) => {
             payload: data
         })
 
-        // window.location.reload()
+        redirect("/")
+        window.location.reload()
+
 
     } catch (error) {
         dispatch({
@@ -61,10 +64,10 @@ export const User_login_action =  (user) => async (dispatch) => {
             payload : data
         });
 
+        redirect("/")
         window.location.reload()
 
     } catch (error) {
-        console.log("error", error)
         dispatch({
             type : USER_LOGIN_FAILED,
             payload : error.response.data
