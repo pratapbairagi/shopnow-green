@@ -97,7 +97,7 @@ const Navbar = () => {
 
                 <ul className="right-nav">
                     <li onClick={() => toggleHandlerSearchBar("search")}><Search className="icon-btn" /></li>
-                    <li style={{position:"relative", width:"26px", height:"26px", display:"grid", placeItems:"center"}} onClick={() => toggleHandlerCart("cart")}>
+                    <li style={{position:"relative", width:"20px", height:"26px", display:"grid", placeItems:"center"}} onClick={() => toggleHandlerCart("cart")}>
                         <Cart className="icon-btn" style={{width:"80%", height:"80%"}} />
                         <span className="p-0" style={{position:"absolute", color:"white", fontSize:"60%", top:"-2px", right:"-5px", width:"16px", height:"16px", background:"green", borderRadius:"50%", display:"grid", placeItems:"center"}}>{
                         cartCount
