@@ -19,11 +19,11 @@ exports.get_products = async (req, res, next) => {
                 $gte : req.query.price.gte,
                 $lte : req.query.price.lte
             }
-            , 
-            brand : {
-                $regex : /^req.query.brand$/,
-                $options : "i"
-            }
+            // , 
+            // brand : {
+            //     $regex : /^req.query.brand$/,
+            //     $options : "i"
+            // }
             // ,
             // color : {
             //     $regex : req.query.color,
