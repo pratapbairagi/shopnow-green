@@ -9,7 +9,7 @@ const ProductNotificationRoaster = (product) => {
     const dispatch = useDispatch()
     function clossSuccessAction() {
         dispatch(clear_success())
-        window.location.reload()
+        // window.location.reload()
     }
     return (
         <div className="productionNotificationToaster" style={{display:"flex", position:"fixed", top:"0", left:"0", zIndex:"10"}}>

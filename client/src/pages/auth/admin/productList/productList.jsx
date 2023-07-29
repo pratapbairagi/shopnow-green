@@ -189,9 +189,9 @@ const ProductList = () => {
 
     return (
         <div className="container-fluid d-block">
-           { products.success && <ProductNotificationRoaster product={products.product}/>}
+           {/* { products.success && <ProductNotificationRoaster product={products.product}/>} */}
             {products.loading && <Spinner />}
-            {/* {products.success && <NotificationToaster state={products} />} */}
+            {products.success && <NotificationToaster state={products} />}
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
 
