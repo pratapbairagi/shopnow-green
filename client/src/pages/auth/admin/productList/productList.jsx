@@ -10,6 +10,7 @@ import { create_product_action, delete_product_action, edit_product_action } fro
 import Spinner from "../../../../components/spinner/spinner";
 import NotificationToaster from "../../../../components/notificationToaster/notificationToaster";
 import Add_product from "./add_product";
+import ProductNotificationRoaster from "../../../../components/product_notification_toaster/productNotificationToaster";
 
 
 const ProductList = () => {
@@ -188,8 +189,9 @@ const ProductList = () => {
 
     return (
         <div className="container-fluid d-block">
+           {/* { products.success && <ProductNotificationRoaster product={products.product}/>} */}
             {products.loading && <Spinner />}
-            {products.success && <NotificationToaster state={products} />}
+            {/* {products.success && <NotificationToaster state={products} />} */}
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
 
