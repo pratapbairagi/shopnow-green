@@ -15,7 +15,7 @@ const Layout = ({cart, products}) => {
             <Banner />
             <Features />
             <Category />
-            <ProductNotificationRoaster/>
+            {/* <ProductNotificationRoaster/> */}
             <Trending_sec cart={cart} products={products}/>
 
         {/* <LatestCard/> */}
