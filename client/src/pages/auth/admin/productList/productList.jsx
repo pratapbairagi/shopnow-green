@@ -183,16 +183,17 @@ const ProductList = () => {
     }
 
     // 
-    const productCreateNoti = localStorage.getItem("product_create_success");
 
     useEffect(()=>{
-        console.log("create product noti - product list", productCreateNoti)
-    },[productCreateNoti])
+        setTimeout(()=>{
+            console.log("create product noti - product list", productCreateNoti)
+        },3000);
+    },[localStorage.getItem("product_create_success")])
 
     return (
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}
-            {/* {products.success && window.location.pathname === "/profile" && <NotificationToaster state={products} />} */}
+            { window.location.pathname === "/profile" && localStorage.getItem("product_create_success") && <NotificationToaster state={products} />}
             {/* {products.success && window.location.pathname === "/profile" && } */}
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
