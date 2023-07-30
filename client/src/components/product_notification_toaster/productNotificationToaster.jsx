@@ -62,15 +62,14 @@ const ProductNotificationRoaster = () => {
                             ₹ { success && product?.price}
                             </div> */}
                             <div className="productionNotificationToaster-gender mt-1" style={{ width: "100%", textAlign: "left" }}>
-                                {/* {success && product?.gender} */}
+                                {success && product?.gender}
                             </div>
                             <div className="productionNotificationToaster-color mt-1" style={{ width: "100%", textAlign: "left", display: "flex", columnGap: "4px" }}>
-                               {/* {success && product?.color?.map((v,i)=> <div key={i} style={{ width: "20px", minHeight: "20px", borderRadius: "50%", background: `${v}` }} ></div>)}  */}
+                               {success && product?.color?.map((v,i)=> { return <div key={i} style={{ width: "20px", minHeight: "20px", borderRadius: "50%", background: `${v}` }} ></div> })} 
                                 
                             </div>
                             <div className="productionNotificationToaster-color mt-2" style={{ width: "100%", textAlign: "left", display: "flex", columnGap: "4px" }}>
-                            {/* {success && product?.size?.map((v,i)=>  <div key={i} className="px-2" style={{ width: "max-content", minHeight: "16px", borderRadius: "6px", border:"1px solid white", textTransform:"uppercase" }} >{v}</div> )}  */}
-                               
+                            {success && product?.size?.map((v,i)=> { return <div key={i} className="px-2" style={{ width: "max-content", minHeight: "16px", borderRadius: "6px", border:"1px solid white", textTransform:"uppercase" }} >{v}</div> })} 
                             </div>
                         </div>
                     </div>
