@@ -32,8 +32,10 @@ function App() {
   const products = useSelector(state => state.product);
 
   useEffect(() => {
+    if( !products.success){
       productCheck();
-    },[]);
+    }
+    },[products]);
 
     const price = {
       from : 0,
@@ -52,11 +54,11 @@ function App() {
   }
 
 
-    useEffect(()=>{
-      if(products.success){
-        dispatch(clear_success())
-      }
-    },[products])
+    // useEffect(()=>{
+    //   if(products.success){
+    //     dispatch(clear_success())
+    //   }
+    // },[products])
 
   return (
     <div className="App">
