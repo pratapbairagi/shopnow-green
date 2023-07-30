@@ -189,7 +189,7 @@ const ProductList = () => {
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}
             {/* {products.success && <NotificationToaster state={products} />} */}
-            {products.success && alert("created product")}
+            {products.success && window.location.pathname === "/profile"  && alert("created product")}
 
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
