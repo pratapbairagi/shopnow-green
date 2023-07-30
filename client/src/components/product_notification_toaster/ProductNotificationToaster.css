@@ -152,6 +152,7 @@
     padding: 6px 0;
     cursor: pointer;
     width: 20%;
+    min-width: 30px;
 }
 
 .productionNotificationToaster-btn:hover{

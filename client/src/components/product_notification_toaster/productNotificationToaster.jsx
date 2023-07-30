@@ -35,7 +35,7 @@ const ProductNotificationRoaster = () => {
             <div className="productionNotificationToaster-product">
                 <div className="productionNotificationToaster-product-img px-2">
                    
-                   { product?.images?.map((v,i)=> <img key={i} src={v.url} alt={product.title} /> )}
+                   {success && product?.images?.map((v,i)=> <img key={i} src={v.url} alt={product.title} /> )}
                     {/* <img src="https://sslimages.shoppersstop.com/sys-master/images/hb1/h95/29479595311134/S23ATVICENZA748_BLUE.jpg_2000Wx3000H" alt="" />
                     <img src="https://sslimages.shoppersstop.com/sys-master/images/hb1/h95/29479595311134/S23ATVICENZA748_BLUE.jpg_2000Wx3000H" alt="" />
 
@@ -45,11 +45,11 @@ const ProductNotificationRoaster = () => {
                 </div>
                 <div className="productionNotificationToaster-product-listing">
                     <div className="productionNotificationToaster-content">
-                        {/* <h1 className="productionNotificationToaster-name">{product.category}, {product.brand}</h1> */}
+                        <h1 className="productionNotificationToaster-name">{product.category}, {product.brand}</h1>
                         {/* <p className="productionNotificationToaster-info">{product.description}</p> */}
                         {/* <p className="productionNotificationToaster-price">$ {product.price}</p> */}
                         <div className="productionNotificationToaster-btn-and-rating-box" style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
-                            <div className="productionNotificationToaster-rating" style={{ width: "80%", lineHeight:"175%" }}>
+                            <div className="productionNotificationToaster-rating" style={{ width: "80%", lineHeight:"175%", textAlign:"left" }}>
                                 {/* <StarFill size="16px"/>
                                     <StarFill size="16px"/>
                                     <StarFill size="16px"/>
@@ -58,22 +58,22 @@ const ProductNotificationRoaster = () => {
                                 {product?.title}
 
                             </div>
-                           <NavLink to={`/details/${id}`}> <button className="productionNotificationToaster-btn">View</button> </NavLink>
-                            <div className="productionNotificationToaster-info mt-1" style={{ width: "100%", textAlign: "left" }}>
+                           <NavLink to={`/details/${id}`} className="productionNotificationToaster-btn"> View </NavLink>
+                            <div className="productionNotificationToaster-info mt-1 text-muted" style={{ width: "100%", textAlign: "center" }}>
                                 {product?.description}
                             </div>
-                            <div className="productionNotificationToaster-price mt-1" style={{ width: "100%", textAlign: "left" }}>
-                                {product?.price}
+                            <div className="productionNotificationToaster-price mt-1" style={{ width: "100%", textAlign: "center" }}>
+                            ₹ { success && product?.price}
                             </div>
                             <div className="productionNotificationToaster-gender mt-1" style={{ width: "100%", textAlign: "left" }}>
-                                {product?.gender}
+                                {success && product?.gender}
                             </div>
                             <div className="productionNotificationToaster-color mt-1" style={{ width: "100%", textAlign: "left", display: "flex", columnGap: "4px" }}>
-                               {product?.color?.map((v,i)=> <div key={i} style={{ width: "20px", minHeight: "20px", borderRadius: "50%", background: `${v}` }} ></div>)} 
+                               {success && product?.color?.map((v,i)=> <div key={i} style={{ width: "20px", minHeight: "20px", borderRadius: "50%", background: `${v}` }} ></div>)} 
                                 
                             </div>
                             <div className="productionNotificationToaster-color mt-2" style={{ width: "100%", textAlign: "left", display: "flex", columnGap: "4px" }}>
-                            {product?.size?.map((v,i)=>  <div key={i} className="px-2" style={{ width: "max-content", minHeight: "16px", borderRadius: "6px", border:"1px solid white", textTransform:"uppercase" }} >{v}</div> )} 
+                            {success && product?.size?.map((v,i)=>  <div key={i} className="px-2" style={{ width: "max-content", minHeight: "16px", borderRadius: "6px", border:"1px solid white", textTransform:"uppercase" }} >{v}</div> )} 
                                
                             </div>
                         </div>
