@@ -10,6 +10,7 @@ import { create_product_action, delete_product_action, edit_product_action } fro
 import Spinner from "../../../../components/spinner/spinner";
 import NotificationToaster from "../../../../components/notificationToaster/notificationToaster";
 import Add_product from "./add_product";
+import ProductNotificationRoaster from "../../../../components/product_notification_toaster/productNotificationToaster";
 
 const ProductList = () => {
 
@@ -189,8 +190,8 @@ const ProductList = () => {
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}
             {/* {products.success && <NotificationToaster state={products} />} */}
-            {products.success && window.location.pathname === "/profile"  && alert("created product")}
-
+            {products.success && window.location.pathname === "/profile"  && <ProductNotificationRoaster product={products.product} />}
+            <ProductNotificationRoaster/>
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
 

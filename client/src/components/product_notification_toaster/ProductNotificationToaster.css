@@ -1,4 +1,4 @@
-/* 
+
   @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 *{
@@ -229,4 +229,4 @@
   @keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
-  } */
+  }
