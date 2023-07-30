@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_all_products_action } from "../../redux/product/product_actions";
+import { clear_success, get_all_products_action } from "../../redux/product/product_actions";
 import TrendingCard from "./trendingCard"
 import LatestCard from "../latest_sec/latestCard";
 import RecommendedCard from "../home/recommended_sec/recommendedCard";
@@ -19,6 +19,12 @@ const Trending_sec = () => {
       const productCheck = () => {
         dispatch(get_all_products_action());
       }
+
+      useEffect(()=>{
+        if(products.success){
+          dispatch(clear_success())
+        }
+      },[products])
 
     return (
       <>
