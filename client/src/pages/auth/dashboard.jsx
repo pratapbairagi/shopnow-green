@@ -13,6 +13,8 @@ const Dashboard = () => {
 
     const dispatch = useDispatch();
     const state = useSelector(state => state.user_register);
+    const products = useSelector(state => state.product);
+
 
     const [activeToggle, setActiveToggle] = useState({ display: "none", col: "col-12" })
     const userMenuToggle = (e) => {
@@ -157,7 +159,7 @@ const Dashboard = () => {
                             </div>
 
                             <div className="sec" style={{height:"100vh"}}>
-                                <ProductList />
+                                <ProductList products={products} />
                             </div>
 
                             <div className="sec" style={{height:"100vh"}}>

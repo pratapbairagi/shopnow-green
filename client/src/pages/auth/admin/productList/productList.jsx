@@ -12,9 +12,9 @@ import NotificationToaster from "../../../../components/notificationToaster/noti
 import Add_product from "./add_product";
 import ProductNotificationRoaster from "../../../../components/product_notification_toaster/productNotificationToaster";
 
-const ProductList = () => {
+const ProductList = ({products}) => {
 
-    const products = useSelector(state => state.product);
+    // const products = useSelector(state => state.product);
     const dispatch = useDispatch();
 
     let [product, setProduct] = useState({
