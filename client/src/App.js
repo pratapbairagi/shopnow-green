@@ -67,7 +67,7 @@ function App() {
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details /> }/>
           <Route path='/shop/details/:id' exact element={<Product_details /> }/>
-          <Route path='/profile/product/created/:id' exact element={<ProductNotificationRoaster /> }/>
+          <Route path='/product/created/:id' exact element={<ProductNotificationRoaster /> }/>
 
           <Route path='/product' exact element={<Shop_product /> }/>
           <Route path='/about' exact element={<AboutUs /> }/>

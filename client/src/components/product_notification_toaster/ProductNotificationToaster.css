@@ -10,9 +10,8 @@
 .productionNotificationToaster{
     width: 100%;
     min-height: 100vh;
-    position: relative;
+    /* position: relative; */
     padding: 30px 10px;
-    display: flex;
     justify-content: center;
     align-items: center;
     background: #966e4f;
