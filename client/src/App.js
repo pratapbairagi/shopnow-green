@@ -53,10 +53,9 @@ function App() {
 
 
     useEffect(()=>{
-      // if(products.success){
-        alert("clear test")
+      if(products.success){
         dispatch(clear_success())
-      // }
+      }
     },[products])
 
   return (
