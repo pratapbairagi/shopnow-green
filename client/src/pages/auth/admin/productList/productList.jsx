@@ -186,11 +186,7 @@ const ProductList = () => {
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}
             {/* {products.success && window.location.pathname === "/profile" && <NotificationToaster state={products} />} */}
-            {products.success && window.location.pathname === "/profile" && <div style={{ width: "100%", minHeight: "12vh", position: "fixed", zIndex: "10", top: "0", left: "0", background:"green" }} > Product created successfu
-                <button onClick={() => dispatch(clear_success())} className="btn btn-sm btn-success" style={{ position: "relative", top: "10px", right: "10px" }}>
-                    <XLg size="18px" />
-                </button>l
-            </div>}
+            {products.success && window.location.pathname === "/profile" && alert("success")}
             {/* <ProductNotificationRoaster/> */}
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
