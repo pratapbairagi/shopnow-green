@@ -22,7 +22,9 @@ const Trending_sec = () => {
 
       useEffect(()=>{
         if(products.success){
+          setTimeout(()=>{
           dispatch(clear_success())
+          },2000)
         }
       },[products])
 

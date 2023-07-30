@@ -5,15 +5,17 @@ import { Rewind, XLg } from "react-bootstrap-icons";
 import { clear_success } from "../../redux/product/product_actions";
 
 const ProductNotificationRoaster = (product) => {
+
     const dispatch = useDispatch()
-    function clossSuccessAction() {
+
+    const clossSuccessAction = () =>{
         dispatch(clear_success())
-        // window.location.reload()
     }
+ 
     return (
         <div className="productionNotificationToaster" style={{display:"flex", position:"fixed", top:"0", left:"0", zIndex:"10"}}>
 
-            <button className="btn btn-danger" style={{position:"absolute", top:"10px", right:"10px"}} onclick={clossSuccessAction()}><XLg size="20px"/></button>
+            <button className="btn btn-danger" style={{position:"absolute", top:"10px", right:"10px"}} onClick={ ()=> clossSuccessAction}><XLg size="20px"/></button>
 
             {/* <div id="snackbar"> */}
             <div className="productionNotificationToaster-product">
