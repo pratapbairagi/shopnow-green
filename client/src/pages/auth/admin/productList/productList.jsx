@@ -191,7 +191,7 @@ const ProductList = () => {
             {products.loading && <Spinner />}
             {/* {products.success && <NotificationToaster state={products} />} */}
             {products.success && window.location.pathname === "/profile"  && <ProductNotificationRoaster product={products.product} />}
-            <ProductNotificationRoaster/>
+            {/* <ProductNotificationRoaster/> */}
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
 
