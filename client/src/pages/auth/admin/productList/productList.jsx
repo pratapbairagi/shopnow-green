@@ -1,4 +1,4 @@
-import { PencilSquare, Trash3 } from "react-bootstrap-icons";
+import { PencilSquare, Trash3, XLg } from "react-bootstrap-icons";
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { create_product_action, delete_product_action, edit_product_action } from "../../../../redux/product/product_actions";
+import { clear_success, create_product_action, delete_product_action, edit_product_action } from "../../../../redux/product/product_actions";
 import Spinner from "../../../../components/spinner/spinner";
 import NotificationToaster from "../../../../components/notificationToaster/notificationToaster";
 import Add_product from "./add_product";
@@ -23,27 +23,27 @@ const ProductList = () => {
         description: "",
         images: [],
         stock: "",
-        price : 0,
-        brand : "",
-        color : [
+        price: 0,
+        brand: "",
+        color: [
             {
-                value_type : "text",
-                value : "",
-                id : 1
+                value_type: "text",
+                value: "",
+                id: 1
             }
         ],
-        size : [
+        size: [
             {
-                value_type : "number",
-                value : "",
-                id : 1
+                value_type: "number",
+                value: "",
+                id: 1
             }
         ],
-        gender : "",
+        gender: "",
         offer: 0,
-        id : "",
-        oldImage : [],
-        newImage : []
+        id: "",
+        oldImage: [],
+        newImage: []
     });
 
 
@@ -77,11 +77,9 @@ const ProductList = () => {
     //     }
 
     // }
-    
+
     // onchange create
     const createProduct_handler_ = (e) => {
-
-        console.log(e)
 
         const { name, value } = e.target;
 
@@ -103,7 +101,6 @@ const ProductList = () => {
 
                 }
                 reader.readAsDataURL(element)
-                // console.log(product)
             });
         }
 
@@ -112,12 +109,11 @@ const ProductList = () => {
 
     // createNew_product_submit
     const createNew_product_submit = () => {
-        console.log(product)
 
-        if(product.id){
+        if (product.id) {
             dispatch(edit_product_action(product))
         }
-        else{
+        else {
 
             dispatch(create_product_action(product))
         }
@@ -132,11 +128,11 @@ const ProductList = () => {
     const deleteProduct_handler = (id) => {
         dispatch(delete_product_action(id))
     }
- 
+
     const [product_form, setProduct_form] = useState(null)
 
     // add product form handler
-    const add_product_form_handler = (x) =>{
+    const add_product_form_handler = (x) => {
 
         setProduct_form(x)
         document.getElementById("add_product_form").style.display = "flex"
@@ -144,45 +140,45 @@ const ProductList = () => {
 
         setProduct({
             ...product,
-            title : "",
-            category : "",
-            price : 0,
-            brand : "",
-            color : [],
-            size : [],
-            gender : "",
-            description : "",
-            images : [],
-            stock : 0, 
-            offer : 0,
-            id : "",
+            title: "",
+            category: "",
+            price: 0,
+            brand: "",
+            color: [],
+            size: [],
+            gender: "",
+            description: "",
+            images: [],
+            stock: 0,
+            offer: 0,
+            id: "",
             oldImage: [],
-            newImage:[]
+            newImage: []
         })
     };
 
     // update product : get product from handler
-    const getProduct_handler = (pro) =>{
+    const getProduct_handler = (pro) => {
 
         document.getElementById("add_product_form").style.display = "flex"
         document.getElementById("add_product_btn").innerHTML = "Edit Product";
 
         setProduct({
             ...product,
-            title : pro.title,
-            category : pro.category,
-            price : pro.price,
-            brand : pro.brand,
-            color : pro.color,
-            size : pro.size,
-            gender : pro.gender,
-            description : pro.description,
-            images : pro.images,
-            stock : pro.stock, 
-            offer : pro.offer.percentage,
-            id : pro._id,
+            title: pro.title,
+            category: pro.category,
+            price: pro.price,
+            brand: pro.brand,
+            color: pro.color,
+            size: pro.size,
+            gender: pro.gender,
+            description: pro.description,
+            images: pro.images,
+            stock: pro.stock,
+            offer: pro.offer.percentage,
+            id: pro._id,
             oldImage: pro.images,
-            newImage:[]
+            newImage: []
         })
     }
 
@@ -190,7 +186,11 @@ const ProductList = () => {
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}
             {/* {products.success && window.location.pathname === "/profile" && <NotificationToaster state={products} />} */}
-            {products.success && window.location.pathname === "/profile"  && <NotificationToaster state={products} />}
+            {products.success && window.location.pathname === "/profile" && <div style={{ width: "100%", minHeight: "12vh", position: "fixed", zIndex: "10", top: "0", left: "0", background:"green" }} > Product created successfu
+                <button onClick={() => dispatch(clear_success())} className="btn btn-sm btn-success" style={{ position: "relative", top: "10px", right: "10px" }}>
+                    <XLg size="18px" />
+                </button>l
+            </div>}
             {/* <ProductNotificationRoaster/> */}
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
@@ -198,9 +198,9 @@ const ProductList = () => {
 
 
             <div className="row p-0" style={{ overflowX: "scroll", maxHeight: "76vh", position: "relative" }}>
-                    {product_form === "add" && <Add_product createProduct_handler_={createProduct_handler_} close_add_product_form_handler={close_add_product_form_handler} productChange={product} createNew_product_submit={createNew_product_submit} setProductChange={setProduct}/>}
-                    
-                    {/* <Update_product updateProduct_handler_={updateProduct_handler_} close_add_product_form_handler={close_add_product_form_handler} product={product} createNew_product_submit={createNew_product_submit}/> */}
+                {product_form === "add" && <Add_product createProduct_handler_={createProduct_handler_} close_add_product_form_handler={close_add_product_form_handler} productChange={product} createNew_product_submit={createNew_product_submit} setProductChange={setProduct} />}
+
+                {/* <Update_product updateProduct_handler_={updateProduct_handler_} close_add_product_form_handler={close_add_product_form_handler} product={product} createNew_product_submit={createNew_product_submit}/> */}
 
                 {/* column first : start */}
                 <div className="col col-12 px-1 py-1" style={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "start", minHeight: "70.5vh" }}>
@@ -228,15 +228,15 @@ const ProductList = () => {
                                     // products.length > 0 &&
                                     products.products.map((v, i) => {
                                         return <tr key={v._id}>
-                                            <td style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)", minWidth:"50px" }}>{i + 1}</td>
-                                            <td style={{ fontWeight: "300", width:"max-content", maxWidth:"4rem", fontSize: "calc(5px + 0.390625vw)", overflow:"hidden", minHeight:"2rem", maxHeight:"2rem", height:"40px", minWidth:"50px" }}>
-                                               <span style={{minWidth:"50px", maxWidth:"100%", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical", display:"-webkit-box"}} title={v._id}>{v._id}</span> 
+                                            <td style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)", minWidth: "50px" }}>{i + 1}</td>
+                                            <td style={{ fontWeight: "300", width: "max-content", maxWidth: "4rem", fontSize: "calc(5px + 0.390625vw)", overflow: "hidden", minHeight: "2rem", maxHeight: "2rem", height: "40px", minWidth: "50px" }}>
+                                                <span style={{ minWidth: "50px", maxWidth: "100%", overflow: "hidden", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", display: "-webkit-box" }} title={v._id}>{v._id}</span>
                                             </td>
-                                            <td style={{ fontWeight: "300", maxWidth:"2rem",  fontSize: "calc(5px + 0.390625vw)", minWidth:"50px" }}>{v.title}</td>
-                                            <td style={{ fontWeight: "300", maxWidth:"2rem",  fontSize: "calc(5px + 0.390625vw)", minWidth:"40px" }}>{v.price}</td>
-                                            <td style={{ fontWeight: "300", maxWidth:"2rem", fontSize: "calc(5px + 0.390625vw)", minWidth:"50px" }}>{v.category}</td>
-                                            <td style={{ fontWeight: "300", width:"max-content", maxWidth:"4rem", fontSize: "calc(5px + 0.390625vw)", overflow:"hidden", minHeight:"2rem", maxHeight:"2rem", height:"40px", minWidth:"50px" }}>
-                                                <span style={{minWidth:"50px", maxWidth:"100%", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical", display:"-webkit-box"}} title={v.description}>{v.description} </span>
+                                            <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "50px" }}>{v.title}</td>
+                                            <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "40px" }}>{v.price}</td>
+                                            <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "50px" }}>{v.category}</td>
+                                            <td style={{ fontWeight: "300", width: "max-content", maxWidth: "4rem", fontSize: "calc(5px + 0.390625vw)", overflow: "hidden", minHeight: "2rem", maxHeight: "2rem", height: "40px", minWidth: "50px" }}>
+                                                <span style={{ minWidth: "50px", maxWidth: "100%", overflow: "hidden", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", display: "-webkit-box" }} title={v.description}>{v.description} </span>
                                             </td>
                                             <td ><img src={v.images[0]?.url} style={{ width: "32px", height: "32px" }} alt="" /></td>
                                             <td style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)" }}>{v.stock}</td>
@@ -245,7 +245,7 @@ const ProductList = () => {
                                             <td style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)" }}>{v.createdAt}</td>
                                             <td style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)" }}>{v.createdAt}</td>
                                             <td><button onClick={() => getProduct_handler(v)} className="btn btn-sm btn-warning rounded-circle" style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)" }}> <PencilSquare color="white" /> </button></td>
-                                            <td><button onClick={ ()=> deleteProduct_handler(v._id)} className="btn btn-sm btn-danger" style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)" }}> <Trash3 color="white" /> </button></td>
+                                            <td><button onClick={() => deleteProduct_handler(v._id)} className="btn btn-sm btn-danger" style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)" }}> <Trash3 color="white" /> </button></td>
                                         </tr>
                                     })
                                 }
@@ -268,7 +268,7 @@ const ProductList = () => {
 
                 </div>
                 {/* column first : end */}
-                <button onClick={() =>  add_product_form_handler("add")} style={{ color: "whitesmoke", background: "var(--dark-red)" }}>Add Product</button>
+                <button onClick={() => add_product_form_handler("add")} style={{ color: "whitesmoke", background: "var(--dark-red)" }}>Add Product</button>
             </div>
         </div>
     )
