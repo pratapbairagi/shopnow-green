@@ -4,7 +4,7 @@ import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clear_success, create_product_action, delete_product_action, edit_product_action } from "../../../../redux/product/product_actions";
 import Spinner from "../../../../components/spinner/spinner";
@@ -182,12 +182,18 @@ const ProductList = () => {
         })
     }
 
+    // 
+    useEffect(()=>{
+        if(products.success){
+            alert("success")
+        }
+    },[products])
+
     return (
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}
             {/* {products.success && window.location.pathname === "/profile" && <NotificationToaster state={products} />} */}
-            {products.success && window.location.pathname === "/profile" && alert("success")}
-            {/* <ProductNotificationRoaster/> */}
+            {/* {products.success && window.location.pathname === "/profile" && } */}
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
 
