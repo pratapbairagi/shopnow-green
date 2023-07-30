@@ -32,10 +32,10 @@ function App() {
   const products = useSelector(state => state.product);
 
   useEffect(() => {
-    if( !products.success){
+
       productCheck();
-    }
-    },[products]);
+  
+    },[]);
 
     const price = {
       from : 0,
