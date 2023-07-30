@@ -17,6 +17,7 @@ import Shop_product from './pages/shop/shop';
 import AboutUs from './pages/about_us/aboutUs';
 import Contact from './pages/contact/contact';
 import ProductsShop from './pages/products_fshop/products_shop';
+import ProductNotificationRoaster from './components/product_notification_toaster/productNotificationToaster';
 
 function App() {
 
@@ -66,6 +67,8 @@ function App() {
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details /> }/>
           <Route path='/shop/details/:id' exact element={<Product_details /> }/>
+          <Route path='/profile/product/created/:id' exact element={<ProductNotificationRoaster /> }/>
+
           <Route path='/product' exact element={<Shop_product /> }/>
           <Route path='/about' exact element={<AboutUs /> }/>
           <Route path='/contact' exact element={<Contact /> }/>

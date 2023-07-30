@@ -182,15 +182,6 @@ const ProductList = () => {
         })
     }
 
-    // 
-
-    useEffect(()=>{
-        setTimeout(()=>{
-            console.log("create product noti - product list", localStorage.getItem("product_create_success"))
-            alert("success")
-        },3000);
-    },[localStorage.getItem("product_create_success")])
-
     return (
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { CLEAR_ERROR, CLEAR_SUCCESS, CREATE_PRODUCT_FAIL, CREATE_PRODUCT_REQUEST, CREATE_PRODUCT_SUCCESS, DELETE_PRODUCT_FAIL, DELETE_PRODUCT_REQUEST, DELETE_PRODUCT_SUCCESS, EDIT_PRODUCT_FAIL, EDIT_PRODUCT_REQUEST, EDIT_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAIL, GET_ALL_PRODUCTS_REQUEST, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_DETAILS_FAIL, GET_PRODUCT_DETAILS_REQUEST, GET_PRODUCT_DETAILS_SUCCESS } from "./product_type"
+import { redirect } from "react-router-dom";
 
 
 export const create_product_action = (product) => async (dispatch) => {
@@ -21,7 +22,8 @@ export const create_product_action = (product) => async (dispatch) => {
             payload : data
         })
         
-        localStorage.setItem("product_create_success", JSON.stringify(data.product))
+        redirect(`/product/created/${data.product._id}`)
+        // localStorage.setItem("product_create_success", JSON.stringify(data.product))
         
     } catch (error) {
         dispatch({
