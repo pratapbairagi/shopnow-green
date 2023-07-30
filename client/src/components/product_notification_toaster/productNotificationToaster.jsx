@@ -41,9 +41,9 @@ const ProductNotificationRoaster = () => {
                 </div>
                 <div className="productionNotificationToaster-product-listing">
                     <div className="productionNotificationToaster-content">
-                        {/* <h1 className="productionNotificationToaster-name">{product.category}, {product.brand}</h1>
-                        <p className="productionNotificationToaster-info">{product.description}</p> */}
-                        {/* <p className="productionNotificationToaster-price">$ {product.price}</p> */}
+                        <h1 className="productionNotificationToaster-name">{ success && product?.category}, {product.brand}</h1>
+                        <p className="productionNotificationToaster-info">{success && product?.description}</p>
+                        <p className="productionNotificationToaster-price">$ {success && product?.price}</p>
                         <div className="productionNotificationToaster-btn-and-rating-box" style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
                             <div className="productionNotificationToaster-rating" style={{ width: "80%", lineHeight:"175%", textAlign:"left" }}>
                                 {/* <StarFill size="16px"/>
@@ -51,21 +51,21 @@ const ProductNotificationRoaster = () => {
                                     <StarFill size="16px"/>
                                     <StarFill size="16px"/>
                                     <StarHalf size="16px"/> */}
-                                {/* {product?.title} */}
+                                { success && product?.title}
 
                             </div>
-                           <NavLink to={`/details/${id}`} className="productionNotificationToaster-btn"> View </NavLink>
-                            <div className="productionNotificationToaster-info mt-1 text-muted" style={{ width: "100%", textAlign: "center" }}>
-                                {/* {product?.description} */}
-                            </div>
-                            <div className="productionNotificationToaster-price mt-1" style={{ width: "100%", textAlign: "center" }}>
-                            {/* ₹ { success && product?.price} */}
-                            </div>
+                           <NavLink to={`/details/${id}`} className="productionNotificationToaster-btn px-2"> View </NavLink>
+                            {/* <div className="productionNotificationToaster-info mt-1 text-muted" style={{ width: "100%", textAlign: "center" }}>
+                                { success && product?.description}
+                            </div> */}
+                            {/* <div className="productionNotificationToaster-price mt-1" style={{ width: "100%", textAlign: "center" }}>
+                            ₹ { success && product?.price}
+                            </div> */}
                             <div className="productionNotificationToaster-gender mt-1" style={{ width: "100%", textAlign: "left" }}>
                                 {/* {success && product?.gender} */}
                             </div>
                             <div className="productionNotificationToaster-color mt-1" style={{ width: "100%", textAlign: "left", display: "flex", columnGap: "4px" }}>
-                               {success && product?.color?.map((v,i)=> <div key={i} style={{ width: "20px", minHeight: "20px", borderRadius: "50%", background: `${v}` }} ></div>)} 
+                               {/* {success && product?.color?.map((v,i)=> <div key={i} style={{ width: "20px", minHeight: "20px", borderRadius: "50%", background: `${v}` }} ></div>)}  */}
                                 
                             </div>
                             <div className="productionNotificationToaster-color mt-2" style={{ width: "100%", textAlign: "left", display: "flex", columnGap: "4px" }}>
