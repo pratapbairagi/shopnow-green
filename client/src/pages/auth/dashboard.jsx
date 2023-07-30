@@ -13,8 +13,6 @@ const Dashboard = () => {
 
     const dispatch = useDispatch();
     const state = useSelector(state => state.user_register);
-    const products = useSelector(state => state.product);
-
 
     const [activeToggle, setActiveToggle] = useState({ display: "none", col: "col-12" })
     const userMenuToggle = (e) => {
@@ -62,13 +60,6 @@ const Dashboard = () => {
             dispatch(user_clear_error_action())
         }
     }, [state.success, state.error, dispatch])
-
-    // 
-    useEffect(()=>{
-        if(products.success){
-            alert("success")
-        }
-    },[products])
 
     return (
         <div className="container-fluid dashboard_container" style={{ overflow: "hidden", height: "100vh" }}>
@@ -166,7 +157,7 @@ const Dashboard = () => {
                             </div>
 
                             <div className="sec" style={{height:"100vh"}}>
-                                <ProductList products={products} />
+                                <ProductList />
                             </div>
 
                             <div className="sec" style={{height:"100vh"}}>

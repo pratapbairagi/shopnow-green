@@ -182,6 +182,13 @@ const ProductList = () => {
         })
     }
 
+    // 
+    const productCreateNoti = localStorage.getItem("product_create_success");
+
+    useEffect(()=>{
+        console.log("create product noti", productCreateNoti)
+    },[productCreateNoti])
+
     return (
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}

@@ -21,6 +21,8 @@ export const create_product_action = (product) => async (dispatch) => {
             payload : data
         })
         
+        localStorage.setItem("product_create_success", data.product)
+        
     } catch (error) {
         dispatch({
             type : CREATE_PRODUCT_FAIL,
