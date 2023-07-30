@@ -35,7 +35,7 @@ const ProductNotificationRoaster = () => {
             <div className="productionNotificationToaster-product">
                 <div className="productionNotificationToaster-product-img px-2">
                    
-                   {/* {success && product?.images?.map((v,i)=> <img key={i} src={v.url} alt={product.title} /> )} */}
+                   {success && product?.images?.map((v,i)=> <img key={i} src={v.url} alt={product.title} /> )}
                     
                     <span className="productionNotificationToaster-tag">new</span>
                 </div>
@@ -54,7 +54,7 @@ const ProductNotificationRoaster = () => {
                                 {/* {product?.title} */}
 
                             </div>
-                           {/* <NavLink to={`/details/${id}`} className="productionNotificationToaster-btn"> View </NavLink> */}
+                           <NavLink to={`/details/${id}`} className="productionNotificationToaster-btn"> View </NavLink>
                             <div className="productionNotificationToaster-info mt-1 text-muted" style={{ width: "100%", textAlign: "center" }}>
                                 {/* {product?.description} */}
                             </div>
