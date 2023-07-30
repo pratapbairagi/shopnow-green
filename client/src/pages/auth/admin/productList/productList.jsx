@@ -188,7 +188,9 @@ const ProductList = () => {
     return (
         <div className="container-fluid d-block">
             {products.loading && <Spinner />}
-            {products.success && <NotificationToaster state={products} />}
+            {/* {products.success && <NotificationToaster state={products} />} */}
+            {products.success && alert("created product")}
+
             <h5 style={{ color: "grey", margin: "3px auto" }}>Products</h5>
 
 
