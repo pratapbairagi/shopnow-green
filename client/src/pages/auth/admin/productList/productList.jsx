@@ -186,7 +186,7 @@ const ProductList = () => {
 
     useEffect(()=>{
         setTimeout(()=>{
-            console.log("create product noti - product list", productCreateNoti)
+            console.log("create product noti - product list", localStorage.getItem("product_create_success"))
         },3000);
     },[localStorage.getItem("product_create_success")])
 
