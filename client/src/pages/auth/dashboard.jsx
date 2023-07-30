@@ -63,6 +63,13 @@ const Dashboard = () => {
         }
     }, [state.success, state.error, dispatch])
 
+    // 
+    useEffect(()=>{
+        if(products.success){
+            alert("success")
+        }
+    },[products])
+
     return (
         <div className="container-fluid dashboard_container" style={{ overflow: "hidden", height: "100vh" }}>
 
