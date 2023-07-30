@@ -22,7 +22,8 @@ export const create_product_action = (product) => async (dispatch) => {
             payload : data
         })
         
-        redirect(`/product/created/${data.product._id}`)
+        // redirect(`/product/created/${data.product._id}`)
+        window.location.href=`/product/created/${data.product._id}`
         // localStorage.setItem("product_create_success", JSON.stringify(data.product))
         
     } catch (error) {
