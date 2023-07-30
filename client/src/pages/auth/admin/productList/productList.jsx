@@ -186,7 +186,7 @@ const ProductList = () => {
     const productCreateNoti = localStorage.getItem("product_create_success");
 
     useEffect(()=>{
-        console.log("create product noti", productCreateNoti)
+        console.log("create product noti - product list", productCreateNoti)
     },[productCreateNoti])
 
     return (

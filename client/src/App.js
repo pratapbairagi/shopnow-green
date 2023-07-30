@@ -48,13 +48,6 @@ function App() {
     dispatch(user_logged_check_action());
   }
 
-
-    // useEffect(()=>{
-    //   if(products.success){
-    //     dispatch(clear_success())
-    //   }
-    // },[products])
-
   return (
     <div className="App">
       <Router>
