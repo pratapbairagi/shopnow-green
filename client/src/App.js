@@ -10,7 +10,7 @@ import Layout from './pages/home/layout';
 import Dashboard from './pages/auth/dashboard';
 import ProtectedRoute from './protectedRoute/protectedRoute';
 import NonProtectedRoute from './protectedRoute/nonProtectedRoute';
-import { get_all_products_action } from './redux/product/product_actions';
+import { clear_success, get_all_products_action } from './redux/product/product_actions';
 import Footer from './components/footer/footer';
 import Product_details from './pages/product_details/product_details';
 import Shop_product from './pages/shop/shop';
@@ -50,6 +50,14 @@ function App() {
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
   }
+
+
+    useEffect(()=>{
+      if(products.success){
+        alert("clear test")
+        dispatch(clear_success())
+      }
+    },[products])
 
   return (
     <div className="App">

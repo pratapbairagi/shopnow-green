@@ -5,16 +5,9 @@ import Category from "../../components/category/category"
 import Features from "../../components/features.js/features"
 // import LatestCard from "../latest_sec/latestCard"
 import Trending_sec from "../trending_sec/trendding_sec";
-import { useDispatch } from "react-redux";
-import { clear_success } from "../../redux/product/product_actions";
-
-
 
 const Layout = ({cart, products}) => {
-    const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch(clear_success())
-    },[])
+    
     return (
         <>
             <Banner />
