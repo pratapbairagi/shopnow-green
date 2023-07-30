@@ -35,7 +35,7 @@ const ProductNotificationRoaster = () => {
             <div className="productionNotificationToaster-product">
                 <div className="productionNotificationToaster-product-img px-2">
                    
-                   {success && product?.images?.map((v,i)=> <img key={i} src={v.url} alt={product.title} /> )}
+                   {success && product?.images?.map((v,i)=>{ return <img key={i} src={v.url} alt={product.title} /> })}
                     
                     <span className="productionNotificationToaster-tag">new</span>
                 </div>
