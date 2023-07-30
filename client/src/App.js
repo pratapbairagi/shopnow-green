@@ -29,25 +29,20 @@ function App() {
 
 
   // prodicts fetch
-  const products = useSelector(state => state.product);
+  // const products = useSelector(state => state.product);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //     productCheck();
+  //   },[]);
 
-      productCheck();
+    // const price = {
+    //   from : 0,
+    //   to : 999999
+    // }
   
-    },[]);
-
-    const price = {
-      from : 0,
-      to : 999999
-    }
-  
-    const productCheck = () => {
-      // dispatch(get_all_products_action("", "", price));
-      dispatch(get_all_products_action("", "", price, "", "", ""));
-
-    }
-
+    // const productCheck = () => {
+    //   dispatch(get_all_products_action("", "", price, "", "", ""));
+    // }
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
@@ -73,7 +68,7 @@ function App() {
 
 
         <Routes>
-          <Route path='/' element={<Layout products={products } />} exact />
+          <Route path='/' element={<Layout />} exact />
           {/* <Route path='/about' element={<h4>About</h4>} /> */}
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details /> }/>

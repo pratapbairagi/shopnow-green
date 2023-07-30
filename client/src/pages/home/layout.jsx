@@ -8,14 +8,14 @@ import Trending_sec from "../trending_sec/trendding_sec";
 
 
 
-const Layout = ({cart, products}) => {
+const Layout = ({cart}) => {
     
     return (
         <>
             <Banner />
             <Features />
             <Category />
-            <Trending_sec cart={cart} products={products}/>
+            <Trending_sec cart={cart}/>
 
         {/* <LatestCard/> */}
         
