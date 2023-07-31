@@ -159,7 +159,7 @@ const ProductsShop = () => {
                                     </header>
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Gender" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 0", background: "white", gap: "4px" }}>
+                                            <li className="panel-body-li" style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 20%", background: "white", gap: "4px" }}>
                                                
                                                {localStorage.getItem("gender") && JSON.parse(localStorage.getItem("gender")).map((v,i)=>{ return <span key={i} className="p-0 m-0" style={{display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px"}}>
                                                     <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.gender !== v.gender ? "white" : "green"}`, color: "white", border:"1px solid grey", borderRadius:"3px" }}>
@@ -174,7 +174,7 @@ const ProductsShop = () => {
                                                             }
 
                                                     </button>
-                                                    <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Men</p>
+                                                    <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>{v.gender.length > 0 ? v.gender : "All"}</p>
                                                 </span> })
                                                     }
 
@@ -230,7 +230,7 @@ const ProductsShop = () => {
                                     </header>
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white", border: "1px solid blue" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%", border: "1px solid green" }}>
-                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 10px", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px", border: "1px solid orange" }}>
+                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 20%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px", border: "1px solid orange" }}>
                                                 {/* {categories.length > 0 && categories.map((c, i) => {
                                                     return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "4px" }}>
                                                         <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", minWidth: "25px", minHeight: "25px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white" }}>
