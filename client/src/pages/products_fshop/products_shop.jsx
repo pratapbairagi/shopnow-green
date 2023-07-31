@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./productsShop.scss";
 import { get_all_products_action } from "../../redux/product/product_actions";
 import { useEffect, useState } from "react";
-import { CaretRight, CartCheck, CartPlus, Check2Circle, GenderAmbiguous, GenderFemale, GenderMale, FunnelFill, UiChecksGrid, CurrencyRupee } from "react-bootstrap-icons"
+import { CaretRight, CartCheck, CartPlus, Check2Circle, GenderAmbiguous, GenderFemale, GenderMale, FunnelFill, UiChecksGrid, CurrencyRupee, Check } from "react-bootstrap-icons"
 import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/cartAction";
 import { NavLink } from "react-router-dom";
 
@@ -33,7 +33,10 @@ const ProductsShop = () => {
     }, [search_options]);
 
     const [productz, setProductz] = useState([])
-    const [category, setCategory] = useState([])
+
+    const [categories, setCategories] = useState([])
+    let uniqueCategory = new Set();
+
     const [sizes, setSizes] = useState([])
     let uniqueSize = new Set();
 
@@ -50,10 +53,17 @@ const ProductsShop = () => {
                 setProductz(product.products)
                 
 
-                function uniqueCat(value, index, array) {
-                    return array.indexOf(value.category) === index
-                }
-                setCategory(product.products.filter(uniqueCat));
+                // function uniqueCat(value, index, array) {
+                //     return array.indexOf(value.category) === index
+                // }
+                // setCategory(product.products.filter(uniqueCat));
+
+                // store unique categories or remove duplicate categories
+                productz.forEach((obj)=>{
+                    uniqueCategory.add(obj.category)
+                })
+                const categoryArray = Array.from(uniqueCategory);
+                setCategories(categoryArray)
 
                 // store unique sizes or remove duplicate sizes
                 productz.forEach((obj)=>{
@@ -141,7 +151,7 @@ const ProductsShop = () => {
                                             <input type="radio" value="men" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                             {
                                                 search_options.category === "men" ? <Check2Circle /> : <GenderMale />
-                                            } 
+                                            }
                                              
                                         </button>
                                         <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Men</p>
@@ -199,18 +209,24 @@ const ProductsShop = () => {
                             <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>
                                 <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
                                     <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 0", background: "white", display:"flex", gap:"4px" }}>
-                                        <span className="p-0 m-0" style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
+                                        { categories.map((c,i)=>{ return <span className="p-0 m-0" key={i} style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
                                         <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "men" ? "green" : "red"}`, color:"white"  }}>
-                                            <input type="radio" value="men" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                            <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                             {
-                                                search_options.category === "men" ? <Check2Circle /> : <GenderMale />
+                                                search_options.category === `${c}` ? 
+                                                <span className="p-0 m-0" style={{minHeight:"18px", minWidth:"18px", border:"1px solid grey"}}></span> 
+                                                : 
+                                                <span className="p-0 m-0" style={{minHeight:"18px", minWidth:"18px", border:"1px solid grey", display:"grid", placeItems:"center", backgroundColor:"green", color:"whitesmoke"}}>
+                                                    <Check size="80%"/>
+                                                </span>
                                             } 
                                              
                                         </button>
-                                        <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Men</p>
-                                        </span>
+                                        <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>{c}</p>
+                                        </span>})
+                                        }
 
-                                        <span className="p-0 m-0" style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
+                                        {/* <span className="p-0 m-0" style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
                                         <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "women" ? "green" : "red"}`, color:"white"  }}>
                                             <input type="radio" value="women" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                             {
@@ -218,9 +234,9 @@ const ProductsShop = () => {
                                             } 
                                         </button>
                                         <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Women</p>
-                                        </span>
+                                        </span> */}
 
-                                        <span className="p-0 m-0" style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
+                                        {/* <span className="p-0 m-0" style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
                                         <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "kids" ? "green" : "red"}`, color:"white"  }}>
                                             <input type="radio" value="kids" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                             {
@@ -228,7 +244,7 @@ const ProductsShop = () => {
                                             }
                                         </button>
                                         <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Kids</p>
-                                        </span>
+                                        </span> */}
                                             
                                     </li>
                                 </ul>
@@ -267,8 +283,8 @@ const ProductsShop = () => {
                                         <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Brand</label>
                                         <select onChange={(e) => setSearch_options({ ...search_options, brand: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
                                             {
-                                                productz.map((pv, pi) => {
-                                                    return <option key={pi} value="wallmart">{pv.brand}</option>
+                                                brands.map((pv, pi) => {
+                                                    return <option key={pi} value={pv}>{pv}</option>
                                                 })
                                             }
                                         </select>
