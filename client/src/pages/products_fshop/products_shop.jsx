@@ -34,8 +34,14 @@ const ProductsShop = () => {
 
     const [productz, setProductz] = useState([])
     const [category, setCategory] = useState([])
-    const [sizes, setSizes] = useState()
+    const [sizes, setSizes] = useState([])
     let uniqueSize = new Set();
+
+    const [colors, setColors] = useState([])
+    let uniqueColor = new Set();
+
+    const [brands, setBrands] = useState([])
+    let uniqueBrand = new Set();
 
 
     useEffect(() => {
@@ -49,7 +55,7 @@ const ProductsShop = () => {
                 }
                 setCategory(product.products.filter(uniqueCat));
 
-
+                // store unique sizes or remove duplicate sizes
                 productz.forEach((obj)=>{
                     obj.size.forEach((sizeObj)=>{
                         uniqueSize.add(sizeObj.value.trim())
@@ -58,12 +64,29 @@ const ProductsShop = () => {
                 const sizeArray = Array.from(uniqueSize)
                 setSizes(sizeArray)
 
+                // store unique colors or remove duplicate colors
+                productz.forEach((obj)=>{
+                    obj.forEach((colorObj)=>{
+                        uniqueColor.add(colorObj.value.trim())
+                    })
+                })
+                const colorArray = Array.from(uniqueColor);
+                setColors(colorArray)
+
+                // store unique colors or remove duplicate colors
+                productz.forEach((obj)=>{
+                        uniqueBrand.add(obj.brand.trim())
+                })
+                const brandArray = Array.from(uniqueBrand);
+                setBrands(brandArray);
+
+
 
             }
         }
     }, [product])
 
-    console.log(sizes)
+    console.log(brands)
 
     const productCheck = () => {
         // dispatch(get_all_products_action(
@@ -255,22 +278,23 @@ const ProductsShop = () => {
                                     <div className="form-group mt-2">
                                         <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Color</label>
                                         <select onChange={(e) => setSearch_options({ ...search_options, color: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
-                                            {productz.map((pv, pi) => {
-                                                return pv.color.map((pcv, pci) => {
-                                                    return <option key={pci} value={pci}>{pcv.value}</option>
+                                            {
+                                                colors.map((pcv, pci) => {
+                                                    return <option key={pci} value={pcv}>{pcv}</option>
                                                 })
-                                            })}
+                                                }
+                                            
                                         </select>
                                         {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>White</span></span> */}
                                     </div>
                                     <div className="form-group mt-2">
                                         <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Type</label>
                                         <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
-                                            {productz.map((pv, pi) => {
-                                                return pv.size.map((psv, psi) => {
-                                                    return <option key={psi} value={psi}>{psv.value}</option>
+                                            {
+                                              sizes.length >= 0 &&  sizes.map((psv, psi) => {
+                                                    return <option key={psi} value={pvs}>{psv}</option>
                                                 })
-                                            })}
+                                            }
                                            
                                         </select>
                                         {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>Small</span></span> */}
