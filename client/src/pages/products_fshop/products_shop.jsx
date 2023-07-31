@@ -98,6 +98,8 @@ const ProductsShop = () => {
 
     console.log(brands)
 
+    // top, track pant, slippers
+
     const productCheck = () => {
         // dispatch(get_all_products_action(
         //     {
@@ -208,12 +210,12 @@ const ProductsShop = () => {
                             </header>
                             <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>
                                 <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                    <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 0", background: "white", display:"flex", gap:"4px" }}>
-                                        { categories.map((c,i)=>{ return <span className="p-0 m-0" key={i} style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
-                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "men" ? "green" : "red"}`, color:"white"  }}>
+                                    <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 0", background: "white", display:"flex", flexDirection:"column", alignItems:"flex-start", gap:"4px" }}>
+                                        { categories.length > 0 && categories.map((c,i)=>{ return <span className="p-0 m-0" key={i} style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
+                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category !== c ? "white" : "green"}`, color:"white"  }}>
                                             <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                             {
-                                                search_options.category === `${c}` ? 
+                                                search_options.category !== `${c}` ? 
                                                 <span className="p-0 m-0" style={{minHeight:"18px", minWidth:"18px", border:"1px solid grey"}}></span> 
                                                 : 
                                                 <span className="p-0 m-0" style={{minHeight:"18px", minWidth:"18px", border:"1px solid grey", display:"grid", placeItems:"center", backgroundColor:"green", color:"whitesmoke"}}>

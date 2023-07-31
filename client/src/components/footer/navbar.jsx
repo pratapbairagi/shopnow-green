@@ -88,11 +88,11 @@ const Navbar = () => {
 
                 <ul className="mid-nav" id="mid-nav" style={{ right: "-100%" }}>
                     <button onClick={toggleHandlerMenu} style={{ position: "absolute", top: "0", left: "-26px", border: "none", background: "transparent" }}><XSquare size="24" color="white" /></button>
-                    <li><NavLink to="/">HOME</NavLink></li>
-                    <li><NavLink to="/about">ABOUT</NavLink></li>
-                    <li><NavLink to="/shop">SHOP</NavLink></li>
+                    <li><NavLink onClick={toggleHandlerMenu} to="/">HOME</NavLink></li>
+                    <li><NavLink onClick={toggleHandlerMenu} to="/about">ABOUT</NavLink></li>
+                    <li><NavLink onClick={toggleHandlerMenu} to="/shop">SHOP</NavLink></li>
                     {/* <li><NavLink to="/product">PRODUCT</NavLink></li> */}
-                    <li><NavLink to="/contact">CONTACT</NavLink></li>
+                    <li><NavLink onClick={toggleHandlerMenu} to="/contact">CONTACT</NavLink></li>
                 </ul>
 
                 <ul className="right-nav">
