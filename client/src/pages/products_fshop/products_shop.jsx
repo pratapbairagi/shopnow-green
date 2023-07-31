@@ -71,6 +71,7 @@ const ProductsShop = () => {
                     uniqueCategory.add(obj.category)
                 })
                 const categoryArray = Array.from(uniqueCategory);
+                categoryArray.push("")
                 if(localStorage.getItem("categories") === undefined || localStorage.getItem("categories") === null){
                     localStorage.setItem("categories", JSON.stringify(categoryArray))
                 }
@@ -177,46 +178,7 @@ const ProductsShop = () => {
                                                     <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>{v.gender.length > 0 ? v.gender : "All"}</p>
                                                 </span> })
                                                     }
-
-                                                {/* <span className="p-0 m-0" >
-                                                    <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "25px", height: "25px", display: "flex", flexDirection: "column", background: `${search_options.category === "women" ? "green" : "red"}`, color: "white" }}>
-                                                        <input type="radio" value="women" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                                        {
-                                                            search_options.category === "women" ? <Check2Circle /> : <GenderFemale />
-                                                        }
-                                                    </button>
-                                                    <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Women</p>
-                                                </span> */}
-
-                                                {/* <span className="p-0 m-0">
-                                                    <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "25px", height: "25px", display: "flex", flexDirection: "column", background: `${search_options.category === "kids" ? "green" : "red"}`, color: "white" }}>
-                                                        <input type="radio" value="kids" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                                        {
-                                                            search_options.category === "kids" ? <Check2Circle /> : <GenderAmbiguous />
-                                                        }
-                                                    </button>
-                                                    <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Kids</p>
-                                                </span> */}
-
-                                                {/* <span style={{fontSize:"8px"}}>male</span> */}
-                                                {/* <ul className="nav p-0 m-0 flex-column" style={{ height: "max-content", display: `${search_options.category === "men" ? "flex" : "none"}` }}>
-                                            <li className="active " style={{ width: "100%", background: "white", border: "none", position: "relative" }}>
-                                                <input type="radio" onChange={(e) => setSearch_options({ ...search_options, subcategory: e.target.value })} name="subcategory" value="shorts" id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0", left: "0" }} />
-                                                <button style={{ width: "100%", display: "block" }}>- Shirt</button>
-                                            </li>
-                                            <li style={{ width: "100%", background: "white", position: "relative" }}>
-                                                <input type="radio" name="subcategory" onChange={(e) => setSearch_options({ ...search_options, subcategory: e.target.value })} value="pants" id="" style={{ position: "absolute", width: "92%", height: "100%", opacity: "0", left: "0" }} />
-                                                <button style={{ width: "100%", display: "block" }}>- Pant</button>
-                                            </li>
-                                            <li style={{ width: "100%", background: "white", position: "relative" }}>
-                                                <input type="radio" name="subcategory" value="tshirts" onChange={(e) => setSearch_options({ ...search_options, subcategory: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0", left: "0" }} />
-                                                <button style={{ width: "100%" }}>- T-shirts</button>
-                                            </li>
-                                            <li style={{ width: "100%", background: "white", position: "relative" }}>
-                                                <input type="radio" name="subcategory" value="shoes" onChange={(e) => setSearch_options({ ...search_options, subcategory: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0", left: "0" }} />
-                                                <button style={{ width: "100%" }}>- Shoes</button>
-                                            </li>
-                                        </ul> */}
+                                               
                                             </li>
                                         </ul>
                                     </div>
@@ -231,24 +193,6 @@ const ProductsShop = () => {
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white", border: "1px solid blue" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%", border: "1px solid green" }}>
                                             <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 20%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px", border: "1px solid orange" }}>
-                                                {/* {categories.length > 0 && categories.map((c, i) => {
-                                                    return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "4px" }}>
-                                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", minWidth: "25px", minHeight: "25px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white" }}>
-                                                            <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                                            {
-                                                                search_options.category !== `${c}` ?
-                                                                    <span className="p-0 m-0" style={{ minHeight: "18px", minWidth: "18px", border: "1px solid grey" }}></span>
-                                                                    :
-                                                                    <span className="p-0 m-0" style={{ minHeight: "18px", minWidth: "18px", border: "1px solid grey", display: "grid", placeItems: "center", backgroundColor: "green", color: "whitesmoke" }}>
-                                                                        <Check size="80%" />
-                                                                    </span>
-                                                            }
-
-                                                        </button>
-                                                        <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{c}</p>
-                                                    </span>
-                                                })
-                                                } */}
 
                                                 { localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
                                                     return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px" }}>
@@ -264,7 +208,7 @@ const ProductsShop = () => {
                                                             }
 
                                                         </button>
-                                                        <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{c}</p>
+                                                        <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{c.length > 0 ? c : "All"}</p>
                                                     </span>
                                                 })
                                                 }
