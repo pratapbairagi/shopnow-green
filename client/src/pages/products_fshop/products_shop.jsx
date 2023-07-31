@@ -249,13 +249,8 @@ const ProductsShop = () => {
                                         <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Type</label>
                                         <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
                                             {productz.map((pv, pi) => {
-                                                
                                                 return pv.size.map((psv, psi) => {
-                                                    let uniq = [];
-                                                    uniq.map(v=> v.value !== psv.value ? uniq.push(psv) : uniq )
-                                                    return uniq.map((v,i)=>{
-                                                        return <option key={i} value={v.value}>{v.value}</option>
-                                                    })
+                                                    return <option key={psi} value={psi}>{psv.value}</option>
                                                 })
                                             })}
                                         </select>
