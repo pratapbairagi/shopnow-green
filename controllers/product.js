@@ -166,9 +166,9 @@ exports.edit_product = async (req, res, next) => {
             console.log("update4")
             
 
-                // for(let i = 0; productExist.images.length > i; i++){
-                //     await cloudinary.uploader.destroy(productExist.images[i].public_id);
-                // }
+                for(let i = 0; productExist.images.length > i; i++){
+                    await cloudinary.uploader.destroy(productExist.images[i].public_id);
+                }
                 // console.log("update5")
 
                 for(let i = 0; newImage.length > i; i++){
@@ -184,7 +184,6 @@ exports.edit_product = async (req, res, next) => {
                         url : result.secure_url
                     });
 
-
                 }
 
             }
@@ -199,7 +198,9 @@ exports.edit_product = async (req, res, next) => {
                 price : price,
                 offer : { available : false, percentage : req.body.percentage },
                 images : images,
-                stock : req.body.stock
+                stock : req.body.stock,
+                gender : req.body.gender
+
             });
 
             res.status(200).json({

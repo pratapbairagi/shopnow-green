@@ -16,7 +16,7 @@ const RecommendedCard = ({ products }) => {
 				<img style={{ width: "90%" }} src={products.images[0].url} alt="" />
 			</div>
 			<div className="product-details">
-				<span className="product-catagory mb-1" >{products.gender},{products.category}</span>
+				<span className="product-catagory mb-1" style={{width:"100%", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitBoxOrient:"vertical", WebkitLineClamp:"1", lineHeight:"160%"}} >{products.gender},{products.category}</span>
 				{/* <h4><a href="#">{products.title}</a></h4> */}
 				<h4><NavLink to={`/details/${products._id}`} title={products.title} className="p-0 px-1 m-0" style={{width:"max-content", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical"}} >{products.title}</NavLink></h4>
 
