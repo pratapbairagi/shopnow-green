@@ -49,9 +49,9 @@ const ProductsShop = () => {
 
     useEffect(() => {
         if (product) {
-            if (product) {
+
+            if (product.products) {
                 setProductz(product.products)
-                
 
                 // function uniqueCat(value, index, array) {
                 //     return array.indexOf(value.category) === index
@@ -59,44 +59,58 @@ const ProductsShop = () => {
                 // setCategory(product.products.filter(uniqueCat));
 
                 // store unique categories or remove duplicate categories
-                productz.forEach((obj)=>{
+                product.products.forEach((obj) => {
                     uniqueCategory.add(obj.category)
                 })
                 const categoryArray = Array.from(uniqueCategory);
-                setCategories(categoryArray)
+                if(localStorage.getItem("categories") === undefined || localStorage.getItem("categories") === null){
+                    localStorage.setItem("categories", JSON.stringify(categoryArray))
+                }
 
                 // store unique sizes or remove duplicate sizes
-                productz.forEach((obj)=>{
-                    obj.size.forEach((sizeObj)=>{
+                product.products.forEach((obj) => {
+                    obj.size.forEach((sizeObj) => {
                         uniqueSize.add(sizeObj.value.trim())
                     })
                 })
                 const sizeArray = Array.from(uniqueSize)
-                setSizes(sizeArray)
+                // setSizes(sizeArray)
+                if(localStorage.getItem("sizes") === undefined || localStorage.getItem("sizes") === null){
+                    localStorage.setItem("sizes", JSON.stringify(sizeArray))
+                }
 
                 // store unique colors or remove duplicate colors
-                productz.forEach((obj)=>{
-                    obj.color.forEach((colorObj)=>{
+                product.products.forEach((obj) => {
+                    obj.color.forEach((colorObj) => {
                         uniqueColor.add(colorObj.value.trim())
                     })
                 })
                 const colorArray = Array.from(uniqueColor);
-                setColors(colorArray)
+                // setColors(colorArray)
+                if(localStorage.getItem("colors") === undefined || localStorage.getItem("colors") === null){
+                    localStorage.setItem("colors", JSON.stringify(colorArray))
+                }
 
                 // store unique colors or remove duplicate colors
-                productz.forEach((obj)=>{
-                        uniqueBrand.add(obj.brand.trim())
+                product.products.forEach((obj) => {
+                    uniqueBrand.add(obj.brand.trim())
                 })
                 const brandArray = Array.from(uniqueBrand);
-                setBrands(brandArray);
-
+                // setBrands(brandArray);
+                if(localStorage.getItem("brands") === undefined || localStorage.getItem("brands") === null){
+                    localStorage.setItem("brands", JSON.stringify(brandArray))
+                }
 
 
             }
         }
-    }, [product])
+    }, [product, productz])
 
     console.log(brands)
+    console.log(product)
+    console.log(productz)
+
+
 
     // top, track pant, slippers
 
@@ -122,7 +136,7 @@ const ProductsShop = () => {
 
 
 
-    
+
 
     return (
         <>
@@ -130,9 +144,9 @@ const ProductsShop = () => {
                 <div className="row p-0 px-3">
 
                     <div className="col col-12 col-md-3 col-lg-2 p-0 px-4 px-md-1">
-                       <div className="row gap-0 bootdey_2nd_row" style={{ position:"relative"}}>
-                        
-                        {/* <div className="col">
+                        <div className="row gap-0 bootdey_2nd_row" style={{ position: "relative" }}>
+
+                            {/* <div className="col">
                         <section className="panel m-0 p-0 px-2 bg-white mx-auto" style={{ height: "12vh", width: "90%", display: "grid", placeItems: "center", borderRadius: "4px" }}>
                             <div className="panel-body m-0">
                                 <input type="text" placeholder="Keyword Search" defaultValue="" onChange={(e) => setSearch_options({ ...search_options, name: e.target.value })} className="form-control" />
@@ -140,46 +154,46 @@ const ProductsShop = () => {
                         </section>
                         </div> */}
 
-                        <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{height:"max-content"}}>
-                        <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Gender" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
-                              <GenderAmbiguous size="10px" />  Gender
-                            </header>
-                            <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Gender" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%" }}>
-                                <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                    <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 0", background: "white", gap:"4px" }}>
-                                        <span className="p-0 m-0">
-                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "men" ? "green" : "red"}`, color:"white"  }}>
-                                            <input type="radio" value="men" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                            {
-                                                search_options.category === "men" ? <Check2Circle /> : <GenderMale />
-                                            }
-                                             
-                                        </button>
-                                        <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Men</p>
-                                        </span>
+                            <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content" }}>
+                                <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
+                                    <header onClick={(e) => setToggleFilters(toggleFilters !== "Gender" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "3px" }}>
+                                        <GenderAmbiguous size="10px" />  Gender
+                                    </header>
+                                    <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Gender" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%" }}>
+                                        <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
+                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 0", background: "white", gap: "4px" }}>
+                                                <span className="p-0 m-0">
+                                                    <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "25px", height: "25px", display: "flex", flexDirection: "column", background: `${search_options.category === "men" ? "green" : "red"}`, color: "white" }}>
+                                                        <input type="radio" value="men" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                                        {
+                                                            search_options.category === "men" ? <Check2Circle /> : <GenderMale />
+                                                        }
 
-                                        <span className="p-0 m-0" >
-                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "women" ? "green" : "red"}`, color:"white"  }}>
-                                            <input type="radio" value="women" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                            {
-                                                search_options.category === "women" ? <Check2Circle /> : <GenderFemale />
-                                            } 
-                                        </button>
-                                        <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Women</p>
-                                        </span>
+                                                    </button>
+                                                    <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Men</p>
+                                                </span>
 
-                                        <span className="p-0 m-0">
-                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "kids" ? "green" : "red"}`, color:"white"  }}>
-                                            <input type="radio" value="kids" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                            {
-                                                search_options.category === "kids" ? <Check2Circle /> : <GenderAmbiguous />
-                                            }
-                                        </button>
-                                        <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Kids</p>
-                                        </span>
-                                            {/* <span style={{fontSize:"8px"}}>male</span> */}
-                                        {/* <ul className="nav p-0 m-0 flex-column" style={{ height: "max-content", display: `${search_options.category === "men" ? "flex" : "none"}` }}>
+                                                <span className="p-0 m-0" >
+                                                    <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "25px", height: "25px", display: "flex", flexDirection: "column", background: `${search_options.category === "women" ? "green" : "red"}`, color: "white" }}>
+                                                        <input type="radio" value="women" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                                        {
+                                                            search_options.category === "women" ? <Check2Circle /> : <GenderFemale />
+                                                        }
+                                                    </button>
+                                                    <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Women</p>
+                                                </span>
+
+                                                <span className="p-0 m-0">
+                                                    <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "25px", height: "25px", display: "flex", flexDirection: "column", background: `${search_options.category === "kids" ? "green" : "red"}`, color: "white" }}>
+                                                        <input type="radio" value="kids" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                                        {
+                                                            search_options.category === "kids" ? <Check2Circle /> : <GenderAmbiguous />
+                                                        }
+                                                    </button>
+                                                    <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Kids</p>
+                                                </span>
+                                                {/* <span style={{fontSize:"8px"}}>male</span> */}
+                                                {/* <ul className="nav p-0 m-0 flex-column" style={{ height: "max-content", display: `${search_options.category === "men" ? "flex" : "none"}` }}>
                                             <li className="active " style={{ width: "100%", background: "white", border: "none", position: "relative" }}>
                                                 <input type="radio" onChange={(e) => setSearch_options({ ...search_options, subcategory: e.target.value })} name="subcategory" value="shorts" id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0", left: "0" }} />
                                                 <button style={{ width: "100%", display: "block" }}>- Shirt</button>
@@ -197,133 +211,151 @@ const ProductsShop = () => {
                                                 <button style={{ width: "100%" }}>- Shoes</button>
                                             </li>
                                         </ul> */}
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-                        </div>
-
-                        <div className="col-3  col-md-12 p-0" style={{ height:"max-content"}}>
-                        <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Category" ? e.currentTarget.innerText : null) } className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign:"center", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px", maxWidth:"70px" }}>
-                              <UiChecksGrid size="10px"/>  Category
-                            </header>
-                            <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>
-                                <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                    <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 0", background: "white", display:"flex", flexDirection:"column", alignItems:"flex-start", gap:"4px" }}>
-                                        { categories.length > 0 && categories.map((c,i)=>{ return <span className="p-0 m-0" key={i} style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
-                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category !== c ? "white" : "green"}`, color:"white"  }}>
-                                            <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                            {
-                                                search_options.category !== `${c}` ? 
-                                                <span className="p-0 m-0" style={{minHeight:"18px", minWidth:"18px", border:"1px solid grey"}}></span> 
-                                                : 
-                                                <span className="p-0 m-0" style={{minHeight:"18px", minWidth:"18px", border:"1px solid grey", display:"grid", placeItems:"center", backgroundColor:"green", color:"whitesmoke"}}>
-                                                    <Check size="80%"/>
-                                                </span>
-                                            } 
-                                             
-                                        </button>
-                                        <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>{c}</p>
-                                        </span>})
-                                        }
-
-                                        {/* <span className="p-0 m-0" style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
-                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "women" ? "green" : "red"}`, color:"white"  }}>
-                                            <input type="radio" value="women" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                            {
-                                                search_options.category === "women" ? <Check2Circle /> : <GenderFemale />
-                                            } 
-                                        </button>
-                                        <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Women</p>
-                                        </span> */}
-
-                                        {/* <span className="p-0 m-0" style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", gap:"2px"}}>
-                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width:"25px", height:"25px", display:"flex", flexDirection:"column", background: `${search_options.category === "kids" ? "green" : "red"}`, color:"white"  }}>
-                                            <input type="radio" value="kids" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                            {
-                                                search_options.category === "kids" ? <Check2Circle /> : <GenderAmbiguous />
-                                            }
-                                        </button>
-                                        <p className="p-0 m-0" style={{fontSize:"8px", fontWeight:"500", color:"grey"}}>Kids</p>
-                                        </span> */}
-                                            
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-                        </div>
-
-                        <div className="col-3  col-md-12 p-0" style={{ height:"max-content"}}>
-                        <section className="panel mx-auto mt-4 py-2" style={{ height: "max-content", background: "white", width: "90%", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Price" ? e.currentTarget.innerText : null) } className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
-                               <CurrencyRupee size="10px"/> Price
-                            </header>
-
-                            <div className={`panel-body  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Price" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>
-                                <input className="col col-10 text-center" defaultValue="0" onChange={(e) => setSearch_options({ ...search_options, price: { from: e.target.value } })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%" }} type="number" name="" id="" />
-                                <span className="col-6"> From : {search_options.price.from}</span>
-                                <span className="col col-6"> To : {search_options.price.to}</span>
-                                <input className="col col-10 text-center" defaultValue="99999" onChange={(e) => setSearch_options({ ...search_options, price: { to: e.target.value } })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%" }} type="number" name="" id="" />
-
-                                {/* <button className="btn btn-success mx-auto" style={{maxWidth:"90"}}>Search</button> */}
-
-                            </div>
-                        </section>
-                        </div>
-
-                        <div className="col-3  col-md-12 p-0" style={{ height:"max-content"}}>
-                        <section className="panel mx-auto mt-4 py-2" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
-                            <header onClick={(e)=> setToggleFilters(  toggleFilters !== "Filter" ? e.currentTarget.innerText : null) } className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize:"80%", display:"flex", justifyContent:"center", alignItems:"center", gap:"3px" }}>
-                              <FunnelFill size="10px" />  Filter
-                            </header>
-                            <div className={`panel-body  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Filter" ? "d-block" : "d-none"} d-md-block`} style={{ left:"0",  minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background:"white" }}>
-                                {/* <form role="form product-form"> */}
-                                <form>
-
-                                    <div className="form-group mt-2">
-                                        <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Brand</label>
-                                        <select onChange={(e) => setSearch_options({ ...search_options, brand: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
-                                            {
-                                                brands.map((pv, pi) => {
-                                                    return <option key={pi} value={pv}>{pv}</option>
-                                                })
-                                            }
-                                        </select>
-                                        {/* <span className="customSelect form-control" style={{display: "inline-block"}}>
-                            <span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>Wallmart</span></span> */}
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div className="form-group mt-2">
-                                        <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Color</label>
-                                        <select onChange={(e) => setSearch_options({ ...search_options, color: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
-                                            {
-                                                colors.map((pcv, pci) => {
-                                                    return <option key={pci} value={pcv}>{pcv}</option>
+                                </section>
+                            </div>
+
+                            <div className="col-3  col-md-12 p-0" style={{ height: "max-content" }}>
+                                <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
+                                    <header onClick={(e) => setToggleFilters(toggleFilters !== "Category" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "3px", maxWidth: "70px" }}>
+                                        <UiChecksGrid size="10px" />  Category
+                                    </header>
+                                    <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white", border: "1px solid blue" }}>
+                                        <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%", border: "1px solid green" }}>
+                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 10px", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px", border: "1px solid orange" }}>
+                                                {/* {categories.length > 0 && categories.map((c, i) => {
+                                                    return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "4px" }}>
+                                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", minWidth: "25px", minHeight: "25px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white" }}>
+                                                            <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                                            {
+                                                                search_options.category !== `${c}` ?
+                                                                    <span className="p-0 m-0" style={{ minHeight: "18px", minWidth: "18px", border: "1px solid grey" }}></span>
+                                                                    :
+                                                                    <span className="p-0 m-0" style={{ minHeight: "18px", minWidth: "18px", border: "1px solid grey", display: "grid", placeItems: "center", backgroundColor: "green", color: "whitesmoke" }}>
+                                                                        <Check size="80%" />
+                                                                    </span>
+                                                            }
+
+                                                        </button>
+                                                        <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{c}</p>
+                                                    </span>
+                                                })
+                                                } */}
+
+                                                { localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
+                                                    return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px" }}>
+                                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white", border:"1px solid grey", borderRadius:"3px" }}>
+                                                            <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                                            {
+                                                                search_options.category !== `${c}` ?
+                                                                    <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px" }}></span>
+                                                                    :
+                                                                    <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px", display: "grid", placeItems: "center", backgroundColor: "green", color: "whitesmoke" }}>
+                                                                        <Check size="100%" />
+                                                                    </span>
+                                                            }
+
+                                                        </button>
+                                                        <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{c}</p>
+                                                    </span>
                                                 })
                                                 }
-                                            
-                                        </select>
-                                        {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>White</span></span> */}
-                                    </div>
-                                    <div className="form-group mt-2">
-                                        <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Type</label>
-                                        <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
-                                            {
-                                               sizes.map((psv, psi) => {
-                                                    return <option key={psi} value={psv}>{psv}</option>
-                                                })
-                                            }
-                                           
-                                        </select>
-                                        {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>Small</span></span> */}
-                                    </div>
-                                    <button className="btn btn-primary mt-2 mx-auto" type="submit" style={{ width: "90%" }}>Filter</button>
-                                </form>
-                                
-                            </div>
-                        </section>
 
-                        {/* <section className="panel mt-4 mx-auto px-3 pt-3" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <div className="col-3  col-md-12 p-0" style={{ height: "max-content" }}>
+                                <section className="panel mx-auto mt-4 py-2" style={{ height: "max-content", background: "white", width: "90%", borderRadius: "6px" }}>
+                                    <header onClick={(e) => setToggleFilters(toggleFilters !== "Price" ? e.currentTarget.innerText : null)} className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "3px" }}>
+                                        <CurrencyRupee size="10px" /> Price
+                                    </header>
+
+                                    <div className={`panel-body  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Price" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
+                                        <input className="col col-10 text-center" defaultValue="0" onChange={(e) => setSearch_options({ ...search_options, price: { from: e.target.value } })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%" }} type="number" name="" id="" />
+                                        <span className="col-6"> From : {search_options.price.from}</span>
+                                        <span className="col col-6"> To : {search_options.price.to}</span>
+                                        <input className="col col-10 text-center" defaultValue="99999" onChange={(e) => setSearch_options({ ...search_options, price: { to: e.target.value } })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%" }} type="number" name="" id="" />
+
+                                        {/* <button className="btn btn-success mx-auto" style={{maxWidth:"90"}}>Search</button> */}
+
+                                    </div>
+                                </section>
+                            </div>
+
+                            <div className="col-3  col-md-12 p-0" style={{ height: "max-content" }}>
+                                <section className="panel mx-auto mt-4 py-2" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
+                                    <header onClick={(e) => setToggleFilters(toggleFilters !== "Filter" ? e.currentTarget.innerText : null)} className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "3px" }}>
+                                        <FunnelFill size="10px" />  Filter
+                                    </header>
+                                    <div className={`panel-body  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Filter" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
+                                        {/* <form role="form product-form"> */}
+                                        <form>
+
+                                            <div className="form-group mt-2">
+                                                <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Brand</label>
+                                                <select onChange={(e) => setSearch_options({ ...search_options, brand: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                    {/* {
+                                                        brands.map((pv, pi) => {
+                                                            return <option key={pi} value={pv}>{pv}</option>
+                                                        })
+                                                    } */}
+                                                  
+                                                    {
+                                                        localStorage.getItem("brands") && JSON.parse(localStorage.getItem("brands")).map((pv, pi) => {
+                                                            return <option key={pi} value={pv}>{pv}</option>
+                                                        })
+                                                    }
+                                                </select>
+                                                {/* <span className="customSelect form-control" style={{display: "inline-block"}}>
+                            <span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>Wallmart</span></span> */}
+                                            </div>
+                                            <div className="form-group mt-2">
+                                                <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Color</label>
+                                                <select onChange={(e) => setSearch_options({ ...search_options, color: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                    {/* {
+                                                        colors.map((pcv, pci) => {
+                                                            return <option key={pci} value={pcv}>{pcv}</option>
+                                                        })
+                                                    } */} 
+                                        
+                                                    {
+                                                        localStorage.getItem("colors") && JSON.parse(localStorage.getItem("colors")).map((pcv, pci) => {
+                                                            return <option key={pci} value={pcv}>{pcv}</option>
+                                                        })
+                                                    }
+                                                </select>
+                                                {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>White</span></span> */}
+                                            </div>
+                                            <div className="form-group mt-2">
+                                                <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Type</label>
+                                                <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                    {/* {
+                                                        sizes.map((psv, psi) => {
+                                                            return <option key={psi} value={psv}>{psv}</option>
+                                                        })
+                                                    } */}
+
+                                                    {
+                                                        localStorage.getItem("sizes") && JSON.parse(localStorage.getItem("sizes")).map((psv, psi) => {
+                                                            return <option key={psi} value={psv}>{psv}</option>
+                                                        })
+                                                    }
+
+                                                </select>
+                                                {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>Small</span></span> */}
+                                            </div>
+                                            <button className="btn btn-primary mt-2 mx-auto" type="submit" style={{ width: "90%" }}>Filter</button>
+                                        </form>
+
+                                    </div>
+                                </section>
+
+                                {/* <section className="panel mt-4 mx-auto px-3 pt-3" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
                             <header className="panel-heading my-2" style={{ borderBottom: "1px dashed grey", textAlign: "left" }}>
                                 Best Seller
                             </header>
@@ -359,12 +391,12 @@ const ProductsShop = () => {
                                 </div>
                             </div>
                         </section> */}
-                        </div>
+                            </div>
                         </div>
 
                     </div>
 
-                    <div className="col-md-9 col-lg-10 position-relative" style={{maxWidth:"100vw"}}>
+                    <div className="col-md-9 col-lg-10 position-relative" style={{ maxWidth: "100vw" }}>
                         <section className="panel bg-light py-0 px-2 m-0 bg-white" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px" }} >
                             <div className="panel-body p-0 m-0 position-relative" style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
                                 <div className="pull-right m-0 position-relative" style={{ width: "max-content", display: "flex", alignItems: "center" }}>
@@ -378,14 +410,14 @@ const ProductsShop = () => {
                             </div>
                         </section>
 
-                        <div className="row product-list px-2" style={{minHeight:"75vh"}}>
+                        <div className="row product-list px-2" style={{ minHeight: "75vh" }}>
                             {product.success && product.products.map((v, i) => {
 
                                 return <div className="col col-6 col-md-4 col-lg-3 p-0 p-1" key={v._id} >
                                     <section className="panel p-0 p-1">
                                         <div className="pro-img-box p-0">
-                                           <NavLink to={`details/${v._id}`}> 
-                                            <img src={v.images[0].url} alt={v.images[0].url} />
+                                            <NavLink to={`details/${v._id}`}>
+                                                <img src={v.images[0].url} alt={v.images[0].url} />
                                             </NavLink>
                                             {cart.filter(cv => cv._id === v._id)[0] !== undefined ?
                                                 <button onClick={() => dispatch(Remove_from_cart_action(v._id))} className="adtocart" style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "green" }}>
@@ -399,7 +431,7 @@ const ProductsShop = () => {
 
                                         <div className="panel-body position-relative text-center py-2">
                                             <h4 className="py-1 pt-2 text-center m-0 mt-2">
-                                                <span className="pro-title w-100 text-center p-0 m-0" style={{maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"1", WebkitBoxOrient:"vertical"}}>
+                                                <span className="pro-title w-100 text-center p-0 m-0" style={{ maxWidth: "100%", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "1", WebkitBoxOrient: "vertical" }}>
                                                     {v.title}
                                                 </span>
                                             </h4>

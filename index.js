@@ -9,9 +9,6 @@ const globalErrorHandler = require("./middleware/globalMiddlewareHandler.js")
 const bodyparser = require("body-parser")
 const path = require("path");
 
-// const __dirname = path.resolve()
-
-
 const app = express(http);
 const PORT = process.env.PORT || 5544;
 
@@ -29,25 +26,10 @@ app.use(cors({
     origin : [ "http://localhost:3000/", "http://localhost:5544/", "https://shopnow-green.vercel.app/"]
 }));
 
-// app.options("*", (req, res, next)=>{
-//     res.setHeader("Access-control-allow-origin", "https://shopnow-store.vercel.app/");
-//     res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-//     res.setHeader("Access-Control-Max-Age", "3600");
-//     res.setHeader("Access-Control-Allow-Headers","Content-Type, Accept, X-Requested-With, Authorization");
-//     return next()
-// })
+
 
 app.use("/website_ecommerce/app/api", userRouter); 
 app.use("/website_ecommerce/app/api", productRoute);
-
-// app.use(express.static(path.join(__dirname,"./client/build/")));
-
-// app.get('*', (req,res) =>{ 
-//     res.sendFile(path.join(__dirname, './client/build/index.html'), function(err){
-//         res.status(500).send(err)
-//     })
-// })
-
 
   app.use(express.static(path.join(__dirname, './client/build/')));
 

@@ -26,6 +26,14 @@ function App() {
 
   useEffect(() => {
     loggedUserCheck();
+
+  // remove categories from localStorage
+    if(window.location.pathname !== "/profile"){
+      localStorage.removeItem("categories")
+      localStorage.removeItem("colors")
+      localStorage.removeItem("sizes")
+      localStorage.removeItem("brands")
+    }
   }, []);
 
 
