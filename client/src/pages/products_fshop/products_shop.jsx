@@ -292,7 +292,7 @@ const ProductsShop = () => {
                                         <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
                                             {
                                               sizes.length >= 0 &&  sizes.map((psv, psi) => {
-                                                    return <option key={psi} value={pvs}>{psv}</option>
+                                                    return <option key={psi} value={psv}>{psv}</option>
                                                 })
                                             }
                                            
