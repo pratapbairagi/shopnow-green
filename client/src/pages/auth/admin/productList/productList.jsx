@@ -11,6 +11,7 @@ import Spinner from "../../../../components/spinner/spinner";
 import NotificationToaster from "../../../../components/notificationToaster/notificationToaster";
 import Add_product from "./add_product";
 import ProductNotificationRoaster from "../../../../components/product_notification_toaster/productNotificationToaster";
+import Update_product from "./update_product";
 
 const ProductList = () => {
 
