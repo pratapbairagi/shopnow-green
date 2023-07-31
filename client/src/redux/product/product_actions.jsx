@@ -61,7 +61,7 @@ export const delete_product_action = (id) => async (dispatch) => {
 
 // get all products
 // export const get_all_products_action = (keyword = "", category = "", price = {from : 0, to : 999999}) => async (dispatch) => {
-export const get_all_products_action = (title="", category="",price={from:0, to:999999}, brand="", color="", size="") => async (dispatch) => {
+export const get_all_products_action = (title="", category="",price={from:0, to:999999}, brand="", color="", size="", gender="") => async (dispatch) => {
 
     try {
         dispatch({
@@ -74,7 +74,7 @@ export const get_all_products_action = (title="", category="",price={from:0, to:
         }
 
         // const {data} = await axios.get(`https://shopnow-server.vercel.app/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}`, config);
-        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}`, config );
+        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}&gender=${gender}`, config );
 
         dispatch({
             type : GET_ALL_PRODUCTS_SUCCESS,

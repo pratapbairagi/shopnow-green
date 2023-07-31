@@ -19,20 +19,25 @@ exports.get_products = async (req, res, next) => {
                 $gte : req.query.price.gte,
                 $lte : req.query.price.lte
             }
-            // , 
-            // brand : {
-            //     $regex : /^req.query.brand$/,
-            //     $options : "i"
-            // }
-            // ,
-            // color : {
-            //     $regex : req.query.color,
-            //     $options : "i"
-            // }
-            // ,
-            // size : {
-            //     $regex : req.query.size
-            // }
+            ,
+            gender : {
+                $regex :req.query.gender
+            }
+            , 
+            brand : {
+                $regex : req.query.brand,
+                $options : "i"
+            }
+            ,
+            color : {
+                $regex : req.query.color,
+                $options : "i"
+            }
+            ,
+            size : {
+                $regex : req.query.size,
+                $options : "i"
+            }
         };
 
         // const sort = req.query.sort ? {

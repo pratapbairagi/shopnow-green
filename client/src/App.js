@@ -33,6 +33,7 @@ function App() {
       localStorage.removeItem("colors")
       localStorage.removeItem("sizes")
       localStorage.removeItem("brands")
+      localStorage.removeItem("gender")
     }
   }, []);
 

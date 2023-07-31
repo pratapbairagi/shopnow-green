@@ -15,7 +15,7 @@ const ProductsShop = () => {
     const [search_options, setSearch_options] = useState({
         name: "",
         category: "",
-        subcategory: "",
+        gender: "",
         price: {
             from: 0,
             to: 999999
@@ -23,7 +23,10 @@ const ProductsShop = () => {
         rating: "",
         brand: "",
         color: "",
-        type: "",
+        price: {
+            from : 0,
+            to : 999999
+        },
         size: ""
 
     })
@@ -57,6 +60,11 @@ const ProductsShop = () => {
                 //     return array.indexOf(value.category) === index
                 // }
                 // setCategory(product.products.filter(uniqueCat));
+
+                // store gender in localstorage
+                if(localStorage.getItem("gender") === undefined || localStorage.getItem("gender") === null){
+                    localStorage.setItem("gender", JSON.stringify([{gender:""}, {gender:"male"}, {gender:"female"}]) )
+                }
 
                 // store unique categories or remove duplicate categories
                 product.products.forEach((obj) => {
@@ -100,34 +108,24 @@ const ProductsShop = () => {
                 if(localStorage.getItem("brands") === undefined || localStorage.getItem("brands") === null){
                     localStorage.setItem("brands", JSON.stringify(brandArray))
                 }
-
-
             }
         }
     }, [product, productz])
-
-    console.log(brands)
-    console.log(product)
-    console.log(productz)
-
-
-
-    // top, track pant, slippers
 
     const productCheck = () => {
         // dispatch(get_all_products_action(
         //     {
         //         name:search_options.name, 
         //         category:search_options.category, 
-        //         subcategory:search_options.price, 
+        //         gender:search_options.gender, 
         //         rating:search_options.rating, 
         //         brand:search_options.brand, 
         //         color: search_options.color, 
-        //         type: search_options.type,
+        //         gender: search_options.price,
         //         size : search_options.size
         //     }
         //     ));
-        dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size))
+        dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender ))
 
     }
 
@@ -162,18 +160,25 @@ const ProductsShop = () => {
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Gender" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
                                             <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 1% 0", background: "white", gap: "4px" }}>
-                                                <span className="p-0 m-0">
-                                                    <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "25px", height: "25px", display: "flex", flexDirection: "column", background: `${search_options.category === "men" ? "green" : "red"}`, color: "white" }}>
-                                                        <input type="radio" value="men" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                               
+                                               {localStorage.getItem("gender") && JSON.parse(localStorage.getItem("gender")).map((v,i)=>{ return <span key={i} className="p-0 m-0" style={{display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px"}}>
+                                                    <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.gender !== v.gender ? "white" : "green"}`, color: "white", border:"1px solid grey", borderRadius:"3px" }}>
+                                                        <input type="radio" value={v.gender} name="category" onChange={(e) => setSearch_options({ ...search_options, gender: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                                         {
-                                                            search_options.category === "men" ? <Check2Circle /> : <GenderMale />
-                                                        }
+                                                                search_options.gender !== `${v.gender}` ?
+                                                                    <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px" }}></span>
+                                                                    :
+                                                                    <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px", display: "grid", placeItems: "center", backgroundColor: "green", color: "whitesmoke" }}>
+                                                                        <Check size="100%" />
+                                                                    </span>
+                                                            }
 
                                                     </button>
                                                     <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Men</p>
-                                                </span>
+                                                </span> })
+                                                    }
 
-                                                <span className="p-0 m-0" >
+                                                {/* <span className="p-0 m-0" >
                                                     <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "25px", height: "25px", display: "flex", flexDirection: "column", background: `${search_options.category === "women" ? "green" : "red"}`, color: "white" }}>
                                                         <input type="radio" value="women" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                                         {
@@ -181,9 +186,9 @@ const ProductsShop = () => {
                                                         }
                                                     </button>
                                                     <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Women</p>
-                                                </span>
+                                                </span> */}
 
-                                                <span className="p-0 m-0">
+                                                {/* <span className="p-0 m-0">
                                                     <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "25px", height: "25px", display: "flex", flexDirection: "column", background: `${search_options.category === "kids" ? "green" : "red"}`, color: "white" }}>
                                                         <input type="radio" value="kids" name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                                         {
@@ -191,7 +196,8 @@ const ProductsShop = () => {
                                                         }
                                                     </button>
                                                     <p className="p-0 m-0" style={{ fontSize: "8px", fontWeight: "500", color: "grey" }}>Kids</p>
-                                                </span>
+                                                </span> */}
+
                                                 {/* <span style={{fontSize:"8px"}}>male</span> */}
                                                 {/* <ul className="nav p-0 m-0 flex-column" style={{ height: "max-content", display: `${search_options.category === "men" ? "flex" : "none"}` }}>
                                             <li className="active " style={{ width: "100%", background: "white", border: "none", position: "relative" }}>
