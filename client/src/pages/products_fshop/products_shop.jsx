@@ -66,7 +66,7 @@ const ProductsShop = () => {
 
                 // store unique colors or remove duplicate colors
                 productz.forEach((obj)=>{
-                    obj.forEach((colorObj)=>{
+                    obj.color.forEach((colorObj)=>{
                         uniqueColor.add(colorObj.value.trim())
                     })
                 })
@@ -291,7 +291,7 @@ const ProductsShop = () => {
                                         <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Type</label>
                                         <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
                                             {
-                                              sizes.length >= 0 &&  sizes.map((psv, psi) => {
+                                               sizes.map((psv, psi) => {
                                                     return <option key={psi} value={psv}>{psv}</option>
                                                 })
                                             }
