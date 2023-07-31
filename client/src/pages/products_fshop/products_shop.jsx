@@ -160,7 +160,7 @@ const ProductsShop = () => {
                                     </header>
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Gender" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                            <li className="panel-body-li" style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 30%", background: "white", gap: "4px" }}>
+                                            <li className="panel-body-li" style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 10%", background: "white", gap: "4px" }}>
                                                
                                                {localStorage.getItem("gender") && JSON.parse(localStorage.getItem("gender")).map((v,i)=>{ return <span key={i} className="p-0 m-0" style={{display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px"}}>
                                                     <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.gender !== v.gender ? "white" : "green"}`, color: "white", border:"1px solid grey", borderRadius:"3px" }}>
@@ -192,7 +192,7 @@ const ProductsShop = () => {
                                     </header>
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 30%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
+                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 10%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
 
                                                 { localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
                                                     return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px" }}>
