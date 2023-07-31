@@ -34,22 +34,36 @@ const ProductsShop = () => {
 
     const [productz, setProductz] = useState([])
     const [category, setCategory] = useState([])
+    const [sizes, setSizes] = useState()
+    let uniqueSize = new Set();
+
 
     useEffect(() => {
         if (product) {
             if (product) {
-                console.log(product.products.length > 0)
                 setProductz(product.products)
+                
 
                 function uniqueCat(value, index, array) {
                     return array.indexOf(value.category) === index
                 }
-                setCategory(product.products.filter(uniqueCat))
+                setCategory(product.products.filter(uniqueCat));
+
+
+                productz.forEach((obj)=>{
+                    obj.size.forEach((sizeObj)=>{
+                        uniqueSize.add(sizeObj.value.trim())
+                    })
+                })
+                const sizeArray = Array.from(uniqueSize)
+                setSizes(sizeArray)
 
 
             }
         }
     }, [product])
+
+    console.log(sizes)
 
     const productCheck = () => {
         // dispatch(get_all_products_action(
@@ -69,7 +83,11 @@ const ProductsShop = () => {
     }
 
     // toggle filter options
-    const [toggleFilters, setToggleFilters] = useState(null)
+    const [toggleFilters, setToggleFilters] = useState(null);
+
+
+
+    
 
     return (
         <>
@@ -253,6 +271,7 @@ const ProductsShop = () => {
                                                     return <option key={psi} value={psi}>{psv.value}</option>
                                                 })
                                             })}
+                                           
                                         </select>
                                         {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>Small</span></span> */}
                                     </div>

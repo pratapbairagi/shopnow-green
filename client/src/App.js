@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     loggedUserCheck();
-  },[]);
+  }, []);
 
 
   // prodicts fetch
@@ -36,42 +36,124 @@ function App() {
   //     productCheck();
   //   },[]);
 
-    // const price = {
-    //   from : 0,
-    //   to : 999999
-    // }
-  
-    // const productCheck = () => {
-    //   dispatch(get_all_products_action("", "", price, "", "", ""));
-    // }
+  // const price = {
+  //   from : 0,
+  //   to : 999999
+  // }
+
+  // const productCheck = () => {
+  //   dispatch(get_all_products_action("", "", price, "", "", ""));
+  // }
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
   }
 
+  const array = [
+    {
+      Name: "abcd",
+      Age: 29,
+      Color: [
+        {
+          Id: 1,
+          Value: " green"
+        },
+        {
+          Id: 2,
+          Value: " red"
+        },
+        {
+          Id: 3,
+          Value: " blue"
+        },
+        {
+          Id: 4,
+          Value: " black"
+        }
+      ]
+    },
+
+    {
+      Name: "efgh",
+      Age: 30,
+      Color: [
+        {
+          Id: 1,
+          Value: " green"
+        },
+        {
+          Id: 2,
+          Value: " red"
+        },
+        {
+          Id: 3,
+          Value: " pink"
+        },
+        {
+          Id: 4,
+          Value: " black"
+        }
+      ]
+    },
+    {
+      Name: "abcd",
+      Age: 29,
+      Color: [
+        {
+          Id: 1,
+          Value: " green"
+        },
+        {
+          Id: 2,
+          Value: "white"
+        },
+        {
+          Id: 3,
+          Value: " blue"
+        },
+        {
+          Id: 4,
+          Value: " black"
+        }
+      ]
+    }
+  ];
+
+
+// Step 1: Initialize an empty set
+const uniqueColorsSet = new Set();
+
+// Step 2: Iterate through the main array and its nested Color arrays
+array.forEach((obj) => {
+  obj.Color.forEach((colorObj) => {
+    // Step 3: Add the Value property to the set (after trimming whitespaces)
+    uniqueColorsSet.add(colorObj.Value.trim());
+  });
+});
+
+// Step 4: Convert the set back to an array
+const uniqueColorsArray = Array.from(uniqueColorsSet);
+
+console.log(uniqueColorsArray);
+
+
+
   return (
     <div className="App">
       <Router>
         <Navbar />
-        {/* <Route path='/' element={<Layout products={products } />} exact />
-        <Route path='/profile' element={<Dashboard state={state} />} exact />
-        <Route path='/product' exact element={<Shop_product /> }/>
-        <Route path='/about' exact element={<AboutUs /> }/>
-        <Route path='/contact' exact element={<Contact /> }/>
-        <Route path='/shop' exact element={<ProductsShop /> }/> */}
-
 
         <Routes>
           <Route path='/' element={<Layout />} exact />
           {/* <Route path='/about' element={<h4>About</h4>} /> */}
           <Route path='/products' element={<h4>Products</h4>} />
-          <Route path='/details/:id' exact element={<Product_details /> }/>
-          <Route path='/shop/details/:id' exact element={<Product_details /> }/>
-          <Route path='/product/created/:id' exact element={<ProductNotificationRoaster /> }/>
-          <Route path='/product' exact element={<Shop_product /> }/>
-          <Route path='/about' exact element={<AboutUs /> }/>
-          <Route path='/contact' exact element={<Contact /> }/>
-          <Route path='/shop' exact element={<ProductsShop /> }/>
+          <Route path='/details/:id' exact element={<Product_details />} />
+          <Route path='/shop/details/:id' exact element={<Product_details />} />
+          <Route path='/product/created/:id' exact element={<ProductNotificationRoaster />} />
+          <Route path='/product' exact element={<Shop_product />} />
+          <Route path='/about' exact element={<AboutUs />} />
+          <Route path='/contact' exact element={<Contact />} />
+          <Route path='/shop' exact element={<ProductsShop />} />
 
 
           <Route element={<ProtectedRoute />}>
@@ -79,14 +161,14 @@ function App() {
           </Route>
 
           <Route element={<NonProtectedRoute />}>
-          <Route path='/auth' element={<Auth />  } exact />
+            <Route path='/auth' element={<Auth />} exact />
           </Route>
 
 
 
         </Routes>
-        
-        <Footer/>
+
+        <Footer />
 
       </Router>
     </div>
