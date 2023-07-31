@@ -192,7 +192,7 @@ const ProductsShop = () => {
                                     </header>
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 10%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
+                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight:"20vh", maxHeight: "45vh", overflowY:"auto", padding: "5% 0 4% 10%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
 
                                                 { localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
                                                     return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px" }}>
