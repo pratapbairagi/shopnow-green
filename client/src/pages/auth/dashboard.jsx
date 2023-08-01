@@ -38,8 +38,6 @@ const Dashboard = () => {
                 el.classList.remove("activeMenu");
                 user_menu_buttons[uniq]?.classList.remove("activeBtn")
                 if (uniq === i) {
-                    console.log("check", uniq, "--", i)
-                    console.log("check", sections[i])
 
                     user_menu_buttons[i]?.classList.add("activeBtn")
                     sections[i]?.classList.add("activeMenu");

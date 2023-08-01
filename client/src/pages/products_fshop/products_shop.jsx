@@ -24,8 +24,8 @@ const ProductsShop = () => {
         brand: "",
         color: "",
         price: {
-            from : 0,
-            to : 999999
+            from: 0,
+            to: 999999
         },
         size: ""
 
@@ -62,8 +62,8 @@ const ProductsShop = () => {
                 // setCategory(product.products.filter(uniqueCat));
 
                 // store gender in localstorage
-                if(localStorage.getItem("gender") === undefined || localStorage.getItem("gender") === null){
-                    localStorage.setItem("gender", JSON.stringify([{gender:""}, {gender:"male"}, {gender:"female"}]) )
+                if (localStorage.getItem("gender") === undefined || localStorage.getItem("gender") === null) {
+                    localStorage.setItem("gender", JSON.stringify([{ gender: "" }, { gender: "male" }, { gender: "female" }]))
                 }
 
                 // store unique categories or remove duplicate categories
@@ -72,8 +72,13 @@ const ProductsShop = () => {
                 })
                 const categoryArray = Array.from(uniqueCategory);
                 categoryArray.push("")
-                if(localStorage.getItem("categories") === undefined || localStorage.getItem("categories") === null){
+                if (localStorage.getItem("categories") === undefined || localStorage.getItem("categories") === null) {
                     localStorage.setItem("categories", JSON.stringify(categoryArray))
+                }
+                if (localStorage.getItem("categories") !== undefined || localStorage.getItem("categories") !== null) {
+                    if (JSON.parse(localStorage.getItem("categories")).length < categoryArray.length) {
+                        localStorage.setItem("categories", JSON.stringify(categoryArray))
+                    }
                 }
 
                 // store unique sizes or remove duplicate sizes
@@ -84,7 +89,7 @@ const ProductsShop = () => {
                 })
                 const sizeArray = Array.from(uniqueSize)
                 // setSizes(sizeArray)
-                if(localStorage.getItem("sizes") === undefined || localStorage.getItem("sizes") === null){
+                if (localStorage.getItem("sizes") === undefined || localStorage.getItem("sizes") === null) {
                     localStorage.setItem("sizes", JSON.stringify(sizeArray))
                 }
 
@@ -96,7 +101,7 @@ const ProductsShop = () => {
                 })
                 const colorArray = Array.from(uniqueColor);
                 // setColors(colorArray)
-                if(localStorage.getItem("colors") === undefined || localStorage.getItem("colors") === null){
+                if (localStorage.getItem("colors") === undefined || localStorage.getItem("colors") === null) {
                     localStorage.setItem("colors", JSON.stringify(colorArray))
                 }
 
@@ -106,7 +111,7 @@ const ProductsShop = () => {
                 })
                 const brandArray = Array.from(uniqueBrand);
                 // setBrands(brandArray);
-                if(localStorage.getItem("brands") === undefined || localStorage.getItem("brands") === null){
+                if (localStorage.getItem("brands") === undefined || localStorage.getItem("brands") === null) {
                     localStorage.setItem("brands", JSON.stringify(brandArray))
                 }
             }
@@ -126,7 +131,7 @@ const ProductsShop = () => {
         //         size : search_options.size
         //     }
         //     ));
-        dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender ))
+        dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
 
     }
 
@@ -160,12 +165,13 @@ const ProductsShop = () => {
                                     </header>
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Gender" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                            <li className="panel-body-li" style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 10%", background: "white", gap: "4px" }}>
-                                               
-                                               {localStorage.getItem("gender") && JSON.parse(localStorage.getItem("gender")).map((v,i)=>{ return <span key={i} className="p-0 m-0" style={{display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px"}}>
-                                                    <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.gender !== v.gender ? "white" : "green"}`, color: "white", border:"1px solid grey", borderRadius:"3px" }}>
-                                                        <input type="radio" value={v.gender} name="category" onChange={(e) => setSearch_options({ ...search_options, gender: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                                        {
+                                            <li className="panel-body-li" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 0 4% 10%", background: "white", gap: "4px" }}>
+
+                                                {localStorage.getItem("gender") && JSON.parse(localStorage.getItem("gender")).map((v, i) => {
+                                                    return <span key={i} className="p-0 m-0" style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px" }}>
+                                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.gender !== v.gender ? "white" : "green"}`, color: "white", border: "1px solid grey", borderRadius: "3px" }}>
+                                                            <input type="radio" value={v.gender} name="category" onChange={(e) => setSearch_options({ ...search_options, gender: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                                            {
                                                                 search_options.gender !== `${v.gender}` ?
                                                                     <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px" }}></span>
                                                                     :
@@ -174,11 +180,12 @@ const ProductsShop = () => {
                                                                     </span>
                                                             }
 
-                                                    </button>
-                                                    <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{v.gender.length > 0 ? v.gender : "All"}</p>
-                                                </span> })
-                                                    }
-                                               
+                                                        </button>
+                                                        <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{v.gender.length > 0 ? v.gender : "All"}</p>
+                                                    </span>
+                                                })
+                                                }
+
                                             </li>
                                         </ul>
                                     </div>
@@ -192,11 +199,11 @@ const ProductsShop = () => {
                                     </header>
                                     <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
                                         <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight:"20vh", maxHeight: "45vh", overflowY:"auto", padding: "5% 0 4% 10%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
+                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "20vh", maxHeight: "45vh", overflowY: "auto", padding: "5% 0 4% 10%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
 
-                                                { localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
+                                                {localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
                                                     return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px" }}>
-                                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white", border:"1px solid grey", borderRadius:"3px" }}>
+                                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white", border: "1px solid grey", borderRadius: "3px" }}>
                                                             <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                                             {
                                                                 search_options.category !== `${c}` ?
@@ -254,7 +261,7 @@ const ProductsShop = () => {
                                                             return <option key={pi} value={pv}>{pv}</option>
                                                         })
                                                     } */}
-                                                  
+
                                                     {
                                                         localStorage.getItem("brands") && JSON.parse(localStorage.getItem("brands")).map((pv, pi) => {
                                                             return <option key={pi} value={pv}>{pv}</option>
@@ -271,8 +278,8 @@ const ProductsShop = () => {
                                                         colors.map((pcv, pci) => {
                                                             return <option key={pci} value={pcv}>{pcv}</option>
                                                         })
-                                                    } */} 
-                                        
+                                                    } */}
+
                                                     {
                                                         localStorage.getItem("colors") && JSON.parse(localStorage.getItem("colors")).map((pcv, pci) => {
                                                             return <option key={pci} value={pcv}>{pcv}</option>
