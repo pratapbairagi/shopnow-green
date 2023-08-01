@@ -28,16 +28,16 @@ exports.get_products = async (req, res, next) => {
                 $regex : req.query.brand,
                 $options : "i"
             }
-            // ,
-            // color : {
-            //     $regex : req.query.color,
-            //     $options : "i"
-            // }
-            // ,
-            // size : {
-            //     $regex : req.query.size,
-            //     $options : "i"
-            // }
+            ,
+            color : {
+                $regex : req.query.color,
+                $options : "i"
+            }
+            ,
+            size : {
+                $regex : req.query.size,
+                $options : "i"
+            }
         };
 
         // const sort = req.query.sort ? {

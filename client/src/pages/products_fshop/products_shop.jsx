@@ -88,6 +88,7 @@ const ProductsShop = () => {
                     })
                 })
                 const sizeArray = Array.from(uniqueSize)
+                sizeArray.push("");
                 // setSizes(sizeArray)
                 if (localStorage.getItem("sizes") === undefined || localStorage.getItem("sizes") === null || localStorage.getItem("sizes") === null || JSON.parse(localStorage.getItem("sizes"))?.length < sizeArray.length) {
                     localStorage.setItem("sizes", JSON.stringify(sizeArray))
@@ -100,6 +101,7 @@ const ProductsShop = () => {
                     })
                 })
                 const colorArray = Array.from(uniqueColor);
+                colorArray.push("")
                 // setColors(colorArray)
                 if (localStorage.getItem("colors") === undefined || localStorage.getItem("colors") === null || JSON.parse(localStorage.getItem("colors"))?.length < colorArray.length) {
                     localStorage.setItem("colors", JSON.stringify(colorArray))
@@ -110,6 +112,7 @@ const ProductsShop = () => {
                     uniqueBrand.add(obj.brand.trim())
                 })
                 const brandArray = Array.from(uniqueBrand);
+                brandArray.push("")
                 // setBrands(brandArray);
                 if (localStorage.getItem("brands") === undefined || localStorage.getItem("brands") === null || JSON.parse(localStorage.getItem("brands"))?.length < brandArray.length) {
                     localStorage.setItem("brands", JSON.stringify(brandArray))
