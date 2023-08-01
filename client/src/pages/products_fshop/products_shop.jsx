@@ -170,9 +170,9 @@ const ProductsShop = () => {
                                                 {localStorage.getItem("gender") && JSON.parse(localStorage.getItem("gender")).map((v, i) => {
                                                     return <span key={i} className="p-0 m-0" style={{ display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center", gap: "6px" }}>
                                                         <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.gender !== v.gender ? "white" : "green"}`, color: "white", border: "1px solid grey", borderRadius: "3px" }}>
-                                                            <input type="radio" value={v.gender} name="category" onChange={(e) => setSearch_options({ ...search_options, gender: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                                            <input type="radio" value={v.gender.slice(0,1)} name="category" onChange={(e) => setSearch_options({ ...search_options, gender: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                                             {
-                                                                search_options.gender !== `${v.gender}` ?
+                                                                search_options.gender !== `${v.gender.slice(0,1)}` ?
                                                                     <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px" }}></span>
                                                                     :
                                                                     <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px", display: "grid", placeItems: "center", backgroundColor: "green", color: "whitesmoke" }}>
