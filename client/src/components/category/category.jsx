@@ -29,7 +29,7 @@ const Category = () => {
                             <button onClick={() => {
                                 navigate("/shop", { state: { gender: "m", age: "18-70" } })
                                 window.location.href = `${process.env.REACT_APP_SERVER_URL}/shop`
-                            }} state={{ gender: "f", age: "18-70" }} className="mt-2" style={{ width: "max-content", float: "left", textDecoration: "none", color: "white", fontSize: "var(--font)", background: "transparent", border: "none" }}>
+                            }} className="mt-2" style={{ width: "max-content", float: "left", textDecoration: "none", color: "white", fontSize: "var(--font)", background: "transparent", border: "none" }}>
                                 <span>Explore</span>
                                 <ArrowRightShort />
                             </button>

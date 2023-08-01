@@ -33,7 +33,7 @@ const Trending_sec = () => {
         <div className="container-fluid py-2">
         <h6 style={{color:"grey", width:"100%", display:"flex", justifyContent:"space-between"}}> <span style={{fontSize:"80%"}}>TRENDING</span>   <span style={{fontSize:"70%", fontWeight:"500"}}> More <ChevronRight size="9px" style={{marginLeft:"2px"}}/> </span>  </h6>
             <div className="">
-                <div className="py-1" style={{ padding:"12px 6px", display:"flex", overflowX:"scroll", minWidth:"100%", maxWidth:"100%", justifyContent:"flex-start", alignItems:"flex-start", columnGap:"calc(2px + 0.390635vw)", rowGap:"calc(2px + 0.390635vh)", height:"max-content"}}>
+                <div className="py-1" style={{ padding:"8px 6px", display:"flex", overflowX:"scroll", overflowY:"hidden", minWidth:"100%", maxWidth:"100%", justifyContent:"flex-start", alignItems:"flex-start", columnGap:"calc(2px + 0.390635vw)", rowGap:"calc(2px + 0.390635vh)", height:"max-content"}}>
                   {products?.products?.map((v,i)=>{
                     return <TrendingCard key={i} products={v} />
                   })  }
