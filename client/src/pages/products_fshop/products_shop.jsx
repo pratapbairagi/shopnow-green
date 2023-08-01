@@ -4,12 +4,13 @@ import { get_all_products_action } from "../../redux/product/product_actions";
 import { useEffect, useState } from "react";
 import { CaretRight, CartCheck, CartPlus, Check2Circle, GenderAmbiguous, GenderFemale, GenderMale, FunnelFill, UiChecksGrid, CurrencyRupee, Check } from "react-bootstrap-icons"
 import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/cartAction";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 
-const ProductsShop = (props) => {
+const ProductsShop = () => {
 
-    console.log(props?.location?.state)
+    const location = useLocation()
+    console.log("state", location.state)
 
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
