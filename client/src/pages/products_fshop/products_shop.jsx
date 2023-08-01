@@ -168,7 +168,7 @@ const ProductsShop = () => {
                                             <li className="panel-body-li" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", width: "100%", minWidth: "100%", height: "max-content", minHeight: "max-content", padding: "5% 10% 4% 10%", background: "white", gap: "4px" }}>
 
                                                 {localStorage.getItem("gender") && JSON.parse(localStorage.getItem("gender")).map((v, i) => {
-                                                    return <span key={i} className="p-0 m-0" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "6px" }}>
+                                                    return <span key={i} className="p-0 m-0" style={{ display: "flex", width:"100%", maxWidth:"100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "6px" }}>
                                                         <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.gender !== v.gender ? "white" : "green"}`, color: "white", border: "1px solid grey", borderRadius: "3px" }}>
                                                             <input type="radio" value={v.gender.slice(0,1)} name="category" onChange={(e) => setSearch_options({ ...search_options, gender: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                                             {
@@ -202,7 +202,7 @@ const ProductsShop = () => {
                                             <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "20vh", maxHeight: "45vh", overflowY: "auto", padding: "5% 10% 4% 10%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent:"flex-start", gap: "4px" }}>
 
                                                 {localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
-                                                    return <span className="p-0 m-0" key={i} style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "6px" }}>
+                                                    return <span className="p-0 m-0" key={i} style={{ display: "flex", width:"100%", maxWidth:"100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "6px" }}>
                                                         <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white", border: "1px solid grey", borderRadius: "3px" }}>
                                                             <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                                             {
