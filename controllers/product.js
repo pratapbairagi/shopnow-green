@@ -29,12 +29,12 @@ exports.get_products = async (req, res, next) => {
                 $options : "i"
             }
             ,
-            color : {
+            'color.value' : {
                 $regex : req.query.color,
                 $options : "i"
             }
             ,
-            size : {
+            'size.value' : {
                 $regex : req.query.size,
                 $options : "i"
             }
