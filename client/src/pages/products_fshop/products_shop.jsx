@@ -7,7 +7,10 @@ import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/ca
 import { NavLink } from "react-router-dom";
 
 
-const ProductsShop = () => {
+const ProductsShop = (props) => {
+
+    console.log(props?.location?.state)
+
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
     const { cart } = useSelector(state => state.cart);
@@ -267,7 +270,7 @@ const ProductsShop = () => {
 
                                                     {
                                                         localStorage.getItem("brands") && JSON.parse(localStorage.getItem("brands")).map((pv, pi) => {
-                                                            return <option key={pi} value={pv}>{pv}</option>
+                                                            return <option key={pi} value={pv}>{pv.length > 0 ? pv : "All"}</option>
                                                         })
                                                     }
                                                 </select>
