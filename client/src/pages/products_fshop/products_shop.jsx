@@ -12,6 +12,12 @@ const ProductsShop = () => {
     const location = useLocation()
     console.log("state", location.state)
 
+    useEffect(()=>{
+        if(location.state !== undefined){
+        dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, location.state.gender ))
+        }
+    },[location.state])
+
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
     const { cart } = useSelector(state => state.cart);
@@ -41,16 +47,9 @@ const ProductsShop = () => {
 
     const [productz, setProductz] = useState([])
 
-    const [categories, setCategories] = useState([])
     let uniqueCategory = new Set();
-
-    const [sizes, setSizes] = useState([])
     let uniqueSize = new Set();
-
-    const [colors, setColors] = useState([])
     let uniqueColor = new Set();
-
-    const [brands, setBrands] = useState([])
     let uniqueBrand = new Set();
 
 
