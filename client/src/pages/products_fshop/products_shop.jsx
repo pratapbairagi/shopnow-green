@@ -285,7 +285,7 @@ const ProductsShop = () => {
 
                                                     {
                                                         localStorage.getItem("colors") && JSON.parse(localStorage.getItem("colors")).map((pcv, pci) => {
-                                                            return <option key={pci} value={pcv}>{pcv}</option>
+                                                            return <option key={pci} value={pcv}>{pcv.length > 0 ? pcv : "All"}</option>
                                                         })
                                                     }
                                                 </select>
@@ -294,15 +294,10 @@ const ProductsShop = () => {
                                             <div className="form-group mt-2">
                                                 <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Type</label>
                                                 <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
-                                                    {/* {
-                                                        sizes.map((psv, psi) => {
-                                                            return <option key={psi} value={psv}>{psv}</option>
-                                                        })
-                                                    } */}
 
                                                     {
                                                         localStorage.getItem("sizes") && JSON.parse(localStorage.getItem("sizes")).map((psv, psi) => {
-                                                            return <option key={psi} value={psv}>{psv}</option>
+                                                            return <option key={psi} value={psv}>{psv.length > 0 ? psv : "All"}</option>
                                                         })
                                                     }
 
