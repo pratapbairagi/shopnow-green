@@ -14,7 +14,7 @@ const Footer = () => {
                         <div className="footer-logo" style={{display:"flex", flexDirection:"column", justifyContent:"flex-start", alignItems:"flex-start", padding:"0 16px"}}>
                             <Link to="/" style={{ display: "flex", justifyContent: "center", alignItems: "center"}} >
                                 {/* <img src="/images/navLogo2.jpeg" style={{ width: "28px" }} alt="" /> */}
-                                <span style={{ fontWeight: "600", color: "rgb(215, 4, 115)" }}>HOME PARLOUR</span>
+                                <span style={{ fontWeight: "600", color: "rgb(215, 4, 115)" }}>SHOPNOW</span>
                             </Link>
                             <p className="p-0" style={{ color: "grey", fontWeight: "600", textAlign:"left" }}>The customer is at the heart of our unique business model, which include design.</p>
 

@@ -49,7 +49,7 @@ const Update_product = ({updateProduct_handler_, close_add_product_form_handler,
                 <Input type="text" name="brand" id="brand" fun={updateProduct_handler_} placeholder="Product Brand" defaultValue={product.brand} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
             </div>
 
-            <div className="col my-2" style={{ width: "50%", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
+            <div className="col my-2" style={{ width: "50%", minWidth:"70px", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                 <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Color</label>
                 <Input type="color" name="color" id="color" fun={updateProduct_handler_} placeholder="Product Color" defaultValue={product.color} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
             </div>
@@ -57,19 +57,19 @@ const Update_product = ({updateProduct_handler_, close_add_product_form_handler,
             <div className="col my-2" style={{ width: "50%", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                 <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Gender</label>
                 {/* <Input type="number" name="size" id="size" fun={updateProduct_handler_} placeholder="Product Size" defaultValue={product.size} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} /> */}
-                <select defaultChecked="" name="gender" fun={updateProduct_handler_} >
+                <select defaultChecked="" name="gender" onChange={updateProduct_handler_} >
                 <option value="">All</option>
                     <option value="m">Male</option>
                     <option value="f">Female</option>
                 </select>
             </div>
 
-            <div className="col my-2" style={{ width: "50%", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
+            <div className="col my-2" style={{ width: "50%", minWidth:"70px", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                 <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Size</label>
                 <Input type="number" name="size" id="size" fun={updateProduct_handler_} placeholder="Product Size" defaultValue={product.size} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
             </div>
 
-            <div className="col my-2" style={{ width: "50%", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
+            <div className="col my-2" style={{ width: "50%", minWidth:"70px", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                 <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Stock</label>
                 <Input type="number" name="stock" id="stock" fun={updateProduct_handler_} placeholder="Stock" defaultValue={product.stock} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
             </div>

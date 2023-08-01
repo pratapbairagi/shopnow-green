@@ -54,6 +54,8 @@ const ProductList = () => {
         console.log(e)
 
         const { name, value } = e.target;
+        console.log(name)
+        console.log(value)
 
         if (name !== "images") {
             setProduct({ ...product, [name]: value })

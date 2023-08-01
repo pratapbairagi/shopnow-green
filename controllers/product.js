@@ -146,7 +146,9 @@ exports.create_product = async ( req, res, next ) => {
 // edit product 
 exports.edit_product = async (req, res, next) => {
     const id = req.params.id
-    const {title, category, description, price, stock,offer, oldImage, newImage} = req.body;
+    const {title, category, description, price, stock,offer, oldImage, newImage, gender} = req.body;
+    console.log("gender", req.body.gender)
+
     try {
         let images = [];
         const productExist = await Products.findById({_id:req.params.id});
