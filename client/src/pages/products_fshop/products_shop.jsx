@@ -127,19 +127,11 @@ const ProductsShop = () => {
     }, [product, productz])
 
     const productCheck = () => {
-        // dispatch(get_all_products_action(
-        //     {
-        //         name:search_options.name, 
-        //         category:search_options.category, 
-        //         gender:search_options.gender, 
-        //         rating:search_options.rating, 
-        //         brand:search_options.brand, 
-        //         color: search_options.color, 
-        //         gender: search_options.price,
-        //         size : search_options.size
-        //     }
-        //     ));
-        dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+       window.location.pathname === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+        
+       window.location.pathname === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
+
+       window.location.pathname === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
 
     }
 
@@ -166,7 +158,7 @@ const ProductsShop = () => {
                         </section>
                         </div> */}
 
-                            <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content" }}>
+                           { window.location.pathname === "/shop" && <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content" }}>
                                 <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Gender" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "6px" }}>
                                         <GenderAmbiguous size="10px" />  Gender
@@ -198,7 +190,7 @@ const ProductsShop = () => {
                                         </ul>
                                     </div>
                                 </section>
-                            </div>
+                            </div>}
 
                             <div className="col-3  col-md-12 p-0" style={{ height: "max-content" }}>
                                 <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
