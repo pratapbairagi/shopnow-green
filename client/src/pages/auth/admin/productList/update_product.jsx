@@ -1,4 +1,4 @@
-import { XLg } from "react-bootstrap-icons";
+import { X, XLg } from "react-bootstrap-icons";
 import Input from "../../../../asset/atoms";
 
 const Update_product = ({ updateProduct_handler_, close_add_product_form_handler, product, createNew_product_submit, setProduct }) => {
@@ -70,7 +70,7 @@ const Update_product = ({ updateProduct_handler_, close_add_product_form_handler
             </div> */}
 
                 <div className="col col-12 col-md-6" id="colorInputs" style={{ height: "max-content", display: "flex", flexDirection: "column" }}>
-                    <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Color {productChange.color.length !== 0 && ": Enter space button to confirm color"}</label>
+                    <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Color {product.size.length !== 0 && ": Enter space button to confirm size"}</label>
                     <div style={{ width: "100%", maxWidth: "100%", display: "flex", gap: "4px", margin: "4px 0", overflowX: "auto" }}>
                         {product.size.map((v, i) => {
                             return <div key={i} style={{ display: "flex", width: "max-content", gap: "2px", maxWidth: "100%" }}>
