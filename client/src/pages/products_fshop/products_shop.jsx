@@ -16,7 +16,7 @@ const ProductsShop = () => {
                 dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, location.state.gender ))
             },1000)
         }
-    },[location.state.gender])
+    },[location.state?.gender])
 
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
