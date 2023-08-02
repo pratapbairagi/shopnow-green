@@ -62,6 +62,7 @@ export const delete_product_action = (id) => async (dispatch) => {
 // get all products
 // export const get_all_products_action = (keyword = "", category = "", price = {from : 0, to : 999999}) => async (dispatch) => {
 export const get_all_products_action = (title="", category="",price={from:0, to:999999}, brand="", color="", size="", gender="") => async (dispatch) => {
+    console.log(gender)
 
     try {
         dispatch({

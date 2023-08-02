@@ -10,18 +10,11 @@ import { NavLink, useLocation } from "react-router-dom";
 const ProductsShop = () => {
 
     const location = useLocation()
-    console.log("state", location.state)
-
-
-
-    
-
     useEffect(()=>{
-        console.log(location.state.gender)
-
         if(location.state.gender !== undefined){
-            console.log(location.state.gender)
-        // dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, location.state.gender ))
+            setTimeout(()=>{
+                dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, location.state.gender ))
+            },1000)
         }
     },[location.state.gender])
 
