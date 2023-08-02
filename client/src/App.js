@@ -65,6 +65,7 @@ function App() {
           <Route path='/about' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
           <Route path='/shop' exact element={<ProductsShop />} />
+          <Route path='/:category' exact element={<ProductsShop />} />''
 
 
           <Route element={<ProtectedRoute />}>

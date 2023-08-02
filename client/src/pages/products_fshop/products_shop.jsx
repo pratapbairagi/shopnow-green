@@ -9,15 +9,15 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const ProductsShop = () => {
 
-    const {gender} = useLocation().state
-    useEffect(()=>{
-        if( gender !== undefined){
+    // const {gender} = useLocation().state
+    // useEffect(()=>{
+    //     if( gender !== undefined){
 
-            setTimeout(()=>{
-                dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, gender || "" ))
-            },1000)
-        }
-    },[gender])
+    //         setTimeout(()=>{
+    //             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, gender || "" ))
+    //         },1000)
+    //     }
+    // },[gender])
 
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);

@@ -12,7 +12,7 @@ const Category = () => {
                     <h6 className="m-0" style={{ width: "100%", textAlign: "left" }}>All New Kids Collection</h6>
                     <h4 className="m-0" style={{ width: "100%", textAlign: "left", color: "green" }}>Starts From Rs. 999/- </h4>
                     <button onClick={() => {
-                        navigate("/shop", { state: { gender: "", age: "2-17" } })
+                        navigate("/kids", { state: ["1Y", "2Y", "3Y", "4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y", "15Y", "16Y", "17Y"] })
                     }} className="mt-2" style={{ width: "max-content", float: "left", textDecoration: "none", color: "white", fontSize: "var(--font)", background: "transparent", border: "none" }}>
                         <span>Explore</span>
                         <ArrowRightShort />
@@ -26,7 +26,7 @@ const Category = () => {
                             <h6 className="m-0" style={{ fontSize: "var(--h3)", width: "max-content", background: "var(--white-smoke)", padding: "2px 8px", textAlign: "left" }}>All New Women Collection</h6>
                             <h4 className="m-0" style={{ width: "100%", textAlign: "left", color: "green", }}>Starts From Rs. 499/- </h4>
                             <button onClick={() => {
-                                navigate("/shop", { state: { gender: "f", age: "18-70" } })
+                                navigate("/women", { state: [] })
                             }} className="mt-2" style={{ width: "max-content", float: "left", textDecoration: "none", color: "white", fontSize: "var(--font)", background: "transparent", border: "none" }}>
                                 <span>Explore</span>
                                 <ArrowRightShort />
@@ -36,7 +36,7 @@ const Category = () => {
                             <h6 className="m-0" style={{ fontSize: "var(--h3)", width: "max-content", padding: "2px 8px", background: "var(--white-smoke)", textAlign: "left" }}>All New Men Collection</h6>
                             <h4 className="m-0" style={{ width: "100%", textAlign: "left", color: "green" }}>Starts From Rs. 399/- </h4>
                             <button onClick={() => {
-                                navigate("/shop", { state: { gender: "m", age: "18-70" } })
+                                navigate("/men", { state: [] })
                             }} className="mt-2" style={{ width: "max-content", float: "left", textDecoration: "none", color: "white", fontSize: "var(--font)", background: "transparent", border: "none" }}>
                                 <span>Explore</span>
                                 <ArrowRightShort />
