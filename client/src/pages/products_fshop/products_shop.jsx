@@ -7,52 +7,41 @@ import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/ca
 import { NavLink, useLocation } from "react-router-dom";
 
 
-const ProductsShop = () => {
+const ProductsShop = ({search_options, setSearch_options}) => {
 
     const{ pathname }= useLocation()
 
-    const [path, setPath] = useState(undefined)
-    useEffect(()=>{
-            setPath(pathname)
-            console.log("repeat 1")
-    },[pathname])
-
+    // const [path, setPath] = useState(undefined)
     // useEffect(()=>{
-    //     if( gender !== undefined){
-
-    //         setTimeout(()=>{
-    //             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, gender || "" ))
-    //         },1000)
-    //     }
-    // },[gender])
+    //         setPath(pathname)
+    // },[pathname])
 
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
     const { cart } = useSelector(state => state.cart);
 
-    const [search_options, setSearch_options] = useState({
-        name: "",
-        category: "",
-        gender: "",
-        price: {
-            from: 0,
-            to: 999999
-        },
-        rating: "",
-        brand: "",
-        color: "",
-        price: {
-            from: 0,
-            to: 999999
-        },
-        size: ""
+    // const [search_options, setSearch_options] = useState({
+    //     name: "",
+    //     category: "",
+    //     gender: "",
+    //     price: {
+    //         from: 0,
+    //         to: 999999
+    //     },
+    //     rating: "",
+    //     brand: "",
+    //     color: "",
+    //     price: {
+    //         from: 0,
+    //         to: 999999
+    //     },
+    //     size: ""
+    // })
 
-    })
+    // useEffect(() => {
+    //     path ? productCheck(path) : productCheck();
 
-    useEffect(() => {
-        path ? productCheck(path) : productCheck();
-
-    }, [search_options, path]);
+    // }, [search_options, path]);
 
     const [productz, setProductz] = useState([])
 
@@ -133,17 +122,15 @@ const ProductsShop = () => {
         }
     }, [product, productz])
 
-    const productCheck = (path) => {
-       path === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+    // const productCheck = (path) => {
+    //    path === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
         
-       path === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
+    //    path === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
 
-       path === "/men" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
+    //    path === "/men" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
 
-       path === "/kids" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
-
-
-    }
+    //    path === "/kids" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+    // }
 
     // toggle filter options
     const [toggleFilters, setToggleFilters] = useState(null);

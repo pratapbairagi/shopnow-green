@@ -7,7 +7,7 @@ import User from "../user/User";
 import { useSelector } from "react-redux";
 
 
-const Navbar = () => {
+const Navbar = ({search_options, setSearch_options}) => {
     const toggleHandlerMenu = () => {
         let nav = document.getElementById("mid-nav");
         if (nav.style.right === "-100%") {
@@ -59,7 +59,7 @@ const Navbar = () => {
         <nav className="container-fluid nav-container">
             <button onClick={toggleHandlerMenu} className="d-block d-md-none" style={{ position: "fixed", zIndex:"1", top: "11.8vh", right: "5.5vw", background: "transparent", border: "none", }}><List size="23" color="var(--dark-red)" /></button>
             <GuestCart toggleCart={toggleCart} setToggleCart={setToggleCart} />
-            <SearchBar toggleSearchBar={toggleSearchBar}/>
+            <SearchBar toggleSearchBar={toggleSearchBar} search_options={search_options} setSearch_options={setSearch_options}/>
 
             {/* <div className="upperNav">
                 <div className="admin-details" style={{ display: "flex", gap: "8px", width: "max-content" }}>

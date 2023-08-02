@@ -1,9 +1,9 @@
 
 import './App.css';
 import Navbar from './components/footer/navbar';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom"
 import Auth from './pages/auth/auth';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { user_logged_check_action } from './redux/userAction';
 import Layout from './pages/home/layout';
@@ -28,18 +28,46 @@ function App() {
     loggedUserCheck();
   }, []);
 
+  const{ pathname }= useLocation()
 
-  // prodicts fetch
-  // const products = useSelector(state => state.product);
+  ///////////
+    const [path, setPath] = useState(undefined)
+    useEffect(()=>{
+            setPath(pathname)
+    },[pathname])
 
-  // useEffect(() => {
-  //     productCheck();
-  //   },[]);
+  const [search_options, setSearch_options] = useState({
+    name: "",
+    category: "",
+    gender: "",
+    price: {
+        from: 0,
+        to: 999999
+    },
+    rating: "",
+    brand: "",
+    color: "",
+    price: {
+        from: 0,
+        to: 999999
+    },
+    size: ""
+})
 
-  // const price = {
-  //   from : 0,
-  //   to : 999999
-  // }
+useEffect(() => {
+  path ? productCheck(path) : productCheck();
+
+}, [search_options, path]);
+
+const productCheck = (path) => {
+  path === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+   
+  path === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
+
+  path === "/men" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
+
+  path === "/kids" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+}
 
   // const productCheck = () => {
   //   dispatch(get_all_products_action("", "", price, "", "", ""));
@@ -52,7 +80,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar search_options={search_options} setSearch_options={setSearch_options} />
 
         <Routes>
           <Route path='/' element={<Layout />} exact />
@@ -61,11 +89,11 @@ function App() {
           <Route path='/details/:id' exact element={<Product_details />} />
           <Route path='/shop/details/:id' exact element={<Product_details />} />
           <Route path='/product/created/:id' exact element={<ProductNotificationRoaster />} />
-          <Route path='/product' exact element={<Shop_product />} />
+          {/* <Route path='/product' exact element={<Shop_product />} /> */}
           <Route path='/about' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
-          <Route path='/shop' exact element={<ProductsShop />} />
-          <Route path='/:category' exact element={<ProductsShop />} />
+          <Route path='/shop' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
+          <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
           <Route path='/:category/details/:id' exact element={<Product_details />} />
 
 
