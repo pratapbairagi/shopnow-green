@@ -9,16 +9,13 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const ProductsShop = () => {
 
-    const location = useLocation()
-    console.log(location)
+    const{ pathname }= useLocation()
 
     const [path, setPath] = useState(undefined)
     useEffect(()=>{
-        if(window.location.pathname){
-            setPath(window.location.pathname)
+            setPath(pathname)
             console.log("repeat 1")
-        }
-    },[window.location.pathname])
+    },[pathname])
 
     // useEffect(()=>{
     //     if( gender !== undefined){
@@ -168,7 +165,7 @@ const ProductsShop = () => {
                         </section>
                         </div> */}
 
-                           { window.location.pathname === "/shop" && <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content" }}>
+                           { pathname === "/shop" && <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content" }}>
                                 <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Gender" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "6px" }}>
                                         <GenderAmbiguous size="10px" />  Gender
