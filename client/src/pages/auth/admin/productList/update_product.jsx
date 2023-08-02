@@ -49,10 +49,10 @@ const Update_product = ({ updateProduct_handler_, close_add_product_form_handler
                     <Input type="text" name="brand" id="brand" fun={updateProduct_handler_} placeholder="Product Brand" defaultValue={product.brand} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
                 </div>
 
-                <div className="col my-2" style={{ width: "50%", minWidth: "70px", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
+                {/* <div className="col my-2" style={{ width: "50%", minWidth: "70px", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Color</label>
                     <Input type="color" name="color" id="color" fun={updateProduct_handler_} placeholder="Product Color" defaultValue={product.color} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
-                </div>
+                </div> */}
 
                 <div className="col my-2" style={{ width: "50%", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Gender</label>
@@ -93,13 +93,16 @@ const Update_product = ({ updateProduct_handler_, close_add_product_form_handler
                                         //  e.currentTarget.style.backgroundColor = `${e.target.value=== "white" && "grey"}`
                                     }
                                     }
-                                    name="size" id="color" placeholder={`color ${v.id}`} defaultValue={``} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
+                                    name="size" id="color" placeholder={`color ${v.id}`} defaultValue={v} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
                                 <div className="btn btn-danger p-0 px-1 rounded-0" onClick={(e) => setProduct(
                                     {
                                         ...product,
                                         size: product.size.filter((dcv, dci) => dci !== i)
                                     }
-                                )} ><X style={{ fill: "white", fontSize: "100%", padding: "0" }} />
+                                
+                                )} >
+                                    {console.log(v)}
+                                    <X style={{ fill: "white", fontSize: "100%", padding: "0" }} />
                                 </div>
                             </div>
 
