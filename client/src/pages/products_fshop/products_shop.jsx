@@ -9,7 +9,8 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const ProductsShop = () => {
 
-    // const {gender} = useLocation().state
+    console.log(window.location.pathname)
+
     // useEffect(()=>{
     //     if( gender !== undefined){
 
