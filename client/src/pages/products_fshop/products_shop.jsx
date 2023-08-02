@@ -9,7 +9,13 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const ProductsShop = () => {
 
-    console.log(window.location.pathname)
+    const [path, setPath] = useState(undefined)
+    useEffect(()=>{
+        if(window.location.pathname){
+            setPath(window.location.pathname)
+            console.log("repeat 1")
+        }
+    },[window.location.pathname])
 
     // useEffect(()=>{
     //     if( gender !== undefined){
@@ -44,8 +50,9 @@ const ProductsShop = () => {
     })
 
     useEffect(() => {
-        productCheck();
-    }, [search_options]);
+        path ? productCheck(path) : productCheck();
+
+    }, [search_options, path]);
 
     const [productz, setProductz] = useState([])
 
@@ -126,12 +133,12 @@ const ProductsShop = () => {
         }
     }, [product, productz])
 
-    const productCheck = () => {
-       window.location.pathname === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+    const productCheck = (path) => {
+       path === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
         
-       window.location.pathname === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
+       path === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
 
-       window.location.pathname === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
+       path === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
 
     }
 
