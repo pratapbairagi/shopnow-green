@@ -15,7 +15,7 @@ const ProductsShop = () => {
         if(location.state?.gender !== undefined){
 
             setTimeout(()=>{
-                dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, location.state.gender ))
+                dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, location.state?.gender || "" ))
             },1000)
         }
         }
