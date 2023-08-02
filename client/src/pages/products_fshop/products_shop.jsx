@@ -10,8 +10,8 @@ import { NavLink, useLocation } from "react-router-dom";
 const ProductsShop = () => {
 
     const location = useLocation()
-    console.Console(location)
-    
+    console.log(location)
+
     const [path, setPath] = useState(undefined)
     useEffect(()=>{
         if(window.location.pathname){
