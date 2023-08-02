@@ -1,7 +1,7 @@
 
 import './App.css';
 import Navbar from './components/footer/navbar';
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Auth from './pages/auth/auth';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,14 +28,6 @@ function App() {
     loggedUserCheck();
   }, []);
 
-  const{ pathname }= useLocation()
-
-  ///////////
-    const [path, setPath] = useState(undefined)
-    useEffect(()=>{
-            setPath(pathname)
-    },[pathname])
-
   const [search_options, setSearch_options] = useState({
     name: "",
     category: "",
@@ -52,26 +44,8 @@ function App() {
         to: 999999
     },
     size: ""
+
 })
-
-useEffect(() => {
-  path ? productCheck(path) : productCheck();
-
-}, [search_options, path]);
-
-const productCheck = (path) => {
-  path === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
-   
-  path === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
-
-  path === "/men" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
-
-  path === "/kids" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
-}
-
-  // const productCheck = () => {
-  //   dispatch(get_all_products_action("", "", price, "", "", ""));
-  // }
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
@@ -89,7 +63,7 @@ const productCheck = (path) => {
           <Route path='/details/:id' exact element={<Product_details />} />
           <Route path='/shop/details/:id' exact element={<Product_details />} />
           <Route path='/product/created/:id' exact element={<ProductNotificationRoaster />} />
-          {/* <Route path='/product' exact element={<Shop_product />} /> */}
+          <Route path='/product' exact element={<Shop_product />} />
           <Route path='/about' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
           <Route path='/shop' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />

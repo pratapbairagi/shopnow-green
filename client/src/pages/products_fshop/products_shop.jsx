@@ -11,37 +11,19 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
     const{ pathname }= useLocation()
 
-    // const [path, setPath] = useState(undefined)
-    // useEffect(()=>{
-    //         setPath(pathname)
-    // },[pathname])
+    const [path, setPath] = useState(undefined)
+    useEffect(()=>{
+            setPath(pathname)
+    },[pathname])
 
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
     const { cart } = useSelector(state => state.cart);
 
-    // const [search_options, setSearch_options] = useState({
-    //     name: "",
-    //     category: "",
-    //     gender: "",
-    //     price: {
-    //         from: 0,
-    //         to: 999999
-    //     },
-    //     rating: "",
-    //     brand: "",
-    //     color: "",
-    //     price: {
-    //         from: 0,
-    //         to: 999999
-    //     },
-    //     size: ""
-    // })
+    useEffect(() => {
+        path ? productCheck(path) : productCheck();
 
-    // useEffect(() => {
-    //     path ? productCheck(path) : productCheck();
-
-    // }, [search_options, path]);
+    }, [search_options, path]);
 
     const [productz, setProductz] = useState([])
 
@@ -122,15 +104,17 @@ const ProductsShop = ({search_options, setSearch_options}) => {
         }
     }, [product, productz])
 
-    // const productCheck = (path) => {
-    //    path === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+    const productCheck = (path) => {
+       path === "/shop" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
         
-    //    path === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
+       path === "/women" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
 
-    //    path === "/men" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
+       path === "/men" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
 
-    //    path === "/kids" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
-    // }
+       path === "/kids" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender))
+
+
+    }
 
     // toggle filter options
     const [toggleFilters, setToggleFilters] = useState(null);
@@ -144,19 +128,12 @@ const ProductsShop = ({search_options, setSearch_options}) => {
             <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%" }}>
                 <div className="row p-0 px-3">
 
-                    <div className="col col-12 col-md-3 col-lg-2 p-0 px-4 px-md-1">
+                    <div className="col col-12 col-md-3 col-lg-2 p-0 px-2 px-md-1">
                         <div className="row gap-0 bootdey_2nd_row" style={{ position: "relative" }}>
 
-                            {/* <div className="col">
-                        <section className="panel m-0 p-0 px-2 bg-white mx-auto" style={{ height: "12vh", width: "90%", display: "grid", placeItems: "center", borderRadius: "4px" }}>
-                            <div className="panel-body m-0">
-                                <input type="text" placeholder="Keyword Search" defaultValue="" onChange={(e) => setSearch_options({ ...search_options, name: e.target.value })} className="form-control" />
-                            </div>
-                        </section>
-                        </div> */}
 
-                           { pathname === "/shop" && <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content" }}>
-                                <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
+                           { pathname === "/shop" || pathname === "/kids" && <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content" }}>
+                                <section className="panel mt-0 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Gender" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "6px" }}>
                                         <GenderAmbiguous size="10px" />  Gender
                                     </header>
@@ -189,8 +166,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                 </section>
                             </div>}
 
-                            <div className="col-3  col-md-12 p-0" style={{ height: "max-content" }}>
-                                <section className="panel mt-4 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
+                            <div className="col-3  col-md-12 p-0 mb-2" style={{ height: "max-content" }}>
+                                <section className="panel mt-0 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Category" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "6px" }}>
                                         <UiChecksGrid size="10px" />  Category
                                     </header>
@@ -223,8 +200,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                 </section>
                             </div>
 
-                            <div className="col-3  col-md-12 p-0" style={{ height: "max-content" }}>
-                                <section className="panel mx-auto mt-4 py-2" style={{ height: "max-content", background: "white", width: "90%", borderRadius: "6px" }}>
+                            <div className="col-3  col-md-12 p-0 mb-2" style={{ height: "max-content" }}>
+                                <section className="panel mx-auto mt-0 py-2" style={{ height: "max-content", background: "white", width: "90%", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Price" ? e.currentTarget.innerText : null)} className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "3px" }}>
                                         <CurrencyRupee size="10px" /> Price
                                     </header>
@@ -241,8 +218,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                 </section>
                             </div>
 
-                            <div className="col-3  col-md-12 p-0" style={{ height: "max-content" }}>
-                                <section className="panel mx-auto mt-4 py-2" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
+                            <div className="col-3  col-md-12 p-0 mb-2" style={{ height: "max-content" }}>
+                                <section className="panel mx-auto mt-0 py-2" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Filter" ? e.currentTarget.innerText : null)} className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "3px" }}>
                                         <FunnelFill size="10px" />  Filter
                                     </header>
@@ -304,49 +281,14 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                     </div>
                                 </section>
 
-                                {/* <section className="panel mt-4 mx-auto px-3 pt-3" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
-                            <header className="panel-heading my-2" style={{ borderBottom: "1px dashed grey", textAlign: "left" }}>
-                                Best Seller
-                            </header>
-                            <div className="panel-body">
-                                <div className="best-seller">
-                                    <article className="media text-start mt-3">
-                                        <NavLink to="/details" className="pull-left thumb p-thumb">
-                                            <img src="https://www.bootdey.com/image/250x220/FFB6C1/000000.jpg" alt="product" />
-                                        </NavLink>
-                                        <div className="media-body text-start" style={{ fontSize: "90%" }}>
-                                            <NavLink to="/details" className="p-head">Item One Tittle</NavLink>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </article>
-                                    <article className="media text-start mt-3" style={{ fontSize: "90%" }}>
-                                        <NavLink to="/details" className="pull-left thumb p-thumb">
-                                            <img src="https://www.bootdey.com/image/250x220/A2BE2/000000.jpg" alt="product" />
-                                        </NavLink>
-                                        <div className="media-body">
-                                            <NavLink to="/details" className="p-head">Item Two Tittle</NavLink>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </article>
-                                    <article className="media text-start mt-3" style={{ fontSize: "90%" }}>
-                                        <NavLink to="details" className="pull-left thumb p-thumb">
-                                            <img src="https://www.bootdey.com/image/250x220/6495ED/000000.jpg" alt="product" />
-                                        </NavLink>
-                                        <div className="media-body">
-                                            <NavLink to="/details" className="p-head">Item Three Tittle</NavLink>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                        </section> */}
                             </div>
                         </div>
 
                     </div>
 
                     <div className="col-md-9 col-lg-10 position-relative" style={{ maxWidth: "100vw" }}>
-                        <section className="panel bg-light py-0 px-2 m-0 bg-white" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px" }} >
+
+                    <section className="panel bg-light py-0 px-2 m-0 bg-white" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px" }} >
                             <div className="panel-body p-0 m-0 position-relative" style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
                                 <div className="pull-right m-0 position-relative" style={{ width: "max-content", display: "flex", alignItems: "center" }}>
                                     <ul className="pagination pagination-sm pro-page-list m-0 p-2 position-relative" style={{ border: "1px solid whitesmoke", borderRadius: "3px" }}>
@@ -359,7 +301,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                             </div>
                         </section>
 
-                        <div className="row product-list px-2" style={{ minHeight: "75vh" }}>
+                        <div className="row product-list px-0" style={{ minHeight: "75vh" }}>
                             {product.success && product.products.map((v, i) => {
 
                                 return <div className="col col-6 col-md-4 col-lg-3 p-0 p-1" key={v._id} >
@@ -391,6 +333,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                             })}
 
                         </div>
+
                     </div>
                 </div>
             </div>
