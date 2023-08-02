@@ -198,7 +198,7 @@ const ProductList = () => {
             <div className="row p-0" style={{ overflowX: "scroll", maxHeight: "76vh", position: "relative" }}>
                 {product_form === "add" && <Add_product createProduct_handler_={createProduct_handler_} close_add_product_form_handler={close_add_product_form_handler} productChange={product} createNew_product_submit={createNew_product_submit} setProductChange={setProduct} />}
 
-               { product_form !== "add"  && < Update_product updateProduct_handler_={updateProduct_handler_} close_add_product_form_handler={close_add_product_form_handler} product={product} createNew_product_submit={createNew_product_submit}/>}
+               { product_form !== "add"  && < Update_product updateProduct_handler_={updateProduct_handler_} close_add_product_form_handler={close_add_product_form_handler} product={product} createNew_product_submit={createNew_product_submit} setProduct={setProduct} />}
 
                 {/* column first : start */}
                 <div className="col col-12 px-1 py-1" style={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "start", minHeight: "70.5vh" }}>

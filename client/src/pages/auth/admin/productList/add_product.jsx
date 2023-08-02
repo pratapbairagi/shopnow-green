@@ -73,17 +73,8 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                                     setProductChange(
                                         {
                                             ...productChange
-                                            // color: [
-                                            //     ...productChange.color
-                                            //     productChange.color[i+1].value = e.target.value
-                                            //     productChange.color.find((x, xi)=> xi === i ).id === i+1 ?  { value : e.target.value} : null
-                                            // ]
                                         }
                                     )
-
-                                    
-
-                                    // console.log("filter", productChange.color.find((x, xi)=> xi === i ).id === i+1 ? `${i+1}==found}` : `${i+1}==not found}`)
                                 }}
                                 onKeyUp={ (e)=> {   
                                     e.keyCode === 32 &&   

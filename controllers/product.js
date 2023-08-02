@@ -146,8 +146,8 @@ exports.create_product = async ( req, res, next ) => {
 // edit product 
 exports.edit_product = async (req, res, next) => {
     const id = req.params.id
-    const {title, category, description, price, stock,offer, oldImage, newImage, gender} = req.body;
-    console.log("gender", req.body.gender)
+    const {title, category, description, price, stock,offer, oldImage, newImage, gender, size} = req.body;
+    console.log("size", req.body.size)
 
     try {
         let images = [];
@@ -201,7 +201,8 @@ exports.edit_product = async (req, res, next) => {
                 offer : { available : false, percentage : req.body.percentage },
                 images : images,
                 stock : req.body.stock,
-                gender : req.body.gender
+                gender : req.body.gender,
+                size : req.body.size
 
             });
 
