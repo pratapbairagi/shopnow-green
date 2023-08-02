@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./productsShop.scss";
 import { get_all_products_action } from "../../redux/product/product_actions";
 import { useEffect, useState } from "react";
-import { CaretRight, CartCheck, CartPlus, Check2Circle, GenderAmbiguous, GenderFemale, GenderMale, FunnelFill, UiChecksGrid, CurrencyRupee, Check } from "react-bootstrap-icons"
+import { CaretRight, CartCheck, CartPlus, Check2Circle, GenderAmbiguous, GenderFemale, GenderMale, FunnelFill, UiChecksGrid, CurrencyRupee, Check, FilterRight } from "react-bootstrap-icons"
 import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/cartAction";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -125,14 +125,14 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
     return (
         <>
-            <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%" }}>
-                <div className="row p-0 px-3">
+            <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%", overflowX:"hidden" }}>
+                <div className="row p-0 px-3" style={{overflowX:"hidden"}}>
 
-                    <div className="col col-12 col-md-3 col-lg-2 p-0 px-2 px-md-1">
-                        <div className="row gap-0 bootdey_2nd_row" style={{ position: "relative" }}>
+                    <div className="col col-12 col-md-3 col-lg-2 p-0 px-md-1">
+                        <div className="row g-0 gap-0 w-100 bootdey_2nd_row px-0" style={{ position: "relative", minWidth:"100%", margin:"auto" }}>
 
 
-                           { pathname === "/shop" || pathname === "/kids" && <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content" }}>
+                            <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content", minWidth:"50px" }}>
                                 <section className="panel mt-0 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Gender" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "6px" }}>
                                         <GenderAmbiguous size="10px" />  Gender
@@ -164,9 +164,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                         </ul>
                                     </div>
                                 </section>
-                            </div>}
+                            </div>
 
-                            <div className="col-3  col-md-12 p-0 mb-2" style={{ height: "max-content" }}>
+                            <div className="col-3  col-md-12 p-0 mb-2" style={{ height: "max-content", minWidth:"65px" }}>
                                 <section className="panel mt-0 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Category" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "6px" }}>
                                         <UiChecksGrid size="10px" />  Category
@@ -200,7 +200,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                 </section>
                             </div>
 
-                            <div className="col-3  col-md-12 p-0 mb-2" style={{ height: "max-content" }}>
+                            <div className="col-2  col-md-12 p-0 mb-2" style={{ height: "max-content", minWidth:"40px" }}>
                                 <section className="panel mx-auto mt-0 py-2" style={{ height: "max-content", background: "white", width: "90%", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Price" ? e.currentTarget.innerText : null)} className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "3px" }}>
                                         <CurrencyRupee size="10px" /> Price
@@ -218,7 +218,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                 </section>
                             </div>
 
-                            <div className="col-3  col-md-12 p-0 mb-2" style={{ height: "max-content" }}>
+                            <div className="col-2  col-md-12 p-0 mb-2" style={{ height: "max-content" }}>
                                 <section className="panel mx-auto mt-0 py-2" style={{ width: "90%", background: "white", borderRadius: "6px" }}>
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Filter" ? e.currentTarget.innerText : null)} className="panel-heading m-0 p-0" style={{ borderRadius: "6px", fontWeight: "500", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "3px" }}>
                                         <FunnelFill size="10px" />  Filter
@@ -282,13 +282,47 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                 </section>
 
                             </div>
+
+                            <div className="col-2  col-md-12 p-0 mb-2" style={{ height: "max-content" }}>
+                                <section className="panel mt-0 bg-white p-0 mx-auto" style={{ height: "max-content", width: "90%", minHeight: "max-content", display: "flex", flexDirection: "column", justifyContent: "flex-start", borderRadius: "6px" }}>
+                                    <header onClick={(e) => setToggleFilters(toggleFilters !== "Category" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "6px" }}>
+                                        <FilterRight size="12px" />  Sort
+                                    </header>
+                                    {/* <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
+                                        <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
+                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "20vh", maxHeight: "45vh", overflowY: "auto", padding: "5% 10% 4% 10%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent:"flex-start", gap: "4px" }}>
+
+                                                {localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
+                                                    return <span className="p-0 m-0" key={i} style={{ display: "flex", width:"100%", maxWidth:"100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "6px" }}>
+                                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white", border: "1px solid grey", borderRadius: "3px" }}>
+                                                            <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
+                                                            {
+                                                                search_options.category !== `${c}` ?
+                                                                    <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px" }}></span>
+                                                                    :
+                                                                    <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px", display: "grid", placeItems: "center", backgroundColor: "green", color: "whitesmoke" }}>
+                                                                        <Check size="100%" />
+                                                                    </span>
+                                                            }
+
+                                                        </button>
+                                                        <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{c.length > 0 ? c : "All"}</p>
+                                                    </span>
+                                                })
+                                                }
+
+                                            </li>
+                                        </ul>
+                                    </div> */}
+                                </section>
+                            </div>
                         </div>
 
                     </div>
 
-                    <div className="col-md-9 col-lg-10 position-relative" style={{ maxWidth: "100vw" }}>
+                    <div className="col-md-9 col-lg-10 position-relative px-0" style={{ maxWidth: "100vw" }}>
 
-                    <section className="panel bg-light py-0 px-2 m-0 bg-white" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px" }} >
+                    <section className="panel bg-light bg-white py-2 px-1" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px", minWidth:"100%", maxWidth:"100%" }} >
                             <div className="panel-body p-0 m-0 position-relative" style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
                                 <div className="pull-right m-0 position-relative" style={{ width: "max-content", display: "flex", alignItems: "center" }}>
                                     <ul className="pagination pagination-sm pro-page-list m-0 p-2 position-relative" style={{ border: "1px solid whitesmoke", borderRadius: "3px" }}>
@@ -301,7 +335,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                             </div>
                         </section>
 
-                        <div className="row product-list px-0" style={{ minHeight: "75vh" }}>
+                        <div className="row product-list" style={{ minHeight: "75vh", padding:"0 5px 0 7px" }}>
                             {product.success && product.products.map((v, i) => {
 
                                 return <div className="col col-6 col-md-4 col-lg-3 p-0 p-1" key={v._id} >
