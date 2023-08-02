@@ -12,11 +12,18 @@ const ProductsShop = () => {
     const location = useLocation()
     console.log("state", location.state)
 
+
+
+    
+
     useEffect(()=>{
-        if(location.state !== undefined){
-        dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, location.state.gender ))
+        console.log(location.state.gender)
+
+        if(location.state.gender !== undefined){
+            console.log(location.state.gender)
+        // dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, location.state.gender ))
         }
-    },[location.state])
+    },[location.state.gender])
 
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
