@@ -3,11 +3,13 @@
   position: relative;
   display: flex;
   gap: 13px;
-  min-height: 17vh;
+  // min-height: 17vh;
+  height: max-content;
   overflow-x: auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  // background-color: rgb(193, 191, 191);
   // padding: 10px 6px !important;
 }
 

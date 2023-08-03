@@ -5,9 +5,9 @@ const Brands = ({productsFilter}) => {
     const navigate = useNavigate()
     
     return (
-        <div className="p-0 m-0 w-100">
-            <h5 style={{margin:"auto", marginTop:"10px", borderBottom:"2px solid rgb(238, 236, 236)", width:"max-content", color:"grey"}}>Our Brands</h5>
-        <div className="container brand_container mt-2 px-2">
+        <div className="p-0 m-0 w-100 bg-light mt-2">
+            <h5 className="py-1 px-2" style={{marginLeft:"auto", borderTopRadius:"4px", textAlign:"center", width:"max-content", color:"grey", background:"rgb(193, 191, 191)"}}>Our Brands</h5>
+        <div className="container brand_container m-0 px-2" style={{borderTop:"1px dashed white", background:"rgb(193, 191, 191)"}}>
         {/* <div className="card"> */}
             
             { productsFilter !== null  && productsFilter.map((v,i)=>{ 

@@ -24,7 +24,7 @@ function App() {
   const dispatch = useDispatch();
   const state = useSelector(state => state.user_register);
   const product = useSelector(state => state.product);
-
+  let uniqueBrand = new Set();
 
   useEffect(() => {
     loggedUserCheck();
@@ -33,30 +33,35 @@ function App() {
 
   const [productsFilter, setProductsFilter] = useState(null);
 
-  useEffect(()=>{
-    if(product.productsFilter.length > 0){
-    setProductsFilter(product.productsFilter)
+  useEffect(() => {
+    if (product.productsFilter.length > 0) {
+      // setProductsFilter(product.productsFilter);
+
+      product.productsFilter.forEach((obj) => {
+        uniqueBrand.add(obj.brand.trim())
+      })
+      setProductsFilter(Array.from(uniqueBrand))
     }
-  },[product])
+  }, [product])
 
   const [search_options, setSearch_options] = useState({
     name: "",
     category: "",
     gender: "",
     price: {
-        from: 0,
-        to: 999999
+      from: 0,
+      to: 999999
     },
     rating: "",
     brand: "",
     color: "",
     price: {
-        from: 0,
-        to: 999999
+      from: 0,
+      to: 999999
     },
     size: ""
 
-})
+  })
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
