@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import "./brands.scss";
 
-const Brands = ({productsFilter}) => {
+const Brands = ({productsFilters}) => {
     const navigate = useNavigate()
     
     return (
         <div className="p-0 m-0 w-100 bg-light py-2">
-            <h5 style={{margin:"auto", marginTop:"10px", borderBottom:"2px solid rgb(238, 236, 236)", width:"max-content", color:"grey", fontSize:"80%"}}>Our Brands</h5>
-        <div className="container brand_container mt-2 px-2" style={{background:"transparent"}}>
+            <h5 className="mt-2" style={{margin:"auto", marginTop:"10px", borderBottom:"2px solid rgb(238, 236, 236)", width:"max-content", color:"grey", fontSize:"80%"}}>Our Brands</h5>
+        <div className="container brand_container mt-2 px-2" style={{background:"white"}}>
         {/* <div className="card"> */}
             
-            { productsFilter !== null && productsFilter !== undefined && productsFilter.map((v,i)=>{ 
+            { productsFilters !== null && productsFilters !== undefined && productsFilters.length > 0 && productsFilters.map((v,i)=>{ 
            return <div key={i} onClick={()=> navigate(`/${v.brand}`) } className="face face1 m-0" style={{border:"1px solid rgb(238, 236, 236)", height:"max-content", padding:"6px 10px", cursor:"pointer"}}>
                 <div className="content">
                     {/* <img style={{ maxHeight:"50px"}} src="https://brandongaille.com/wp-content/uploads/2013/06/H-and-M-Company-Logo-Image.jpg" alt="brand 1" /> */}

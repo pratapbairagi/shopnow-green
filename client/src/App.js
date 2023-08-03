@@ -31,22 +31,22 @@ function App() {
 
   }, [search_options]);
 
-  const [productsFilter, setProductsFilter] = useState(null);
+  const [productsFilters, setProductsFilters] = useState([]);
 
   useEffect(() => {
-    console.log("useEff", product.productsFilter)
+    
     if (product.productsFilter.length > 0) {
       console.log("useEff -- with condition", product.productsFilter)
 
       product.productsFilter.forEach((obj) => {
         uniqueBrand.add(obj.brand.trim())
       })
-      setProductsFilter(Array.from(uniqueBrand))
+      setProductsFilters(Array.from(uniqueBrand))
     }
   }, [product.productsFilter])
 
   console.log("filterPros direct", product.productsFilter)
-  console.log("filterPros state", productsFilter)
+  console.log("filterPros state", productsFilters)
 
 
 
@@ -80,7 +80,7 @@ function App() {
         <Navbar search_options={search_options} setSearch_options={setSearch_options} />
 
         <Routes>
-          <Route path='/' element={<Layout productsFilter={productsFilter} />} exact />
+          <Route path='/' element={<Layout productsFilters={productsFilters} />} exact />
           {/* <Route path='/about' element={<h4>About</h4>} /> */}
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details />} />
