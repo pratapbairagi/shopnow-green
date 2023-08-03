@@ -6,6 +6,7 @@ export const product_reducer = (state = {
     success: false,
     product: {},
     products : [],
+    productsFilter:[],
     error: null
 },
     action) => {
@@ -43,7 +44,8 @@ export const product_reducer = (state = {
                     ...state,
                     loading: false,
                     success: true,
-                    products: action.payload.products
+                    products: action.payload.products,
+                    productsFilter : action.payload.productfilters
                 }
                 case DELETE_PRODUCT_SUCCESS :
                     return{

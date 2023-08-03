@@ -23,7 +23,7 @@ function App() {
 
   const dispatch = useDispatch();
   const state = useSelector(state => state.user_register);
-  const { loading, success, error, product } = useSelector(state => state);
+  const product = useSelector(state => state.product);
 
 
   useEffect(() => {
