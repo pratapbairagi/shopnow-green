@@ -23,7 +23,7 @@ const Brands = () => {
     }, [product.productsFilter])
 
     return (
-        <div className="p-0 m-0 w-100 bg-light pt-2 pb-1" style={{ height: "max-content" }}>
+        <div className="p-0 m-0 w-100 bg-light pt-2 pb-2" style={{ height: "max-content" }}>
             <h5 className="" style={{ margin: "10px auto", borderBottom: "2px solid rgb(238, 236, 236)", width: "max-content", color: "grey", fontSize: "80%" }}>Our Brands</h5>
             <div className="container brand_container m-0 px-2 py-0">
                 {/* <div className="card"> */}
