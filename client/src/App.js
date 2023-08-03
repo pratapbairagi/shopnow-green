@@ -28,6 +28,8 @@ function App() {
     loggedUserCheck();
   }, []);
 
+  const [productsFilter, setProductsFilter] = useState(null)
+
   const [search_options, setSearch_options] = useState({
     name: "",
     category: "",
@@ -57,17 +59,17 @@ function App() {
         <Navbar search_options={search_options} setSearch_options={setSearch_options} />
 
         <Routes>
-          <Route path='/' element={<Layout />} exact />
+          <Route path='/' element={<Layout productsFilter={productsFilter} />} exact />
           {/* <Route path='/about' element={<h4>About</h4>} /> */}
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details />} />
           <Route path='/shop/details/:id' exact element={<Product_details />} />
           <Route path='/product/created/:id' exact element={<ProductNotificationRoaster />} />
-          <Route path='/product' exact element={<Shop_product />} />
+          {/* <Route path='/product' exact element={<Shop_product />} /> */}
           <Route path='/about' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
-          <Route path='/shop' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
-          <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
+          <Route path='/shop' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} productsFilter={productsFilter} setProductsFilter={setProductsFilter} />
+          <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} productsFilter={productsFilter} setProductsFilter={setProductsFilter} />} />
           <Route path='/:category/details/:id' exact element={<Product_details />} />
 
 

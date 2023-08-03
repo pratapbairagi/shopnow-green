@@ -7,7 +7,7 @@ import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/ca
 import { NavLink, useLocation } from "react-router-dom";
 
 
-const ProductsShop = ({search_options, setSearch_options}) => {
+const ProductsShop = ({search_options, setSearch_options , productsFilter, setProductsFilter}) => {
 
     const{ pathname }= useLocation()
 
@@ -38,6 +38,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
             if (product.products) {
                 setProductz(product.products)
+                setProductsFilter(product.productFilters)
 
                 // function uniqueCat(value, index, array) {
                 //     return array.indexOf(value.category) === index
@@ -112,6 +113,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
        path === "/men" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
 
        path === "/kids" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender))
+
+       path === "/brand" && dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , search_options.color, search_options.size, search_options.gender))
+
 
 
     }

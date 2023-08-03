@@ -47,7 +47,7 @@ exports.get_products = async (req, res, next) => {
         // const products = await Products.find(query);
         const products = await Products.find(query);
 
-        const productFilters = await Products.find().select("-password", "-title", "-images", "-_id", "-description", "-price", "-color", "-size", "-gender", "-offer", "-reviews", "-createdAt", "-seller", "-stock" )
+        const productFilters = await Products.find().select("-password -title -images -_id -description -price -color -size -gender -offer -reviews -createdAt -seller -stock" )
 
         res.status(200).json({
             success : true,
