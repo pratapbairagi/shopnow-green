@@ -37,7 +37,7 @@ function App() {
     if (product.productsFilter.length > 0) {
       // setProductsFilter(product.productsFilter);
 
-      product.productsFilter.forEach((obj) => {
+      product.productFilters.forEach((obj) => {
         uniqueBrand.add(obj.brand.trim())
       })
       setProductsFilter(Array.from(uniqueBrand))
