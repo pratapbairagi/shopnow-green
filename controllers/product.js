@@ -47,10 +47,13 @@ exports.get_products = async (req, res, next) => {
         // const products = await Products.find(query);
         const products = await Products.find(query);
 
+        const productFilters = await Products.find().select("-password", "-title", "-images", "-_id", "-description", "-price", "-color", "-size", "-gender", "-offer", "-reviews", "-createdAt", "-seller", "-stock" )
+
         res.status(200).json({
             success : true,
             message : "Your products are here !",
-            products
+            products,
+            productFilters
         })
     } catch (error) {
         return next( new ErrorHandler(error) )
@@ -205,6 +208,8 @@ exports.edit_product = async (req, res, next) => {
                 size : req.body.size
 
             });
+
+            // const productsBrands = await Products.find()
 
             res.status(200).json({
                 success : true,

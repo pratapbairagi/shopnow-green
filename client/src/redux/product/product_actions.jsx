@@ -82,7 +82,6 @@ export const get_all_products_action = (title="", category="",price={from:0, to:
         });
 
     } catch (error) {
-        console.log(error)
         dispatch({
             type : GET_ALL_PRODUCTS_FAIL,
             payload : error.response.data
