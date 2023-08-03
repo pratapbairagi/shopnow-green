@@ -40,6 +40,9 @@ export const product_reducer = (state = {
             //         product : 
             //     }
             case GET_ALL_PRODUCTS_SUCCESS:
+                console.log(action.payload.productfilters)
+                console.log(action.payload)
+
                 return {
                     ...state,
                     loading: false,
