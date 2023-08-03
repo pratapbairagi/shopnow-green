@@ -7,9 +7,9 @@ const Brands = ({productsFilters}) => {
     console.log(productsFilters)
     
     return (
-        <div className="p-0 m-0 w-100 bg-light py-2">
+        <div className="p-0 m-0 w-100 bg-light pt-2 pb-1" style={{height:"max-content"}}>
             <h5 className="mt-2" style={{margin:"auto", marginTop:"10px", borderBottom:"2px solid rgb(238, 236, 236)", width:"max-content", color:"grey", fontSize:"80%"}}>Our Brands</h5>
-        <div className="container brand_container mt-2 px-2" style={{background:"white"}}>
+        <div className="container brand_container mt-1 px-2" style={{background:"white"}}>
         {/* <div className="card"> */}
             
             { productsFilters !== null && productsFilters !== undefined && productsFilters.length > 0 && productsFilters.map((v,i)=>{ 
