@@ -33,7 +33,11 @@ function App() {
 
   const [productsFilter, setProductsFilter] = useState(null);
 
-  console.log(product)
+  useEffect(()=>{
+    if(product.productsFilter.length > 0){
+    setProductsFilter(product.productsFilter)
+    }
+  },[product])
 
   const [search_options, setSearch_options] = useState({
     name: "",

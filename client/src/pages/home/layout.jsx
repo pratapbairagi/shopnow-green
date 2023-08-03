@@ -9,7 +9,7 @@ import Trending_sec from "../trending_sec/trendding_sec";
 
 
 const Layout = ({cart, productsFilter}) => {
-    console.log("layout", productsFilter)
+
     return (
         <>
             <Banner />
