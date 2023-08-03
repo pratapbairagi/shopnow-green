@@ -8,9 +8,7 @@ import Trending_sec from "../trending_sec/trendding_sec";
 
 
 
-const Layout = ({cart, productsFilters}) => {
-
-    console.log(productsFilters)
+const Layout = ({cart}) => {
 
     return (
         <>
@@ -21,7 +19,7 @@ const Layout = ({cart, productsFilters}) => {
 
         {/* <LatestCard/> */}
         
-            <Brands productsFilter={productsFilters}/>
+            <Brands />
 
 
         </>

@@ -23,24 +23,12 @@ function App() {
 
   const dispatch = useDispatch();
   const state = useSelector(state => state.user_register);
-  const product = useSelector(state => state.product);
-  let uniqueBrand = new Set();
 
   useEffect(() => {
     loggedUserCheck();
   }, [search_options]);
 
-  const [productsFilters, setProductsFilters] = useState([]);
-
-  useEffect(() => {
-    
-    if (product.productsFilter.length > 0) {
-      product.productsFilter.forEach((obj) => {
-        uniqueBrand.add(obj.brand.trim())
-      })
-      setProductsFilters(Array.from(uniqueBrand))
-    }
-  }, [product.productsFilter])
+  
 
   const [search_options, setSearch_options] = useState({
     name: "",
@@ -63,7 +51,6 @@ function App() {
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
-    dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
   }
 
   return (
@@ -72,7 +59,7 @@ function App() {
         <Navbar search_options={search_options} setSearch_options={setSearch_options} />
 
         <Routes>
-          <Route path='/' element={<Layout productsFilters={product.productsFilter} />} exact />
+          <Route path='/' element={<Layout />} exact />
           {/* <Route path='/about' element={<h4>About</h4>} /> */}
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details />} />
