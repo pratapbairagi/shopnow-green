@@ -72,7 +72,7 @@ function App() {
         <Navbar search_options={search_options} setSearch_options={setSearch_options} />
 
         <Routes>
-          <Route path='/' element={<Layout productsFilters={productsFilters} />} exact />
+          <Route path='/' element={<Layout productsFilters={product.productsFilter} />} exact />
           {/* <Route path='/about' element={<h4>About</h4>} /> */}
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details />} />
