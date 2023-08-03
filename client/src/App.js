@@ -23,10 +23,15 @@ function App() {
 
   const dispatch = useDispatch();
   const state = useSelector(state => state.user_register);
+  const { loading, success, error, product } = useSelector(state => state);
+
 
   useEffect(() => {
     loggedUserCheck();
-  }, []);
+    if(product.products.length > 0){
+      setProductsFilter(product.productFilters)
+    }
+  }, [product.productFilters]);
 
   const [productsFilter, setProductsFilter] = useState(null)
 
@@ -70,8 +75,8 @@ function App() {
           {/* <Route path='/product' exact element={<Shop_product />} /> */}
           <Route path='/about' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
-          <Route path='/shop' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} productsFilter={productsFilter} setProductsFilter={setProductsFilter} />
-          <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} productsFilter={productsFilter} setProductsFilter={setProductsFilter} />} />
+          <Route path='/shop' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
+          <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
           <Route path='/:category/details/:id' exact element={<Product_details />} />
 
 

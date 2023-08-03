@@ -7,7 +7,7 @@ import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/ca
 import { NavLink, useLocation } from "react-router-dom";
 
 
-const ProductsShop = ({search_options, setSearch_options , productsFilter, setProductsFilter}) => {
+const ProductsShop = ({search_options, setSearch_options}) => {
 
     const{ pathname }= useLocation()
 
@@ -32,16 +32,11 @@ const ProductsShop = ({search_options, setSearch_options , productsFilter, setPr
     let uniqueColor = new Set();
     let uniqueBrand = new Set();
 
-    console.log("shop -- outside", productsFilter)
-
     useEffect(() => {
         if (product) {
 
             if (product.products) {
                 setProductz(product.products)
-                setProductsFilter(product.productFilters)
-
-                console.log("shop", product.productFilters)
 
                 // function uniqueCat(value, index, array) {
                 //     return array.indexOf(value.category) === index
