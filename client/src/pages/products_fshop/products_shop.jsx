@@ -32,6 +32,7 @@ const ProductsShop = ({search_options, setSearch_options , productsFilter, setPr
     let uniqueColor = new Set();
     let uniqueBrand = new Set();
 
+    console.log("shop -- outside", productsFilter)
 
     useEffect(() => {
         if (product) {
@@ -39,6 +40,8 @@ const ProductsShop = ({search_options, setSearch_options , productsFilter, setPr
             if (product.products) {
                 setProductz(product.products)
                 setProductsFilter(product.productFilters)
+
+                console.log("shop", product.productFilters)
 
                 // function uniqueCat(value, index, array) {
                 //     return array.indexOf(value.category) === index

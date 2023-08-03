@@ -3,6 +3,7 @@ import "./brands.scss";
 
 const Brands = ({productsFilter}) => {
     const navigate = useNavigate()
+    console.log("brands",productsFilter)
     return (
         <div className="p-0 m-0 w-100">
             <h5 style={{margin:"auto", marginTop:"10px", borderBottom:"2px solid rgb(238, 236, 236)", width:"max-content", color:"grey"}}>Our Brands</h5>

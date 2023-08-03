@@ -30,6 +30,8 @@ function App() {
 
   const [productsFilter, setProductsFilter] = useState(null)
 
+  console.log(productsFilter)
+
   const [search_options, setSearch_options] = useState({
     name: "",
     category: "",
