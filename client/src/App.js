@@ -28,7 +28,6 @@ function App() {
 
   useEffect(() => {
     loggedUserCheck();
-
   }, [search_options]);
 
   const [productsFilters, setProductsFilters] = useState([]);
@@ -36,19 +35,12 @@ function App() {
   useEffect(() => {
     
     if (product.productsFilter.length > 0) {
-      console.log("useEff -- with condition", product.productsFilter)
-
       product.productsFilter.forEach((obj) => {
         uniqueBrand.add(obj.brand.trim())
       })
       setProductsFilters(Array.from(uniqueBrand))
     }
   }, [product.productsFilter])
-
-  console.log("filterPros direct", product.productsFilter)
-  console.log("filterPros state", productsFilters)
-
-
 
   const [search_options, setSearch_options] = useState({
     name: "",
