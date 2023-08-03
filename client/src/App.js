@@ -28,14 +28,13 @@ function App() {
 
   useEffect(() => {
     loggedUserCheck();
-    if(product.products.length > 0){
-      setProductsFilter(product.productFilters)
-    }
-  }, [product.productFilters]);
 
-  const [productsFilter, setProductsFilter] = useState(null)
+  }, []);
 
-  console.log(productsFilter)
+
+  const [productsFilter, setProductsFilter] = useState(null);
+
+  console.log(product)
 
   const [search_options, setSearch_options] = useState({
     name: "",

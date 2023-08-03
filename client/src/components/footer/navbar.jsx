@@ -61,27 +61,6 @@ const Navbar = ({search_options, setSearch_options}) => {
             <GuestCart toggleCart={toggleCart} setToggleCart={setToggleCart} />
             <SearchBar toggleSearchBar={toggleSearchBar} search_options={search_options} setSearch_options={setSearch_options}/>
 
-            {/* <div className="upperNav">
-                <div className="admin-details" style={{ display: "flex", gap: "8px", width: "max-content" }}>
-                    <span>+91 8287889123</span>
-                    <span>admin@example.com</span>
-                </div>
-                <div className="offer-details" style={{ display: "flex", gap: "8px", width: "max-content" }}>
-                    <span>Summer sale discount off @ 30%</span>
-                    <a href="#shop">Shop Now</a>
-                </div>
-                <div className="language-sec" style={{ display: "flex", gap: "8px", width: "max-content" }}>
-                    <select name="" id="lang">
-                        <option value="">Choose</option>
-                        <option value="">HIN</option>
-                        <option value="">ENG</option>
-                        <option value="">BEN</option>
-                        <option value="">UR</option>
-                    </select>
-                    <label htmlFor="lang">Language</label>
-                </div>
-            </div> */}
-
             <div className="nav pt-2">
 
                 <NavLink to='/' className="navlogo">logo</NavLink>
