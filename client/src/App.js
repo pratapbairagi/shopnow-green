@@ -29,8 +29,7 @@ function App() {
   useEffect(() => {
     loggedUserCheck();
 
-  }, []);
-
+  }, [search_options.name]);
 
   const [productsFilter, setProductsFilter] = useState(null);
 
@@ -57,6 +56,7 @@ function App() {
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
+    dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
   }
 
   return (
