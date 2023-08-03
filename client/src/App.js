@@ -34,15 +34,21 @@ function App() {
   const [productsFilter, setProductsFilter] = useState(null);
 
   useEffect(() => {
+    console.log("useEff", product.productsFilter)
     if (product.productsFilter.length > 0) {
-      // setProductsFilter(product.productsFilter);
+      console.log("useEff -- with condition", product.productsFilter)
 
-      product.productFilters.forEach((obj) => {
+      product.productsFilter.forEach((obj) => {
         uniqueBrand.add(obj.brand.trim())
       })
       setProductsFilter(Array.from(uniqueBrand))
     }
-  }, [product])
+  }, [product.productsFilter])
+
+  console.log("filterPros direct", product.productsFilter)
+  console.log("filterPros state", productsFilter)
+
+
 
   const [search_options, setSearch_options] = useState({
     name: "",
