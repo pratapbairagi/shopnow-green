@@ -13,7 +13,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
     const [path, setPath] = useState(undefined)
     useEffect(()=>{
+        if(pathname !== undefined && pathname !== null && typeof pathname === "string"){
             setPath(pathname)
+        }
     },[pathname])
 
     const dispatch = useDispatch();
@@ -116,7 +118,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
         else if(path === "/kids"){
             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender))
         }
-        else if(path !== "/shop" && path !== "/women" && path !== "/men" && path !== "/kids"){
+        else if(path !== "/shop" && path !== "/women" && path !== "/men" && path !== "/kids" && typeof path === "string" ){
             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , search_options.color, search_options.size, search_options.gender))
 
         }
