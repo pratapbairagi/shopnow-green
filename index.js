@@ -39,8 +39,8 @@ app.use("/website_ecommerce/app/api", productRoute);
 
 app.use(globalErrorHandler)
 
+mongoDBConnection("mongodb+srv://website_ecommerce:18May1994@cluster0.5qgqh.mongodb.net/website_ecommerce?retryWrites=true&w=majority")
 
 app.listen(PORT, () => {
-  mongoDBConnection("mongodb+srv://website_ecommerce:18May1994@cluster0.5qgqh.mongodb.net/website_ecommerce?retryWrites=true&w=majority")
     console.log(`server running on http://localhost:${PORT}`)
 })
