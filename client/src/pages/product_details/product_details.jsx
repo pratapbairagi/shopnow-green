@@ -45,23 +45,6 @@ const Product_details = () => {
 
     // cart
     const { cart } = useSelector(state => state.cart)
-    const [addedToCart, setAddedToCart] = useState(0)
-    useState(()=>{
-        
-        if(cart && product){
-           let crtX = cart.find((v)=>{ return v._id === product._id})
-
-           if( crtX !== null && crtX !== undefined){
-            if( typeof crtX.qty === "number"){
-                setAddedToCart(crtX.qty)
-            }
-            else{
-                setAddedToCart(0)
-
-            }
-           }
-        }
-    },[cart, product])
 
     return (
         <div className="px-0 " style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin:"auto" }}>
@@ -142,7 +125,7 @@ const Product_details = () => {
                                 <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "-")) }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
                                     -
                                 </button>
-                                <input id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} defaultValue={addedToCart} type="number" />
+                                <input id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} defaultValue={cart.find(v=>v._id === product._id).qty} type="text" />
                                 <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "+")) }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
                                     +
                                 </button>
