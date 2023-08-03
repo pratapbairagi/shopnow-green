@@ -35,7 +35,7 @@ const CartComponent = () => {
 
                         <div className="col-5 m-0 p-0 d-flex flex-column" style={{justifyContent:"center", rowGap:"5%"}}>
                           {/* <!-- Data --> */}
-                          <div className="" style={{fontWeight:"500", fontSize:"90%", lineHeight:"110%", width:"100%", textAlign:"left", paddingLeft:"10px", textTransform:"uppercase", color:"grey", display:"-webkit-box", maxWidth:"100%", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical"}}>{cv.title}</div>
+                          <div className="" style={{fontWeight:"500", fontSize:"85%", lineHeight:"110%", width:"100%", textAlign:"left", paddingLeft:"10px", textTransform:"uppercase", color:"grey", display:"-webkit-box", maxWidth:"100%", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical"}}>{cv.title}</div>
 
                           <div className="" style={{fontSize:"80%", paddingLeft:"10px", textAlign:"left", color:"grey"}}>Color : blue </div>
                           <div className="" style={{fontSize:"80%", textAlign:"left", marginTop:"-2px", paddingLeft:"10px", color:"grey"}}>Size : M</div>
@@ -150,7 +150,7 @@ const CartComponent = () => {
                     </li>
                   </ul>
 
-                  <button type="button" className="btn btn-primary btn-sm btn-block">
+                  <button type="button w-100" className="btn btn-primary btn-sm btn-block">
                     Go to checkout
                   </button>
 

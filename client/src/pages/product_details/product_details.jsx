@@ -47,8 +47,8 @@ const Product_details = () => {
     const { cart } = useSelector(state => state.cart)
 
     return (
-        <div className="px-0" style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column" }}>
-            <div className="review_container mt-2" style={{ maxWidth: "100%" }}>
+        <div className="px-0" style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin:"auto" }}>
+            <div className="review_container" style={{ maxWidth: "100%", margin:"8px auto" }}>
                 <div className="row px-0" style={{ maxWidth: "100%" }}>
                     <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight:"90vh" }}>
 
@@ -100,9 +100,9 @@ const Product_details = () => {
                             <div style={{ width: "50%", display: "flex", flexWrap: "wrap", gap: "4px" }}>
 
                                 {product.size?.map((sv, si) => {
-                                    return <div key={si} style={{ width: `24px`, position: "relative", border: "1px solid grey", borderRadius: "2px" }}>
+                                    return <div key={si} style={{ minWidth: `24px`, width:"max-content", position: "relative", border: "1px solid grey", borderRadius: "2px",  whiteSpace:"nowrap" }}>
                                         <input onChange={(e) => { return size_change_handler(e) }} style={{ width: "100%", height: "100%", accentColor: "red", position: "absolute", opacity: "0", cursor: "pointer" }} defaultChecked value="xs" type="radio" name="size" id="" />
-                                        <span style={{ color: "red", fontSize: "12px", width: "100%", height: "100%", cursor: "pointer" }}>{sv.value}</span>
+                                        <span style={{ color: "red", fontSize: "12px", width: "100%", height: "100%", cursor: "pointer", whiteSpace:"nowrap" }}>{sv.value}</span>
                                     </div>
                                 })
                                 }
