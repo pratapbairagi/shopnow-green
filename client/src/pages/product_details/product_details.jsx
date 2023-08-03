@@ -15,6 +15,7 @@ const Product_details = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const { loading, error, product, success } = useSelector((state) => state.product)
+    const [proCart , setProCart] = useState(null)
 
     useEffect(() => {
         if (id !== undefined && id !== null) {
@@ -45,6 +46,15 @@ const Product_details = () => {
 
     // cart
     const { cart } = useSelector(state => state.cart)
+
+    useEffect(()=>{
+        if(product && success && cart){
+            const crt = cart.find(v=> v._id === product._id);
+            if(crt && crt !== null && crt !== undefined){
+                setProCart(crt)
+            }
+        }
+    },[product, cart, success])
 
     return (
         <div className="px-0 " style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin:"auto" }}>
@@ -118,16 +128,14 @@ const Product_details = () => {
                             </div>
                         </div>
                         
-                        { cart.find(v => v._id === product._id) && 
-                        typeof cart.find(v => v._id === product._id).qty === "number" &&
-                        cart.find(v => v._id === product._id).qty >= 1 && 
+                        { proCart !== null && 
                         <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
                             <h6 className="title-attr"><small>QUANTITY</small></h6>
                             <div style={{ width: "50%", display:"flex", justifyContent:"flex-start" }}>
                                 <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "-")) }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
                                     -
                                 </button>
-                                <input id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} defaultValue={cart.find(v => v._id === product._id)?.qty} type="number" />
+                                <input id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} defaultValue={proCart.qty} type="number" />
                                 <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "+")) }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
                                     +
                                 </button>
