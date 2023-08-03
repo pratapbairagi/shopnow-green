@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     loggedUserCheck();
 
-  }, [search_options.name]);
+  }, [search_options]);
 
   const [productsFilter, setProductsFilter] = useState(null);
 
