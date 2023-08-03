@@ -68,9 +68,9 @@
     letter-spacing: 2px;
   }
   
-  .alt-send-button:hover {
-    transform: translate3d(0px, -29px, 0px);
-  }
+  // .alt-send-button:hover {
+  //   transform: translate3d(0px, -29px, 0px);
+  // }
   
   /* Begin Right Contact Page */
   .direct-contact-container {
@@ -165,11 +165,11 @@
     background-color: #fff; 
   }
   
-  .social-media-list li:hover:after {
-    opacity: 1;  
-    transform: scale(1.12);
-    transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
-  }
+  // .social-media-list li:hover:after {
+  //   opacity: 1;  
+  //   transform: scale(1.12);
+  //   transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
+  // }
   
   .social-media-list li:hover a {
     color: #000;

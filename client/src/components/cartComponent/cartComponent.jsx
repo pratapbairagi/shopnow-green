@@ -8,68 +8,64 @@ const CartComponent = () => {
   const dispatch = useDispatch()
   
     return (
-        <div className="row" style={{ gap: "0" }}>
+        <div className="row" style={{ gap: "0", height:"100vh" }}>
         <section className="col col-12 col-md-6 gradient-custom p-0 sec1 m-0">
           <div className="container py-1 m-0" style={{ maxHeight: "100%" }}>
 
-            <div className="row d-flex justify-content-center my-0 p-0 py-1" style={{ overflow: "scroll", maxHeight: "max-content", width: "100%", margin: "3px auto" }}>
-              <div className="col-md-8" style={{ width: "100%" }}>
-                <div className="card mb-2 p-1" style={{ width: "100%" }}>
+            <div className="row d-flex justify-content-center my-0 p-0 py-1" style={{ maxHeight: "max-content", width: "100%", margin: "3px auto" }}>
+              <div className="col-md-8 p-0" style={{ width: "100%" }}>
+                <div className="" style={{ width: "100%", height:"100%", maxHeight:"88vh", overflowY:"auto", gap:"4px", paddingBottom:"22vh" }}>
 
-                  <div className="card-body pb-0">
+                  {cart.map((cv, ci) => { return <div key={ci} className="cart-component-card-body" style={{ padding:"4px", border:"1px solid rgb(236, 235, 235)", borderRadius:"4px", maxHeight:"160px"}}>
                     {/* <!-- Single item --> */}
 
-                    {cart.map((cv, ci) => {
-                      return <div key={ci} className="row">
-                        <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                    {/* {cart.map((cv, ci) => {
+                      return <div key={ci} className="row g-0"> */}
+                      <div className="row g-0 p-0 m-0" style={{height:"max-content",}}>
+                       
+                        <div className="col-3 col-lg-3 m-0">
                           {/* <!-- Image --> */}
-                          <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                            <img src={cv.images[0].url}
-                              className="w-75" alt="Blue Jeans Jacket" />
-                            <a href="#!">
-                              <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}></div>
-                            </a>
+                          <div className=" rounded p-0" style={{width:"100%", overflow:"hidden"}} data-mdb-ripple-color="light">
+                            <img 
+                            src={cv.images[0].url}
+                               alt={cv.title} style={{width:"100%", height:"100%", maxHeight:"150px"}} />
                           </div>
                           {/* <!-- Image --> */}
                         </div>
 
-                        <div className="col col-lg-4 mb-4 mb-lg-0">
+                        <div className="col-5 m-0 p-0 d-flex flex-column" style={{justifyContent:"center", rowGap:"5%"}}>
                           {/* <!-- Data --> */}
-                          <p className="mb-1"><strong>{cv.title}</strong></p>
-                          <p className="mb-1">Color: blue</p>
-                          <p className="mb-2">Size: M</p>
-                          <button onClick={() => dispatch(Remove_from_cart_action(cv._id))} type="button" className="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                            title="Remove item">
-                            {/* <i className="fas fa-trash"></i> */}
+                          <div className="" style={{fontWeight:"500", fontSize:"90%", lineHeight:"110%", width:"100%", textAlign:"left", paddingLeft:"10px", textTransform:"uppercase", color:"grey", display:"-webkit-box", maxWidth:"100%", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical"}}>{cv.title}</div>
+
+                          <div className="" style={{fontSize:"80%", paddingLeft:"10px", textAlign:"left", color:"grey"}}>Color : blue </div>
+                          <div className="" style={{fontSize:"80%", textAlign:"left", marginTop:"-2px", paddingLeft:"10px", color:"grey"}}>Size : M</div>
+                          
+                          <div style={{width:"100%", display:"flex", paddingLeft:"10px"}}>
+                          <button onClick={() => dispatch(Remove_from_cart_action(cv._id))} type="button" className="btn btn-primary btn-sm me-1 px-2 py-1" data-mdb-toggle="tooltip" title="fav. item">
                             <TrashFill />
                           </button>
-                          <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+
+                          <button type="button" className="btn btn-danger btn-sm" data-mdb-toggle="tooltip"
                             title="Move to the wish list">
-                            {/* <i className="fas fa-heart"></i> */}
                             <HeartFill />
                           </button>
+                          </div>
                           {/* <!-- Data --> */}
                         </div>
 
-                        <div className="col-lg-5 mb-4 mb-lg-0 p-0" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1px" }}>
+                        <div className="col-4 mb-4 mb-lg-0 p-0" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent:"center", alignContent:"center", gap: "1px" }}>
                           {/* <!-- Quantity --> */}
-                          <div className="d-flex mb-4">
-                            <button onClick={() => dispatch(Cart_qty_adjust(cv._id, "-"))} className="btn btn-primary px-3 rounded-0 rounded-start"
-                            // onClick={this.parentNode.querySelector('input[type=number]').stepDown()}
-                            >
-                              {/* <i className="fas fa-minus"></i> */}
+                          <div className="d-flex mb-4 mt-2 align-items-end">
+                          <button onClick={() => dispatch(Cart_qty_adjust(cv._id, "-"))} type="button" className="btn btn-primary btn-sm m-0 p-1" data-mdb-toggle="tooltip">
                               <Dash />
                             </button>
 
-                            <div className="form-outline">
-                              <div id="form1" min="0" name="quantity" style={{ textAlign: "center", width: "max-content", maxWidth: "70px" }} defaultValue={cv.qty} type="number" className="form-control rounded-0" >{cv.qty}</div>
-                              {/* <label className="form-label" for="form1">Quantity</label> */}
+                            <div className="form-outline p-0" style={{border:"none"}} >
+                              <div id="form1 p-0" min="0" name="quantity" style={{ textAlign: "center", width: "max-content", maxWidth: "70px", fontSize:"80%", border:"none" }} type="number" className="form-control rounded-0" >{cv.qty}</div>
+
                             </div>
 
-                            <button onClick={() => dispatch(Cart_qty_adjust(cv._id, "+"))} className="btn btn-primary px-3 rounded-0 rounded-end"
-                            // onClick={this.parentNode.querySelector('input[type=number]').stepUp()}
-                            >
-                              {/* <i className="fas fa-plus"></i> */}
+                            <button type="button" onClick={() => dispatch(Cart_qty_adjust(cv._id, "+"))} className="btn btn-primary btn-sm m-0 p-1" data-mdb-toggle="tooltip" title="Move to the wish list">
                               <Plus />
                             </button>
                           </div>
@@ -77,22 +73,15 @@ const CartComponent = () => {
 
                           {/* <!-- Price --> */}
                           <p className="text-center mb-1">
-                            <strong>$17.99</strong>
+                            <strong>₹ {cv.price}</strong>
                           </p>
                           {/* <!-- Price --> */}
                         </div>
-                        <hr className="my-2" />
                       </div>
 
-                    })}
+                    
 
-
-
-                    {/* <!-- Single item --> */}
-
-                    <hr className="my-2" />
-
-                  </div>
+                  </div> })}
                 </div>
 
               </div>
@@ -102,19 +91,19 @@ const CartComponent = () => {
           </div>
         </section>
 
-        <section className="col col-12 col-md-4 gradient-custom p-0 mt-0 sec2" style={{ margin: "6px auto", padding: "3px" }}>
-          <div className="container py-0 m-1" style={{ maxHeight: "100%", width: "100%" }}>
+        <section className="col col-12 col-md-4 p-0 m-0 sec2" style={{ height:"max-content", background:"white", borderRadius:"0" }}>
+          <div className="container-fluid py-0 m-0" style={{ maxHeight: "max-content", width: "100%", minWidth:"100%",borderRadius:"0" }}>
 
-            <div className="row d-flex justify-content-center my-0 py-1 px-2" style={{ overflow: "scroll", width: "100%", padding: "6px 0", margin: "0 auto", gap: "4px" }}>
+            <div className="row d-flex justify-content-center m-0 p-0" style={{ overflow: "hidden", width: "100%", gap: "4px", height:"max-content", minWidth:"100%",borderRadius:"0" }}>
 
-              <div className="card mb-2 pb-1" style={{ maxHeight: "100px", width: "100%" }}>
+              {/* <div className="card mb-2 pb-1" style={{ maxHeight: "100px", width: "100%" }}>
                 <div className="card-body p-1" style={{ height: "100%", maxHeight: "100%" }}>
                   <p><strong>Expected shipping delivery</strong></p>
                   <p className="mb-0">12.10.2020 - 14.10.2020</p>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="card mb-lg-0 p-1" style={{ maxHeight: "100px", width: "100%" }}>
+              {/* <div className="card mb-lg-0 p-1" style={{ maxHeight: "100px", width: "100%" }}>
                 <div className="card-body p-1 m-0">
                   <p><strong>We accept</strong></p>
                   <img className="me-2" width="45px"
@@ -130,11 +119,11 @@ const CartComponent = () => {
                     src="https://themindstudios.com/blog/content/images/2019/02/paypal.jpg"
                     alt="PayPal acceptance mark" />
                 </div>
-              </div>
+              </div> */}
 
 
 
-              <div className="card" style={{ width: "100%", height: "max-content", marginBottom: "10px" }}>
+              <div className="card p-0 m-0" style={{ width: "100%", minWidth:"100%", height: "max-content", marginBottom: "10px", margin:"auto", borderRadius:"0" }}>
                 <div className="card-header py-2">
                   <h5 className="mb-0 py-0" style={{ fontSize: "80%" }}>Summary</h5>
                 </div>

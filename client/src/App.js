@@ -24,12 +24,6 @@ function App() {
   const dispatch = useDispatch();
   const state = useSelector(state => state.user_register);
 
-  useEffect(() => {
-    loggedUserCheck();
-  }, [search_options]);
-
-  
-
   const [search_options, setSearch_options] = useState({
     name: "",
     category: "",
@@ -48,6 +42,10 @@ function App() {
     size: ""
 
   })
+
+  useEffect(() => {
+    loggedUserCheck();
+  }, [search_options]);
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
