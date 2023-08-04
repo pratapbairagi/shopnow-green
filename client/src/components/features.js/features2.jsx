@@ -13,50 +13,50 @@ const Features2 = () => {
                         <div className="col-12 col-md-col-6 col-lg-4 col-xl-3 card p-1" style={{border:"none", maxHeight:"max-content", height:"max-content"}}>
                             <div className="card-body d-flex flex-column align-items-center mb-0 p-3 border rounded-3">
                                 <StarHalf size="33px" fill="red" />
-                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"20px"}}>
+                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"16px"}}>
                                         QUALITY AND SAVING
                                 </div>
-                                <div className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"15px"}}>Comprehensive quality control and affordable price</div>
+                                <div className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"12px"}}>Comprehensive quality control and affordable price</div>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-col-6 col-lg-4 col-xl-3 card p-1" style={{border:"none", maxHeight:"max-content", height:"max-content"}}>
                             <div className="card-body d-flex flex-column align-items-center mb-0 p-3 border rounded-3">
                                 <HousesFill size="33px" fill="red" />
-                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"20px"}}>
+                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"16px"}}>
                                         WAREHOUSE
                                 </div>
-                                <p className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"15px"}}>8 Cities warehouses</p>
+                                <p className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"12px"}}>8 Cities warehouses</p>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-col-6 col-lg-4 col-xl-3 card p-1" style={{border:"none", maxHeight:"max-content", height:"max-content"}}>
                             <div className="card-body d-flex flex-column align-items-center mb-0 p-3 border rounded-3">
                                 <Truck size="33px" fill="red" />
-                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"20px"}}>
+                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"16px"}}>
                                         FAST SHIPPING
                                 </div>
-                                <p className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"15px"}}>fast and convenient door to door delivery </p>
+                                <p className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"12px"}}>fast and convenient door to door delivery </p>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-col-6 col-lg-4 col-xl-3 card p-1" style={{border:"none", maxHeight:"max-content", height:"max-content"}}>
                             <div className="card-body d-flex flex-column align-items-center mb-0 p-3 border rounded-3">
                                 <ShieldFillCheck size="33px" fill="red" />
-                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"20px"}}>
+                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"16px"}}>
                                         PAYMENT SECURITY
                                 </div>
-                                <p className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"15px"}}>More then 2 different secure payment system</p>
+                                <p className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"12px"}}>More then 2 different secure payment system</p>
                             </div>
                         </div>
 
                         <div className="col-12 col-md-col-6 col-lg-4 col-xl-3 card p-1" style={{border:"none", maxHeight:"max-content", height:"max-content"}}>
                             <div className="card-body d-flex flex-column align-items-center mb-0 p-3 border rounded-3">
                                 <QuestionCircleFill size="33px" fill="red" />
-                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"20px"}}>
+                                <div className=" mt-2 mb-1 text-center" style={{border:"none", fontWeight:"700", letterSpacing:".5px", fontSize:"16px"}}>
                                         HAVE QUESTIONS ?
                                 </div>
-                                <p className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"15px"}}>24/7 Customer service - we're here and happy to help !</p>
+                                <p className="card-info text-center px-2" style={{lineHeight:"120%", color:"rgb(82, 81, 81)", fontWeight:"500", letterSpacing:".3px", fontSize:"12px"}}>24/7 Customer service - we're here and happy to help !</p>
                             </div>
                         </div>
 
