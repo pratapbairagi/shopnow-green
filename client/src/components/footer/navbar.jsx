@@ -46,12 +46,8 @@ const Navbar = ({search_options, setSearch_options}) => {
     useEffect(()=>{
         if(cart){
             let x = 0;
-            if(cart.length > 0){
-                for(let z = 0; cart.length > z; z++){
-                    x +=+Number(cart[z].qty)
-                }
-                setCartCount(x)
-            }
+           cart.map(v=> x+=+ v.qty)
+           setCartCount(x)
         }
     }, [cart])
 
