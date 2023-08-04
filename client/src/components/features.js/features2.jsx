@@ -4,11 +4,11 @@ import { HousesFill, QuestionCircleFill, ShieldFillCheck, StarHalf, Truck } from
 
 const Features2 = () => {
     return (
-        <div style={{width:"100%", height:"max-content", marginTop:"20px", padding:"6px 4px 20px 4px"}}>
+        <div style={{width:"100%", height:"max-content", marginTop:"20px", padding:"8px 12px 24px 12px"}}>
 
                     <h6 className="m-auto" style={{ width: "100%", textAlign: "center", fontSize:"110%", fontWeight:"700", color:"grey" }}>Why Shop Whith Us ?</h6>
-                    <p className="mt-2 px-2" style={{ width: "100%", maxWidth:"100%", textAlign: "center", fontSize:"100%", fontWeight:"400", lineHeight:"120%", color:"grey" }}>An impressive wonderful example of a particular quality type of idea</p>
-                    <div className="row p-2 gap-0 m-auto">
+                    <p className="mt-2 px-2" style={{ width: "100%", maxWidth:"100%", textAlign: "center", fontSize:"90%", fontWeight:"400", lineHeight:"120%", color:"grey" }}>An impressive wonderful example of a particular quality type of idea</p>
+                    <div className="row p-0 gap-0 m-auto">
                         
                         <div className="col-12 col-md-col-6 col-lg-4 col-xl-3 card p-1" style={{border:"none", maxHeight:"160px", minHeight:"18vh"}}>
                             <div className="card-body d-flex flex-column align-items-center mb-0 p-3 border rounded-3">
