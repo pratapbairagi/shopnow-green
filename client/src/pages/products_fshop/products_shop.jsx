@@ -21,11 +21,13 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
     const { cart } = useSelector(state => state.cart);
+    const [filterProp, setFilterProp] = useState(false)
+
 
     useEffect(() => {
         // path ? productCheck(path) : productCheck();
         productCheck()
-    }, [search_options, path]);
+    }, [search_options, path, filterProp]);
 
     const [productz, setProductz] = useState([])
 
@@ -105,9 +107,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
         }
     }, [product, productz])
 
-    const productCheck = (v) => {
-        if(v === "submit"){
-
+    const productCheck = () => {
+        if(filterProp === true){
+            setFilterProp(false)
          if(path === "/shop"){
             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand ,search_options.color , search_options.size , search_options.gender))
         }
@@ -285,7 +287,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
                                                 </select>
                                             </div>
-                                            <button onClick={() => productCheck("submit") } className="btn btn-primary mt-2 mx-auto" type="button" style={{ width: "90%" }}>Filter</button>
+                                            <button onClick={() => setFilterProp(true) } className="btn btn-primary mt-2 mx-auto" style={{ width: "90%" }}>Filter</button>
                                         </form>
 
                                     </div>
