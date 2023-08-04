@@ -15,9 +15,9 @@ const SearchBar = ({toggleSearchBar, search_options, setSearch_options}) => {
         setSearch_options({...search_options, name : search})
         navigate("/shop")
         }
-        else if(search.length === 0 ){
-        setSearch_options({...search_options, name : ""})
-        }
+        // else if(search.length === 0 ){
+        // setSearch_options({...search_options, name : ""})
+        // }
 
     }
 
