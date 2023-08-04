@@ -255,7 +255,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                     </header>
                                     <div className={`panel-body  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Filter" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
                                         {/* <form role="form product-form"> */}
-                                        <form>
+                                        <div>
 
                                             <div className="form-group mt-2">
                                                 <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Brand</label>
@@ -292,8 +292,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
                                                 </select>
                                             </div>
-                                            <button onClick={() => setFilterProp(true) } className="btn btn-primary mt-2 mx-auto" style={{ width: "90%" }}>Filter</button>
-                                        </form>
+                                            <button onClick={()=> setFilterProp(true) } className="btn btn-primary mt-2 mx-auto" style={{ width: "90%" }}>Filter</button>
+                                        </div>
 
                                     </div>
                                 </section>
