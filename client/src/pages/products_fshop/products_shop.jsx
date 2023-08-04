@@ -21,6 +21,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     const dispatch = useDispatch();
     const { loading, success, error, product } = useSelector(state => state);
     const { cart } = useSelector(state => state.cart);
+    const [filterValues, setFilterValues] = useState({
+        brand :"", color :"", size:""
+    })
 
 
     useEffect(() => {
@@ -106,28 +109,38 @@ const ProductsShop = ({search_options, setSearch_options}) => {
         }
     }, [product, productz])
 
-    const productCheck = (v) => {
+    const productCheck = () => {
           
          if(path === "/shop"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "" , v === "submit" ? search_options.color : "", v === "submit" ? search_options.size : "", search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand ,search_options.color , search_options.size , search_options.gender))
         }
         else if(path === "/women"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "", v === "submit" ? search_options.color : "", v === "submit" ? search_options.size : "", "f"))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size , "f"))
         }
         else if(path === "/men"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "",v === "submit" ? search_options.color : "" , v === "submit" ? search_options.size : "", "m"))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand ,search_options.color , search_options.size, "m"))
         }
         else if(path === "/kids"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "", v === "submit" ? search_options.color : "", "Y", search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender))
         }
         else if(path !== "/shop" && path !== "/women" && path !== "/men" && path !== "/kids" && typeof path === "string" ){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , v === "submit" ? search_options.color : "", v === "submit" ? search_options.size : "", search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , search_options.color, search_options.size, search_options.gender))
         }
    
     }
 
     // toggle filter options
     const [toggleFilters, setToggleFilters] = useState(null);
+
+    // submit filter
+    const submitFilter = () => {
+        setSearch_options({
+            ...search_options,
+            brand : filterValues.brand,
+            color : filterValues.color,
+            size : filterValues.size
+        })
+    }
 
     return (
         <>
@@ -235,7 +248,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
                                             <div className="form-group mt-2">
                                                 <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Brand</label>
-                                                <select onChange={(e) => setSearch_options({ ...search_options, brand: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, brand: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}> */}
+                                                <select onChange={(e) => setFilterValues({ ...filterValues, brand: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
 
                                                     {
                                                         localStorage.getItem("brands") && JSON.parse(localStorage.getItem("brands")).map((pv, pi) => {
@@ -247,7 +261,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                             </div>
                                             <div className="form-group mt-2">
                                                 <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Color</label>
-                                                <select onChange={(e) => setSearch_options({ ...search_options, color: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, color: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}> */}
+                                                <select onChange={(e) => setFilterValues({ ...filterValues, color: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
 
                                                     {
                                                         localStorage.getItem("colors") && JSON.parse(localStorage.getItem("colors")).map((pcv, pci) => {
@@ -258,7 +273,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                             </div>
                                             <div className="form-group mt-2">
                                                 <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Size</label>
-                                                <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}> */}
+                                                <select onChange={(e) => setFilterValues({ ...filterValues, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
 
                                                     {
                                                         localStorage.getItem("sizes") && JSON.parse(localStorage.getItem("sizes")).map((psv, psi) => {
@@ -268,7 +284,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
                                                 </select>
                                             </div>
-                                            <button onClick={ productCheck("submit") } className="btn btn-primary mt-2 mx-auto" style={{ width: "90%" }}>Filter</button>
+                                            <button onClick={ submitFilter } className="btn btn-primary mt-2 mx-auto" style={{ width: "90%" }}>Filter</button>
                                         </div>
 
                                     </div>
