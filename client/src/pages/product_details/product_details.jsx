@@ -47,16 +47,16 @@ const Product_details = () => {
     const { cart } = useSelector(state => state.cart)
 
     return (
-        <div className="px-0 " style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin:"auto" }}>
-            <div className="review_container" style={{ maxWidth: "100%", margin:"8px auto" }}>
+        <div className="px-0 " style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin: "auto" }}>
+            <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
                 <div className="row px-0 m-auto" style={{ maxWidth: "100%" }}>
-                    <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight:"90vh" }}>
+                    <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight: "90vh" }}>
 
-                        {success && <img style={{ maxWidth: "90%", maxHeight: "70vh", margin:"0 auto" }} src={imagePrev} alt="img0" />}
+                        {success && <img style={{ maxWidth: "90%", maxHeight: "70vh", margin: "0 auto" }} src={imagePrev} alt="img0" />}
 
 
 
-                        <div style={{ width: "90%", display: "flex", justifyContent: "center", gap: "6px", padding: "3px 0px", maxWidth: "90%", overflow: "auto", margin:"0 auto", marginTop: "6px" }}>
+                        <div style={{ width: "90%", display: "flex", justifyContent: "center", gap: "6px", padding: "3px 0px", maxWidth: "90%", overflow: "auto", margin: "0 auto", marginTop: "6px" }}>
                             {success && product?.images?.map((img, index) => {
 
                                 return (
@@ -100,9 +100,9 @@ const Product_details = () => {
                             <div style={{ width: "50%", display: "flex", flexWrap: "wrap", gap: "4px" }}>
 
                                 {product.size?.map((sv, si) => {
-                                    return <div key={si} style={{ minWidth: `24px`, width:"max-content", position: "relative", border: "1px solid grey", borderRadius: "2px",  whiteSpace:"nowrap" }}>
+                                    return <div key={si} style={{ minWidth: `24px`, width: "max-content", position: "relative", border: "1px solid grey", borderRadius: "2px", whiteSpace: "nowrap" }}>
                                         <input onChange={(e) => { return size_change_handler(e) }} style={{ width: "100%", height: "100%", accentColor: "red", position: "absolute", opacity: "0", cursor: "pointer" }} defaultChecked value="xs" type="radio" name="size" id="" />
-                                        <span style={{ color: "red", fontSize: "12px", width: "100%", height: "100%", cursor: "pointer", whiteSpace:"nowrap" }}>{sv.value}</span>
+                                        <span style={{ color: "red", fontSize: "12px", width: "100%", height: "100%", cursor: "pointer", whiteSpace: "nowrap" }}>{sv.value}</span>
                                     </div>
                                 })
                                 }
@@ -117,21 +117,25 @@ const Product_details = () => {
 
                             </div>
                         </div>
-                        
-                        { cart.find(v=>v._id === product._id) &&
+
+
                         <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
                             <h6 className="title-attr"><small>QUANTITY</small></h6>
-                            <div style={{ width: "50%", display:"flex", justifyContent:"flex-start" }}>
+                            <div style={{ width: "50%", display: "flex", justifyContent: "flex-start" }}>
+                                {cart.find(v => v._id === product._id) && typeof cart.find(v => v._id === product._id).qty === "number" && cart.find(v => v._id === product._id).qty > 0 &&
                                 <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "-")) }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
                                     -
-                                </button>
-                                <input id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} defaultValue={cart.find(v=>v._id === product._id).qty} type="text" />
-                                <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "+")) }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                </button>}
+                               
+                                <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{cart.find(v => v._id === product._id).qty}</div>
+                                
+                                {cart.find(v => v._id === product._id) && typeof cart.find(v => v._id === product._id).qty === "number" && cart.find(v => v._id === product._id).qty > 0 &&
+                                <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "+")) }} disabled={cart.find(v => v._id === product._id).qty < product.stock} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
                                     +
-                                </button>
+                                </button> }
                             </div>
-                            
-                        </div>}
+
+                        </div>
 
                         <div className="section mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                             {cart.find(v => v._id === product._id) ? <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-success" style={{ display: "flex", gap: "7px", width: "max-content" }}>
