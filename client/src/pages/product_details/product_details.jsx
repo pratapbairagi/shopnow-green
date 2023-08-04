@@ -127,7 +127,7 @@ const Product_details = () => {
                                     -
                                 </button>}
                                
-                              {cart.find(v => v._id === product._id).qty !== undefined &&  <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{cart.find(v => v._id === product._id).qty}</div> }
+                              <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{cart.find(v => v._id === product._id)?.qty}</div>
                                 
                                 {cart.find(v => v._id === product._id) && typeof cart.find(v => v._id === product._id).qty === "number" && cart.find(v => v._id === product._id).qty > 0 &&
                                 <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "+")) }} disabled={cart.find(v => v._id === product._id).qty < product.stock} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
