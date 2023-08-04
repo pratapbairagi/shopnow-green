@@ -27,7 +27,13 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     useEffect(() => {
         // path ? productCheck(path) : productCheck();
         productCheck()
-    }, [search_options, path, filterProp]);
+    }, [search_options, path]);
+
+    useEffect(() => {
+        if(filterProp === true){
+            productCheck()
+        }
+    }, [ filterProp]);
 
     const [productz, setProductz] = useState([])
 
@@ -109,7 +115,6 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
     const productCheck = () => {
         if(filterProp === true){
-            setFilterProp(false)
          if(path === "/shop"){
             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand ,search_options.color , search_options.size , search_options.gender))
         }
