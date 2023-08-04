@@ -107,41 +107,23 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     }, [product, productz])
 
     const productCheck = (v) => {
-        if(v === "submit"){
           
          if(path === "/shop"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand ,search_options.color , search_options.size , search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "" , v === "submit" ? search_options.color : "", v === "submit" ? search_options.size : "", search_options.gender))
         }
         else if(path === "/women"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size , "f"))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "", v === "submit" ? search_options.color : "", v === "submit" ? search_options.size : "", "f"))
         }
         else if(path === "/men"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand ,search_options.color , search_options.size, "m"))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "",v === "submit" ? search_options.color : "" , v === "submit" ? search_options.size : "", "m"))
         }
         else if(path === "/kids"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "", v === "submit" ? search_options.color : "", "Y", search_options.gender))
         }
         else if(path !== "/shop" && path !== "/women" && path !== "/men" && path !== "/kids" && typeof path === "string" ){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , search_options.color, search_options.size, search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , v === "submit" ? search_options.color : "", v === "submit" ? search_options.size : "", search_options.gender))
         }
-    }
-    else{
-        if(path === "/shop"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, "" , "", "", search_options.gender))
-        }
-        else if(path === "/women"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, "", "", "", "f"))
-        }
-        else if(path === "/men"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, "" , "" , "", "m"))
-        }
-        else if(path === "/kids"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, "", "", "Y", search_options.gender))
-        }
-        else if(path !== "/shop" && path !== "/women" && path !== "/men" && path !== "/kids" && typeof path === "string" ){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , "", "", search_options.gender))
-        }
-    }
+   
     }
 
     // toggle filter options
