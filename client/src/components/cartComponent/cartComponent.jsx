@@ -6,6 +6,18 @@ import { TrashFill, HeartFill, Plus, Dash } from "react-bootstrap-icons"
 const CartComponent = () => {
     const { cart } = useSelector(state => state.cart)
   const dispatch = useDispatch()
+
+
+  // cart
+  const cart_items_adjust = (id, quantity) => {
+    if (id && quantity) {
+        // dispatch(addItemsToCartAction(id, quantity))
+        dispatch(Cart_qty_adjust(id,quantity))
+    }
+    else {
+        alert.error("something went wrong !")
+    }
+}
   
     return (
         <div className="row" style={{ gap: "0", height:"100vh" }}>
@@ -56,16 +68,16 @@ const CartComponent = () => {
                         <div className="col-4 mb-4 mb-lg-0 p-0" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent:"center", alignContent:"center", gap: "1px" }}>
                           {/* <!-- Quantity --> */}
                           <div className="d-flex mb-4 mt-2 align-items-end">
-                          <button onClick={() => dispatch(Cart_qty_adjust(cv._id, "-"))} type="button" className="btn btn-primary btn-sm m-0 p-1" data-mdb-toggle="tooltip">
+                          <button onClick={() => cart_items_adjust(cv._id, -1)} disabled={cv.qty > 1 ? false : true} type="button" className="btn btn-primary btn-sm m-0 p-1" data-mdb-toggle="tooltip">
                               <Dash />
                             </button>
 
                             <div className="form-outline p-0" style={{border:"none"}} >
-                              <div id="form1 p-0" min="0" name="quantity" style={{ textAlign: "center", width: "max-content", maxWidth: "70px", fontSize:"80%", border:"none" }} type="number" className="form-control rounded-0" >{cv.qty}</div>
+                              <div id="form1 p-0" min="0" name="quantity" style={{ textAlign: "center", width: "max-content", maxWidth: "70px", fontSize:"80%", border:"none" }} type="number" className="form-control rounded-0" >{cv.qty}{console.log(cv)}</div>
 
                             </div>
 
-                            <button type="button" onClick={() => dispatch(Cart_qty_adjust(cv._id, "+"))} className="btn btn-primary btn-sm m-0 p-1" data-mdb-toggle="tooltip" title="Move to the wish list">
+                            <button type="button" onClick={() =>  cart_items_adjust(cv._id, 1)} disabled={cv.stock > cv.qty ? false : true} className="btn btn-primary btn-sm m-0 p-1" data-mdb-toggle="tooltip" title="Move to the wish list">
                               <Plus />
                             </button>
                           </div>

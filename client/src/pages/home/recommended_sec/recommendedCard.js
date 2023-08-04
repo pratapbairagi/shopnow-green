@@ -2,13 +2,24 @@ import { NavLink } from "react-router-dom";
 import "./recommendedCard.scss";
 import { CartPlus, EyeFill, CartCheck } from "react-bootstrap-icons"
 import { useDispatch, useSelector } from "react-redux";
-import { Add_to_cart_action } from "../../../redux/cart/cartAction";
+import { Add_to_cart_action, Cart_qty_adjust } from "../../../redux/cart/cartAction";
 
 
 const RecommendedCard = ({ products }) => {
 	const dispatch = useDispatch()
 
 	const {cart} = useSelector(state=> state.cart)
+
+	 // cart
+	 const addToCart = (id, quantity) => {
+		if (id && quantity) {
+			// dispatch(addItemsToCartAction(id, quantity))
+			dispatch(Add_to_cart_action(id,quantity))
+		}
+		else {
+			alert.error("something went wrong !")
+		}
+	}
 	return (
 		<div className="product-card">
 			<div className="recommended_badge">Hot</div>
@@ -36,7 +47,7 @@ const RecommendedCard = ({ products }) => {
 							<CartCheck fill="green" />
 						</span>
 							:
-							<span onClick={()=> dispatch(Add_to_cart_action(products._id)) } style={{ cursor: "pointer" }}>
+							<span onClick={()=> addToCart(products._id, 1) } style={{ cursor: "pointer" }}>
 								<CartPlus fill="#fbb72c" />
 							</span>
 						}

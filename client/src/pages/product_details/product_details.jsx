@@ -43,6 +43,35 @@ const Product_details = () => {
         console.log(e.target.value)
     }
 
+    // cart actions
+
+    const [quantity, setQuantity] = useState(1)
+
+    const cartQuantity = (e) => {
+
+        if (e === "+") {
+            if (quantity < product.stock) {
+                setQuantity(quantity + 1)
+            }
+        }
+        if (e === "-") {
+            if (quantity > 1) {
+                setQuantity(quantity - 1)
+            }
+        }
+    }
+
+    const addToCart = () => {
+        if (id && quantity) {
+            // dispatch(addItemsToCartAction(id, quantity))
+            dispatch(Add_to_cart_action(product._id,quantity))
+        }
+        else {
+            alert.error("something went wrong !")
+        }
+    }
+
+
     // cart
     const { cart } = useSelector(state => state.cart)
 
@@ -122,34 +151,31 @@ const Product_details = () => {
                         <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
                             <h6 className="title-attr"><small>QUANTITY</small></h6>
                             <div style={{ width: "50%", display: "flex", justifyContent: "flex-start" }}>
-                                {cart.find(v => v._id === product._id) && typeof cart.find(v => v._id === product._id).qty === "number" && cart.find(v => v._id === product._id).qty > 0 &&
-                                <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "-")) }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
-                                    -
-                                </button>}
-                               
-                              <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{cart.find(v => v._id === product._id)?.qty}</div>
-                                
-                                {cart.find(v => v._id === product._id) && typeof cart.find(v => v._id === product._id).qty === "number" && cart.find(v => v._id === product._id).qty > 0 &&
-                                <button onClick={() => { return dispatch(Cart_qty_adjust(product._id, "+")) }} disabled={cart.find(v => v._id === product._id).qty < product.stock} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
-                                    +
-                                </button> }
+                                    <button onClick={() => { return cartQuantity("-") }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                        -
+                                    </button>
+
+                                <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{quantity}</div>
+
+                                    <button onClick={() => { return cartQuantity("+")}} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                        +
+                                    </button>
                             </div>
 
                         </div>
 
-                        <div className="section mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                            {cart.find(v => v._id === product._id) ? <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-success" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                        <div className="section mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "row", gap:"6px", alignItems: "center" }}>
+                    
+                            <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger" style={{ display: "flex", gap: "7px", width: "max-content" }}>
                                 <CartX style={{ fontSize: "120%" }} />
-                                Remove From Cart
                             </button>
-                                :
-                                <button onClick={() => dispatch(Add_to_cart_action(product._id))} className="btn btn-success" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                                    <CartPlus style={{ fontSize: "120%" }} />
-                                    Added To Cart
-                                </button>
-                            }
-                            <h6 className="mt-2"><a href="#home"><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Agregar a lista de deseos</a></h6>
+
+                            <button onClick={() => addToCart()} className="btn btn-success" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                            <CartPlus style={{ fontSize: "120%" }} />
+                            </button>
+
                         </div>
+                            <h6 className="mt-2"><a href="#home"><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Agregar a lista de deseos</a></h6>
                     </div>
 
                     <div className="col-xs-9">

@@ -2,7 +2,7 @@ import axios from "axios";
 import { ADD_TO_CART_FAIL, ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADJUST_CART_QTY_FAIL, ADJUST_CART_QTY_REQUEST, ADJUST_CART_QTY_SUCCESS, REMOVE_FROM_CART_FAIL, REMOVE_FROM_CART_REQUEST, REMOVE_FROM_CART_SUCCESS } from "./cardType"
 
 
-export const Add_to_cart_action = (id) => async (dispatch, getState) => {
+export const Add_to_cart_action = (id, qty) => async (dispatch, getState) => {
     try {
         dispatch({
             type : ADD_TO_CART_REQUEST
@@ -15,7 +15,7 @@ export const Add_to_cart_action = (id) => async (dispatch, getState) => {
         
         dispatch({
             type : ADD_TO_CART_SUCCESS,
-            payload :{ ...data.product, qty : 1}
+            payload :{ ...data.product, qty}
         });
 
         localStorage.setItem("cart", JSON.stringify(getState().cart.cart))
@@ -56,18 +56,18 @@ export const Remove_from_cart_action = (id) => async (dispatch, getState) => {
 }
 
 // cart qty adjust
-export const Cart_qty_adjust = (id, adjust) => async (dispatch, getSatet) => {
+export const Cart_qty_adjust = (id, qty) => async (dispatch, getSatet) => {
     try {
         dispatch({
             type : ADJUST_CART_QTY_REQUEST
         })
 
         // const {data} = await axios.get(`https://shopnow-server.vercel.app/website_ecommerce/app/api/product/${id}`)
-        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${id}`)
+        // const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${id}`)
 
         dispatch({
             type : ADJUST_CART_QTY_SUCCESS,
-            payload : {id : data.product._id, adjust : adjust}
+            payload : {id , qty}
         })
 
         localStorage.setItem("cart", JSON.stringify(getSatet().cart.cart))

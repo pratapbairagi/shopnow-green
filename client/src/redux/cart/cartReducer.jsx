@@ -7,6 +7,8 @@ export const Cart_reducer = (
         loading : false,
         success : false,
         cart : [],
+        qty: 0,
+        shippingInfo : {},
         error : null
     }, action) =>{
         switch(action.type){
@@ -16,16 +18,14 @@ export const Cart_reducer = (
                     loading : true
                 }
             case ADD_TO_CART_SUCCESS :
-                const item = state.cart.find(v=>v._id === action.payload._id);
-                console.log(item)
-                console.log(action.payload)
+                const item = state.cart.find((v)=>{ return v._id === action.payload._id});
 
                 if(item){
                 return {
                     ...state,
                     success : true,
                     loading : false,
-                    cart : state.cart.map(v=> v._id === item._id ? action.payload : v)
+                    cart : state.cart.map(v=> v._id === action.payload._id ? action.payload : v)
                 }
             }
             else{
@@ -65,7 +65,7 @@ export const Cart_reducer = (
                 ...state,
                 loading : false,
                 success : true,
-                cart : state.cart.map(v=> v._id === action.payload.id ? {...v, qty : action.payload.adjust === "+" ? v.qty+=+1 : v.qty+=-1} : v)
+                cart : state.cart.map(v=> v._id === action.payload.id ? {...v, qty : v.qty += +action.payload.qty} : v)
             }
 
             default : return state
