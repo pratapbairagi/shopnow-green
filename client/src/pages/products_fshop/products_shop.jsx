@@ -285,7 +285,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
                                                 </select>
                                             </div>
-                                            <button onClick={() => productCheck("submit") } className="btn btn-primary mt-2 mx-auto" type="submit" style={{ width: "90%" }}>Filter</button>
+                                            <button onClick={() => productCheck("submit") } className="btn btn-primary mt-2 mx-auto" type="button" style={{ width: "90%" }}>Filter</button>
                                         </form>
 
                                     </div>
