@@ -23,8 +23,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     const { cart } = useSelector(state => state.cart);
 
     useEffect(() => {
-        path ? productCheck(path) : productCheck();
-
+        // path ? productCheck(path) : productCheck();
+        productCheck()
     }, [search_options, path]);
 
     const [productz, setProductz] = useState([])
@@ -105,21 +105,21 @@ const ProductsShop = ({search_options, setSearch_options}) => {
         }
     }, [product, productz])
 
-    const productCheck = (path) => {
-        if(path === "/shop"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+    const productCheck = (v) => {
+         if(path === "/shop"){
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "", v === "submit" ? search_options.color : "", v === "submit" ? search_options.size : "", search_options.gender))
         }
         else if(path === "/women"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "", v === "submit" ? search_options.color : "", v === "submit" ? search_options.size  : "", "f"))
         }
         else if(path === "/men"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "", v === "submit" ? search_options.color : "", v === "submit" ? search_options.size : "", "m"))
         }
         else if(path === "/kids"){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, v === "submit" ? search_options.brand : "", v === "submit" ? search_options.color : "", "Y", search_options.gender))
         }
         else if(path !== "/shop" && path !== "/women" && path !== "/men" && path !== "/kids" && typeof path === "string" ){
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , search_options.color, search_options.size, search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , v === "submit" ? search_options.color : "" , v === "submit" ? search_options.size : "", search_options.gender))
 
         }
     }
@@ -234,11 +234,6 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                             <div className="form-group mt-2">
                                                 <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Brand</label>
                                                 <select onChange={(e) => setSearch_options({ ...search_options, brand: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
-                                                    {/* {
-                                                        brands.map((pv, pi) => {
-                                                            return <option key={pi} value={pv}>{pv}</option>
-                                                        })
-                                                    } */}
 
                                                     {
                                                         localStorage.getItem("brands") && JSON.parse(localStorage.getItem("brands")).map((pv, pi) => {
@@ -246,17 +241,11 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                                         })
                                                     }
                                                 </select>
-                                                {/* <span className="customSelect form-control" style={{display: "inline-block"}}>
-                            <span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>Wallmart</span></span> */}
+                                                
                                             </div>
                                             <div className="form-group mt-2">
                                                 <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Color</label>
                                                 <select onChange={(e) => setSearch_options({ ...search_options, color: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
-                                                    {/* {
-                                                        colors.map((pcv, pci) => {
-                                                            return <option key={pci} value={pcv}>{pcv}</option>
-                                                        })
-                                                    } */}
 
                                                     {
                                                         localStorage.getItem("colors") && JSON.parse(localStorage.getItem("colors")).map((pcv, pci) => {
@@ -264,10 +253,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                                         })
                                                     }
                                                 </select>
-                                                {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>White</span></span> */}
                                             </div>
                                             <div className="form-group mt-2">
-                                                <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Type</label>
+                                                <label style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Size</label>
                                                 <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
 
                                                     {
@@ -277,9 +265,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                                     }
 
                                                 </select>
-                                                {/* <span className="customSelect form-control" style={{display: "inline-block"}}><span className="customSelectInner" style={{width: "209px", display: "inline-block"}}>Small</span></span> */}
                                             </div>
-                                            <button className="btn btn-primary mt-2 mx-auto" type="submit" style={{ width: "90%" }}>Filter</button>
+                                            <button onClick={() => productCheck("submit") } className="btn btn-primary mt-2 mx-auto" type="submit" style={{ width: "90%" }}>Filter</button>
                                         </form>
 
                                     </div>
