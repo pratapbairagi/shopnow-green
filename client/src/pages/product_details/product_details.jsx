@@ -64,7 +64,7 @@ const Product_details = () => {
     const addToCart = () => {
         if (id && quantity) {
             // dispatch(addItemsToCartAction(id, quantity))
-            dispatch(Add_to_cart_action(product._id,quantity))
+            dispatch(Add_to_cart_action(product._id, quantity))
         }
         else {
             alert.error("something went wrong !")
@@ -151,31 +151,38 @@ const Product_details = () => {
                         <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
                             <h6 className="title-attr"><small>QUANTITY</small></h6>
                             <div style={{ width: "50%", display: "flex", justifyContent: "flex-start" }}>
-                                    <button onClick={() => { return cartQuantity("-") }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
-                                        -
-                                    </button>
+                            <button onClick={() => dispatch(Remove_from_cart_action(product._id))} disabled={ cart.find(v=> v._id === product._d)?.qty > 0 ? false : true } className="btn btn-danger btn-sm" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                                <CartX style={{ fontSize: "120%" }} />
+                            </button>
+                                <button onClick={() => { return cartQuantity("-") }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                    -
+                                </button>
 
                                 <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{quantity}</div>
 
-                                    <button onClick={() => { return cartQuantity("+")}} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
-                                        +
-                                    </button>
+                                <button onClick={() => { return cartQuantity("+") }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                    +
+                                </button>
+
+                                <button onClick={() => addToCart()} className="btn btn-success btn-sm" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                                    <CartPlus style={{ fontSize: "90%" }} />
+                                </button>
                             </div>
 
                         </div>
 
-                        <div className="section mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "row", gap:"6px", alignItems: "center" }}>
-                    
-                            <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                        <div className="mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "row", gap: "6px", alignItems: "center", justifyContent: "center", width: "100%" }}>
+
+                            {/* <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger" style={{ display: "flex", gap: "7px", width: "max-content" }}>
                                 <CartX style={{ fontSize: "120%" }} />
                             </button>
 
                             <button onClick={() => addToCart()} className="btn btn-success" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                            <CartPlus style={{ fontSize: "120%" }} />
-                            </button>
+                                <CartPlus style={{ fontSize: "120%" }} />
+                            </button> */}
 
+                        <h6 className="mt-2"><a href="#home"><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Agregar a lista de deseos</a></h6>
                         </div>
-                            <h6 className="mt-2"><a href="#home"><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Agregar a lista de deseos</a></h6>
                     </div>
 
                     <div className="col-xs-9">
