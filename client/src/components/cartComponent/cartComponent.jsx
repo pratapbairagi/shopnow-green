@@ -73,7 +73,7 @@ const CartComponent = () => {
                             </button>
 
                             <div className="form-outline p-0" style={{border:"none"}} >
-                              <div id="form1 p-0" min="0" name="quantity" style={{ textAlign: "center", width: "max-content", maxWidth: "70px", fontSize:"80%", border:"none" }} type="number" className="form-control rounded-0" >{cv.qty}{console.log(cv)}</div>
+                              <div id="form1 p-0" min="0" name="quantity" style={{ textAlign: "center", width: "max-content", maxWidth: "70px", fontSize:"80%", border:"none" }} type="number" className="form-control rounded-0" >{cv.qty}</div>
 
                             </div>
 
