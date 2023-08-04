@@ -24,6 +24,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     const [filterValues, setFilterValues] = useState({
         brand :"", color :"", size:""
     })
+    const [filterPrice, setFilterPrice] = useState({
+        from :0, to :9999999
+    })
 
 
     useEffect(() => {
@@ -142,6 +145,14 @@ const ProductsShop = ({search_options, setSearch_options}) => {
         })
     }
 
+    // search filter
+    const filterPriceHandler = () => {
+        setSearch_options({
+            ...search_options,
+            price : filterPrice
+        })
+    }
+
     return (
         <>
             <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%", overflowX:"hidden" }}>
@@ -226,12 +237,11 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                     </header>
 
                                     <div className={`panel-body  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Price" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
-                                        <input className="col col-10 text-center" defaultValue="0" onChange={(e) => setSearch_options({ ...search_options, price: { from: e.target.value } })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%" }} type="number" name="" id="" />
-                                        <span className="col-6"> From : {search_options.price.from}</span>
-                                        <span className="col col-6"> To : {search_options.price.to}</span>
-                                        <input className="col col-10 text-center" defaultValue="99999" onChange={(e) => setSearch_options({ ...search_options, price: { to: e.target.value } })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%" }} type="number" name="" id="" />
+                                        <input className="col col-10 text-center" defaultValue="0" onChange={(e) => setFilterPrice({ ...filterPrice, from : e.target.value })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%" }} type="number" name="" id="" />
+                                        
+                                        <input className="col col-10 text-center mt-2" defaultValue="9999999" onChange={(e) => setFilterPrice({ ...filterPrice, to: e.target.value })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%" }} type="number" name="" id="" />
 
-                                        {/* <button className="btn btn-success mx-auto" style={{maxWidth:"90"}}>Search</button> */}
+                                        <button onClick={filterPriceHandler} className="btn btn-success mx-auto mt-3" style={{maxWidth:"90"}}>Search</button>
 
                                     </div>
                                 </section>
