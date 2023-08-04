@@ -122,20 +122,10 @@ const ProductsShop = ({search_options, setSearch_options}) => {
             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1) , search_options.color, search_options.size, search_options.gender))
 
         }
-
-
-
-
-
-
     }
 
     // toggle filter options
     const [toggleFilters, setToggleFilters] = useState(null);
-
-
-
-
 
     return (
         <>
@@ -302,32 +292,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                     <header onClick={(e) => setToggleFilters(toggleFilters !== "Category" ? e.currentTarget.innerText : null)} className="panel-heading p-2" style={{ borderRadius: "6px", fontWeight: "500", textAlign: "center", fontSize: "80%", display: "flex", justifyContent: "center", alignItems: "center", gap: "6px" }}>
                                         <FilterRight size="12px" />  Sort
                                     </header>
-                                    {/* <div className={`panel-body  bottom-0 start-0 p-0 m-0 ${toggleFilters === "Category" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
-                                        <ul className="nav prod-cat px-0 m-0" style={{ minHeight: "max-content", height: "max-content", width: "100%" }}>
-                                            <li className="panel-body-li" style={{ width: "100%", minWidth: "100%", height: "max-content", minHeight: "20vh", maxHeight: "45vh", overflowY: "auto", padding: "5% 10% 4% 10%", background: "white", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent:"flex-start", gap: "4px" }}>
-
-                                                {localStorage.getItem("categories") && JSON.parse(localStorage.getItem("categories")).map((c, i) => {
-                                                    return <span className="p-0 m-0" key={i} style={{ display: "flex", width:"100%", maxWidth:"100%", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "6px" }}>
-                                                        <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.category !== c ? "white" : "green"}`, color: "white", border: "1px solid grey", borderRadius: "3px" }}>
-                                                            <input type="radio" value={c} name="category" onChange={(e) => setSearch_options({ ...search_options, category: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
-                                                            {
-                                                                search_options.category !== `${c}` ?
-                                                                    <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px" }}></span>
-                                                                    :
-                                                                    <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px", display: "grid", placeItems: "center", backgroundColor: "green", color: "whitesmoke" }}>
-                                                                        <Check size="100%" />
-                                                                    </span>
-                                                            }
-
-                                                        </button>
-                                                        <p className="p-0 m-0" style={{ fontSize: "12px", fontWeight: "500", color: "grey" }}>{c.length > 0 ? c : "All"}</p>
-                                                    </span>
-                                                })
-                                                }
-
-                                            </li>
-                                        </ul>
-                                    </div> */}
+                                
                                 </section>
                             </div>
                         </div>
@@ -359,10 +324,10 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                                 <img src={v.images[0].url} alt={v.images[0].url} />
                                             </NavLink>
                                             {cart.filter(cv => cv._id === v._id)[0] !== undefined ?
-                                                <button onClick={() => dispatch(Remove_from_cart_action(v._id))} className="adtocart" style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "green" }}>
+                                                <button onClick={() => dispatch(Remove_from_cart_action(v._id, -1))} className="adtocart" style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "green" }}>
                                                     <CartCheck style={{ marginBottom: "2px", fontSize: "120%" }} />
                                                 </button> :
-                                                <button onClick={() => dispatch(Add_to_cart_action(v._id))} className="adtocart" style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "red" }}>
+                                                <button onClick={() => dispatch(Add_to_cart_action(v._id, 1)) } className="adtocart" style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "red" }}>
                                                     <CartPlus style={{ marginBottom: "2px", fontSize: "120%" }} />
                                                 </button>
                                             }

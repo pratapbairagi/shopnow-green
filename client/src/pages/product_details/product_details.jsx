@@ -85,7 +85,7 @@ const Product_details = () => {
 
 
 
-                        <div style={{ width: "90%", display: "flex", justifyContent: "center", gap: "6px", padding: "3px 0px", maxWidth: "90%", overflow: "auto", margin: "0 auto", marginTop: "6px" }}>
+                        <div style={{ width: "90%", display: "flex", justifyContent: "left", gap: "6px", padding: "3px 0px", maxWidth: "90%", overflow: "auto", margin: "0 auto", marginTop: "6px" }}>
                             {success && product?.images?.map((img, index) => {
 
                                 return (
@@ -151,21 +151,21 @@ const Product_details = () => {
                         <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
                             <h6 className="title-attr"><small>QUANTITY</small></h6>
                             <div style={{ width: "50%", display: "flex", justifyContent: "flex-start" }}>
-                            <button onClick={() => dispatch(Remove_from_cart_action(product._id))} disabled={ cart.find(v=> v._id === product._d)?.qty > 0 ? false : true } className="btn btn-danger btn-sm" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                            <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
                                 <CartX style={{ fontSize: "120%" }} />
                             </button>
-                                <button onClick={() => { return cartQuantity("-") }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                <button onClick={() => { return cartQuantity("-") }} className="btn btn-primary  py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
                                     -
                                 </button>
 
                                 <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{quantity}</div>
 
-                                <button onClick={() => { return cartQuantity("+") }} className="btn btn-success py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                <button onClick={() => { return cartQuantity("+") }} className="btn btn-primary py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
                                     +
                                 </button>
 
-                                <button onClick={() => addToCart()} className="btn btn-success btn-sm" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                                    <CartPlus style={{ fontSize: "90%" }} />
+                                <button onClick={() => addToCart()} className="btn btn-success btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                                    <CartPlus style={{ fontSize: "120%" }} />
                                 </button>
                             </div>
 
