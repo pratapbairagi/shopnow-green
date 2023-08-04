@@ -32,8 +32,8 @@ const RecommendedCard = ({ products }) => {
 				<h4><NavLink to={`/details/${products._id}`} title={products.title} className="p-0 px-1 m-0" style={{width:"max-content", maxWidth:"100%", display:"-webkit-box", overflow:"hidden", WebkitLineClamp:"2", WebkitBoxOrient:"vertical"}} >{products.title}</NavLink></h4>
 
 				<div className="product-bottom-details">
-					<div className="product-price">
-						<small>${products.price+20}</small>
+					<div className="product-price" style={{lineHeight:"100%"}}>
+						<small>${products.price+100}</small>
 						<strong>${products.price}/-</strong>
 					</div>
 					<div className="product-links">

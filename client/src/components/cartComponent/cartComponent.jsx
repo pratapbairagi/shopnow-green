@@ -135,7 +135,7 @@ const CartComponent = () => {
 
 
 
-              <div className="card p-0 m-0" style={{ width: "100%", minWidth:"100%", height: "max-content", marginBottom: "10px", margin:"auto", borderRadius:"0" }}>
+              <div className="card p-0 m-0" style={{ width: "100%", minWidth:"100%", height: "max-content",maxHeight:"25vh", margin:"auto", borderRadius:"0" }}>
                 <div className="card-header py-2">
                   <h5 className="mb-0 py-0" style={{ fontSize: "80%" }}>Summary</h5>
                 </div>

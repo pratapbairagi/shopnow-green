@@ -5,6 +5,7 @@ import Category from "../../components/category/category"
 import Features from "../../components/features.js/features"
 // import LatestCard from "../latest_sec/latestCard"
 import Trending_sec from "../trending_sec/trendding_sec";
+import Features2 from "../../components/features.js/features2";
 
 
 
@@ -16,10 +17,10 @@ const Layout = ({cart}) => {
             <Features />
             <Category />
             <Trending_sec cart={cart}/>
-
-        {/* <LatestCard/> */}
         
             <Brands />
+
+            <Features2/>
 
 
         </>
