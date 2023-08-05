@@ -22,6 +22,8 @@ const Layout = ({cart}) => {
             <Trending_sec cart={cart}/>
             <Brands />
             <Features2/>
+                {/* <LatestSkeleton/>
+                <TrendSkeleton/> */}
         </>
     )
 }
