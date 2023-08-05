@@ -366,13 +366,13 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                                     <CartPlus style={{ marginBottom: "2px", fontSize: "120%" }} />
                                                 </button>
                                             } */}
-                                            <h6 className="mx-auto" style={{width:"90%", color:"grey", textAlign:"center", fontSize:"80%", letterSpacing:".2px", fontWeight:"600", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "1", WebkitBoxOrient: "vertical"}}>
+                                            <h6 className="mx-auto mt-2" style={{width:"90%", color:"grey", textAlign:"center", textTransform:"uppercase", fontSize:"85%", letterSpacing:".2px", fontWeight:"600", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "1", WebkitBoxOrient: "vertical"}}>
                                             {v.gender === "f" ? "WOMEN" : v.gender === "m" ? "MEN" : "KIDS"} , {v.category}
                                             </h6>
                                         </div>
 
-                                        <div className="panel-body position-relative text-center py-2">
-                                            <h4 className="py-1 pt-2 text-center m-0 mt-2">
+                                        <div className="panel-body position-relative text-center py-2 pt-0">
+                                            <h4 className="py-1 pt-0 text-center m-0 mt-0">
                                                 <span className="pro-title w-100 text-center p-0 m-0" style={{ maxWidth: "100%", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "1", WebkitBoxOrient: "vertical" }}>
                                                     {v.title}
                                                 </span>
