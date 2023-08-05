@@ -4,10 +4,12 @@ import { Cart_qty_adjust, Remove_from_cart_action } from "../../redux/cart/cartA
 import { TrashFill, HeartFill, Plus, Dash } from "react-bootstrap-icons"
 import EmptyCartComponent from "../emptyCartComponent/emptyCartComponent";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CartComponent = ({toggleCart}) => {
   const { cart } = useSelector(state => state.cart)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   // cart
   const cart_items_adjust = (id, quantity) => {
@@ -40,8 +42,9 @@ const CartComponent = ({toggleCart}) => {
 
                           <div className="col-3 col-lg-3 m-0">
                             {/* <!-- Image --> */}
-                            <div className=" rounded p-0" style={{ width: "100%", overflow: "hidden" }} data-mdb-ripple-color="light">
+                            <div className=" rounded p-0" style={{ width: "100%", cursor:"pointer", overflow: "hidden" }} data-mdb-ripple-color="light">
                               <img
+                                onClick={()=> navigate(`/details/${cv._id}`)}
                                 src={cv.images[0].url}
                                 alt={cv.title} style={{ width: "100%", height: "100%", maxHeight: "150px" }} />
                             </div>
