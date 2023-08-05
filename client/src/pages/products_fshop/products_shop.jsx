@@ -28,6 +28,13 @@ const ProductsShop = ({search_options, setSearch_options}) => {
         from :0, to :9999999
     })
 
+    console.log("loading", loading)
+    console.log("success", success)
+    console.log("error", error)
+    console.log("product", product)
+
+
+
 
     useEffect(() => {
         // path ? productCheck(path) : productCheck();
