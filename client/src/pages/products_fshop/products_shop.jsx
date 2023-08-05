@@ -35,11 +35,11 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     console.log("error", error)
     console.log("product", product)
 
-    useEffect(()=>{
-        if(loading && success){
-            dispatch(clear_success())
-        }
-    },[loading, success])
+    // useEffect(()=>{
+    //     if(loading && success){
+    //         dispatch(clear_success())
+    //     }
+    // },[loading, success])
 
 
 
