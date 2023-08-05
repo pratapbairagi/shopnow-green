@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./productsShop.scss";
-import { get_all_products_action } from "../../redux/product/product_actions";
+import { clear_success, get_all_products_action } from "../../redux/product/product_actions";
 import { useEffect, useState } from "react";
 import { CaretRight, CartCheck, CartPlus, Check2Circle, GenderAmbiguous, GenderFemale, GenderMale, FunnelFill, UiChecksGrid, CurrencyRupee, Check, FilterRight } from "react-bootstrap-icons"
 import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/cartAction";
 import { NavLink, useLocation } from "react-router-dom";
+import Spinner from "../../components/spinner/spinner";
+// import Spinner from "../../components/spinner/Spinner"
 
 
 const ProductsShop = ({search_options, setSearch_options}) => {
@@ -19,7 +21,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     },[pathname])
 
     const dispatch = useDispatch();
-    const { loading, success, error, product } = useSelector(state => state);
+    const { loading, success, error, product, products } = useSelector(state => state.product);
     const { cart } = useSelector(state => state.cart);
     const [filterValues, setFilterValues] = useState({
         brand :"", color :"", size:""
@@ -33,6 +35,11 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     console.log("error", error)
     console.log("product", product)
 
+    useEffect(()=>{
+        if(loading && success){
+            dispatch(clear_success())
+        }
+    },[loading, success])
 
 
 
@@ -41,18 +48,14 @@ const ProductsShop = ({search_options, setSearch_options}) => {
         productCheck()
     }, [search_options, path]);
 
-    const [productz, setProductz] = useState([])
-
     let uniqueCategory = new Set();
     let uniqueSize = new Set();
     let uniqueColor = new Set();
     let uniqueBrand = new Set();
 
     useEffect(() => {
-        if (product) {
 
-            if (product.products) {
-                setProductz(product.products)
+            if (products.length > 0) {
 
                 // function uniqueCat(value, index, array) {
                 //     return array.indexOf(value.category) === index
@@ -65,7 +68,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                 }
 
                 // store unique categories or remove duplicate categories
-                product.products.forEach((obj) => {
+                products.forEach((obj) => {
                     uniqueCategory.add(obj.category)
                 })
                 const categoryArray = Array.from(uniqueCategory);
@@ -80,7 +83,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                 }
 
                 // store unique sizes or remove duplicate sizes
-                product.products.forEach((obj) => {
+                products.forEach((obj) => {
                     obj.size.forEach((sizeObj) => {
                         uniqueSize.add(sizeObj.value.trim())
                     })
@@ -93,7 +96,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                 }
 
                 // store unique colors or remove duplicate colors
-                product.products.forEach((obj) => {
+                products.forEach((obj) => {
                     obj.color.forEach((colorObj) => {
                         uniqueColor.add(colorObj.value.trim())
                     })
@@ -106,7 +109,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                 }
 
                 // store unique colors or remove duplicate colors
-                product.products.forEach((obj) => {
+                products.forEach((obj) => {
                     uniqueBrand.add(obj.brand.trim())
                 })
                 const brandArray = Array.from(uniqueBrand);
@@ -115,9 +118,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                 if (localStorage.getItem("brands") === undefined || localStorage.getItem("brands") === null || JSON.parse(localStorage.getItem("brands"))?.length < brandArray.length) {
                     localStorage.setItem("brands", JSON.stringify(brandArray))
                 }
-            }
         }
-    }, [product, productz])
+    }, [products])
 
     const productCheck = () => {
           
@@ -357,7 +359,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                         </section>
 
                         <div className="row product-list" style={{ minHeight: "75vh", padding:"0 5px 0 7px" }}>
-                            {product.success && product.products.map((v, i) => {
+                            
+                            
+                            { loading ? <Spinner/> : success && products.map((v, i) => {
 
                                 return <div className="col col-6 col-md-4 col-lg-3 p-0 p-1" key={v._id} >
                                     <section className="panel p-0 p-1">
