@@ -145,15 +145,14 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                 size : filterValues.size
             })
         }
-        else if(type === "cancel"){
-            setSearch_options({
-                ...search_options,
-                brand : "",
-                color : "",
-                size : ""
-            })
-        }
-        
+        // if(type === "cancel"){
+        //     setSearch_options({
+        //         ...search_options,
+        //         brand : "",
+        //         color : "",
+        //         size : ""
+        //     })
+        // }
     }
 
     // search filter
@@ -164,15 +163,14 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                 price : filterPrice
             })
         }
-        else if (type === "cancel"){
-            setSearch_options({
-                ...search_options,
-                brand : "",
-                color: "", 
-                size : ""
-            })
-        }
-        
+        // if (type === "cancel"){
+        //     setSearch_options({
+        //         ...search_options,
+        //         brand : "",
+        //         color: "", 
+        //         size : ""
+        //     })
+        // }
     }
 
     return (
@@ -263,8 +261,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                         
                                         <input className="col col-10 text-center mt-1" defaultValue="9999999" onChange={(e) => setFilterPrice({ ...filterPrice, to: e.target.value })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%", fontSize:"80%", color:"grey" }} type="number" name="" id="" />
                                        
-                                        <button onClick={filterPriceHandler("cancel")} className="btn btn-danger btn-sm mx-auto mt-2 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Cancel</button>
-                                        <button onClick={filterPriceHandler("submit")} className="btn btn-primary btn-sm mx-auto mt-1 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Search</button>
+                                        <button onClick={()=>filterPriceHandler("cancel")} className="btn btn-danger btn-sm mx-auto mt-2 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Cancel</button>
+                                        <button onClick={()=>filterPriceHandler("submit")} className="btn btn-primary btn-sm mx-auto mt-1 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Search</button>
 
                                     </div>
                                 </section>
@@ -317,8 +315,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
                                                 </select>
                                             </div>
-                                            <button onClick={ submitFilter("cancel") } className="btn btn-sm btn-danger mt-2 mx-auto rounder-0" style={{ width: "90%" }}>Cancel</button>
-                                            <button onClick={ submitFilter("submit") } className="btn btn-sm btn-primary mt-1 mx-auto rounded-1" style={{ width: "90%" }}>Filter</button>
+                                            {/* <button onClick={ ()=> submitFilter("cancel") } className="btn btn-sm btn-danger mt-2 mx-auto rounder-0" style={{ width: "90%" }}>Cancel</button> */}
+                                            <button onClick={ ()=> submitFilter("submit") } className="btn btn-sm btn-primary mt-1 mx-auto rounded-1" style={{ width: "90%" }}>Filter</button>
                                         </div>
 
                                     </div>
