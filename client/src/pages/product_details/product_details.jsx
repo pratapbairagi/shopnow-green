@@ -17,13 +17,6 @@ const Product_details = () => {
     const dispatch = useDispatch();
     const { loading, error, product, success } = useSelector((state) => state.product)
     const [load, setLoad] = useState(false)
-    
-    // loading status
-    // useEffect(()=>{
-    //     if( success || products.length > 0 ){
-    //         setLoad(false)
-    //     }
-    // },[loading, success, products])
 
     useEffect(() => {
         if (id !== undefined && id !== null) {
@@ -56,7 +49,6 @@ const Product_details = () => {
     }
 
     // cart actions
-
     const [quantity, setQuantity] = useState(1)
 
     const cartQuantity = (e) => {
@@ -75,7 +67,6 @@ const Product_details = () => {
 
     const addToCart = () => {
         if (id && quantity) {
-            // dispatch(addItemsToCartAction(id, quantity))
             dispatch(Add_to_cart_action(product._id, quantity))
         }
         else {
@@ -84,13 +75,15 @@ const Product_details = () => {
     }
 
 
-    // cart
-    const { cart } = useSelector(state => state.cart)
-
     return (
         <div className="px-0 " style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin: "auto" }}>
             
-           { load ? <Spinner/> : success && <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
+           { load ? 
+           <> 
+           <div className="bg-light" style={{width:"100%", minWidth:"100%", minHeight:"100vh"}}></div>
+           <Spinner/> 
+           </>
+           : success && <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
                 <div className="row px-0 m-auto" style={{ maxWidth: "100%" }}>
                     <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight: "90vh" }}>
 
