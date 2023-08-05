@@ -28,18 +28,19 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     })
     const [filterPrice, setFilterPrice] = useState({
         from :0, to :9999999
-    })
+    });
+    const [load, setLoad] = useState(false)
 
     console.log("loading", loading)
     console.log("success", success)
     console.log("error", error)
     console.log("product", product)
 
-    // useEffect(()=>{
-    //     if(loading && success){
-    //         dispatch(clear_success())
-    //     }
-    // },[loading, success])
+    useEffect(()=>{
+        if( success){
+            setLoad(false)
+        }
+    },[loading, success])
 
 
 
@@ -122,7 +123,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     }, [products])
 
     const productCheck = () => {
-          
+          setLoad(true)
          if(path === "/shop"){
             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand ,search_options.color , search_options.size , search_options.gender))
         }
@@ -146,6 +147,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
     // submit filter
     const submitFilter = () => {
+        setLoad(true)
             setSearch_options({
                 ...search_options,
                 brand : filterValues.brand,
@@ -155,6 +157,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     }
 
     const submitFilterCancel = () => {
+        setLoad(true)
             setSearch_options({
                 ...search_options,
                 brand : "",
@@ -165,12 +168,14 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
     // search filter
     const filterPriceHandler = () => {
+        setLoad(true)
             setSearch_options({
                 ...search_options,
                 price : filterPrice
             })
     }
     const filterPriceCanelHandler = () =>{
+        setLoad(true)
             setSearch_options({
                 ...search_options,
                 price : {
@@ -361,7 +366,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                         <div className="row product-list" style={{ minHeight: "75vh", padding:"0 5px 0 7px" }}>
                             
                             
-                            { loading ? <Spinner/> : success && products.map((v, i) => {
+                            { load ? <Spinner/> : success && products.map((v, i) => {
 
                                 return <div className="col col-6 col-md-4 col-lg-3 p-0 p-1" key={v._id} >
                                     <section className="panel p-0 p-1">
