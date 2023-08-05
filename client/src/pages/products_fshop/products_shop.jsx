@@ -173,7 +173,7 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
     return (
         <>
-            <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%", overflowX:"hidden" }}>
+            <div className="container bootdey bg-light py-2 mt-0" style={{ width: "100%", overflowX:"hidden", maxWidth:"1200" }}>
                 <div className="row p-0 px-3" style={{overflowX:"hidden"}}>
 
                     <div className="col col-12 col-md-3 col-lg-2 p-0 px-md-1">
@@ -358,14 +358,17 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                             <NavLink to={`details/${v._id}`}>
                                                 <img src={v.images[0].url} alt={v.images[0].url} />
                                             </NavLink>
-                                            {cart.filter(cv => cv._id === v._id)[0] !== undefined ?
+                                            {/* {cart.filter(cv => cv._id === v._id)[0] !== undefined ?
                                                 <button onClick={() => dispatch(Remove_from_cart_action(v._id, -1))} className="adtocart" style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "green" }}>
                                                     <CartCheck style={{ marginBottom: "2px", fontSize: "120%" }} />
                                                 </button> :
                                                 <button onClick={() => dispatch(Add_to_cart_action(v._id, 1)) } className="adtocart" style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "red" }}>
                                                     <CartPlus style={{ marginBottom: "2px", fontSize: "120%" }} />
                                                 </button>
-                                            }
+                                            } */}
+                                            <h6 className="mx-auto" style={{width:"90%", color:"grey", textAlign:"center", fontSize:"80%", letterSpacing:".2px", fontWeight:"600", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "1", WebkitBoxOrient: "vertical"}}>
+                                            {v.gender === "f" ? "WOMEN" : v.gender === "m" ? "MEN" : "KIDS"} , {v.category}
+                                            </h6>
                                         </div>
 
                                         <div className="panel-body position-relative text-center py-2">
