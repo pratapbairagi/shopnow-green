@@ -8,6 +8,7 @@ import Recomended_products from "./recomended_products/recomended_products";
 import ReviewProduct from "./review_product/review_product";
 import { CartPlus, CartX } from "react-bootstrap-icons";
 import { Add_to_cart_action, Cart_qty_adjust, Remove_from_cart_action } from "../../redux/cart/cartAction";
+import Spinner from "../../components/spinner/spinner";
 
 
 
@@ -89,7 +90,7 @@ const Product_details = () => {
     return (
         <div className="px-0 " style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin: "auto" }}>
             
-           { load ? <Spinn/> : success && <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
+           { load ? <Spinner/> : success && <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
                 <div className="row px-0 m-auto" style={{ maxWidth: "100%" }}>
                     <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight: "90vh" }}>
 
