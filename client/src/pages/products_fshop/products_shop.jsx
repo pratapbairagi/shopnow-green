@@ -37,10 +37,10 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     console.log("product", product)
 
     useEffect(()=>{
-        if( success){
+        if( success || products.length > 0 ){
             setLoad(false)
         }
-    },[loading, success])
+    },[loading, success, products])
 
 
 
