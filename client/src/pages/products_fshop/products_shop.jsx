@@ -136,41 +136,39 @@ const ProductsShop = ({search_options, setSearch_options}) => {
     const [toggleFilters, setToggleFilters] = useState(null);
 
     // submit filter
-    const submitFilter = (type) => {
-        if(type === "submit"){
+    const submitFilter = () => {
             setSearch_options({
                 ...search_options,
                 brand : filterValues.brand,
                 color : filterValues.color,
                 size : filterValues.size
             })
-        }
-        // if(type === "cancel"){
-        //     setSearch_options({
-        //         ...search_options,
-        //         brand : "",
-        //         color : "",
-        //         size : ""
-        //     })
-        // }
+    }
+
+    const submitFilterCancel = () => {
+            setSearch_options({
+                ...search_options,
+                brand : "",
+                color : "",
+                size : ""
+        })
     }
 
     // search filter
-    const filterPriceHandler = (type) => {
-        if(type === "submit"){
+    const filterPriceHandler = () => {
             setSearch_options({
                 ...search_options,
                 price : filterPrice
             })
-        }
-        // if (type === "cancel"){
-        //     setSearch_options({
-        //         ...search_options,
-        //         brand : "",
-        //         color: "", 
-        //         size : ""
-        //     })
-        // }
+    }
+    const filterPriceCanelHandler = () =>{
+            setSearch_options({
+                ...search_options,
+                price : {
+                    from : 0,
+                    to : 9999999
+                }
+            })
     }
 
     return (
@@ -256,13 +254,13 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                         <CurrencyRupee size="10px" /> Price
                                     </header>
 
-                                    <div className={`panel-body row  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Price" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white", columnGap:"5px" }}>
+                                    <div className={`panel-body row g-1  bottom-0 start-0 p-0 py-2 m-0 ${toggleFilters === "Price" ? "d-block" : "d-none"} d-md-block`} style={{ left: "0", minHeight: "max-content", zIndex: "3", height: "max-content", width: "100%", background: "white" }}>
                                         <input className="col col-10 text-center" defaultValue="0" onChange={(e) => setFilterPrice({ ...filterPrice, from : e.target.value })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%", fontSize:"80%", color:"grey" }} type="number" name="" id="" />
                                         
                                         <input className="col col-10 text-center mt-1" defaultValue="9999999" onChange={(e) => setFilterPrice({ ...filterPrice, to: e.target.value })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%", fontSize:"80%", color:"grey" }} type="number" name="" id="" />
                                        
-                                        <button onClick={()=>filterPriceHandler("cancel")} className="btn btn-danger btn-sm mx-auto mt-2 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Cancel</button>
-                                        <button onClick={()=>filterPriceHandler("submit")} className="btn btn-primary btn-sm mx-auto mt-1 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Search</button>
+                                        <button onClick={()=>filterPriceCanelHandler()} className="btn btn-danger btn-sm mx-auto mt-2 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Cancel</button>
+                                        <button onClick={()=>filterPriceHandler()} className="btn btn-primary btn-sm mx-auto mt-1 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Search</button>
 
                                     </div>
                                 </section>
@@ -315,8 +313,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
                                                 </select>
                                             </div>
-                                            {/* <button onClick={ ()=> submitFilter("cancel") } className="btn btn-sm btn-danger mt-2 mx-auto rounder-0" style={{ width: "90%" }}>Cancel</button> */}
-                                            <button onClick={ ()=> submitFilter("submit") } className="btn btn-sm btn-primary mt-1 mx-auto rounded-1" style={{ width: "90%" }}>Filter</button>
+                                            <button onClick={ ()=> submitFilterCancel() } className="btn btn-sm btn-danger mt-2 mx-auto rounded-0" style={{ width: "90%" }}>Cancel</button>
+                                            <button onClick={ ()=> submitFilter() } className="btn btn-sm btn-primary mt-1 mx-auto rounded-0" style={{ width: "90%" }}>Filter</button>
                                         </div>
 
                                     </div>
