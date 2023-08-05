@@ -10,12 +10,12 @@ const SearchBar = ({toggleSearchBar, search_options, setSearch_options}) => {
     const {pathname} = useLocation()
     const [search, setSearch] = useState("")
 
-    // const submitSearch = () => {
-    //     if(search.length > 1 ){
-    //     setSearch_options({...search_options, name : search})
-    //     navigate("/shop")
-    //     }
-    // }
+    const submitSearch = () => {
+        if(search.length > 1 ){
+        setSearch_options({...search_options, name : search})
+        navigate("/shop")
+        }
+    }
 
 
 
@@ -31,7 +31,7 @@ const SearchBar = ({toggleSearchBar, search_options, setSearch_options}) => {
                 // e.target.value.length !== 0 && pathname !== "/shop" && navigate("/shop") 
                 // e.target.value.length === 0 && navigate(-1)
                 }} className="py-1 px-3" style={{height:"100%", outline:"none", borderRadius:"8px", borderTopRightRadius:"0", borderBottomRightRadius:"0", color:"grey",  width:"calc(100% - 30px)", display:"block", padding:"1px 6px"}} type="search" name="" id="" />
-            <button className="btn btn-success d-flex justify-content-center align-items-center "><Search size="20"/></button>
+            <button onClick={()=> submitSearch } className="btn btn-success d-flex justify-content-center align-items-center "><Search size="20"/></button>
             </div>
 
             <button onClick={()=> document.getElementById(toggleSearchBar).style.top = "-100%"} style={{width:"25px", height:"25px", position:"absolute", bottom:"12px", background:"transparent", right:"6px", display:"grid", placeItems:"center"}}>
