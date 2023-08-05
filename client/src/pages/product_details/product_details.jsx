@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { get_product_details } from "../../redux/product/product_actions";
+import { clear_success, get_product_details } from "../../redux/product/product_actions";
 import "./product_details.module.css";
 import Recomended_products from "./recomended_products/recomended_products";
 import ReviewProduct from "./review_product/review_product";
@@ -15,11 +15,20 @@ const Product_details = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const { loading, error, product, success } = useSelector((state) => state.product)
+    const [load, setLoad] = useState(false)
+    
+    // loading status
+    // useEffect(()=>{
+    //     if( success || products.length > 0 ){
+    //         setLoad(false)
+    //     }
+    // },[loading, success, products])
 
     useEffect(() => {
         if (id !== undefined && id !== null) {
             // const {data} = await axios.get(`http://localhost:5544/website_ecommerce/app/api/product/${id}`);
             dispatch(get_product_details(id))
+            setLoad(true)
         }
 
     }, [id, dispatch]);
@@ -28,6 +37,8 @@ const Product_details = () => {
     useEffect(() => {
         if (success && product?.images?.length > 0) {
             setImagePrev(product?.images[0].url)
+            setLoad(false)
+            // dispatch(clear_success)
         }
     }, [success, product])
 
@@ -77,7 +88,8 @@ const Product_details = () => {
 
     return (
         <div className="px-0 " style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin: "auto" }}>
-            <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
+            
+           { load ? <Spinn/> : success && <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
                 <div className="row px-0 m-auto" style={{ maxWidth: "100%" }}>
                     <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight: "90vh" }}>
 
@@ -173,14 +185,6 @@ const Product_details = () => {
 
                         <div className="mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "row", gap: "6px", alignItems: "center", justifyContent: "center", width: "100%" }}>
 
-                            {/* <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                                <CartX style={{ fontSize: "120%" }} />
-                            </button>
-
-                            <button onClick={() => addToCart()} className="btn btn-success" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                                <CartPlus style={{ fontSize: "120%" }} />
-                            </button> */}
-
                         <h6 className="mt-2"><a href="#home"><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Agregar a lista de deseos</a></h6>
                         </div>
                     </div>
@@ -223,7 +227,7 @@ const Product_details = () => {
                     </div>
 
                 </div>
-            </div>
+            </div> }
             <Recomended_products />
             <ReviewProduct />
         </div>

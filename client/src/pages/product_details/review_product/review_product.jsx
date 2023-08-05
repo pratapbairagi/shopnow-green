@@ -3,8 +3,8 @@ import "./review_product.module.scss"
 
 const ReviewProduct = () => {
     return(
-        <section className=" px-0 pb-4 " style={{maxWidth:"100%"}}>
-  <div className="row d-flex justify-content-center px-0" style={{maxWidth:"100%"}}>
+        <section className=" px-0 pb-4 mx-auto" style={{maxWidth:"100%"}}>
+  <div className="row d-flex justify-content-center px-0 mx-auto" style={{maxWidth:"100%"}}>
     <div className="col-md-10 col-xl-8 text-center px-0" style={{maxWidth:"100%"}}>
       <h3 className="mb-4">Our Cutomer Reviews</h3>
       {/* <p className="mb-4 pb-2 mb-md-5 pb-md-0">
