@@ -259,8 +259,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                         
                                         <input className="col col-10 text-center mt-1" defaultValue="9999999" onChange={(e) => setFilterPrice({ ...filterPrice, to: e.target.value })} style={{ opacity: "1", position: "relative", display: "block", border: "1px solid grey", left: "8%", fontSize:"80%", color:"grey", minHeight:"28px" }} type="number" name="" id="" />
                                        
-                                        <button onClick={()=>filterPriceCanelHandler()} className="btn btn-danger btn-sm mx-auto mt-2 mt-md-2 col-5 col-md-10 rounded-0" style={{maxWidth:"90"}}>Cancel</button>
-                                        <button onClick={()=>filterPriceHandler()} className="btn btn-primary btn-sm mx-auto mt-2 col-5 mt-md-1 col-md-10 rounded-0" style={{maxWidth:"90"}}>Search</button>
+                                        <button onClick={()=>filterPriceCanelHandler()} className="btn btn-danger btn-sm mx-auto mt-2 mt-md-2 col-5 col-md-10 rounded-0" style={{maxWidth:"90", border:"2px solid white", minHeight:"18px"}}>Cancel</button>
+                                        <button onClick={()=>filterPriceHandler()} className="btn btn-primary btn-sm mx-auto mt-2 col-5 mt-md-1 col-md-10 rounded-0" style={{maxWidth:"90", border:"2px solid white", minHeight:"18px"}}>Search</button>
 
                                     </div>
                                 </section>
@@ -276,9 +276,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                         <div>
 
                                             <div className="row mt-2">
-                                                <label  className="col" style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Brand</label>
-                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, brand: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}> */}
-                                                <select onChange={(e) => setFilterValues({ ...filterValues, brand: e.target.value })} className="form-control hasCustomSelect mx-auto col" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                <label  className="col col-10" style={{ fontWeight: "500", margin: "0 auto", textAlign: "left" }}>Brand</label>
+                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, brand: e.target.value })} className=" mx-auto" style={{ appearance: "menulist-button", height: "34px", fontSize: "12px" }}> */}
+                                                <select onChange={(e) => setFilterValues({ ...filterValues, brand: e.target.value })} className=" mx-auto col col-10" style={{ appearance: "menulist-button", height: "34px", fontSize: "12px" }}>
 
                                                     {
                                                         localStorage.getItem("brands") && JSON.parse(localStorage.getItem("brands")).map((pv, pi) => {
@@ -289,9 +289,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                                 
                                             </div>
                                             <div className="row mt-2">
-                                                <label className="col" style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Color</label>
-                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, color: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}> */}
-                                                <select onChange={(e) => setFilterValues({ ...filterValues, color: e.target.value })} className="form-control hasCustomSelect mx-auto col" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                <label className="col col-10" style={{ fontWeight: "500", margin: "0 auto", textAlign: "left" }}>Color</label>
+                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, color: e.target.value })} className=" mx-auto" style={{ appearance: "menulist-button", height: "34px", fontSize: "12px" }}> */}
+                                                <select onChange={(e) => setFilterValues({ ...filterValues, color: e.target.value })} className=" mx-auto col col-10" style={{ appearance: "menulist-button", height: "34px", fontSize: "12px" }}>
 
                                                     {
                                                         localStorage.getItem("colors") && JSON.parse(localStorage.getItem("colors")).map((pcv, pci) => {
@@ -301,9 +301,9 @@ const ProductsShop = ({search_options, setSearch_options}) => {
                                                 </select>
                                             </div>
                                             <div className="row mt-2">
-                                                <label className="col" style={{ fontWeight: "500", width: "90%", margin: "0 auto", textAlign: "left" }}>Size</label>
-                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className="form-control hasCustomSelect mx-auto" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}> */}
-                                                <select onChange={(e) => setFilterValues({ ...filterValues, size: e.target.value })} className="form-control hasCustomSelect mx-auto col" style={{ appearance: "menulist-button", width: "90%", height: "34px", fontSize: "12px" }}>
+                                                <label className="col col-10" style={{ fontWeight: "500", margin: "0 auto", textAlign: "left" }}>Size</label>
+                                                {/* <select onChange={(e) => setSearch_options({ ...search_options, size: e.target.value })} className=" mx-auto" style={{ appearance: "menulist-button", height: "34px", fontSize: "12px" }}> */}
+                                                <select onChange={(e) => setFilterValues({ ...filterValues, size: e.target.value })} className=" mx-auto col col-10" style={{ appearance: "menulist-button", height: "34px", fontSize: "12px" }}>
 
                                                     {
                                                         localStorage.getItem("sizes") && JSON.parse(localStorage.getItem("sizes")).map((psv, psi) => {
@@ -313,8 +313,8 @@ const ProductsShop = ({search_options, setSearch_options}) => {
 
                                                 </select>
                                             </div>
-                                            <button onClick={ ()=> submitFilterCancel() } className="btn btn-sm btn-danger mt-2 mx-auto rounded-0 col" style={{ width: "90%" }}>Cancel</button>
-                                            <button onClick={ ()=> submitFilter() } className="btn btn-sm btn-primary mt-1 mx-auto rounded-0 col" style={{ width: "90%" }}>Filter</button>
+                                            <button onClick={ ()=> submitFilterCancel() } className="btn btn-sm btn-danger mt-2 mx-auto rounded-0 col col-10" style={{ width: "90%" }}>Cancel</button>
+                                            <button onClick={ ()=> submitFilter() } className="btn btn-sm btn-primary mt-1 mx-auto rounded-0 col col-10" style={{ width: "90%" }}>Filter</button>
                                         </div>
 
                                     </div>
