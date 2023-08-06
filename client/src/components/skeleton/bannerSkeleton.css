@@ -1,9 +1,10 @@
 
+    .bannerSkeletonCol2{
+        height: 38vh;
+    }
+@media only screen and (min-width : 768px){
 .bannerSkeletonCol2{
     min-height: 68vh;
 }
-@media only screen and (max-width : 767px){
-    .bannerSkeletonCol2{
-        min-height: 38vh;
-    }
 }
+
