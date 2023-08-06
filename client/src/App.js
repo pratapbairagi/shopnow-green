@@ -23,7 +23,7 @@ function App() {
 
   const dispatch = useDispatch();
   const state = useSelector(state => state.user_register);
-
+  const [load, setLoad] = useState(false)
   const [search_options, setSearch_options] = useState({
     name: "",
     category: "",
@@ -57,7 +57,7 @@ function App() {
         <Navbar search_options={search_options} setSearch_options={setSearch_options} />
 
         <Routes>
-          <Route path='/' element={<Layout />} exact />
+          <Route path='/' element={<Layout load={load} setLoad={setLoad} />} exact />
           {/* <Route path='/about' element={<h4>About</h4>} /> */}
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details />} />

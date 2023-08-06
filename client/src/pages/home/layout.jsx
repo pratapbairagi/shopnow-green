@@ -9,18 +9,24 @@ import Features2 from "../../components/features.js/features2";
 import TrendSkeleton from "../../components/skeleton/trendSkeleton";
 import HotSkeleton from "../../components/skeleton/hotSkeleton";
 import LatestSkeleton from "../../components/skeleton/latestSkeleton";
+import HeadingBrandSkeleton from "../../components/skeleton/brandHeadingSkeleton";
+import BrandSkeleton from "../../components/skeleton/brandSkeleton";
+import HeadingCategorySkeleton from "../../components/skeleton/headingCategorySkeleton";
+import CategorySkeleton from "../../components/skeleton/categorySkeleton";
 
 
 
-const Layout = ({cart}) => {
+const Layout = ({cart, load, setLoad}) => {
 
     return (
         <>
             <Banner />
             <Features />
-            <Category />
-            <Trending_sec cart={cart}/>
-            <Brands />
+            <HeadingCategorySkeleton/>
+            <CategorySkeleton/>
+            <Category load={load} setLoad={setLoad} />
+            <Trending_sec cart={cart} load={load} setLoad={setLoad}/>
+            <Brands load={load} setLoad={setLoad} />
             <Features2/>
                 {/* <LatestSkeleton/>
                 <TrendSkeleton/> */}

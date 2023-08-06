@@ -13,10 +13,10 @@ import LatestSkeleton from "../../components/skeleton/latestSkeleton";
 
 
 
-const Trending_sec = () => {
+const Trending_sec = ({load, setLoad}) => {
   const dispatch = useDispatch()
   const { products, loading, success, error } = useSelector(state => state.product);
-  const [load, setLoad] = useState(false)
+  // const [load, setLoad] = useState(false)
   useEffect(() => {
     productCheck();
   }, []);

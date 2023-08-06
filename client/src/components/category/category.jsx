@@ -1,12 +1,17 @@
 import { ArrowRightShort } from "react-bootstrap-icons"
 import { NavLink, useNavigate } from "react-router-dom"
+import HeadingCategorySkeleton from "../skeleton/headingCategorySkeleton"
+import CategorySkeleton from "../skeleton/categorySkeleton"
 
 
-const Category = () => {
+const Category = ({ load }) => {
     const navigate = useNavigate()
     return (
         <div className="container-fluid py-4 category-container">
-            <h4 style={{ color: "var(--off-white)" }}>All New Collections</h4>
+            {load ? <HeadingCategorySkeleton /> :
+                <h4 style={{ color: "var(--off-white)" }}>All New Collections</h4>
+            }
+           { load ? <CategorySkeleton/> :
             <div className="row" >
                 <div className="col col-12 col-sm-12 col-md-5 p-5" style={{ padding: "16px", minHeight: "60vh", backgroundImage: "url('/images/kids-category.jpg')", backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
                     <h6 className="m-0" style={{ width: "100%", textAlign: "left" }}>All New Kids Collection</h6>
@@ -46,7 +51,7 @@ const Category = () => {
                     </div>
 
                 </div>
-            </div>
+            </div> }
         </div>
     )
 }
