@@ -22,8 +22,6 @@ const Layout = ({cart, load, setLoad}) => {
         <>
             <Banner />
             <Features />
-            <HeadingCategorySkeleton/>
-            <CategorySkeleton/>
             <Category load={load} setLoad={setLoad} />
             <Trending_sec cart={cart} load={load} setLoad={setLoad}/>
             <Brands load={load} setLoad={setLoad} />
