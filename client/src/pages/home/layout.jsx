@@ -13,6 +13,8 @@ import HeadingBrandSkeleton from "../../components/skeleton/brandHeadingSkeleton
 import BrandSkeleton from "../../components/skeleton/brandSkeleton";
 import HeadingCategorySkeleton from "../../components/skeleton/headingCategorySkeleton";
 import CategorySkeleton from "../../components/skeleton/categorySkeleton";
+import BannerSkeleton from "../../components/skeleton/bannerSkeleton";
+import FeaturesSkeleton from "../../components/skeleton/featuresSkeleton";
 
 
 
@@ -20,8 +22,8 @@ const Layout = ({cart, load, setLoad}) => {
 
     return (
         <>
-            <Banner />
-            <Features />
+            <Banner load={load} />
+            <Features load={load} />
             <Category load={load} setLoad={setLoad} />
             <Trending_sec cart={cart} load={load} setLoad={setLoad}/>
             <Brands load={load} setLoad={setLoad} />
