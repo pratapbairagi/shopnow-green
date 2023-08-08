@@ -12,24 +12,24 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
 
         if (productChange.color.length < 1 ) {
             colorOptions.push(c)
-            setProductChange([c])
+            setProductChange({...productChange, color : [c]})
         }
         else {
 
             let y = productChange.color.find(v => v.value === c.value)
             if (y === undefined) {
                 colorOptions.push(c)
-                setProductChange([...productChange, c])
+                setProductChange({...productChange, color : [c]})
             }
             else {
                 
                 if (productChange.color.length > 0) {
                     colorOptions = productChange.color.filter(v => v.value !== c.value)
-                    setProductChange(colorOptions)
+                    setProductChange({...productChange, color : colorOptions})
                 }
                 else {
                     colorOptions = []
-                    setProductChange([])
+                    setProductChange({...productChange, color : []})
                 }
             }
         }
