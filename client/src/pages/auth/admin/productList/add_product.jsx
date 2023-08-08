@@ -16,7 +16,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
         }
         else {
 
-            let y = productChange.color.find(v => v.value === c.value)
+            let y = productChange.color?.find(v => v.value === c.value)
             if (y === undefined) {
                 colorOptions.push(c)
                 setProductChange({...productChange, color : productChange.color.push(c) })
@@ -152,12 +152,14 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                             style={{ width: "100%" }}
                             onSelect={(e) => {
                                 colorChangeHandler({
-                                    value: e, key: e, title: e
+                                    // value: e, key: e, title: e
+                                    type : "text", value : e , id : productChange.color?.length+1
                                 })
                             }}
                             onDeselect={(e) => {
                                 colorChangeHandler({
-                                    value: e, key: e, title: e
+                                    // value: e, key: e, title: e
+                                     type : "text", value : e , id : productChange.color?.length+1
                                 })
                             }}
 
