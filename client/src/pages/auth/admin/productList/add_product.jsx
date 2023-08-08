@@ -19,7 +19,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
             let y = productChange.color.find(v => v.value === c.value)
             if (y === undefined) {
                 colorOptions.push(c)
-                setProductChange({...productChange, color : [c]})
+                setProductChange({...productChange, color : productChange.color.push(c) })
             }
             else {
                 
