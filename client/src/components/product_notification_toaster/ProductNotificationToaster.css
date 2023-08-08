@@ -14,7 +14,7 @@
     padding: 30px 10px;
     justify-content: center;
     align-items: center;
-    background: rgb(13, 150, 13);
+    background: whitesmoke;
     font-family: 'roboto', sans-serif;
 }
 
@@ -39,6 +39,8 @@
     min-height: 400px;
     height: auto;
     display: flex;
+    overflow-y: auto;
+    overflow-x: hidden;
     justify-content: center;
     align-items: center;
 }

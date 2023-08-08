@@ -19,36 +19,37 @@ import { Select } from "antd";
 
 
 
-const Layout = ({cart, load, setLoad}) => {
-    let options = []
-    
-    const colorChangeHandler = async (c) => {
-        
-        if(options.length < 1 ){
-            options.push(c)
-        }
-        else{
+const Layout = ({ cart, load, setLoad }) => {
+    // let options = []
+    // const [color, setColor] = useState([])
 
-           let y = options.find(v=> v.value === c.value)
-           if(y === undefined){
-            options.push(c)
-           }
-           else{
-            if(options.length === 1){
-                options = []
-            }{
-                options = options.filter(v=> v.value !== c.value)
-            }
-           } 
-        }
+    // const colorChangeHandler = async (c) => {
 
-    }
+    //     if (color.length < 1 ) {
+    //         options.push(c)
+    //         setColor([c])
+    //     }
+    //     else {
 
-    console.log(options)
+    //         let y = color.find(v => v.value === c.value)
+    //         if (y === undefined) {
+    //             options.push(c)
+    //             setColor([...color, c])
+    //         }
+    //         else {
+                
+    //             if (color.length > 0) {
+    //                 options = color.filter(v => v.value !== c.value)
+    //                 setColor(options)
+    //             }
+    //             else {
+    //                 options = []
+    //                 setColor([])
+    //             }
+    //         }
+    //     }
 
-
-
-
+    // }
 
 
     return (
@@ -56,24 +57,27 @@ const Layout = ({cart, load, setLoad}) => {
             <Banner load={load} />
             <Features load={load} />
             <Category load={load} setLoad={setLoad} />
-            <Trending_sec cart={cart} load={load} setLoad={setLoad}/>
+            <Trending_sec cart={cart} load={load} setLoad={setLoad} />
             <Brands load={load} setLoad={setLoad} />
-            <Features2 load={load} setLoad={setLoad}/>
-                <Select
+            <Features2 load={load} setLoad={setLoad} />
+            {/* <Select
                 mode='tags'
-                // labelInValue={true}
-                // title={true}
-                // key={true}
-                // loading={true}
-                style={{ width:"100%"}}
-                onChange={(e)=>colorChangeHandler({value:e[e.length-1].toString(), key:e[e.length-1].toString(), title :e[e.length-1].toString()})}
+            
+                style={{ width: "100%" }}
+                onSelect={(e) =>{ colorChangeHandler({ 
+                    value: e, key: e, title: e})
+                }}
+                onDeselect={(e) =>{ colorChangeHandler({ 
+                    value: e, key: e, title: e })
+                }}
+
                 options={[...new Set([options])]}
                 tokenSeparators={[',']}
-                
-                
-                >
-                    
-                </Select>
+                onClear={()=> setColor([])}
+                allowClear={true}
+            >
+
+            </Select> */}
         </>
     )
 }

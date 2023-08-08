@@ -56,7 +56,8 @@ const ProductNotificationRoaster = () => {
                                {success && product?.color?.map((v,i)=> { return <div key={i} style={{ width: "20px", minHeight: "20px", borderRadius: "50%", background:`${v.value}` }} ></div> })} 
                             </div>
                             <div className="productionNotificationToaster-color mt-2" style={{ width: "100%", textAlign: "left", display: "flex", columnGap: "4px" }}>
-                            {success && product?.size?.map((v,i)=> { return <div key={i} className="px-2" style={{ width: "max-content", minHeight: "16px", borderRadius: "6px", border:"1px solid white", textTransform:"uppercase" }} >{Number(v.value)}</div> })} 
+                            {success && product?.size?.map((v,i)=> { return <div key={i} className="px-2" style={{ width: "max-content", minHeight: "16px", borderRadius: "6px", border:"1px solid white", textTransform:"uppercase" }} >{v.value}</div> })} 
+                            {/* {success && product?.size?.map((v,i)=> { return <div key={i} className="px-2" style={{ width: "max-content", minHeight: "16px", borderRadius: "6px", border:"1px solid white", textTransform:"uppercase" }} >{Number(v.value)}</div> })}  */}
                             </div>
                         </div>
                     </div>
