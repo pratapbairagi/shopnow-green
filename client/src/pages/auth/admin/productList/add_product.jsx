@@ -12,7 +12,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
 
         if (productChange.color.length < 1 ) {
             colorOptions.push(c)
-            productChange([c])
+            setProductChange([c])
         }
         else {
 
@@ -37,7 +37,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
     }
 
     console.log(productChange.color)
-    
+
     return (
 
         <div id="add_product_form" className="add_product_form container-fluid" style={{ width: "100%", height: "100%", flexWrap: "wrap", background: "white", position: "absolute", top: "0", left: "0", zIndex: "1", display: "none", backgroundColor: "white" }}>
