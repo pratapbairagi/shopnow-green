@@ -68,7 +68,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                     <Input type="file" multi={true} name="images" id="images" fun={createProduct_handler_} placeholder="Product image" defaultValue={""} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "48%" }} />
 
                     <div className="images_upload" style={{ width: "48%", maxWidth: "50%", overflow: "scroll", gap: "2px", display: "flex", justifyContent: "flex-end" }}>
-                        {productChange.images.length > 0 && productChange.images.map((im, ind) => {
+                        {productChange.images?.length > 0 && productChange.images.map((im, ind) => {
                             return (<img key={ind} style={{ width: "2rem", height: "2rem", placeSelf: "flex-end", border: "1px solid green", display: "block" }} src={im.url} alt={im.url} />)
                         })}
                     </div>
@@ -174,7 +174,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Size  {productChange.size.length !== 0 && ": Enter space button to confirm size"}</label>
                     {/* <Input type="number" name="size" id="size" fun={createProduct_handler_} placeholder="Product Size" defaultValue={productChange.size} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} /> */}
                     <div style={{ width: "100%", maxWidth: "100%", display: "flex", gap: "4px", margin: "4px 0", overflowX: "auto" }}>
-                        {productChange.size.map((v, i) => {
+                        {productChange.size?.map((v, i) => {
                             return <div key={i} style={{ display: "flex", width: "max-content", gap: "2px", maxWidth: "100%" }}>
                                 <input style={{ width: "fit-content", maxWidth: "60px", border: "1px solid whitesmoke", padding: "1px 3px", outline: "none", fontSize: "80%" }} key={i} type="text" onChange={(e) => {
                                     setProductChange(
@@ -206,7 +206,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                         })
                         }
                     </div>
-                    {productChange.size.length === 0 && <button onClick={() => {
+                    {productChange.size?.length === 0 && <button onClick={() => {
                         return setProductChange({
                             ...productChange,
                             size: [...productChange.size, { type: "number", value: "", id: productChange.size.length + 1 }]
