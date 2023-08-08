@@ -68,7 +68,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                     <Input type="file" multi={true} name="images" id="images" fun={createProduct_handler_} placeholder="Product image" defaultValue={""} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "48%" }} />
 
                     <div className="images_upload" style={{ width: "48%", maxWidth: "50%", overflow: "scroll", gap: "2px", display: "flex", justifyContent: "flex-end" }}>
-                        {productChange.images?.length > 0 && productChange.images.map((im, ind) => {
+                        {productChange.images?.length > 0 && productChange.images?.map((im, ind) => {
                             return (<img key={ind} style={{ width: "2rem", height: "2rem", placeSelf: "flex-end", border: "1px solid green", display: "block" }} src={im.url} alt={im.url} />)
                         })}
                     </div>
