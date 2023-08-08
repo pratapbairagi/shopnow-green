@@ -234,7 +234,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                 <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="offer">Offer Available ?</label>
 
                 <div className="col col-6" style={{ width: "100%", height: "2rem", display: "flex", alignItems: "center", justifyContent: "flext-start", paddingLeft: "13px" }}>
-                    <Input type="number" name="offer" id="offer" fun={createProduct_handler_} placeholder="Product Offer Percentage" defaultValue={productChange.offer.percentage} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)" }} />
+                    <Input type="number" name="offer" id="offer" fun={createProduct_handler_} placeholder="Product Offer Percentage" defaultValue={productChange.offer?.percentage} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)" }} />
                 </div>
 
             </div>
