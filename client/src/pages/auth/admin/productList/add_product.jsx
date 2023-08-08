@@ -145,7 +145,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                 </div> */}
 
                 <div className="col col-12 col-md-6" id="colorInputs" style={{ height: "max-content", display: "flex", flexDirection: "column" }}>
-                    <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Color {productChange.color.length !== 0 && ": Enter space button to confirm color"}</label>
+                    <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Color</label>
                     <div style={{ width: "100%", maxWidth: "100%", display: "flex", gap: "4px", margin: "4px 0", overflowX: "auto" }}>
                         <Select
                             mode='tags'
@@ -171,7 +171,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                 </div>
 
                 <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
-                    <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Size  {productChange.size.length !== 0 && ": Enter space button to confirm size"}</label>
+                    <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Size</label>
                     {/* <Input type="number" name="size" id="size" fun={createProduct_handler_} placeholder="Product Size" defaultValue={productChange.size} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} /> */}
                     <div style={{ width: "100%", maxWidth: "100%", display: "flex", gap: "4px", margin: "4px 0", overflowX: "auto" }}>
                         {productChange.size?.map((v, i) => {
