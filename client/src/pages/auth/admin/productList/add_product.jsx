@@ -8,35 +8,66 @@ import { Select } from "antd";
 const Add_product = ({ createProduct_handler_, close_add_product_form_handler, productChange, createNew_product_submit, setProductChange }) => {
 
     let colorOptions = []
+    let sizeOptions = []
     const colorChangeHandler = async (c) => {
 
-        if (productChange.color.length < 1 ) {
+        if (productChange.color.length < 1) {
             colorOptions.push(c)
-            setProductChange({...productChange, color : [c]})
+            setProductChange({ ...productChange, color: [...productChange.color, c] })
         }
         else {
-
+            console.log(productChange.color)
             let y = productChange.color?.find(v => v.value === c.value)
             if (y === undefined) {
                 colorOptions.push(c)
-                setProductChange({...productChange, color : productChange.color.push(c) })
+                setProductChange({ ...productChange, color: [...productChange.color, c] })
             }
             else {
-                
+
                 if (productChange.color.length > 0) {
                     colorOptions = productChange.color.filter(v => v.value !== c.value)
-                    setProductChange({...productChange, color : colorOptions})
+                    console.log(colorOptions)
+                    setProductChange({ ...productChange, color: colorOptions })
                 }
                 else {
                     colorOptions = []
-                    setProductChange({...productChange, color : []})
+                    setProductChange({ ...productChange, color: [] })
                 }
             }
         }
 
     }
 
-    console.log(productChange.color)
+
+    // size
+    const sizeChangeHandler = async (c) => {
+
+        if (productChange.size.length < 1) {
+            sizeOptions.push(c)
+            setProductChange({ ...productChange, size: [...productChange.size, c] })
+        }
+        else {
+          
+            let y = productChange.size?.find(v => v.value === c.value)
+            if (y === undefined) {
+                sizeOptions.push(c)
+                setProductChange({ ...productChange, size: [...productChange.size, c] })
+            }
+            else {
+
+                if (productChange.size.length > 0) {
+                    sizeOptions = productChange.size.filter(v => v.value !== c.value)
+                   
+                    setProductChange({ ...productChange, size: sizeOptions })
+                }
+                else {
+                    sizeOptions = []
+                    setProductChange({ ...productChange, size: [] })
+                }
+            }
+        }
+
+    }
 
     return (
 
@@ -153,28 +184,27 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                             onSelect={(e) => {
                                 colorChangeHandler({
                                     // value: e, key: e, title: e
-                                    type : "text", value : e , id : productChange.color?.length+1
+                                    type: "text", value: e, id: productChange.color?.length + 1
                                 })
                             }}
                             onDeselect={(e) => {
                                 colorChangeHandler({
                                     // value: e, key: e, title: e
-                                     type : "text", value : e , id : productChange.color?.length+1
+                                    type: "text", value: e, id: productChange.color?.length + 1
                                 })
                             }}
 
                             options={[...new Set([colorOptions])]}
                             tokenSeparators={[',']}
-                            onClear={() => setProductChange([])}
+                            onClear={() => setProductChange({ ...productChange, color: [] })}
                             allowClear={true}
                         >
                         </Select>
                     </div>
                 </div>
 
-                <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
+                {/* <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Size</label>
-                    {/* <Input type="number" name="size" id="size" fun={createProduct_handler_} placeholder="Product Size" defaultValue={productChange.size} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} /> */}
                     <div style={{ width: "100%", maxWidth: "100%", display: "flex", gap: "4px", margin: "4px 0", overflowX: "auto" }}>
                         {productChange.size?.map((v, i) => {
                             return <div key={i} style={{ display: "flex", width: "max-content", gap: "2px", maxWidth: "100%" }}>
@@ -216,7 +246,38 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                     }}>size + </button>
 
                     }
+                </div> */}
+
+
+                <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
+                    <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Size</label>
+                    <div style={{ width: "100%", maxWidth: "100%", display: "flex", gap: "4px", margin: "4px 0", overflowX: "auto" }}>
+                    <Select
+                            mode='tags'
+                            style={{ width: "100%" }}
+                            onSelect={(e) => {
+                                sizeChangeHandler({
+                                    // value: e, key: e, title: e
+                                    type: "text", value: e, id: productChange.size?.length + 1
+                                })
+                            }}
+                            onDeselect={(e) => {
+                                sizeChangeHandler({
+                                    // value: e, key: e, title: e
+                                    type: "text", value: e, id: productChange.size?.length + 1
+                                })
+                            }}
+
+                            options={[...new Set([sizeOptions])]}
+                            tokenSeparators={[',']}
+                            onClear={() => setProductChange({ ...productChange, size: [] })}
+                            allowClear={true}
+                        >
+                        </Select>
+                    </div>
                 </div>
+
+
 
                 <div className="col col-6 my-2" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Gender</label>
