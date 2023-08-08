@@ -34,12 +34,12 @@ function App() {
     },
     rating: "",
     brand: "",
-    color: "",
+    color: [],
     price: {
       from: 0,
       to: 999999
     },
-    size: ""
+    size: []
 
   })
 
