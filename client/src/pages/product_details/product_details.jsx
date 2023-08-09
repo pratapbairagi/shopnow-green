@@ -9,6 +9,7 @@ import ReviewProduct from "./review_product/review_product";
 import { CartPlus, CartX } from "react-bootstrap-icons";
 import { Add_to_cart_action, Cart_qty_adjust, Remove_from_cart_action } from "../../redux/cart/cartAction";
 import Spinner from "../../components/spinner/spinner";
+import { Tabs } from "antd";
 
 
 
@@ -74,117 +75,141 @@ const Product_details = () => {
         }
     }
 
+    // desceiption
+    const [details, setDetails] = useState([
+        {
+            label: <h6>FEATURES</h6>,
+            key: 1,
+            children: <div style={{ width: "100%", height: "max-content" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima atque impedit illo ad possimus tempora.</div>
+        },
+        {
+            label: <h6>WARRANTY</h6>,
+            key: 2,
+            children: <div style={{ width: "100%", height: "max-content" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima atque.</div>
+        },
+        {
+            label: <h6>RETUN POLICY</h6>,
+            key: 3,
+            children: <div style={{ width: "100%", height: "max-content" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima atque impedit illo ad possimus tempora. Lorem ipsum dolor sit amet.</div>
+        },
+        {
+            label: <h6>SELLER & CONTACT</h6>,
+            key: 4,
+            children: <div style={{ width: "100%", height: "max-content" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi perferendis reiciendis, reprehenderit labore quisquam officiis!</div>
+        }
+    ])
+
 
     return (
         <div className="px-0 " style={{ width: "100%", minHeight: "100vh", height: "max-content", display: "flex", flexDirection: "column", margin: "auto" }}>
-            
-           { load ? 
-           <> 
-           <div className="bg-light" style={{width:"100%", minWidth:"100%", minHeight:"100vh"}}></div>
-           <Spinner/> 
-           </>
-           : success && <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
-                <div className="row px-0 m-auto" style={{ maxWidth: "100%" }}>
-                    <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight: "90vh" }}>
 
-                        {success && <img style={{ maxWidth: "90%", maxHeight: "70vh", margin: "0 auto" }} src={imagePrev} alt="img0" />}
+            {load ?
+                <>
+                    <div className="bg-light" style={{ width: "100%", minWidth: "100%", minHeight: "100vh" }}></div>
+                    <Spinner />
+                </>
+                : success && <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
+                    <div className="row px-0 m-auto" style={{ maxWidth: "100%" }}>
+                        <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight: "90vh" }}>
+
+                            {success && <img style={{ maxWidth: "90%", maxHeight: "70vh", margin: "0 auto" }} src={imagePrev} alt="img0" />}
 
 
 
-                        <div style={{ width: "90%", display: "flex", justifyContent: "left", gap: "6px", padding: "3px 0px", maxWidth: "90%", overflow: "auto", margin: "0 auto", marginTop: "6px" }}>
-                            {success && product?.images?.map((img, index) => {
+                            <div style={{ width: "90%", display: "flex", justifyContent: "left", gap: "6px", padding: "3px 0px", maxWidth: "90%", overflow: "auto", margin: "0 auto", marginTop: "6px" }}>
+                                {success && product?.images?.map((img, index) => {
 
-                                return (
-                                    <div key={index} style={{ position: "relative", width: "max-content", cursor: "pointer" }}>
-                                        <input onClick={(e) => img_chng_hanler(e)} defaultChecked defaultValue={img.url} type="radio" name="image" id="" style={{ background: "transparent", position: "absolute", accentColor: "transparent", opacity: "0", width: "50px", height: "100%", cursor: "pointer" }} />
-                                        <img style={{ width: "50px", boxShadow: "0px 0px 3px grey", cursor: "pointer", zIndex: "1" }} src={img.url} alt="img1" />
-                                    </div>
-                                )
-                            })}
+                                    return (
+                                        <div key={index} style={{ position: "relative", width: "max-content", cursor: "pointer" }}>
+                                            <input onClick={(e) => img_chng_hanler(e)} defaultChecked defaultValue={img.url} type="radio" name="image" id="" style={{ background: "transparent", position: "absolute", accentColor: "transparent", opacity: "0", width: "50px", height: "100%", cursor: "pointer" }} />
+                                            <img style={{ width: "50px", boxShadow: "0px 0px 3px grey", cursor: "pointer", zIndex: "1" }} src={img.url} alt="img1" />
+                                        </div>
+                                    )
+                                })}
 
+
+                            </div>
 
                         </div>
 
-                    </div>
 
+                        <div className="col-lg-7" style={{ border: "0px solid grey" }}>
+                            <h3>{product.title}</h3>
+                            <h5 style={{ color: "#337ab7" }}>Users reviews for <a href="#home">{product.title}</a> · <small style={{ color: "#337ab7" }}>(5054 reviews)</small></h5>
 
-                    <div className="col-lg-7" style={{ border: "0px solid grey" }}>
-                        <h3>{product.title}</h3>
-                        <h5 style={{ color: "#337ab7" }}>Users reviews for <a href="#home">{product.title}</a> · <small style={{ color: "#337ab7" }}>(5054 reviews)</small></h5>
+                            <h6 className="title-price"><small>PRICE</small></h6>
+                            <h3 style={{ marginTop: "4px" }}>INR {product.price}</h3>
 
-                        <h6 className="title-price"><small>PRICE</small></h6>
-                        <h3 style={{ marginTop: "4px" }}>INR {product.price}</h3>
+                            <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
+                                <h6 className="title-attr" style={{ marginTop: "15px" }} ><small>COLOR</small></h6>
+                                <div style={{ width: "50%", paddingTop: "18px", display: "flex", gap: "6px" }}>
 
-                        <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
-                            <h6 className="title-attr" style={{ marginTop: "15px" }} ><small>COLOR</small></h6>
-                            <div style={{ width: "50%", paddingTop: "18px", display: "flex", gap: "6px" }}>
+                                    {
+                                        product.color?.map((cv, ci) => {
+                                            return <div key={ci} style={{ width: "max-content", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderRadius: "0px" }}>
+                                                <input style={{ width: "20px", accentColor: "red" }} defaultChecked type="radio" name="color" id="color" />
+                                                <label style={{ color: `${cv.value}`, fontSize: "12px" }} htmlFor="color"><small>{cv.value}</small></label>
+                                            </div>
+                                        })
+                                    }
 
-                                {
-                                    product.color?.map((cv, ci) => {
-                                        return <div key={ci} style={{ width: "max-content", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderRadius: "0px" }}>
-                                            <input style={{ width: "20px", accentColor: "red" }} defaultChecked type="radio" name="color" id="color" />
-                                            <label style={{ color: `${cv.value}`, fontSize: "12px" }} htmlFor="color"><small>{cv.value}</small></label>
+                                </div>
+                            </div>
+                            <div className="section" style={{ padding: "6px 8px", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
+                                <h6 className="title-attr"><small>SIZE</small></h6>
+                                <div style={{ width: "50%", display: "flex", flexWrap: "wrap", gap: "4px" }}>
+
+                                    {product.size?.map((sv, si) => {
+                                        return <div key={si} style={{ minWidth: `24px`, width: "max-content", position: "relative", border: "1px solid grey", borderRadius: "2px", whiteSpace: "nowrap" }}>
+                                            <input onChange={(e) => { return size_change_handler(e) }} style={{ width: "100%", height: "100%", accentColor: "red", position: "absolute", opacity: "0", cursor: "pointer" }} defaultChecked value="xs" type="radio" name="size" id="" />
+                                            <span style={{ color: "red", fontSize: "12px", width: "100%", height: "100%", cursor: "pointer", whiteSpace: "nowrap" }}>{sv.value}</span>
                                         </div>
                                     })
-                                }
+                                    }
 
+
+                                </div>
                             </div>
-                        </div>
-                        <div className="section" style={{ padding: "6px 8px", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
-                            <h6 className="title-attr"><small>SIZE</small></h6>
-                            <div style={{ width: "50%", display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                            <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
+                                <h6 className="title-attr"><small>STOCK</small></h6>
+                                <div style={{ width: "50%" }}>
+                                    <div className="attr2 px-2">{product.stock}</div>
 
-                                {product.size?.map((sv, si) => {
-                                    return <div key={si} style={{ minWidth: `24px`, width: "max-content", position: "relative", border: "1px solid grey", borderRadius: "2px", whiteSpace: "nowrap" }}>
-                                        <input onChange={(e) => { return size_change_handler(e) }} style={{ width: "100%", height: "100%", accentColor: "red", position: "absolute", opacity: "0", cursor: "pointer" }} defaultChecked value="xs" type="radio" name="size" id="" />
-                                        <span style={{ color: "red", fontSize: "12px", width: "100%", height: "100%", cursor: "pointer", whiteSpace: "nowrap" }}>{sv.value}</span>
-                                    </div>
-                                })
-                                }
-
-
-                            </div>
-                        </div>
-                        <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
-                            <h6 className="title-attr"><small>STOCK</small></h6>
-                            <div style={{ width: "50%" }}>
-                                <div className="attr2 px-2">{product.stock}</div>
-
-                            </div>
-                        </div>
-
-
-                        <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
-                            <h6 className="title-attr"><small>QUANTITY</small></h6>
-                            <div style={{ width: "50%", display: "flex", justifyContent: "flex-start" }}>
-                            <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                                <CartX style={{ fontSize: "120%" }} />
-                            </button>
-                                <button onClick={() => { return cartQuantity("-") }} className="btn btn-primary  py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
-                                    -
-                                </button>
-
-                                <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{quantity}</div>
-
-                                <button onClick={() => { return cartQuantity("+") }} className="btn btn-primary py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
-                                    +
-                                </button>
-
-                                <button onClick={() => addToCart()} className="btn btn-success btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                                    <CartPlus style={{ fontSize: "120%" }} />
-                                </button>
+                                </div>
                             </div>
 
+
+                            <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
+                                <h6 className="title-attr"><small>QUANTITY</small></h6>
+                                <div style={{ width: "50%", display: "flex", justifyContent: "flex-start" }}>
+                                    <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                                        <CartX style={{ fontSize: "120%" }} />
+                                    </button>
+                                    <button onClick={() => { return cartQuantity("-") }} className="btn btn-primary  py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                        -
+                                    </button>
+
+                                    <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{quantity}</div>
+
+                                    <button onClick={() => { return cartQuantity("+") }} className="btn btn-primary py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                        +
+                                    </button>
+
+                                    <button onClick={() => addToCart()} className="btn btn-success btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                                        <CartPlus style={{ fontSize: "120%" }} />
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div className="mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "row", gap: "6px", alignItems: "center", justifyContent: "center", width: "100%" }}>
+
+                                <h6 className="mt-2"><a href="#home"><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Agregar a lista de deseos</a></h6>
+                            </div>
                         </div>
 
-                        <div className="mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "row", gap: "6px", alignItems: "center", justifyContent: "center", width: "100%" }}>
-
-                        <h6 className="mt-2"><a href="#home"><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Agregar a lista de deseos</a></h6>
-                        </div>
-                    </div>
-
-                    <div className="col-xs-9">
-                        <ul className="menu-items p-0" style={{ display: "flex", justifyContent: "center" }}>
+                        <div className="col-xs-9">
+                            {/* <ul className="menu-items p-0" style={{ display: "flex", justifyContent: "center" }}>
                             <li className="active">product details</li>
                             <li>Garantía</li>
                             <li>Vendedor</li>
@@ -217,11 +242,23 @@ const Product_details = () => {
                                     <li>Phone is 5.38 inches high x 2.75 inches wide x 0.13 inches deep and weighs a mere 4.59 oz </li>
                                 </ul>
                             </small>
-                        </div>
-                    </div>
+                        </div> */}
 
-                </div>
-            </div> }
+                            <Tabs
+                                defaultActiveKey="1"
+                                centered
+                                items={details.map((v, i) => {
+                                    return {
+                                        label: v.label,
+                                        key: v.key,
+                                        children: v.children
+                                    }
+                                })}
+                            />
+                        </div>
+
+                    </div>
+                </div>}
             <Recomended_products />
             <ReviewProduct />
         </div>
