@@ -45,7 +45,7 @@ exports.get_products = async (req, res, next) => {
 
         const sort = req.query.price ? {
             "createdAt" : req.query.date, // -1 by default :  old to new
-            "price" : req.query.price
+            "price" : req.query.pricesort
 
         } :  {
             "createdAt" : req.query.date
