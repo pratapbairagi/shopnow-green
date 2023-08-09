@@ -208,7 +208,7 @@ const Product_details = () => {
                             </div>
                         </div>
 
-                        <div className="col-xs-9">
+                        <div className="col-xs-9" style={{ boxShadow: "0 0 3px whitesmoke", margin: "3px auto" }}>
                             {/* <ul className="menu-items p-0" style={{ display: "flex", justifyContent: "center" }}>
                             <li className="active">product details</li>
                             <li>Garantía</li>
@@ -246,11 +246,12 @@ const Product_details = () => {
 
                             <Tabs
                                 defaultActiveKey="1"
-                                centered
+                                style={{ padding: "0 4px" }}
+                                centered={window.innerWidth > 767 ? true : false}
                                 items={details.map((v, i) => {
                                     return {
                                         label: v.label,
-                                        key: v.key,
+                                        key: i,
                                         children: v.children
                                     }
                                 })}
