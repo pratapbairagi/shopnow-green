@@ -39,7 +39,11 @@ function App() {
       from: 0,
       to: 999999
     },
-    size: []
+    size: [],
+    currentpage : 1,
+    rating: 0,
+    date : 1,
+    pricesort : ""
 
   })
 

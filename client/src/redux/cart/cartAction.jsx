@@ -8,8 +8,6 @@ export const Add_to_cart_action = (id, qty) => async (dispatch, getState) => {
             type : ADD_TO_CART_REQUEST
         })
 
-        console.log(id)
-
         // const {data} = await axios.get(`https://shopnow-server.vercel.app/website_ecommerce/app/api/product/${id}`);
         const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${id}`);
         

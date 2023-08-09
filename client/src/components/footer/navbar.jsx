@@ -62,12 +62,12 @@ const Navbar = ({search_options, setSearch_options}) => {
                 <NavLink to='/' className="navlogo">logo</NavLink>
 
                 <ul className="mid-nav" id="mid-nav" style={{ right: "-100%" }}>
-                    <button onClick={toggleHandlerMenu} style={{ position: "absolute", top: "0", left: "-26px", border: "none", background: "transparent" }}><XSquare size="24" color="white" /></button>
-                    <li><NavLink onClick={toggleHandlerMenu} to="/">HOME</NavLink></li>
-                    <li><NavLink onClick={toggleHandlerMenu} to="/about">ABOUT</NavLink></li>
-                    <li><NavLink onClick={toggleHandlerMenu} to="/shop">SHOP</NavLink></li>
+                    <button onClick={toggleHandlerMenu} style={{ position: "absolute", top: "16px", left: "16px", border: "none", background: "transparent" }}><XSquare size="24" color="red" /></button>
+                    <li className="m-0"><NavLink onClick={toggleHandlerMenu} to="/">HOME</NavLink></li>
+                    <li className="m-0"><NavLink onClick={toggleHandlerMenu} to="/about">ABOUT</NavLink></li>
+                    <li className="m-0"><NavLink onClick={toggleHandlerMenu} to="/shop">SHOP</NavLink></li>
                     {/* <li><NavLink to="/product">PRODUCT</NavLink></li> */}
-                    <li><NavLink onClick={toggleHandlerMenu} to="/contact">CONTACT</NavLink></li>
+                    <li className="m-0"><NavLink onClick={toggleHandlerMenu} to="/contact">CONTACT</NavLink></li>
                 </ul>
 
                 <ul className="right-nav">

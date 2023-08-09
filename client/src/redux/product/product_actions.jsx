@@ -5,30 +5,30 @@ import { CLEAR_ERROR, CLEAR_SUCCESS, CREATE_PRODUCT_FAIL, CREATE_PRODUCT_REQUEST
 export const create_product_action = (product) => async (dispatch) => {
     try {
         dispatch({
-            type : CREATE_PRODUCT_REQUEST
+            type: CREATE_PRODUCT_REQUEST
         });
 
         const config = {
-            headers : { "Content-Type" : "application/json" },
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true
         };
 
         // const {data} = await axios.post("https://shopnow-server.vercel.app/website_ecommerce/app/api/product/add", product, config);
-        const {data} = await axios.post(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/add`, product, config );
+        const { data } = await axios.post(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/add`, product, config);
 
         dispatch({
-            type : CREATE_PRODUCT_SUCCESS,
-            payload : data
+            type: CREATE_PRODUCT_SUCCESS,
+            payload: data
         })
-        
+
         // redirect(`/product/created/${data.product._id}`)
-        window.location.href=`/product/created/${data.product._id}`
+        window.location.href = `/product/created/${data.product._id}`
         // localStorage.setItem("product_create_success", JSON.stringify(data.product))
-        
+
     } catch (error) {
         dispatch({
-            type : CREATE_PRODUCT_FAIL,
-            payload : error.response.data
+            type: CREATE_PRODUCT_FAIL,
+            payload: error.response.data
         })
     }
 };
@@ -37,54 +37,66 @@ export const create_product_action = (product) => async (dispatch) => {
 export const delete_product_action = (id) => async (dispatch) => {
     try {
         dispatch({
-            type : DELETE_PRODUCT_REQUEST
+            type: DELETE_PRODUCT_REQUEST
         });
         const config = {
-            headers : { "Content-Type" : "application/json"},
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true
         }
         // const {data} = await axios.delete(`https://shopnow-server.vercel.app/website_ecommerce/app/api/product/${id}`, config);
-        const {data} = await axios.delete(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${id}`, config );
+        const { data } = await axios.delete(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${id}`, config);
 
         dispatch({
-            type : DELETE_PRODUCT_SUCCESS,
-            payload : data
+            type: DELETE_PRODUCT_SUCCESS,
+            payload: data
         })
     } catch (error) {
         dispatch({
-            type : DELETE_PRODUCT_FAIL,
-            payload : error.response.data
+            type: DELETE_PRODUCT_FAIL,
+            payload: error.response.data
         })
     }
 }
 
 // get all products
 // export const get_all_products_action = (keyword = "", category = "", price = {from : 0, to : 999999}) => async (dispatch) => {
-export const get_all_products_action = (title="", category="",price={from:0, to:999999}, brand="", color="", size="", gender="") => async (dispatch) => {
+export const get_all_products_action = (
+    title = "",
+    category = "",
+    price = { from: 0, to: 999999 },
+    brand = "",
+    color = "",
+    size = "",
+    gender = "",
+    currentpage = 1,
+    rating = 0,
+    date = 1,
+    pricesort = ""
+) => async (dispatch) => {
 
     try {
         dispatch({
-            type : GET_ALL_PRODUCTS_REQUEST
+            type: GET_ALL_PRODUCTS_REQUEST
         });
 
         const config = {
-            headers : { "Content-Type" : "application/json"},
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true
         }
 
         // const {data} = await axios.get(`https://shopnow-server.vercel.app/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}`, config);
-        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}&gender=${gender}`, config );
+        const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}&gender=${gender}&rating=${rating}&currentpage=${currentpage}&date=${date}&pricesort=${pricesort}`, config);
 
         dispatch({
-            type : GET_ALL_PRODUCTS_SUCCESS,
-            payload : data
+            type: GET_ALL_PRODUCTS_SUCCESS,
+            payload: data
 
         });
 
     } catch (error) {
         dispatch({
-            type : GET_ALL_PRODUCTS_FAIL,
-            payload : error.response.data
+            type: GET_ALL_PRODUCTS_FAIL,
+            payload: error.response.data
         })
     }
 };
@@ -93,55 +105,55 @@ export const get_all_products_action = (title="", category="",price={from:0, to:
 export const edit_product_action = (product) => async (dispatch) => {
     try {
         dispatch({
-            type : EDIT_PRODUCT_REQUEST
+            type: EDIT_PRODUCT_REQUEST
         });
 
         // const {data} = await axios.put(`https://shopnow-server.vercel.app/website_ecommerce/app/api/product/${product.id}`, product);
-        const {data} = await axios.put(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${product.id}`, product );
+        const { data } = await axios.put(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${product.id}`, product);
 
         dispatch({
-            type : EDIT_PRODUCT_SUCCESS,
-            payload : data
+            type: EDIT_PRODUCT_SUCCESS,
+            payload: data
         });
 
     } catch (error) {
         dispatch({
-            type : EDIT_PRODUCT_FAIL,
-            payload : error.response.data
+            type: EDIT_PRODUCT_FAIL,
+            payload: error.response.data
         })
     }
 }
 
-export const get_product_details = (id) => async (dispatch) =>{
+export const get_product_details = (id) => async (dispatch) => {
     try {
         dispatch({
-            type : GET_PRODUCT_DETAILS_REQUEST
+            type: GET_PRODUCT_DETAILS_REQUEST
         });
 
         // const {data} = await axios.get(`https://shopnow-server.vercel.app/website_ecommerce/app/api/product/${id}`);
-        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${id}`);
+        const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/product/${id}`);
 
         dispatch({
-            type : GET_PRODUCT_DETAILS_SUCCESS,
-            payload : data
+            type: GET_PRODUCT_DETAILS_SUCCESS,
+            payload: data
         });
 
     } catch (error) {
         dispatch({
-            type : GET_PRODUCT_DETAILS_FAIL,
-            payload : error.response.data
+            type: GET_PRODUCT_DETAILS_FAIL,
+            payload: error.response.data
         })
     }
 };
 
-export const clear_success = () =>  (dispatch) => {
+export const clear_success = () => (dispatch) => {
     dispatch({
-        type : CLEAR_SUCCESS
+        type: CLEAR_SUCCESS
     })
 };
 
-export const clear_error = () =>  (dispatch) => {
+export const clear_error = () => (dispatch) => {
     dispatch({
-        type : CLEAR_ERROR
+        type: CLEAR_ERROR
     })
 }
