@@ -178,6 +178,9 @@
     font-size: 18px;
     font-weight: 300;
 }
+.ratingStars{
+    font-size: 18px;
+}
 
 @media only screen and (max-width : 767px){
     .panel-body{
@@ -210,5 +213,8 @@
     bottom: calc(-25px);
     left: 50%;
     margin-left: -25px;
+}
+.ratingStars{
+    font-size: 34px;
 }
 }

@@ -6,7 +6,7 @@ import { CaretRight, CartCheck, CartPlus, Check2Circle, GenderAmbiguous, GenderF
 import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/cartAction";
 import { NavLink, useLocation } from "react-router-dom";
 import Spinner from "../../components/spinner/spinner";
-import { Pagination, Radio, Rate, Space } from "antd";
+import { Pagination, Radio, Rate, Slider, Space } from "antd";
 import { set } from "mongoose";
 // import Spinner from "../../components/spinner/Spinner"
 
@@ -33,10 +33,10 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
     });
     const [load, setLoad] = useState(false)
 
-    console.log("loading", loading)
-    console.log("success", success)
-    console.log("error", error)
-    console.log("product", product)
+    // console.log("loading", loading)
+    // console.log("success", success)
+    // console.log("error", error)
+    // console.log("product", products)
 
     useEffect(() => {
         if (success || products.length > 0) {
@@ -127,19 +127,19 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
     const productCheck = () => {
         setLoad(true)
         if (path === "/shop") {
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender,search_options.currentpage, search_options.rating, search_options.date, search_options.pricesort ))
         }
         else if (path === "/women") {
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f"))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "f", search_options.currentpage, search_options.rating, search_options.date, search_options.pricesort))
         }
         else if (path === "/men") {
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m"))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, "m", search_options.currentpage, search_options.rating, search_options.date, search_options.pricesort))
         }
         else if (path === "/kids") {
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender, search_options.currentpage, search_options.rating, search_options.date, search_options.pricesort))
         }
         else if (path !== "/shop" && path !== "/women" && path !== "/men" && path !== "/kids" && typeof path === "string") {
-            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1), search_options.color, search_options.size, search_options.gender))
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1), search_options.color, search_options.size, search_options.gender, search_options.currentpage, search_options.rating, search_options.date, search_options.pricesort))
         }
 
     }
@@ -189,7 +189,10 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
 
     // pagination
     const [sortValues, setSortValues] = useState({
-        rating : 0,
+        rating : {
+            from : 0,
+            to : 5
+        },
         pricesort : "", // doubt
         date : 1 // old to new
     })
@@ -209,7 +212,10 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
         setLoad(true)
         setSearch_options({
             ...search_options,
-            rating: 0,
+            rating : {
+                from : 0,
+                to : 5
+            },
             date : 1,
             pricesort : ""
         })
@@ -385,7 +391,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
                                                     }
                                                 </select> */}
 
-                                                <Radio.Group defaultValue="" name="pricesort" onChange={(e) => setSearch_options({ ...search_options, pricesort: e.target.value })}>
+                                                <Radio.Group defaultValue="" name="pricesort" onChange={(e) => setSortValues({ ...sortValues, pricesort: e.target.value })}>
                                                     <Space direction="vertical" style={{ minWidth: "100%" }}>
                                                         <Radio style={{ width: "100%", display: "flex", justifyContent: "space-between", fontSize: "10px", padding: "0 6px", color: "grey" }} value="">None</Radio>
                                                         <Radio style={{ width: "100%", display: "flex", justifyContent: "space-between", fontSize: "10px", padding: "0 6px", color: "grey" }} value={1}>Price Low To High</Radio>
@@ -405,7 +411,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
                                                     }
                                                 </select> */}
 
-                                                <Radio.Group defaultValue="" name="datesort" onChange={(e) => setSearch_options({ ...search_options, datesort: e.target.value })}>
+                                                <Radio.Group defaultValue="" name="datesort" onChange={(e) => setSortValues({ ...sortValues, date: e.target.value })}>
                                                     <Space direction="vertical" style={{ minWidth: "100%" }}>
                                                         {/* <Radio style={{ width: "100%", display: "flex", justifyContent: "space-between", fontSize: "10px", padding: "0 6px", color: "grey" }} value="">None</Radio> */}
                                                         <Radio style={{ width: "100%", display: "flex", justifyContent: "space-between", fontSize: "10px", padding: "0 6px", color: "grey" }} value={1}>Old To New</Radio>
@@ -418,23 +424,15 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
 
                                             <div className="row mt-2 mb-1 mx-auto" style={{ maxWidth:"100%"}}>
                                                 <label className="col col-10" style={{ fontWeight: "500",  fontSize:"12px", color:"grey", width:"100%",  maxWidth:"100%", margin: "0 auto", textAlign: "left", marginBottom: "12px" }}>Rating</label>
-                                                {/* <select onChange={(e) => setFilterValues({ ...filterValues, size: e.target.value })} className=" mx-auto col col-10" style={{ appearance: "menulist-button", height: "34px", fontSize: "10px" }}>
-
-                                                    {
-                                                        localStorage.getItem("sizes") && JSON.parse(localStorage.getItem("sizes")).map((psv, psi) => {
-                                                            return <option key={psi} value={psv}>{psv.length > 0 ? psv : "All"}</option>
-                                                        })
-                                                    }
-
-                                                </select> */}
-                                                <Rate onChange={(e)=> setFilterValues({ ...filterValues, rating: e }) } allowClear={true} defaultValue={search_options.rating} />
+                                    
+                                                {/* <Rate className="ratingStars" tooltips={"12345"} onChange={(e)=> setSortValues({ ...sortValues, rating: e }) } allowClear={true} style={{ padding:"0", paddingLeft:"24px"}} defaultValue={sortValues.rating} /> */}
+                                                <Slider style={{maxWidth:"90%", margin:"0 auto"}} onChange={(e)=> setSortValues({...sortValues, rating : {from : e[0], to : e[1] }})} range={{ draggableTrack: true }} min={0} max={5} defaultValue={[0, 1]} />
                                             </div>
                                             <button onClick={() => submitSortCancel()} className="btn btn-sm btn-danger mt-2 mx-auto rounded-0 col col-10" style={{ width: "90%" }}>Cancel</button>
                                             <button onClick={() => submitSort()} className="btn btn-sm btn-primary mt-1 mx-auto rounded-0 col col-10" style={{ width: "90%" }}>Sort</button>
                                         </div>
 
                                     </div>
-
 
                                 </section>
                             </div>
@@ -447,13 +445,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
                         <section className="panel bg-light bg-white py-2 px-1" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px", minWidth: "100%", maxWidth: "100%" }} >
                             <div className="panel-body p-0 m-0 position-relative" style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
                                 <div className="pull-right m-0 position-relative" style={{ width: "max-content", display: "flex", alignItems: "center" }}>
-                                    {/* <ul className="pagination pagination-sm pro-page-list m-0 p-2 position-relative" style={{ border: "1px solid whitesmoke", borderRadius: "3px" }}>
-                                        <li><a href="#1">1</a></li>
-                                        <li><a href="#2">2</a></li>
-                                        <li><a href="#3">3</a></li>
-                                        <li><a href="#4">»</a></li>
-                                    </ul> */}
-                                    <Pagination style={{ zIndex: "7" }} simple defaultCurrent={search_options.currentpage} onChange={(e)=> setSearch_options({...search_options, currentpage : e})} pageSize={10} total={productsFilter.length} />
+                                    <Pagination style={{ zIndex: "7" }} simple defaultCurrent={search_options.currentpage}  onChange={(e)=> setSearch_options({...search_options, currentpage : e})} pageSize={10} total={productsFilter.length} />
                                 </div>
                             </div>
                         </section>
@@ -461,7 +453,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
                         <div className="row product-list" style={{ minHeight: "75vh", padding: "0 5px 0 7px" }}>
 
 
-                            { !load ? <Spinner /> : success && products.map((v, i) => {
+                            { load ? <Spinner /> : success && products.map((v, i) => {
 
                                 return <div className="col col-6 col-md-4 col-lg-3 p-0 p-1" key={v._id} >
                                     <section className="panel p-0 p-1">

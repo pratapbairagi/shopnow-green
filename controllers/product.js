@@ -27,9 +27,11 @@ exports.get_products = async (req, res, next) => {
             brand : {
                 $regex : req.query.brand,
                 $options : "i"
-            },
+            }
+            ,
             ratings : {
-                $gte : req.query.rating
+                $gte : req.query.rating.from,
+                $lte : req.query.rating.to
             }
             ,
             'color.value' : {
@@ -43,9 +45,10 @@ exports.get_products = async (req, res, next) => {
             }
         };
 
-        const sort = req.query.price ? {
-            "createdAt" : req.query.date, // -1 by default :  old to new
-            "price" : req.query.pricesort
+        const sort = req.query.pricesort ? {
+            // "createdAt" : req.query.date, // -1 by default :  old to new
+            "price" : req.query.pricesort,
+            "createdAt" : req.query.date
 
         } :  {
             "createdAt" : req.query.date
@@ -54,7 +57,6 @@ exports.get_products = async (req, res, next) => {
         const currentPage = Number(req.query.currentpage) || 1
         const resultPerPage = 10;
         const skip = resultPerPage * (currentPage - 1)
-
 
         // const products = await Products.find(query);
         let products = await Products.find(query).sort(sort).limit(resultPerPage).skip(skip);

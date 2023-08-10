@@ -23,6 +23,7 @@ app.use(express.json({ extended: true, limit: "25mb" }));
 app.use(cors({
     credentials : true,
     // origin : "http://localhost:3000"
+    // origin : "http://localhost:5544"
     origin : [ "http://localhost:3000/", "http://localhost:5544/", "https://shopnow-green.vercel.app/"]
 }));
 

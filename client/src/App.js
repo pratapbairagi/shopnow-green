@@ -41,7 +41,10 @@ function App() {
     },
     size: [],
     currentpage : 1,
-    rating: 0,
+    rating : {
+      from : 0,
+      to : 5
+  },
     date : 1,
     pricesort : ""
 
