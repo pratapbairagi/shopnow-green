@@ -77,6 +77,8 @@ export const get_all_products_action = (
     pricesort = ""
 ) => async (dispatch) => {
 
+    console.log("rating", rating)
+
     try {
         dispatch({
             type: GET_ALL_PRODUCTS_REQUEST
@@ -88,7 +90,7 @@ export const get_all_products_action = (
         }
 
         // const {data} = await axios.get(`https://shopnow-server.vercel.app/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}`, config);
-        const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}&gender=${gender}&rating=${rating}&currentpage=${currentpage}&date=${date}&pricesort=${pricesort}`, config);
+        const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/products?title=${title}&category=${category}&price[gte]=${price.from}&price[lte]=${price.to}&brand=${brand}&color=${color}&size=${size}&gender=${gender}&rating[gte]=${rating.from}&rating[lte]=${rating.to}&currentpage=${currentpage}&date=${date}&pricesort=${pricesort}`, config);
 
         dispatch({
             type: GET_ALL_PRODUCTS_SUCCESS,

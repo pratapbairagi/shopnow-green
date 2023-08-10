@@ -4,6 +4,7 @@ const cloudinary = require("../config/cloudinaryConfig")
 
 // guest and suers : get all products
 exports.get_products = async (req, res, next) => {
+   
     try {
         const query = {
             title : {
@@ -30,8 +31,8 @@ exports.get_products = async (req, res, next) => {
             }
             ,
             ratings : {
-                $gte : req.query.rating.from,
-                $lte : req.query.rating.to
+                $gte : req.query.rating.gte,
+                $lte : req.query.rating.lte
             }
             ,
             'color.value' : {
