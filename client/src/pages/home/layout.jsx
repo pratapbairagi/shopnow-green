@@ -6,15 +6,16 @@ import Features from "../../components/features.js/features"
 // import LatestCard from "../latest_sec/latestCard"
 import Trending_sec from "../trending_sec/trendding_sec";
 import Features2 from "../../components/features.js/features2";
-import { Button, FloatButton } from "antd";
-import { SmileOutlined } from '@ant-design/icons';
-
-
-
+import { Button, FloatButton, Avatar, Card } from "antd";
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import UserButton from "../../components/userButton";
+import ToolTip from "../../components/tooltip/toolTip";
+import { NavLink } from "react-router-dom";
 
 const Layout = ({ cart, load, setLoad }) => {
 
-    
+const [openCartToolTip, setOpenCartToolTip] = useState(false)
+
 
     return (
         <>
@@ -25,9 +26,8 @@ const Layout = ({ cart, load, setLoad }) => {
             <Brands load={load} setLoad={setLoad} />
             <Features2 load={load} setLoad={setLoad} />
 
-           
-
-            <FloatButton.BackTop />
+            <FloatButton.BackTop className='nav-fixed-contents-backTop' />
+            <UserButton />
 
         </>
     )

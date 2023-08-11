@@ -141,11 +141,11 @@ const CartComponent = ({toggleCart}) => {
 
 
 
-            <div className="card p-0 m-0 mb-3 px-0" style={{ width: "100%", minWidth: "100%", height: "max-content", maxHeight: "20vh", margin: "auto", borderRadius: "0" }}>
+            <div className="card p-0 m-0 mb-1 px-0" style={{ width: "100%", minWidth: "100%", height: "max-content", margin: "auto", borderRadius: "0" }}>
               <div className="card-header py-1">
-                <h5 className="mb-0 py-0" style={{ fontSize: "80%" }}>Summary</h5>
+                <h5 className="mb-0 py-1" style={{ fontSize: "80%" }}>Summary</h5>
               </div>
-              <div className="card-body py-1 px-2" style={{ height: "max-content", minHeight: "max-content", maxHeight: "max-content" }}>
+              <div className="card-body py-0 px-2 m-0" style={{ height: "max-content", minHeight: "max-content" }}>
                 <ul className="list-group list-group-flush">
                   <li
                     className="list-group-item d-flex justify-content-between align-items-center border-0 px-3 pb-0 mx-auto" style={{ fontSize: "70%", width: "100%" }}>
@@ -168,7 +168,7 @@ const CartComponent = ({toggleCart}) => {
                   </li>
                 </ul>
 
-                <button type="button w-100" className="btn btn-primary btn-sm btn-block" style={{ minWidth: "100%" }}>
+                <button type="button w-100 mb-0" className="btn btn-primary btn-sm btn-block" style={{ minWidth: "100%" }}>
                   Go to checkout
                 </button>
 

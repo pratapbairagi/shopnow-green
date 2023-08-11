@@ -6,21 +6,31 @@
 }
 .cart-container .row .sec2{
     height: 94vh;
+    border: none !important;
 
 }
 .cart-container .row .sec2 .container{
     height: 94vh;
+    border: none !important;
+
 }
 .cart-container .row .sec2 .container .row{
     max-height: 94vh;
+    border: none !important;
 }
+// .cart-container .row .sec2 .container .row .card{
+// }
+// .cart-container .row .sec2 .container .row .card .card-body{
+// }
+// .cart-container .row .sec2 .container .row .card .card-body ul{
 
+// }
 @media only screen and ( max-width : 767px){
         .cart-container .row .sec1{
             height: 65vh;
         }
 .cart-container .row .sec2{
-    height: 27vh;
+    height: 31vh !important;
 }
 .cart-container .row .sec2 .container{
     height: 27vh;

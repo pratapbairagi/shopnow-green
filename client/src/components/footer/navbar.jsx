@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import SearchBar from "../searchBar/searchbar";
 import User from "../user/User";
 import { useSelector } from "react-redux";
+import { CommentOutlined, CustomerServiceOutlined } from '@ant-design/icons';
+import { FloatButton } from 'antd';
 
 
-const Navbar = ({search_options, setSearch_options}) => {
+const Navbar = ({ search_options, setSearch_options }) => {
     const toggleHandlerMenu = () => {
         let nav = document.getElementById("mid-nav");
         if (nav.style.right === "-100%") {
@@ -20,7 +22,7 @@ const Navbar = ({search_options, setSearch_options}) => {
 
     const [toggleCart, setToggleCart] = useState("cart");
     const toggleHandlerCart = (toggleBtn) => {
-        if(toggleBtn === "cart") {
+        if (toggleBtn === "cart") {
             document.getElementById(toggleCart).style.right = "0"
         }
     }
@@ -28,7 +30,7 @@ const Navbar = ({search_options, setSearch_options}) => {
     // toggle search bar
     const [toggleSearchBar, settToggleSearchBar] = useState("search");
     const toggleHandlerSearchBar = (toggleBtn) => {
-        if(toggleBtn === "search") {
+        if (toggleBtn === "search") {
             document.getElementById(toggleSearchBar).style.top = "0"
         }
     }
@@ -41,21 +43,21 @@ const Navbar = ({search_options, setSearch_options}) => {
     }
 
     // cart
-    const  {cart} = useSelector(state=> state.cart)
+    const { cart } = useSelector(state => state.cart)
     const [cartCount, setCartCount] = useState(0);
-    useEffect(()=>{
-        if(cart){
+    useEffect(() => {
+        if (cart) {
             let x = 0;
-           cart.map(v=> x+=+ v.qty)
-           setCartCount(x)
+            cart.map(v => x += + v.qty)
+            setCartCount(x)
         }
     }, [cart])
 
     return (
         <nav className="container-fluid nav-container">
-            <button onClick={toggleHandlerMenu} className="d-block d-md-none" style={{ position: "fixed", zIndex:"1", top: "11.8vh", right: "5.5vw", background: "transparent", border: "none", }}><List size="23" color="var(--dark-red)" /></button>
+            {/* <button onClick={toggleHandlerMenu} className="d-block d-md-none" style={{ position: "fixed", zIndex: "1", top: "11.8vh", right: "5.5vw", background: "transparent", border: "none" }}><List size="23" color="var(--dark-red)" /></button> */}
             <GuestCart toggleCart={toggleCart} setToggleCart={setToggleCart} />
-            <SearchBar toggleSearchBar={toggleSearchBar} search_options={search_options} setSearch_options={setSearch_options}/>
+            <SearchBar toggleSearchBar={toggleSearchBar} search_options={search_options} setSearch_options={setSearch_options} />
 
             <div className="nav pt-2">
 
@@ -71,19 +73,19 @@ const Navbar = ({search_options, setSearch_options}) => {
                 </ul>
 
                 <ul className="right-nav">
-                    <li onClick={() => toggleHandlerSearchBar("search")}><Search className="icon-btn" /></li>
-                    <li style={{position:"relative", width:"20px", height:"26px", display:"grid", placeItems:"center"}} onClick={() => toggleHandlerCart("cart")}>
-                        <Cart className="icon-btn" style={{width:"80%", height:"80%"}} />
-                        <span className="p-0" style={{position:"absolute", color:"white", fontSize:"60%", top:"-2px", right:"-5px", width:"16px", height:"16px", background:"green", borderRadius:"50%", display:"grid", placeItems:"center"}}>{
-                        cartCount
+                    <li onClick={() => toggleHandlerSearchBar("search")}><Search className="icon-btn" size="22" /></li>
+                    <li style={{ position: "relative", width: "20px", height: "26px", display: "grid", placeItems: "center" }} onClick={() => toggleHandlerCart("cart")}>
+                        <Cart className="icon-btn" size="22px" />
+                        <span className="p-0" style={{ position: "absolute", color: "white", fontSize: "60%", top: "-4px", right: "-8px", width: "16px", height: "16px", background: "green", borderRadius: "50%", display: "grid", placeItems: "center" }}>{
+                            cartCount
                         }</span>
-                        </li>
-                    <span style={{ border: "1px solid var(--dark-red)", height: "3.5vh", marginBottom: "-1vh" }}></span>
-                    <li style={{position:"relative"}} onClick={() => toggleUserHandler("user")}><PersonCircle className="icon-btn" size="22px"  />
-                        
-                        <User toggleUser={toggleUser} />
-
                     </li>
+                    <span style={{ border: "1px solid var(--dark-red)", height: "3.5vh", marginBottom: "-1vh" }}></span>
+                    <button onClick={toggleHandlerMenu} className="d-block d-md-none" style={{ zIndex: "1", top: "0", right: "5.5vw", background: "transparent", border: "none" }}><List size="23" color="var(--dark-red)" /></button>
+
+                    {/* <li style={{ position: "relative" }} onClick={() => toggleUserHandler("user")}><PersonCircle className="icon-btn" size="22px" />
+                    <User toggleUser={toggleUser} />
+                    </li> */}
                 </ul>
 
             </div>
