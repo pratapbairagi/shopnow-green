@@ -368,7 +368,7 @@ a {
     flex-direction: column;
     z-index: 10;
     justify-items: flex-start;
-    /* background-color: var(--white); */
+    background-color: var(--white);
     transition: .5s linear;
     top: 0vh;
     box-shadow: 0 0 6px var(--white-smoke);
