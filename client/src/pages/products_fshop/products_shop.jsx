@@ -444,8 +444,8 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
 
                         <section className="panel bg-light bg-white py-2 px-1" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px", minWidth: "100%", maxWidth: "100%" }} >
                             <div className="panel-body p-0 m-0 position-relative" style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
-                                <div className="pull-right m-0 position-relative" style={{ width: "max-content", display: "flex", alignItems: "center" }}>
-                                    <Pagination style={{ zIndex: "7" }} simple defaultCurrent={search_options.currentpage}  onChange={(e)=> setSearch_options({...search_options, currentpage : e})} pageSize={10} total={productsFilter.length} />
+                                <div className="pull-right position-relative" style={{ width: "max-content", display: "flex", alignItems: "center", marginRight:"-25px" }}>
+                                    <Pagination className="p-0 m-0 mx-auto" style={{ zIndex: "6" }} simple defaultCurrent={search_options.currentpage}  onChange={(e)=> setSearch_options({...search_options, currentpage : e})} pageSize={10} total={productsFilter.length} />
                                 </div>
                             </div>
                         </section>

@@ -19,21 +19,21 @@ const UserButton = () => {
             <FloatButton.Group
                 className='nav-fixed-contents-user'
                 trigger="click"
-                type="primary"
+                // type="primary"
                 style={{
                     height: "max-content",
-                    display: "flex",
-                    flexDirection: "column-reverse",
-                    zIndex: "1"
+                    // display: "flex",
+                    // flexDirection: "column-reverse",
+                    zIndex: "2"
                 }}
                 icon={<UserOutlined style={{ marginBottom: "5px" }} />}
             >
                 {!auth ?
-                    <FloatButton style={{ marginTop: "16px" }} icon={<LoginOutlined style={{ marginBottom: "4px" }} />} />
+                    <FloatButton onClick={()=> navigate("/auth")} style={{ marginTop: "16px" }} icon={<LoginOutlined style={{ marginBottom: "4px" }} />} />
                     :
                 <>
                 <FloatButton onClick={()=> navigate("/profile")} style={{ marginTop: "16px" }} icon={<LogoutOutlined style={{ marginBottom: "4px" }} />} />
-                <FloatButton onClick={logoutHandler} style={{ marginTop: "16px" }} icon={<UserOutlined style={{ marginBottom: "4px" }} />} /> 
+                <FloatButton onClick={()=>logoutHandler} style={{ marginTop: "16px" }} icon={<UserOutlined style={{ marginBottom: "4px" }} />} /> 
                 </>
                 }
 

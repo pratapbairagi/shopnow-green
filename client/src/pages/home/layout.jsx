@@ -14,8 +14,6 @@ import { NavLink } from "react-router-dom";
 
 const Layout = ({ cart, load, setLoad }) => {
 
-const [openCartToolTip, setOpenCartToolTip] = useState(false)
-
 
     return (
         <>
@@ -25,10 +23,6 @@ const [openCartToolTip, setOpenCartToolTip] = useState(false)
             <Trending_sec cart={cart} load={load} setLoad={setLoad} />
             <Brands load={load} setLoad={setLoad} />
             <Features2 load={load} setLoad={setLoad} />
-
-            <FloatButton.BackTop className='nav-fixed-contents-backTop' />
-            <UserButton />
-
         </>
     )
 }

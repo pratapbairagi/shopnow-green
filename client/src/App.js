@@ -18,6 +18,9 @@ import AboutUs from './pages/about_us/aboutUs';
 import Contact from './pages/contact/contact';
 import ProductsShop from './pages/products_fshop/products_shop';
 import ProductNotificationRoaster from './components/product_notification_toaster/productNotificationToaster';
+import UserButton from './components/userButton';
+import { FloatButton } from 'antd';
+import PageNotFound404 from './pages/error404/error404';
 
 function App() {
 
@@ -62,6 +65,9 @@ function App() {
     <div className="App">
       <Router>
         <Navbar search_options={search_options} setSearch_options={setSearch_options} />
+        <UserButton />
+        <FloatButton.BackTop className='nav-fixed-contents-backTop' />
+
 
         <Routes>
           <Route path='/' element={<Layout load={load} setLoad={setLoad} />} exact />
@@ -76,6 +82,7 @@ function App() {
           <Route path='/shop' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
           <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
           <Route path='/:category/details/:id' exact element={<Product_details />} />
+          <Route path='*' exact element={<PageNotFound404 />} />
 
 
 

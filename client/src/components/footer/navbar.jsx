@@ -62,7 +62,7 @@ const Navbar = ({ search_options, setSearch_options }) => {
             <div className="nav pt-2">
 
                 <NavLink to='/' className="navlogo">logo</NavLink>
-
+                    
                 <ul className="mid-nav" id="mid-nav" style={{ right: "-100%" }}>
                     <button onClick={toggleHandlerMenu} style={{ position: "absolute", top: "16px", left: "16px", border: "none", background: "transparent" }}><XSquare size="24" color="red" /></button>
                     <li className="m-0"><NavLink onClick={toggleHandlerMenu} to="/">HOME</NavLink></li>
