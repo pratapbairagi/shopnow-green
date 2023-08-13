@@ -217,4 +217,23 @@
 .ratingStars{
     font-size: 34px;
 }
+.activeFilter{
+    background-color: green;
+    color: whitesmoke;
+}
+.activeToggles::after{
+    content: " " !important;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    overflow: hidden;
+    background-color: rgba(209, 207, 207, 0.342);
+    // background-color: rgb(220, 220, 220);
+
+    // background-color: green;
+
+}
 }
