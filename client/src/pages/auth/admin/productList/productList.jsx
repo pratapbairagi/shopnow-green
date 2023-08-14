@@ -1,6 +1,6 @@
 import { PencilSquare, Trash3, XLg } from "react-bootstrap-icons";
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
+// import Pagination from '@mui/material/Pagination';
+// import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -12,6 +12,7 @@ import NotificationToaster from "../../../../components/notificationToaster/noti
 import Add_product from "./add_product";
 import ProductNotificationRoaster from "../../../../components/product_notification_toaster/productNotificationToaster";
 import Update_product from "./update_product";
+import { Pagination } from "antd";
 
 const ProductList = ({search_options, setSearch_options}) => {
 
