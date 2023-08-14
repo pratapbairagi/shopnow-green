@@ -12,6 +12,8 @@ import UserButton from "../../components/userButton";
 import ToolTip from "../../components/tooltip/toolTip";
 import { NavLink } from "react-router-dom";
 
+
+
 const Layout = ({ cart, load, setLoad }) => {
 
 
@@ -23,6 +25,7 @@ const Layout = ({ cart, load, setLoad }) => {
             <Trending_sec cart={cart} load={load} setLoad={setLoad} />
             <Brands load={load} setLoad={setLoad} />
             <Features2 load={load} setLoad={setLoad} />
+        
         </>
     )
 }

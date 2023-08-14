@@ -77,8 +77,6 @@ export const get_all_products_action = (
     pricesort = ""
 ) => async (dispatch) => {
 
-    console.log("rating", rating)
-
     try {
         dispatch({
             type: GET_ALL_PRODUCTS_REQUEST

@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clear_success, create_product_action, delete_product_action, edit_product_action } from "../../../../redux/product/product_actions";
+import { clear_success, create_product_action, delete_product_action, edit_product_action, get_all_products_action } from "../../../../redux/product/product_actions";
 import Spinner from "../../../../components/spinner/spinner";
 import NotificationToaster from "../../../../components/notificationToaster/notificationToaster";
 import Add_product from "./add_product";
@@ -18,6 +18,16 @@ const ProductList = ({search_options, setSearch_options}) => {
 
     const products = useSelector(state => state.product);
     const dispatch = useDispatch();
+
+    // 
+    const productCheck = () => {
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender, search_options.currentpage, search_options.rating, search_options.date, search_options.pricesort))
+    }
+
+    useEffect(()=>{
+        productCheck()
+    },[search_options])
+    // 
 
     let [product, setProduct] = useState({
         title: "",
@@ -246,9 +256,7 @@ const ProductList = ({search_options, setSearch_options}) => {
                             </tbody>
 
                         </table>
-                        <Stack sx={{ position: "sticky", bottom: "0", left: "0", background: "whitesmoke" }} spacing={2}>
                         <Pagination className="p-0 m-0 mx-auto" style={{ zIndex: "6" }} simple defaultCurrent={search_options.currentpage} onChange={(e) => setSearch_options({ ...search_options, currentpage: e })} pageSize={10} total={products.totalProductsWithNoLimit} />
-                        </Stack>
                     </div>
 
                 </div>
