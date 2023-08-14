@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BagCheck, BoxArrowRight, CaretRight, Cart2, Envelope, People, Person, PersonGear, Star, UiRadiosGrid } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { user_clear_error_action, user_clear_success_action } from "../../redux/userAction";
+import { user_clear_error_action, user_clear_success_action, user_logout_action } from "../../redux/userAction";
 import ProductList from "./admin/productList/productList";
 import UsersList from "./admin/userslist/usersList";
 import "./dashboard.css";
@@ -58,6 +58,11 @@ const Dashboard = ({setSearch_options, search_options}) => {
             dispatch(user_clear_error_action())
         }
     }, [state.success, state.error, dispatch])
+
+    // logout
+    const logoutHandler = () => {
+        dispatch(user_logout_action());
+    }
 
     return (
         <div className="container-fluid dashboard_container" style={{ overflow: "hidden", height: "100vh" }}>
@@ -120,7 +125,7 @@ const Dashboard = ({setSearch_options, search_options}) => {
                                 <span className="col-12 col-md-5 d-none d-md-flex" style={{ fontSize: "12px", fontWeight: "600", textAlign: "left", justifyContent: "flex-start", alignItems: "center", height: "100%", color: "blue" }}> Setting </span>
                             </button>
 
-                            <button className="row mt-2">
+                            <button className="row mt-2" onClick={()=> logoutHandler()}>
                                 <span className="col-12 col-md-3" style={{ maxWidth: "2rem", display: "grid", placeItems: "center", height: "100%" }}> <BoxArrowRight style={{ marginLeft: "2px" }} size="16px" color="blue" /> </span>
                                 <span className="col-12 col-md-5 d-none d-md-flex" style={{ fontSize: "12px", fontWeight: "600", textAlign: "left", justifyContent: "flex-start", alignItems: "center", height: "100%", color: "blue" }}> Logout </span>
                             </button>

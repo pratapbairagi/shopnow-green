@@ -33,7 +33,7 @@ const UserButton = () => {
                     :
                 <>
                 <FloatButton onClick={()=> navigate("/profile")} style={{ marginTop: "16px" }} icon={<UserOutlined style={{ marginBottom: "4px" }} />} />
-                <FloatButton onClick={()=>logoutHandler} style={{ marginTop: "16px" }} icon={<LogoutOutlined style={{ marginBottom: "4px" }} />} /> 
+                <FloatButton onClick={()=>logoutHandler()} style={{ marginTop: "16px" }} icon={<LogoutOutlined style={{ marginBottom: "4px" }} />} /> 
                 </>
                 }
 
