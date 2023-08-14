@@ -61,6 +61,8 @@ exports.get_products = async (req, res, next) => {
 
         // const products = await Products.find(query);
         let products = await Products.find(query).sort(sort).limit(resultPerPage).skip(skip);
+        let totalProductsWithNoLimit = await Products.find(query).sort(sort).countDocuments()
+
 
         const productFilters = await Products.find().select("-password -title -images -_id -description -price -color -size -gender -offer -reviews -createdAt -seller -stock" )
 
@@ -68,6 +70,7 @@ exports.get_products = async (req, res, next) => {
             success : true,
             message : "Your products are here !",
             products,
+            totalProductsWithNoLimit,
             productFilters
         })
     } catch (error) {

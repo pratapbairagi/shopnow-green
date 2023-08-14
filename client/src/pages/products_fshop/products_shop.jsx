@@ -24,7 +24,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
     }, [pathname])
 
     const dispatch = useDispatch();
-    const { loading, success, error, product, products, productsFilter } = useSelector(state => state.product);
+    const { loading, success, error, product, products, productsFilter, totalProductsWithNoLimit } = useSelector(state => state.product);
     const { cart } = useSelector(state => state.cart);
     const [filterValues, setFilterValues] = useState({
         brand: "", color: "", size: ""
@@ -271,7 +271,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
                                                         <button className="active d-flex justify-content-center align-items-center p-0" style={{ position: "relative", width: "20px", height: "20px", display: "flex", flexDirection: "column", background: `${search_options.gender !== v.gender ? "white" : "green"}`, color: "white", border: "1px solid grey", borderRadius: "3px" }}>
                                                             <input type="radio" value={v.gender.slice(0, 1)} name="category" onChange={(e) => setSearch_options({ ...search_options, gender: e.target.value })} id="" style={{ position: "absolute", width: "100%", height: "100%", opacity: "0" }} />
                                                             {
-                                                                search_options.gender !== `${v.gender.slice(0, 1)}` ?
+                                                                search_options.gender.charAt(0) !== `${v.gender.slice(0, 1)}` ?
                                                                     <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px" }}></span>
                                                                     :
                                                                     <span className="p-0 m-0" style={{ minHeight: "20px", minWidth: "20px", display: "grid", placeItems: "center", backgroundColor: "green", color: "whitesmoke" }}>
@@ -479,7 +479,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
                         <section className="panel bg-light bg-white py-2 px-1" style={{ height: "8vh", display: "flex", alignItems: "center", justifyContent: "flex-end", borderRadius: "4px", minWidth: "100%", maxWidth: "100%" }} >
                             <div className="panel-body p-0 m-0 position-relative" style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
                                 <div className="pull-right position-relative" style={{ width: "max-content", display: "flex", alignItems: "center", marginRight: "-25px" }}>
-                                    <Pagination className="p-0 m-0 mx-auto" style={{ zIndex: "6" }} simple defaultCurrent={search_options.currentpage} onChange={(e) => setSearch_options({ ...search_options, currentpage: e })} pageSize={10} total={products.length} />
+                                    <Pagination className="p-0 m-0 mx-auto" style={{ zIndex: "6" }} simple defaultCurrent={search_options.currentpage} onChange={(e) => setSearch_options({ ...search_options, currentpage: e })} pageSize={10} total={totalProductsWithNoLimit} />
                                 </div>
                             </div>
                         </section>
@@ -504,7 +504,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
                                                 </button>
                                             } */}
                                             <h6 className="mx-auto mt-2" style={{ width: "90%", color: "grey", textAlign: "center", textTransform: "uppercase", fontSize: "85%", letterSpacing: ".2px", fontWeight: "600", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "1", WebkitBoxOrient: "vertical" }}>
-                                                {v.gender === "f" ? "WOMEN" : v.gender === "m" ? "MEN" : "KIDS"} , {v.category}
+                                                {v.gender.charAt(0) === "f" ? "WOMEN" : v.gender.charAt(0) === "m" ? "MEN" : "KIDS"} , {v.category}
                                             </h6>
                                         </div>
 

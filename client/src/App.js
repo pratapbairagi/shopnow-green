@@ -87,7 +87,7 @@ function App() {
 
 
           <Route element={<ProtectedRoute />}>
-            <Route path='/profile' element={<Dashboard state={state} />} exact />
+            <Route path='/profile' element={<Dashboard state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
           </Route>
 
           <Route element={<NonProtectedRoute />}>

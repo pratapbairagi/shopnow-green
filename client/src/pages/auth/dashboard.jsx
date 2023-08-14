@@ -9,7 +9,7 @@ import Profile from "./profile/profile";
 import CartComponent from "../../components/cartComponent/cartComponent";
 
 
-const Dashboard = () => {
+const Dashboard = ({setSearch_options, search_options}) => {
 
     const dispatch = useDispatch();
     const state = useSelector(state => state.user_register);
@@ -155,7 +155,7 @@ const Dashboard = () => {
                             </div>
 
                             <div className="sec" style={{height:"100vh"}}>
-                                <ProductList />
+                                <ProductList  setSearch_options={setSearch_options} search_options={search_options} />
                             </div>
 
                             <div className="sec" style={{height:"100vh"}}>

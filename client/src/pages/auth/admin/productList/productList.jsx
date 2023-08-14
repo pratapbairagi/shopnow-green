@@ -13,7 +13,7 @@ import Add_product from "./add_product";
 import ProductNotificationRoaster from "../../../../components/product_notification_toaster/productNotificationToaster";
 import Update_product from "./update_product";
 
-const ProductList = () => {
+const ProductList = ({search_options, setSearch_options}) => {
 
     const products = useSelector(state => state.product);
     const dispatch = useDispatch();
@@ -51,11 +51,7 @@ const ProductList = () => {
     // onchange update
     const updateProduct_handler_ = (e) => {
 
-        console.log(e)
-
         const { name, value } = e.target;
-        console.log(name)
-        console.log(value)
 
         if (name !== "images") {
             setProduct({ ...product, [name]: value })
@@ -75,7 +71,6 @@ const ProductList = () => {
 
                 }
                 reader.readAsDataURL(element)
-                console.log(product)
             });
         }
 
@@ -208,7 +203,7 @@ const ProductList = () => {
                                 <tr>
                                     <th style={{ width: "max-content", whiteSpace: "nowrap", fontSize: "calc(7px + 0.390625vw)" }}>S No.</th>
                                     <th style={{ width: "max-content", whiteSpace: "nowrap", fontSize: "calc(7px + 0.390625vw)" }}>ID</th>
-                                    <th style={{ width: "max-content", whiteSpace: "nowrap", fontSize: "calc(7px + 0.390625vw)" }}>Title</th>
+                                    <th style={{ width: "max-content", whiteSpace: "nowrap", fontSize: "calc(7px + 0.390625vw)", minWidth:"70px" }}>Title</th>
                                     <th style={{ width: "max-content", whiteSpace: "nowrap", fontSize: "calc(7px + 0.390625vw)" }}>Price</th>
                                     <th style={{ width: "max-content", whiteSpace: "nowrap", fontSize: "calc(7px + 0.390625vw)" }} >Category</th>
                                     <th style={{ width: "max-content", whiteSpace: "nowrap", fontSize: "calc(7px + 0.390625vw)" }}>Description</th>
@@ -230,7 +225,7 @@ const ProductList = () => {
                                             <td style={{ fontWeight: "300", width: "max-content", maxWidth: "4rem", fontSize: "calc(5px + 0.390625vw)", overflow: "hidden", minHeight: "2rem", maxHeight: "2rem", height: "40px", minWidth: "50px" }}>
                                                 <span style={{ minWidth: "50px", maxWidth: "100%", overflow: "hidden", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", display: "-webkit-box" }} title={v._id}>{v._id}</span>
                                             </td>
-                                            <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "50px" }}>{v.title}</td>
+                                            <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "70px" }}>{v.title}</td>
                                             <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "40px" }}>{v.price}</td>
                                             <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "50px" }}>{v.category}</td>
                                             <td style={{ fontWeight: "300", width: "max-content", maxWidth: "4rem", fontSize: "calc(5px + 0.390625vw)", overflow: "hidden", minHeight: "2rem", maxHeight: "2rem", height: "40px", minWidth: "50px" }}>
@@ -251,16 +246,7 @@ const ProductList = () => {
 
                         </table>
                         <Stack sx={{ position: "sticky", bottom: "0", left: "0", background: "whitesmoke" }} spacing={2}>
-                            <Pagination
-                                count={4}
-                                sx={{ justifyContent: 'center', display: "flex" }}
-                                renderItem={(item) => (
-                                    <PaginationItem
-                                        slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-                                        {...item}
-                                    />
-                                )}
-                            />
+                        <Pagination className="p-0 m-0 mx-auto" style={{ zIndex: "6" }} simple defaultCurrent={search_options.currentpage} onChange={(e) => setSearch_options({ ...search_options, currentpage: e })} pageSize={10} total={products.totalProductsWithNoLimit} />
                         </Stack>
                     </div>
 

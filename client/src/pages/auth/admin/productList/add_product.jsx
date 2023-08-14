@@ -183,17 +183,14 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                             style={{ width: "100%" }}
                             onSelect={(e) => {
                                 colorChangeHandler({
-                                    // value: e, key: e, title: e
                                     type: "text", value: e, id: productChange.color?.length + 1
                                 })
                             }}
                             onDeselect={(e) => {
                                 colorChangeHandler({
-                                    // value: e, key: e, title: e
                                     type: "text", value: e, id: productChange.color?.length + 1
                                 })
                             }}
-
                             options={[...new Set([colorOptions])]}
                             tokenSeparators={[',']}
                             onClear={() => setProductChange({ ...productChange, color: [] })}
@@ -257,17 +254,14 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                             style={{ width: "100%" }}
                             onSelect={(e) => {
                                 sizeChangeHandler({
-                                    // value: e, key: e, title: e
                                     type: "text", value: e, id: productChange.size?.length + 1
                                 })
                             }}
                             onDeselect={(e) => {
                                 sizeChangeHandler({
-                                    // value: e, key: e, title: e
                                     type: "text", value: e, id: productChange.size?.length + 1
                                 })
                             }}
-
                             options={[...new Set([sizeOptions])]}
                             tokenSeparators={[',']}
                             onClear={() => setProductChange({ ...productChange, size: [] })}
@@ -284,8 +278,8 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                     {/* <Input type="number" name="size" id="size" fun={updateProduct_handler_} placeholder="Product Size" defaultValue={product.size} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} /> */}
                     <select name="gender" defaultValue={productChange.gender} onChange={(e) => setProductChange({ ...productChange, gender: e.target.value })} >
                         <option value="">Select Option</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
                     </select>
                 </div>
 
