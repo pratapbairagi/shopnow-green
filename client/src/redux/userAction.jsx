@@ -286,3 +286,29 @@ export const admin_user_update_action = (id, user) => async (dispatch) => {
         })
     }
 }
+
+
+
+
+// google auth
+export const user_google_logged_check_action = () => async (dispatch) => {
+    try {
+        dispatch({
+            type : USER_LOGGED_REQUEST
+        });
+
+        // let {data} = await axios.get("https://shopnow-server.vercel.app/website_ecommerce/app/api/logged", config );
+        let {data} = await axios.get("http://localhost:5544/auth/login/success", {withCredentials: true, headers:{"Content-Type":"application/json"}} );
+
+        dispatch({
+            type : USER_LOGGED_SUCCESS,
+            payload : data
+        })
+
+    } catch (error) {
+        dispatch({
+            type : USER_LOGGED_FAILED,
+            payload : error.response.data
+        })
+    }
+};

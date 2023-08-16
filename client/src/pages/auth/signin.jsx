@@ -5,6 +5,7 @@ import { User_login_action } from "../../redux/userAction";
 import { Facebook, Google, Twitter } from "react-bootstrap-icons";
 import "./signup.css"
 import axios from "axios";
+import GoogleSignInButton from "../../components/googleSignInButton/googleSignInButton";
 
 
 const Signin = () => {
@@ -101,7 +102,8 @@ const Signin = () => {
                     <div className="login_with_buttons">
 
                         <button style={{ border: "1px solid #db4437 " }}>
-                            <Google color="#db4437" size="14" />
+                            {/* <Google color="#db4437" size="14" /> */}
+                            <GoogleSignInButton/>
                         </button>
                         <button style={{ border: "1px solid #4267b2 " }}>
                             <Facebook color="#4267b2" size="14" />

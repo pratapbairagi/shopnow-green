@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Auth from './pages/auth/auth';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { user_logged_check_action } from './redux/userAction';
+import { user_google_logged_check_action, user_logged_check_action } from './redux/userAction';
 import Layout from './pages/home/layout';
 import Dashboard from './pages/auth/dashboard';
 import ProtectedRoute from './protectedRoute/protectedRoute';
@@ -21,6 +21,7 @@ import ProductNotificationRoaster from './components/product_notification_toaste
 import UserButton from './components/userButton';
 import { FloatButton } from 'antd';
 import PageNotFound404 from './pages/error404/error404';
+import axios from 'axios';
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
+   dispatch(user_google_logged_check_action())
   }
 
   return (
@@ -71,7 +73,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Layout load={load} setLoad={setLoad} />} exact />
-          {/* <Route path='/about' element={<h4>About</h4>} /> */}
+          
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details />} />
           <Route path='/shop/details/:id' exact element={<Product_details />} />
@@ -82,7 +84,7 @@ function App() {
           <Route path='/shop' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
           <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
           <Route path='/:category/details/:id' exact element={<Product_details />} />
-          <Route path='*' exact element={<PageNotFound404 />} />
+          {/* <Route path='*' exact element={<PageNotFound404 />} /> */}
 
 
 

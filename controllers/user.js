@@ -153,6 +153,9 @@ exports.user_update = async (req, res, next) => {
             if (isUserExist.public_id !== null && isUserExist.public_id !== undefined && isUserExist.public_id) {
                 cloudinary.uploader.destroy(isUserExist.image.public_id);
             }
+            else if(isUserExist.public_id === null || isUserExist.public_id === undefined){
+                cloudinary.api.delete_resources(isUserExist.image.url)
+            }
 
             const result = await cloudinary.uploader.upload(image.url, {
                 folder: "website_ecommerce"
