@@ -1,7 +1,8 @@
 const express = require("express");
 const passport = require("passport");
 const authRoute = express()
-const clientUrl = "http://localhost:3000"
+// const clientUrl = "http://localhost:3000"
+const clientUrl = "https://shopnow-green.vercel.app"
 
 authRoute.get("/login/success", async (req,res,next)=>{
     // console.log("login success get 1", req.user)
