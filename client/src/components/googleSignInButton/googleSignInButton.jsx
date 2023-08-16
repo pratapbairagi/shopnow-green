@@ -1,12 +1,12 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+// import axios from "axios";
+import React from "react";
 import { Google } from "react-bootstrap-icons";
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 
 const GoogleSignInButton = () => {
 
     const googleSignInHandler = async () => {
-        window.open("http://localhost:5544/auth/google/callback", "_self")
+        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/google/callback`, "_self")
     }
 
     // const handleGoogleSignIn = async () => {

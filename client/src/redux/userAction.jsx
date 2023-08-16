@@ -297,8 +297,8 @@ export const user_google_logged_check_action = () => async (dispatch) => {
             type : USER_LOGGED_REQUEST
         });
 
-        // let {data} = await axios.get("https://shopnow-server.vercel.app/website_ecommerce/app/api/logged", config );
-        let {data} = await axios.get("http://localhost:5544/auth/login/success", {withCredentials: true, headers:{"Content-Type":"application/json"}} );
+        // let {data} = await axios.get("http://localhost:5544/auth/login/success", {withCredentials: true, headers:{"Content-Type":"application/json"}} );
+        let {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/auth/login/success`, {withCredentials: true, headers:{"Content-Type":"application/json"}} );
 
         dispatch({
             type : USER_LOGGED_SUCCESS,

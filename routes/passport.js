@@ -1,14 +1,15 @@
 const passport = require("passport");
 const userModel = require("../models/users");
-const GoogleStrategy = require("passport-google-oauth20").Strategy
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const clientUrl = "https://shopnow-green.vercel.app"
 
 
 
 passport.use( new GoogleStrategy({
     clientID : "418059318534-dpve61uhokog17294r6ee85u5opmdk0k.apps.googleusercontent.com",
     clientSecret : "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",
-    // callbackURL : `/auth/google/callback`,
-    callbackURL : `http://localhost:5544/auth/google/callback`,
+    // callbackURL : `http://localhost:5544/auth/google/callback`,
+    callbackURL : `${clientUrl}/auth/google/callback`,
     scope : [ "profile", "email"],
     passReqToCallback   : true
   },
