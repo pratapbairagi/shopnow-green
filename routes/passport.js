@@ -26,15 +26,15 @@ passport.use( new GoogleStrategy({
 
         let image = {
             public_id : "",
-            url : ""
+            url : profile.photos[0].value
         }
 
-        let result = await cloudinary.uploader.upload(profile.photos[0].value, {
-            folder: "website_ecommerce"
-        });
+        // let result = await cloudinary.uploader.upload(profile.photos[0].value, {
+        //     folder: "website_ecommerce"
+        // });
 
-        image.public_id = result.public_id;
-        image.url = result.url;
+        // image.public_id = result.public_id;
+        // image.url = result.url;
 
         user = await userModel.create({
           name : profile.displayName,
