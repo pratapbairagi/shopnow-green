@@ -1,5 +1,6 @@
 const passport = require("passport");
 const userModel = require("../models/users");
+const cloudinary = require("../config/cloudinaryConfig");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const clientUrl = "https://shopnow-green.vercel.app"
 
