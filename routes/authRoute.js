@@ -15,8 +15,8 @@ authRoute.get(
     '/google/callback', 
     passport.authenticate('google', 
     { 
-        successRedirect : '/auth/login/success',
-        failureRedirect: `/auth/login/failed`
+        successRedirect : '/',
+        failureRedirect: `/`
     }
     ), (req, res)=>{
     // console.log("login success get 2", req.user)
@@ -25,7 +25,7 @@ authRoute.get(
     })
 
 
-authRoute.get("/login/success", async (req,res,next)=>{
+authRoute.get("/", async (req,res,next)=>{
     // console.log("login success get 1", req.user)
     try {
         if(req.user){
@@ -62,7 +62,7 @@ authRoute.get("/login/success", async (req,res,next)=>{
 })
 
 
-authRoute.get("/login/failed", async (req, res, next)=>{
+authRoute.get("/", async (req, res, next)=>{
     // console.log("login failed", req.authInfo)
     try {
         res.status(401).json({
