@@ -45,10 +45,12 @@ authRoute.get("/login/failed", async (req, res, next)=>{
     // console.log("login failed", req.authInfo)
     try {
         res.status(401).json({
+            success : false,
             message : "Login failed !"
         })
     } catch (error) {
         res.status(401).json({
+            success : false,
             message : error
         })
         // console.log("google login faild 2", error )
@@ -65,7 +67,7 @@ authRoute.get(
     passport.authenticate('google', 
     { 
         successRedirect : clientUrl,
-        failureRedirect: '/login/failed' 
+        failureRedirect: `${clientUrl}/login/failed`
     }
     ), (req, res)=>{
     // console.log("login success get 2", req.user)
