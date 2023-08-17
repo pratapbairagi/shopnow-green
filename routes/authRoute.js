@@ -16,17 +16,17 @@ authRoute.get(
     '/google/callback', 
     passport.authenticate('google', 
     { 
-        successRedirect : '/website_ecommerce/app/api/logged',
-        failureRedirect: `/website_ecommerce/app/api/failed`
+        successRedirect : '/auth/logged',
+        failureRedirect: `/auth/failed`
     }
     ), (req, res)=>{
     // console.log("login success get 2", req.user)
 
-        res.redirect('/website_ecommerce/app/api/logged')
+        res.redirect('/auth/logged')
     })
 
 
-authRoute.route("/website_ecommerce/app/api/logged").get( userAuth, async (req,res,next)=>{
+authRoute.route("/logged").get( userAuth, async (req,res,next)=>{
     // console.log("login success get 1", req.user)
     try {
         if(req.user){

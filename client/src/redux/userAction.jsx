@@ -91,8 +91,17 @@ export const user_logged_check_action = () => async (dispatch) => {
             withCredentials : true
         };
 
+        let data = {}
         // let {data} = await axios.get("https://shopnow-server.vercel.app/website_ecommerce/app/api/logged", config );
-        let {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/logged`, config );
+         await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/logged`, config ).then((res)=>{
+            data = res.data
+         });
+
+         if(data.user === undefined || data.user === null || !data.user){
+            await axios.get(`${process.env.REACT_APP_SERVER_URL}/auth/logged`, config ).then((res)=>{
+                data = res.data
+             });
+         }
 
         console.log("user logged with signin checked", data)
 
