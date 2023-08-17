@@ -10,7 +10,7 @@ passport.use( new GoogleStrategy({
     clientID : "418059318534-dpve61uhokog17294r6ee85u5opmdk0k.apps.googleusercontent.com",
     clientSecret : "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",
     // callbackURL : `http://localhost:5544/auth/google/callback`,
-    callbackURL : `${clientUrl}/auth/google/callback`,
+    callbackURL : `${clientUrl}/website_ecommerce/app/api/google/callback`,
     scope : [ "profile", "email"],
     passReqToCallback   : true
   },
@@ -50,7 +50,7 @@ passport.use( new GoogleStrategy({
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000 // 24 hours in milliseconds
         };
-        
+
         request.res.cookie("jwt", token, cookieOptions);
 
       return done(null, user);

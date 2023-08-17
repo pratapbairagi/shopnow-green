@@ -43,7 +43,7 @@ app.use(express.json({ extended: true, limit: "25mb" }));
 // app.use(bodyparser.urlencoded({extended: true}))
 
 
-app.use("/auth", authRoute)
+app.use("/website_ecommerce/app/api", authRoute)
 app.use("/website_ecommerce/app/api", userRouter); 
 app.use("/website_ecommerce/app/api", productRoute);
 

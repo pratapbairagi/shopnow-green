@@ -17,7 +17,7 @@ authRoute.get(
     passport.authenticate('google', 
     { 
         successRedirect : '/website_ecommerce/app/api/logged',
-        failureRedirect: `/auth/login/failed`
+        failureRedirect: `/website_ecommerce/app/api/failed`
     }
     ), (req, res)=>{
     // console.log("login success get 2", req.user)
@@ -65,7 +65,7 @@ authRoute.route("/website_ecommerce/app/api/logged").get( userAuth, async (req,r
 })
 
 
-authRoute.get("/auth/login/failed", async (req, res, next)=>{
+authRoute.get("/failed", async (req, res, next)=>{
     // console.log("login failed", req.authInfo)
     try {
         res.status(401).json({

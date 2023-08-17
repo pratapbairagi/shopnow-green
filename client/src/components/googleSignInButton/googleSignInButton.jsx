@@ -6,7 +6,7 @@ import { Google } from "react-bootstrap-icons";
 const GoogleSignInButton = () => {
 
     const googleSignInHandler = async () => {
-        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/google/callback`, "_self")
+        window.open(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/google/callback`, "_self")
     }
 
     // const handleGoogleSignIn = async () => {
