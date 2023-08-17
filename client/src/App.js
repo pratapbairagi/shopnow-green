@@ -28,6 +28,7 @@ function App() {
 
   const dispatch = useDispatch();
   const state = useSelector(state => state.user_register);
+  
   const [load, setLoad] = useState(false)
   const [search_options, setSearch_options] = useState({
     name: "",
@@ -57,12 +58,17 @@ function App() {
 
   useEffect(() => {
     loggedUserCheck();
-  }, [search_options]);
+  }, [search_options ]);
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
   //  dispatch(user_google_logged_check_action())
   }
+
+  console.log("user", state.user)
+  console.log("user response type", typeof state.user)
+  console.log("user state", state)
+
 
   return (
     <div className="App" id='App'>
