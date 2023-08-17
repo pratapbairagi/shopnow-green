@@ -99,6 +99,9 @@ export const user_logged_check_action = () => async (dispatch) => {
             payload : data
         })
 
+        console.log("check signin logged paylod", data)
+
+
     } catch (error) {
         dispatch({
             type : USER_LOGGED_FAILED,
@@ -304,6 +307,8 @@ export const user_google_logged_check_action = () => async (dispatch) => {
             type : USER_LOGGED_SUCCESS,
             payload : data
         })
+
+        console.log("check google logged paylod", data)
 
         // window.location.href = "https://shopnow-green.vercel.app"
 

@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const userAuth = require("../middleware/userAuth");
 const authRoute = express();
 // const clientUrl = "http://localhost:3000"
 const clientUrl = "https://shopnow-green.vercel.app";
@@ -21,27 +22,27 @@ authRoute.get(
     ), (req, res)=>{
     // console.log("login success get 2", req.user)
 
-        // res.redirect('/login/success')
+        res.redirect('/auth/login/success')
     })
 
 
-authRoute.get("/auth/login/success", async (req,res,next)=>{
+authRoute.route("/auth/login/success").get( userAuth, async (req,res,next)=>{
     // console.log("login success get 1", req.user)
     try {
         if(req.user){
             let user = req.user
-            let token = await user.generateToken();
+        //     let token = await user.generateToken();
 
-        let cookieOptions = {
-            httpOnly: true,
-            maxAge: (24 * 60 * 60 * 1000)
-        };
+        // let cookieOptions = {
+        //     httpOnly: true,
+        //     maxAge: (24 * 60 * 60 * 1000)
+        // };
 
-        res.cookie("jwt", token, cookieOptions);
+        // res.cookie("jwt", token, cookieOptions);
 
         res.status(200).json({
             success: true,
-            message: "User login success !",
+            message: "User logged !",
             user: user
         });
 
@@ -77,6 +78,42 @@ authRoute.get("/auth/login/failed", async (req, res, next)=>{
         // console.log("google login faild 2", error )
     }
 })
+
+
+authRoute.get('/logout', (req, res) => {
+    // Clear session data or cookies as needed
+    req.logout();  // If using passport.js
+    res.clearCookie('jwt'); // If using cookies
+
+    // Revoke Google access token
+    if (req.user && req.user.google && req.user.google.access_token) {
+        const google = require('googleapis').google;
+        const oauth2Client = new google.auth.OAuth2();
+        oauth2Client.setCredentials({
+            access_token: req.user.google.access_token
+        });
+
+        oauth2Client.revokeToken(req.user.google.access_token, (err, response) => {
+            if (err) {
+                res.status(401).json({
+                    success : false,
+                    message : err
+                })
+                console.error('Error revoking Google access token:', err);
+            }
+            
+            res.status(200).json({
+                success : true,
+                message : "logout successful"
+            })
+            console.log('Google access token revoked.');
+        });
+    }
+
+    // Redirect to a logged-out page or back to the login page
+    res.redirect('/auth');
+});
+
 
 
     module.exports = authRoute

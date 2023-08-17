@@ -37,12 +37,22 @@ passport.use( new GoogleStrategy({
         // image.public_id = result.public_id;
         // image.url = result.url;
 
+        
         user = await userModel.create({
           name : profile.displayName,
           email : profile.emails[0].value,
           image : image
         })
+
+        // Generate and set the JWT token as a cookie
+        let token = await user.generateToken();
+        let cookieOptions = {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000 // 24 hours in milliseconds
+        };
         
+        request.res.cookie("jwt", token, cookieOptions);
+
       return done(null, user);
       }
     } catch (error) {
