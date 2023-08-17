@@ -26,7 +26,7 @@ authRoute.get(
     })
 
 
-authRoute.route("/auth/login/success").get( async (req,res,next)=>{
+authRoute.route("/login/success").get( async (req,res,next)=>{
     // console.log("login success get 1", req.user)
     try {
         if(req.user){
@@ -61,7 +61,7 @@ authRoute.route("/auth/login/success").get( async (req,res,next)=>{
 })
 
 
-authRoute.get("/auth/login/failed", async (req, res, next)=>{
+authRoute.get("/login/failed", async (req, res, next)=>{
     // console.log("login failed", req.authInfo)
     try {
         res.status(401).json({
@@ -109,7 +109,7 @@ authRoute.get('/logout', (req, res) => {
     }
 
     // Redirect to a logged-out page or back to the login page
-    res.redirect('/auth');
+    res.redirect('/');
 });
 
 
