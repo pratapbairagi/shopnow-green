@@ -16,14 +16,14 @@ authRoute.get(
     '/google/callback', 
     passport.authenticate('google', 
     { 
-        successRedirect : '/auth/login/success',
-        failureRedirect: `/auth/login/failed`
+        successRedirect : '/login/success',
+        failureRedirect: `/login/failed`
     }
-    ), (req, res)=>{
-    // console.log("login success get 2", req.user)
-
-        res.redirect('/auth/login/success')
-    })
+    )
+    // , (req, res)=>{
+    //     res.redirect('/auth/login/success')
+    // }
+    )
 
 
 authRoute.route("/login/success").get( async (req,res,next)=>{

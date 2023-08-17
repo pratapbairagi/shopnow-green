@@ -101,7 +101,7 @@ function App() {
           <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
           <Route path='/:category/details/:id' exact element={<Product_details />} />
           {/* <Route path='*' exact element={<PageNotFound404 />} /> */}
-          <Route path='/auth/login/success' element={<LoginSuccess state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
+          <Route path='/login/success' element={<LoginSuccess state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
 
 
           <Route element={<ProtectedRoute />}>
