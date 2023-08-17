@@ -61,7 +61,7 @@ function App() {
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
-   dispatch(user_google_logged_check_action())
+  //  dispatch(user_google_logged_check_action())
   }
 
   return (
