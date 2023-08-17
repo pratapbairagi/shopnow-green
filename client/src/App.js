@@ -22,6 +22,7 @@ import UserButton from './components/userButton';
 import { FloatButton } from 'antd';
 import PageNotFound404 from './pages/error404/error404';
 import axios from 'axios';
+import LoginSuccess from './components/loginSuccess/loginSuccess';
 
 function App() {
 
@@ -89,6 +90,7 @@ function App() {
 
 
           <Route element={<ProtectedRoute />}>
+          <Route path='/auth/login/success' element={<LoginSuccess state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
             <Route path='/profile' element={<Dashboard state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
           </Route>
 
