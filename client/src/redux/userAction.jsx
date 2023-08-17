@@ -93,7 +93,9 @@ export const user_logged_check_action = () => async (dispatch) => {
 
         // let {data} = await axios.get("https://shopnow-server.vercel.app/website_ecommerce/app/api/logged", config );
         let { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/logged`, config );
-        console.log("user logged with signin checked", data)
+        
+        console.log("normal auth data", data)
+
 
         dispatch({
             type : USER_LOGGED_SUCCESS,
@@ -310,6 +312,7 @@ export const user_google_logged_check_action = () => async (dispatch) => {
         // let {data} = await axios.get("http://localhost:5544/auth/login/success", {withCredentials: true, headers:{"Content-Type":"application/json"}} );
         let {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/auth/login/success`, config );
 
+        console.log("google auth data", data)
         dispatch({
             type : USER_LOGGED_SUCCESS,
             payload : data
