@@ -18,8 +18,9 @@ passport.use( new GoogleStrategy({
    
     try {
       let user = await userModel.findOne({email : profile.emails[0].value})
-  
+      
       if(user){
+        
       return done(null, user);
       }
       else{
@@ -41,6 +42,7 @@ passport.use( new GoogleStrategy({
           email : profile.emails[0].value,
           image : image
         })
+        
       return done(null, user);
       }
     } catch (error) {

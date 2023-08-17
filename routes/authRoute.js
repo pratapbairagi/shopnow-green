@@ -1,8 +1,29 @@
 const express = require("express");
 const passport = require("passport");
-const authRoute = express()
+const authRoute = express();
 // const clientUrl = "http://localhost:3000"
-const clientUrl = "https://shopnow-green.vercel.app"
+const clientUrl = "https://shopnow-green.vercel.app";
+
+
+
+// google - google athenticate
+authRoute.get(
+    '/google', 
+    passport.authenticate('google', {scope : ['email','profile']} ));
+
+authRoute.get(
+    '/google/callback', 
+    passport.authenticate('google', 
+    { 
+        successRedirect : '/login/success',
+        failureRedirect: `/login/failed`
+    }
+    ), (req, res)=>{
+    // console.log("login success get 2", req.user)
+
+        res.redirect('/login/success')
+    })
+
 
 authRoute.get("/login/success", async (req,res,next)=>{
     // console.log("login success get 1", req.user)
@@ -57,22 +78,5 @@ authRoute.get("/login/failed", async (req, res, next)=>{
     }
 })
 
-// google - google athenticate
-authRoute.get(
-    '/google', 
-    passport.authenticate('google', {scope : ['email','profile']} ));
-
-authRoute.get(
-    '/google/callback', 
-    passport.authenticate('google', 
-    { 
-        successRedirect : clientUrl,
-        failureRedirect: `${clientUrl}/login/failed`
-    }
-    ), (req, res)=>{
-    // console.log("login success get 2", req.user)
-
-        res.redirect(clientUrl)
-    })
 
     module.exports = authRoute
