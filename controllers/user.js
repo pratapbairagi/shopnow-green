@@ -79,11 +79,6 @@ exports.user_login = async (req, res, next) => {
 
         res.cookie("jwt", token, cookieOptions);
 
-        res.status(200).json({
-            success: true,
-            message: "User login success !",
-            user: isUserExist
-        });
 
     } catch (error) {
         // throw new Error(error)

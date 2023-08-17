@@ -28,7 +28,7 @@ function App() {
 
   const dispatch = useDispatch();
   const state = useSelector(state => state.user_register);
-  
+
   const [load, setLoad] = useState(false)
   const [search_options, setSearch_options] = useState({
     name: "",
@@ -46,28 +46,35 @@ function App() {
       to: 999999
     },
     size: [],
-    currentpage : 1,
-    rating : {
-      from : 0,
-      to : 5
-  },
-    date : 1,
-    pricesort : ""
+    currentpage: 1,
+    rating: {
+      from: 0,
+      to: 5
+    },
+    date: 1,
+    pricesort: ""
 
   })
 
   useEffect(() => {
     loggedUserCheck();
-  }, [search_options ]);
+  }, [search_options]);
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
-  //  dispatch(user_google_logged_check_action())
+    //  dispatch(user_google_logged_check_action())
   }
+
 
   console.log("user", state.user)
   console.log("user response type", typeof state.user)
   console.log("user state", state)
+
+  useEffect(() => {
+    if (state.user === undefined || typeof state.user !== "object") {
+      dispatch(user_google_logged_check_action())
+    }
+  }, [state.user])
 
 
   return (
@@ -75,12 +82,12 @@ function App() {
       <Router>
         <Navbar search_options={search_options} setSearch_options={setSearch_options} />
         <UserButton />
-        <FloatButton.BackTop className='nav-fixed-contents-backTop' style={{zIndex:"2"}} />
+        <FloatButton.BackTop className='nav-fixed-contents-backTop' style={{ zIndex: "2" }} />
 
 
         <Routes>
           <Route path='/' element={<Layout load={load} setLoad={setLoad} />} exact />
-          
+
           <Route path='/products' element={<h4>Products</h4>} />
           <Route path='/details/:id' exact element={<Product_details />} />
           <Route path='/shop/details/:id' exact element={<Product_details />} />
@@ -96,7 +103,7 @@ function App() {
 
 
           <Route element={<ProtectedRoute />}>
-          <Route path='/auth/login/success' element={<LoginSuccess state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
+            <Route path='/auth/login/success' element={<LoginSuccess state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
             <Route path='/profile' element={<Dashboard state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
           </Route>
 

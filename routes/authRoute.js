@@ -16,8 +16,8 @@ authRoute.get(
     '/google/callback', 
     passport.authenticate('google', 
     { 
-        successRedirect : '/login/success',
-        failureRedirect: '/login/failed'
+        successRedirect : '/auth/login/success',
+        failureRedirect: `/auth/login/failed`
     }
     ), (req, res)=>{
     // console.log("login success get 2", req.user)
@@ -26,21 +26,17 @@ authRoute.get(
     })
 
 
-authRoute.route("/login/success").get( userAuth, async (req,res,next)=>{
+authRoute.route("/auth/login/success").get( async (req,res,next)=>{
     // console.log("login success get 1", req.user)
     try {
         if(req.user){
             let user = req.user
-            console.log("user detail ====", req.user)
-            // console.log("user logged in google auth", req.user)
         //     let token = await user.generateToken();
 
         // let cookieOptions = {
         //     httpOnly: true,
         //     maxAge: (24 * 60 * 60 * 1000)
         // };
-
-        // res.cookie("jwt", token, cookieOptions);
 
         res.status(200).json({
             success: true,
@@ -65,7 +61,7 @@ authRoute.route("/login/success").get( userAuth, async (req,res,next)=>{
 })
 
 
-authRoute.get("/login/failed", async (req, res, next)=>{
+authRoute.get("/auth/login/failed", async (req, res, next)=>{
     // console.log("login failed", req.authInfo)
     try {
         res.status(401).json({
