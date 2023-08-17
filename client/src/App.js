@@ -71,7 +71,7 @@ function App() {
   console.log("user state", state)
 
   useEffect(() => {
-    if (state.user === undefined || typeof state.user !== "object") {
+    if (state.user === undefined ||state.user._id === undefined) {
       dispatch(user_google_logged_check_action())
     }
   }, [state.user])
@@ -99,11 +99,12 @@ function App() {
           <Route path='/:category' exact element={<ProductsShop search_options={search_options} setSearch_options={setSearch_options} />} />
           <Route path='/:category/details/:id' exact element={<Product_details />} />
           {/* <Route path='*' exact element={<PageNotFound404 />} /> */}
+          <Route path='/auth/login/success' element={<LoginSuccess state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
+
 
 
 
           <Route element={<ProtectedRoute />}>
-            <Route path='/auth/login/success' element={<LoginSuccess state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
             <Route path='/profile' element={<Dashboard state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
           </Route>
 
