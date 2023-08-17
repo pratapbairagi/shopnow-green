@@ -38,6 +38,9 @@ authRoute.route("/login/success").get( async (req,res,next)=>{
         //     maxAge: (24 * 60 * 60 * 1000)
         // };
 
+        // getting succes after refreshing page then it redirects to https://shopnow-green.vercel.app/auth/login/success
+        // where user details are showing in json format
+
         res.status(200).json({
             success: true,
             message: "User logged !",

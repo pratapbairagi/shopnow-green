@@ -66,16 +66,18 @@ function App() {
   }
 
 
+  
+  useEffect(() => {
+    if (state.user === undefined ||state.success === false) {
+      setTimeout(()=>{
+        dispatch(user_google_logged_check_action())
+      },[100])
+    }
+  }, [state.success, state.user])
+  
   console.log("user", state.user)
   console.log("user response type", typeof state.user)
   console.log("user state", state)
-
-  useEffect(() => {
-    if (state.user === undefined ||state.user._id === undefined) {
-      dispatch(user_google_logged_check_action())
-    }
-  }, [state.user])
-
 
   return (
     <div className="App" id='App'>
@@ -100,8 +102,6 @@ function App() {
           <Route path='/:category/details/:id' exact element={<Product_details />} />
           {/* <Route path='*' exact element={<PageNotFound404 />} /> */}
           <Route path='/auth/login/success' element={<LoginSuccess state={state} setSearch_options={setSearch_options} search_options={search_options} />} exact />
-
-
 
 
           <Route element={<ProtectedRoute />}>
