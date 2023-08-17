@@ -20,9 +20,19 @@ authRoute.get(
         failureRedirect: `/login/failed`
     }
     )
-    // , (req, res)=>{
-    //     res.redirect('/auth/login/success')
-    // }
+    , async (req, res)=>{
+        let user = req.user
+        let token = await user.generateToken();
+        let cookieOptions = {
+          httpOnly: true,
+          maxAge: (24 * 60 * 60 * 1000)
+        };
+
+        res.cookie("jwt", token, cookieOptions);
+      
+        res.redirect('/auth/login/success')
+        
+    }
     )
 
 
@@ -30,22 +40,17 @@ authRoute.route("/login/success").get( async (req,res,next)=>{
     // console.log("login success get 1", req.user)
     try {
         if(req.user){
-            let user = req.user
-        //     let token = await user.generateToken();
-
-        // let cookieOptions = {
-        //     httpOnly: true,
-        //     maxAge: (24 * 60 * 60 * 1000)
-        // };
+            // let user = req.user
 
         // getting succes after refreshing page then it redirects to https://shopnow-green.vercel.app/auth/login/success
         // where user details are showing in json format
 
-        res.status(200).json({
-            success: true,
-            message: "User logged !",
-            user: user
-        });
+        // res.status(200).json({
+        //     success: true,
+        //     message: "User logged !",
+        //     user: user
+        // });
+        if(req.cookies) window.location.href = "https://shopnow-green.vercel.app"
 
         }
         else{

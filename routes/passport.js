@@ -15,7 +15,7 @@ passport.use(new GoogleStrategy({
   scope: ["profile", "email"],
   passReqToCallback: true
 },
-  async (req, res, accessToken, refreshToken, profile, done) => {
+  async (req, accessToken, refreshToken, profile, done) => {
 
     try {
       let user = await userModel.findOne({ email: profile.emails[0].value })
@@ -46,16 +46,16 @@ passport.use(new GoogleStrategy({
         })
 
         // Generate and set the JWT token as a cookie
-        let token = await user.generateToken();
-        let cookieOptions = {
-          httpOnly: true,
-          maxAge: (24 * 60 * 60 * 1000)
-        };
+        // let token = await user.generateToken();
+        // let cookieOptions = {
+        //   httpOnly: true,
+        //   maxAge: (24 * 60 * 60 * 1000)
+        // };
 
-        response.cookie("jwt", token, cookieOptions)
-        res.cookie("jwt", token, cookieOptions)
+        // response.cookie("jwt", token, cookieOptions)
+        // res.cookie("jwt", token, cookieOptions)
 
-        return done(null, user, token);
+        return done(null, user);
       }
     } catch (error) {
       done(error)

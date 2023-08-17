@@ -67,13 +67,9 @@ function App() {
 
 
   
-  useEffect(() => {
-    if (state.user === undefined ||state.success === false) {
-      setTimeout(()=>{
-        dispatch(user_google_logged_check_action())
-      },[100])
-    }
-  }, [state.success, state.user])
+  // useEffect(() => {
+  //       dispatch(user_google_logged_check_action())
+  // },[state.success])
   
   console.log("user", state.user)
   console.log("user response type", typeof state.user)
