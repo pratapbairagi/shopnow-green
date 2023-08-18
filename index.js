@@ -43,7 +43,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}))
 
 
-app.use("/auth", authRoute)
+app.use("/", authRoute)
 app.use("/website_ecommerce/app/api", userRouter); 
 app.use("/website_ecommerce/app/api", productRoute);
 

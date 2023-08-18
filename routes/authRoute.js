@@ -9,74 +9,59 @@ const clientUrl = "https://shopnow-green.vercel.app";
 
 // google - google athenticate
 authRoute.get(
-    '/google', 
+    '/auth/google', 
     passport.authenticate('google', {scope : ['email','profile']} ));
 
 authRoute.get(
-    '/google/callback', 
+    '/auth/google/callback', 
     passport.authenticate('google', 
     { 
-        successRedirect : '/login/success',
-        failureRedirect: `/login/failed`,
+        successRedirect : '/auth/login/success',
+        failureRedirect: `/auth/login/failed`,
         authInfo : true
     }
     )
     , (req, res)=>{
-
-       return res.redirect('/login/success')
-        
+       return res.redirect('/auth/login/success')
     }
     )
 
 
-authRoute.route("/login/success").get( async (req,res,next)=>{
-    console.log("login success get 1", req.user)
-    alert("success")
+authRoute.route("/auth/login/success").get( async (req,res,next)=>{
+
     try {
         if(req.user){
-            alert("req user and req token")
-            // let user = req.user
-
-        // getting succes after refreshing page then it redirects to https://shopnow-green.vercel.app/auth/login/success
-        // where user details are showing in json format
 
         let user = req.user
-        // let token = await user.generateToken();
-        // let cookieOptions = {
-        //   httpOnly: true,
-        //   maxAge: (24 * 60 * 60 * 1000)
-        // };
+        let token = await user.generateToken()
+        let cookieOptions = {
+          httpOnly: true,
+          maxAge: (24 * 60 * 60 * 1000),
+          path : "/"
+        };
 
-        // res.cookie("jwt", token, cookieOptions);
+        res.cookie("jwt", token, cookieOptions);
+
+        res.redirect("/login/success")
         
-        console.log("req user", req.user)
-        console.log("req cookies", req.cookies)
-
-        // if(req.cookies) window.location.href = "https://shopnow-green.vercel.app"
-
         }
         else{
-        console.log("res user not available", req.user)
 
             res.status(401).json({
-                message : "guest or user not authorized !"
+                message : "guest or user not authorized !",
+                success : false
             })
-            // console.log("error in login success")
         }
     } catch (error) {
-        console.log("login success error", error)
-
         res.status(401).json({
-            message : error
+            message : error,
+            success : false
         })
-        // console.log("google login faild 1", error )
-        
     }
 })
 
 
-authRoute.get("/login/failed", async (req, res, next)=>{
-    // console.log("login failed", req.authInfo)
+authRoute.get("/auth/login/failed", async (req, res, next)=>{
     try {
         res.status(401).json({
             success : false,
@@ -87,7 +72,6 @@ authRoute.get("/login/failed", async (req, res, next)=>{
             success : false,
             message : error
         })
-        // console.log("google login faild 2", error )
     }
 })
 
