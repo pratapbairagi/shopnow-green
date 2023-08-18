@@ -27,17 +27,17 @@ const userSchema = mongoose.Schema({
         default : null
     },
     password : {
-        type : String
-        // required : [true,"Please fill the pass word field !"],
-        // minlength :[8, "Password should have atleast 8 charactors !"],
+        type : String,
+        required : [true,"Please fill the pass word field !"],
+        minlength :[8, "Password should have atleast 8 charactors !"]
     },
     address:{
         type : String,
         default : null
     },
     tnc:{
-        type : String
-        // required : [true, "Please agree term and condition to signup !"]
+        type : String,
+        required : [true, "Please agree term and condition to signup !"]
     },
     image : {
         public_id : {
