@@ -15,13 +15,13 @@ passport.use(new GoogleStrategy({
   scope: ["profile", "email"],
   passReqToCallback: true
 },
-  async (req, accessToken, refreshToken, profile, done) => {
+  async (request, accessToken, refreshToken, profile, done) => {
 
     try {
       let user = await userModel.findOne({ email: profile.emails[0].value })
 
       if (user) {
-
+        console.log("passport user already available", user)
         return done(null, user);
       }
       else {
@@ -54,7 +54,7 @@ passport.use(new GoogleStrategy({
 
         // response.cookie("jwt", token, cookieOptions)
         // res.cookie("jwt", token, cookieOptions)
-
+          console.log("passport user created", user)
         return done(null, user);
       }
     } catch (error) {

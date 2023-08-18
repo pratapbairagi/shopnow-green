@@ -17,20 +17,13 @@ authRoute.get(
     passport.authenticate('google', 
     { 
         successRedirect : '/login/success',
-        failureRedirect: `/login/failed`
+        failureRedirect: `/login/failed`,
+        authInfo : true
     }
     )
-    , async (req, res)=>{
-        let user = req.user
-        let token = await user.generateToken();
-        let cookieOptions = {
-          httpOnly: true,
-          maxAge: (24 * 60 * 60 * 1000)
-        };
-
-        res.cookie("jwt", token, cookieOptions);
-      
-        res.redirect('/auth/login/success')
+    , (req, res)=>{
+       
+       return res.redirect('/login/success')
         
     }
     )
@@ -45,21 +38,32 @@ authRoute.route("/login/success").get( async (req,res,next)=>{
         // getting succes after refreshing page then it redirects to https://shopnow-green.vercel.app/auth/login/success
         // where user details are showing in json format
 
-        // res.status(200).json({
-        //     success: true,
-        //     message: "User logged !",
-        //     user: user
-        // });
+        let user = req.user
+        let token = await user.generateToken();
+        let cookieOptions = {
+          httpOnly: true,
+          maxAge: (24 * 60 * 60 * 1000)
+        };
+
+        res.cookie("jwt", token, cookieOptions);
+        
+        console.log("req user", req.user)
+        console.log("req cookies", req.cookies)
+
         if(req.cookies) window.location.href = "https://shopnow-green.vercel.app"
 
         }
         else{
+        console.log("res user not available", req.user)
+
             res.status(401).json({
                 message : "guest or user not authorized !"
             })
             // console.log("error in login success")
         }
     } catch (error) {
+        console.log("login success error", error)
+
         res.status(401).json({
             message : error
         })
