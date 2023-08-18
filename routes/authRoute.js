@@ -23,8 +23,6 @@ authRoute.get(
     )
     , (req, res)=>{
 
-
-       
        return res.redirect('/login/success')
         
     }
@@ -35,7 +33,7 @@ authRoute.route("/login/success").get( async (req,res,next)=>{
     console.log("login success get 1", req.user)
     alert("success")
     try {
-        if(req.user && req.token){
+        if(req.user){
             alert("req user and req token")
             // let user = req.user
 
@@ -43,18 +41,18 @@ authRoute.route("/login/success").get( async (req,res,next)=>{
         // where user details are showing in json format
 
         let user = req.user
-        let token = await user.generateToken();
-        let cookieOptions = {
-          httpOnly: true,
-          maxAge: (24 * 60 * 60 * 1000)
-        };
+        // let token = await user.generateToken();
+        // let cookieOptions = {
+        //   httpOnly: true,
+        //   maxAge: (24 * 60 * 60 * 1000)
+        // };
 
-        res.cookie("jwt", token, cookieOptions);
+        // res.cookie("jwt", token, cookieOptions);
         
         console.log("req user", req.user)
         console.log("req cookies", req.cookies)
 
-        if(req.cookies) window.location.href = "https://shopnow-green.vercel.app"
+        // if(req.cookies) window.location.href = "https://shopnow-green.vercel.app"
 
         }
         else{

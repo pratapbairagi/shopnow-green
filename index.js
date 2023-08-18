@@ -29,7 +29,7 @@ app.use(cors({
 }));
 
 app.use(session({
-  secret : "yd646775d7c6rs5a5ekyuk'ou08y8yfuf",
+  secret : "8758dg 28xr2gex8+23g8qy2zze9 e9gI&E&4w^?&o8/7fo86d7i=5di&8o:PP)O<JBCZEASA@Q#!IU(*HUv",
   resave : true,
   saveUninitialized : true
 }))

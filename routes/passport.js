@@ -4,6 +4,7 @@ const cloudinary = require("../config/cloudinaryConfig");
 const { response } = require("./authRoute");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const clientUrl = "https://shopnow-green.vercel.app"
+const jsonwebtoken = require("jsonwebtoken");
 
 
 
@@ -21,18 +22,11 @@ passport.use(new GoogleStrategy({
       let user = await userModel.findOne({ email: profile.emails[0].value })
 
       if (user) {
-        // Generate JWT token
-        // let cookieOptions = {
-        //   httpOnly: true,
-        //   maxAge: (24 * 60 * 60 * 1000)
-        // };
 
         // Store JWT token in the session
-        let token = await user.generateToken();
+        // let token = jsonwebtoken.sign({id:user._id}, "8758dg 28xr2gex8+23g8qy2zze9 e9gI&E&4w^?&o8/7fo86d7i=5di&8o:PP)O<JBCZEASA@Q#!IU(*HUv", {expiresIn : "1d"});
 
-        // request.session.jwt = token;
-
-        return done(null, user, token);
+        return done(null, user);
       }
       else {
 
@@ -49,9 +43,9 @@ passport.use(new GoogleStrategy({
         })
 
         // Generate and set the JWT token as a cookie
-        let token = await user.generateToken();
-      
-        return done(null, user, token);
+        // let token = jsonwebtoken.sign({id:user._id}, "8758dg 28xr2gex8+23g8qy2zze9 e9gI&E&4w^?&o8/7fo86d7i=5di&8o:PP)O<JBCZEASA@Q#!IU(*HUv", {expiresIn : "1d"});
+
+        return done(null, user);
       }
     } catch (error) {
       done(error)
