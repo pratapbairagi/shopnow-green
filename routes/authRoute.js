@@ -22,6 +22,8 @@ authRoute.get(
     }
     )
     , (req, res)=>{
+
+
        
        return res.redirect('/login/success')
         
@@ -30,9 +32,11 @@ authRoute.get(
 
 
 authRoute.route("/login/success").get( async (req,res,next)=>{
-    // console.log("login success get 1", req.user)
+    console.log("login success get 1", req.user)
+    alert("success")
     try {
-        if(req.user){
+        if(req.user && req.token){
+            alert("req user and req token")
             // let user = req.user
 
         // getting succes after refreshing page then it redirects to https://shopnow-green.vercel.app/auth/login/success

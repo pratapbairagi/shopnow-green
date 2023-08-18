@@ -21,8 +21,18 @@ passport.use(new GoogleStrategy({
       let user = await userModel.findOne({ email: profile.emails[0].value })
 
       if (user) {
-        console.log("passport user already available", user)
-        return done(null, user);
+        // Generate JWT token
+        // let cookieOptions = {
+        //   httpOnly: true,
+        //   maxAge: (24 * 60 * 60 * 1000)
+        // };
+
+        // Store JWT token in the session
+        let token = await user.generateToken();
+
+        // request.session.jwt = token;
+
+        return done(null, user, token);
       }
       else {
 
@@ -30,13 +40,6 @@ passport.use(new GoogleStrategy({
           public_id: "",
           url: profile.photos[0].value
         }
-
-        // let result = await cloudinary.uploader.upload(profile.photos[0].value, {
-        //     folder: "website_ecommerce"
-        // });
-
-        // image.public_id = result.public_id;
-        // image.url = result.url;
 
 
         user = await userModel.create({
@@ -46,16 +49,9 @@ passport.use(new GoogleStrategy({
         })
 
         // Generate and set the JWT token as a cookie
-        // let token = await user.generateToken();
-        // let cookieOptions = {
-        //   httpOnly: true,
-        //   maxAge: (24 * 60 * 60 * 1000)
-        // };
-
-        // response.cookie("jwt", token, cookieOptions)
-        // res.cookie("jwt", token, cookieOptions)
-          console.log("passport user created", user)
-        return done(null, user);
+        let token = await user.generateToken();
+      
+        return done(null, user, token);
       }
     } catch (error) {
       done(error)
