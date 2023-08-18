@@ -3,12 +3,8 @@ const userModel = require("../models/users");
 const cloudinary = require("../config/cloudinaryConfig");
 const { response } = require("./authRoute");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-// const clientUrl = "https://shopnow-green.vercel.app"
-const clientUrl = "http://localhost:5544"
-
-const jsonwebtoken = require("jsonwebtoken");
-
-
+const clientUrl = "https://shopnow-green.vercel.app"
+// const clientUrl = "http://localhost:5544"
 
 passport.use(new GoogleStrategy({
   clientID: "418059318534-dpve61uhokog17294r6ee85u5opmdk0k.apps.googleusercontent.com",
