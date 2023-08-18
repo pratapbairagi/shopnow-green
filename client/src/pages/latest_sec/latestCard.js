@@ -24,14 +24,14 @@ const LatestCard = ({ products }) => {
                             <div className="product_options">
                                 <strong>SIZES</strong>
                                 <span style={{display:"flex", flexDirection:"row", flexWrap:"nowrap"}}>
-                                {products.color.map((v, i) => {
+                                {products.size.map((v, i) => {
                                   return <div key={i} className="p-0" style={{border:"none", width:"max-content", margin:"0 0 0 2px"}}>{v.value}</div>
                                 })}
                                 </span>
                                 <strong>COLORS</strong>
                                 <div className="colors">
                                     {products.color.map((v, i) => {
-                                        return <div key={i} className="c_blue" style={{ background: `${v.value}` }}><span></span></div>
+                                        return <div key={i} style={{ background: `${v.value}` }}><span></span></div>
                                     })}
                                     {/* <div className="c_red"><span></span></div>
                                     <div className="c_white"><span></span></div>

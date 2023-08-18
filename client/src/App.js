@@ -62,18 +62,7 @@ function App() {
 
   const loggedUserCheck = () => {
     dispatch(user_logged_check_action());
-    //  dispatch(user_google_logged_check_action())
   }
-
-
-  
-  // useEffect(() => {
-  //       dispatch(user_google_logged_check_action())
-  // },[state.success])
-  
-  console.log("user", state.user)
-  console.log("user response type", typeof state.user)
-  console.log("user state", state)
 
   return (
     <div className="App" id='App'>

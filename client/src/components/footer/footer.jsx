@@ -16,7 +16,7 @@ const Footer = () => {
                                 {/* <img src="/images/navLogo2.jpeg" style={{ width: "28px" }} alt="" /> */}
                                 <span style={{ fontWeight: "600", color: "rgb(215, 4, 115)" }}>SHOPNOW</span>
                             </Link>
-                            <p className="p-0" style={{ color: "grey", fontWeight: "600", textAlign:"left" }}>The customer is at the heart of our unique business model, which include design.</p>
+                            <p className="p-0" style={{ color: "grey", fontWeight: "600", textAlign:"left", fontSize: "12px" }}>The customer is at the heart of our unique business model, which include design.</p>
 
                         </div>
                     </div>
@@ -25,7 +25,7 @@ const Footer = () => {
                 <div className="col col-lg-3 offset-lg-1 col-md-6 col-7" >
                     <div className="footer-widget">
                         <div className="footer-newslatter mt-2" style={{padding:"0 16px"}}>
-                            <p style={{ color: "rgb(215, 4, 115)", fontWeight: "600", fontSize: "85%", textAlign:"left" }}>Be the first to know new benifits of using our services ! </p>
+                            <p style={{ color: "rgb(215, 4, 115)", fontWeight: "600", fontSize: "80%", textAlign:"left" }}>Be the first to know new benifits of using our services ! </p>
                             <form action="" className="mt-2">
                                 <div className="input-group input-group-sm d-flex flex-row">
                                     {/* <FormInput cssClass={"form-control"} functions={null} type={"text"} name={""} css={{color:"grey", fontSize:"80%"}} minLength={0} maxLength={null}/> */}
@@ -45,13 +45,13 @@ const Footer = () => {
                         <h6 className="mt-2" style={{ fontWeight: "600", color: "rgb(215, 4, 115)", textAlign:"left" }}>SEARCHING FOR</h6>
                         <ul className="p-0 mt-1" style={{ textAlign: "left", display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "start", justifyItems: "start" }}>
                             <li >
-                                <Link to="/section#Hair" style={{ color: "grey", borderBottom: "1px solid grey" }}>Hair solutiio</Link>
+                                <Link to="/kids" style={{ color: "grey", borderBottom: "1px solid grey" }}>Kids</Link>
                             </li>
                             <li>
-                                <Link to="/section#Face" style={{ color: "grey", borderBottom: "1px solid grey" }}>Face Solution</Link>
+                                <Link to="/women" style={{ color: "grey", borderBottom: "1px solid grey" }}>Women</Link>
                             </li>
                             <li>
-                                <Link to="/section#Pedicure & Manicure" style={{ color: "grey", borderBottom: "1px solid grey" }}>Feet & Hand</Link>
+                                <Link to="/men" style={{ color: "grey", borderBottom: "1px solid grey" }}>Men</Link>
                             </li>
                         </ul>
                     </div>
@@ -82,31 +82,31 @@ const Footer = () => {
                         <h6 className="mt-1" style={{ fontWeight: "600", color: "rgb(215, 4, 115)", width: "100%", }}>FOLLOW US ON</h6>
                         <ul className="p-0 py-3 mt-0" style={{ width: "100%", columnGap: "16px", rowGap: "10px", display: "flex", flexDirection: "row", flexWrap: "wrap", alignItems: "start" }}>
                             <li style={{ width: "max-content", fontSize: "90%" }}>
-                                <Link style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
+                                <Link onClick={()=> window.location.href = "https://facebook.com/pratap.bairagi/"} style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
                                 <Facebook size="16"/> 
                                     <span>Facebook</span>
                                 </Link>
                             </li>
                             <li style={{ width: "max-content", fontSize: "90%" }}>
-                                <Link style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
+                                <Link onClick={()=> window.location.href = "https://www.instagram.com/its_protap/"} style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
                                 <Instagram size="16"/>
                                     <span>Instagram</span>
                                 </Link>
                             </li>
                             <li style={{ width: "max-content", fontSize: "90%" }}>
-                                <Link style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
+                                <Link onClick={()=> window.location.href = "https://www.linkedin.com/in/pratap-bairagi-a795431b8"} style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
                                 <Linkedin size="16"/>
                                     <span>Linkedin</span>
                                 </Link>
                             </li>
                             <li style={{ width: "max-content", fontSize: "90%" }}>
-                                <Link style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
+                                <Link onClick={()=> window.location.href = "https://wa.me/8287889123"} style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
                                 <Whatsapp size="16"/>
                                     <span>Whatsapp</span>
                                 </Link>
                             </li>
                             <li style={{ width: "max-content", fontSize: "90%" }}>
-                                <Link style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
+                                <Link onClick={()=> window.location.href = "https://t.me/Protap_bairagi"} style={{ borderBottom: "1px solid", display: "flex", justifyContent: "center", padding: "3px 10px", alignItems: "center", columnGap: "6px", boxShadow: "0 0 0 2px ", color: "grey" }}>
                                     <Telegram size="16"/>
                                     <span>Telegram</span>
                                 </Link>
