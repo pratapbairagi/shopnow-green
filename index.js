@@ -47,11 +47,11 @@ app.use("/", authRoute)
 app.use("/website_ecommerce/app/api", userRouter); 
 app.use("/website_ecommerce/app/api", productRoute);
 
-  // app.use(express.static(path.join(__dirname, './client/build/')));
+  app.use(express.static(path.join(__dirname, './client/build/')));
 
-  // app.get('*', (req, res) =>{
-  //  return res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  // });
+  app.get('*', (req, res) =>{
+   return res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  });
 
 app.use(globalErrorHandler)
 
