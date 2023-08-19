@@ -47,7 +47,6 @@ exports.user_register = async (req, res, next) => {
 };
 
 // login user
-
 exports.user_login = async (req, res, next) => {
 
     try {
@@ -79,6 +78,11 @@ exports.user_login = async (req, res, next) => {
 
         res.cookie("jwt", token, cookieOptions);
 
+        res.status(200).json({
+            success: true,
+            message: "user login successful",
+            user : isUserExist
+        })
 
     } catch (error) {
         // throw new Error(error)
@@ -111,17 +115,20 @@ exports.user_logged = async (req, res, next) => {
 exports.user_logout = async (req, res, next) => {
 
     try {
+
         let cookieOptions = {
             httpOnly: true,
             expires: new Date(Date.now())
         }
+
+        res.clearCookie("connect.id");
+
         res.status(200).cookie("jwt", null, cookieOptions).json({
             success: true,
             message: "logged out"
         })
 
     } catch (error) {
-        // throw new Error(error)
         return next(new ErrorHandler(error))
     }
 };

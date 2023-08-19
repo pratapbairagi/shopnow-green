@@ -4,13 +4,14 @@ import React from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { user_logout_action } from '../redux/userAction';
+import axios from 'axios';
 
 const UserButton = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { auth } = useSelector(state => state.user_register);
 
-    const logoutHandler = () => {
+    const logoutHandler = async () => {
         dispatch(user_logout_action());
     }
 

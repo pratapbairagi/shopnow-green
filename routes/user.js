@@ -7,7 +7,7 @@ const userRouter = express();
 userRouter.route("/register").post(user_register);
 userRouter.route("/login").post(user_login);
 userRouter.route("/logged").get( userAuth, user_logged);
-userRouter.route("/logout").get(user_logout);
+userRouter.route("/logout").get( user_logout);
 userRouter.route("/update").put(userAuth, user_update);
 
 // admin

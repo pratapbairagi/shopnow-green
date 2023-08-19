@@ -10,17 +10,14 @@ export const User_register_action = (user) => async (dispatch) => {
 
         const config = {
             headers: { "Content-Type": "application/json" },
-            // headers: {
-                "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
-            //     "Content-type": "application/json"
-            //   }
-            withCredentials : true
+            "access-control-allow-origin": `${process.env.REACT_APP_SERVER_URL}`,
+            withCredentials: true
         };
 
         // const { data } = await axios.post("https://shopnow-server.vercel.app/website_ecommerce/app/api/register", user, config);
         const { data } = await axios.post(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/register`, user, config);
 
-       
+
         dispatch({
             type: USER_REGISTER_SUCCESS,
             payload: data
@@ -39,29 +36,26 @@ export const User_register_action = (user) => async (dispatch) => {
 };
 
 // login user
-export const User_login_action =  (user) => async (dispatch) => {
+export const User_login_action = (user) => async (dispatch) => {
 
     try {
         dispatch({
-            type : USER_LOGIN_REQUEST
+            type: USER_LOGIN_REQUEST
         });
 
         const config = {
-            headers : {"Content-Type" : "application/json"},
-            // headers: {
-                "access-control-allow-origin" : "https://shopnow-server.vercel.app/",
-            //     "Content-type": "application/json"
-            //   }
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            "access-control-allow-origin": `${process.env.REACT_APP_SERVER_URL}`,
+            withCredentials: true
         };
 
         // let {data} = await axios.post("https://shopnow-server.vercel.app/website_ecommerce/app/api/login", user, config);
-        let {data} = await axios.post(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/login`, user, config);
+        let { data } = await axios.post(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/login`, user, config);
 
 
         dispatch({
-            type : USER_LOGIN_SUCCESS,
-            payload : data
+            type: USER_LOGIN_SUCCESS,
+            payload: data
         });
 
         redirect("/")
@@ -69,8 +63,8 @@ export const User_login_action =  (user) => async (dispatch) => {
 
     } catch (error) {
         dispatch({
-            type : USER_LOGIN_FAILED,
-            payload : error.response.data
+            type: USER_LOGIN_FAILED,
+            payload: error.response.data
         });
     }
 };
@@ -79,118 +73,103 @@ export const User_login_action =  (user) => async (dispatch) => {
 export const user_logged_check_action = () => async (dispatch) => {
     try {
         dispatch({
-            type : USER_LOGGED_REQUEST
+            type: USER_LOGGED_REQUEST
         });
 
         let config = {
-            headers : { "Content-Type" : "application/json" },
-            // headers: {
-                "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
-            //     "Content-type": "application/json"
-            //   }
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            "access-control-allow-origin": `${process.env.REACT_APP_SERVER_URL}`,
+            withCredentials: true
         };
 
         // let {data} = await axios.get("https://shopnow-server.vercel.app/website_ecommerce/app/api/logged", config );
-        let { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/logged`, config );
-        
+        let { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/logged`, config);
+
         console.log("normal auth data", data)
 
 
         dispatch({
-            type : USER_LOGGED_SUCCESS,
-            payload : data
+            type: USER_LOGGED_SUCCESS,
+            payload: data
         })
-
-        console.log("check signin logged paylod", data)
-
-
     } catch (error) {
         dispatch({
-            type : USER_LOGGED_FAILED,
-            payload : error.response.data
+            type: USER_LOGGED_FAILED,
+            payload: error.response.data
         })
     }
 };
 
 // user logout
 export const user_logout_action = () => async (dispatch) => {
+    alert("working")
     try {
         dispatch({
-            type : USER_LOGOUT_REQUEST
+            type: USER_LOGOUT_REQUEST
         });
 
-        const config = {
-            headers : { "Contentg-Type" : "application/json" },
-            // headers: {
-                "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
-            //     "Content-type": "application/json"
-            //   }
-            withCredentials : true
-        };
+        // const config = {
+        //     headers : { "Contentg-Type" : "application/json" },
+        //         "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
+        //     withCredentials : true
+        // };
 
         // let {data} = await axios.get("https://shopnow-server.vercel.app/website_ecommerce/app/api/logout", config);
-        let {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/logout`, config);
-        
+        let { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/logout`);
+
         dispatch({
-            type : USER_LOGOUT_SUCCESS,
-            payload : data
+            type: USER_LOGOUT_SUCCESS,
+            payload: data
         });
-
-
 
     } catch (error) {
         dispatch({
-            type : USER_LOGOUT_FAILED,
-            payload : error.response.data
+            type: USER_LOGOUT_FAILED,
+            payload: error.response.data
         })
     }
 };
 
 // user update
- export const user_update_action = (updatedUser) => async (dispatch) => {
+export const user_update_action = (updatedUser) => async (dispatch) => {
     try {
         dispatch({
-            type : USER_UPDATE_REQUEST
+            type: USER_UPDATE_REQUEST
         });
 
         let config = {
-            headers : { "Content-Type" : "application/json" },
-            // headers: {
-                "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
-            //     "Content-type": "application/json"
-            //   }
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            "access-control-allow-origin": `${process.env.REACT_APP_SERVER_URL}`,
+            withCredentials: true
         };
 
         // const { data } = await axios.put("https://shopnow-server.vercel.app/website_ecommerce/app/api/update", updatedUser, config);
         const { data } = await axios.put(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/update`, updatedUser, config);
 
         dispatch({
-            type : USER_UPDATE_SUCCESS,
-            payload : data
+            type: USER_UPDATE_SUCCESS,
+            payload: data
         });
-        
-        
+
     } catch (error) {
         dispatch({
-            type : USER_UPDATE_FAILED,
-            payload : error.response.data
+            type: USER_UPDATE_FAILED,
+            payload: error.response.data
         });
     }
- }
+}
 
 //  clear success'
 export const user_clear_success_action = () => (dispatch) => {
     dispatch({
-        type : CLEAR_SUCCESS
+        type: CLEAR_SUCCESS
     })
 }
 // clear error
 
 export const user_clear_error_action = () => (dispatch) => {
     dispatch({
-        type : CLEAR_ERROR
+        type: CLEAR_ERROR
     })
 }
 
@@ -200,29 +179,26 @@ export const user_clear_error_action = () => (dispatch) => {
 export const admin_gets_all_users_action = () => async (dispatch) => {
     try {
         dispatch({
-            type : GET_ALL_USERS_REQUEST
+            type: GET_ALL_USERS_REQUEST
         });
 
         const config = {
-            headers : { "Content-Type" : "application/json"},
-            // headers: {
-                "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
-            //     "Content-type": "application/json"
-            //   }
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            "access-control-allow-origin": `${process.env.REACT_APP_SERVER_URL}`,
+            withCredentials: true
         }
         // const {data} = await axios.get("https://shopnow-server.vercel.app/website_ecommerce/app/api/admin/users", config);
-        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/admin/users`, config);
+        const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/admin/users`, config);
 
         dispatch({
-            type : GET_ALL_USERS_SUCCESS,
-            payload : data
+            type: GET_ALL_USERS_SUCCESS,
+            payload: data
         });
 
     } catch (error) {
         dispatch({
-            type : GET_ALL_USERS_FAILED,
-            payload : error.response.data
+            type: GET_ALL_USERS_FAILED,
+            payload: error.response.data
         })
     }
 }
@@ -231,33 +207,27 @@ export const admin_gets_all_users_action = () => async (dispatch) => {
 export const admin_get_single_user_action = (id) => async (dispatch) => {
     try {
         dispatch({
-            type : GET_SINGLE_USER_REQUEST
+            type: GET_SINGLE_USER_REQUEST
         });
 
         const config = {
-            headers : { "Content-Type" : "application/json" },
-            // headers: {
-                "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
-            //     "Content-type": "application/json"
-            //   }
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            "access-control-allow-origin": `${process.env.REACT_APP_SERVER_URL}`,
+            withCredentials: true
         }
 
-        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/admin/user/${id}`, config);
+        const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/admin/user/${id}`, config);
         // const {data} = await axios.get(`http://localhost:5544/website_ecommerce/app/api/admin/user/${id}`, config);
 
-        console.log("data of single user", data)
-
         dispatch({
-            type : GET_SINGLE_USER_SUCCESS,
-            payload : data
+            type: GET_SINGLE_USER_SUCCESS,
+            payload: data
         });
 
     } catch (error) {
-        console.log("error is sinngle user", error)
         dispatch({
-            type : GET_SINGLE_USER_FAILED,
-            payload : error.response.data
+            type: GET_SINGLE_USER_FAILED,
+            payload: error.response.data
         })
     }
 };
@@ -266,29 +236,26 @@ export const admin_get_single_user_action = (id) => async (dispatch) => {
 export const admin_user_update_action = (id, user) => async (dispatch) => {
     try {
         dispatch({
-            type : ADMIN_USER_UPDATE_REQUEST
+            type: ADMIN_USER_UPDATE_REQUEST
         });
 
         const config = {
-            headers : { "Content-Type" : "application/json" },
-            // headers: {
-                "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
-            //     "Content-type": "application/json"
-            //   }
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            "access-control-allow-origin": `${process.env.REACT_APP_SERVER_URL}`,
+            withCredentials: true
         };
 
-        const {data} = await axios.put(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/admin/update/user/${id}`, user, config );
+        const { data } = await axios.put(`${process.env.REACT_APP_SERVER_URL}/website_ecommerce/app/api/admin/update/user/${id}`, user, config);
         // const {data} = await axios.put(`http://localhost:5544/website_ecommerce/app/api/admin/update/user/${id}`, user, config );
 
         dispatch({
-            type : ADMIN_USER_UPDATE_SUCCESS,
-            payload : data
+            type: ADMIN_USER_UPDATE_SUCCESS,
+            payload: data
         })
     } catch (error) {
         dispatch({
-            type : ADMIN_USER_UPDATE_FAILED,
-            payload : error.response.data
+            type: ADMIN_USER_UPDATE_FAILED,
+            payload: error.response.data
         })
     }
 }
@@ -300,32 +267,27 @@ export const admin_user_update_action = (id, user) => async (dispatch) => {
 export const user_google_logged_check_action = () => async (dispatch) => {
     try {
         dispatch({
-            type : USER_LOGGED_REQUEST
+            type: USER_LOGGED_REQUEST
         });
 
         let config = {
-            headers : { "Content-Type" : "application/json" },
-                "access-control-allow-origin" : `${process.env.REACT_APP_SERVER_URL}`,
-            withCredentials : true
+            headers: { "Content-Type": "application/json" },
+            "access-control-allow-origin": `${process.env.REACT_APP_SERVER_URL}`,
+            withCredentials: true
         };
 
         // let {data} = await axios.get("http://localhost:5544/auth/login/success", {withCredentials: true, headers:{"Content-Type":"application/json"}} );
-        let {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/auth/login/success`, config );
+        let { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/auth/login/success`, config);
 
-        console.log("google auth data", data)
         dispatch({
-            type : USER_LOGGED_SUCCESS,
-            payload : data
+            type: USER_LOGGED_SUCCESS,
+            payload: data
         })
-
-        console.log("check google logged paylod", data)
-
-        // window.location.href = "https://shopnow-green.vercel.app"
 
     } catch (error) {
         dispatch({
-            type : USER_LOGGED_FAILED,
-            payload : error.response.data
+            type: USER_LOGGED_FAILED,
+            payload: error.response.data
         })
     }
 };

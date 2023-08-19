@@ -80,6 +80,8 @@ authRoute.get('/logout', (req, res) => {
     // Clear session data or cookies as needed
     req.logout();  // If using passport.js
     res.clearCookie('jwt'); // If using cookies
+    res.clearCookie("connect.id");
+
 
     // Revoke Google access token
     if (req.user && req.user.google && req.user.google.access_token) {
