@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { clear_success, get_product_details } from "../../redux/product/product_actions";
+import { get_product_details } from "../../redux/product/product_actions";
 import "./product_details.module.css";
 import Recomended_products from "./recomended_products/recomended_products";
 import ReviewProduct from "./review_product/review_product";
 import { CartPlus, CartX } from "react-bootstrap-icons";
-import { Add_to_cart_action, Cart_qty_adjust, Remove_from_cart_action } from "../../redux/cart/cartAction";
+import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/cartAction";
 import Spinner from "../../components/spinner/spinner";
 import { Tabs } from "antd";
 
@@ -16,7 +16,7 @@ import { Tabs } from "antd";
 const Product_details = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const { loading, error, product, success } = useSelector((state) => state.product)
+    const { product, success } = useSelector((state) => state.product)
     const [load, setLoad] = useState(false)
 
     useEffect(() => {
@@ -109,14 +109,14 @@ const Product_details = () => {
                     <Spinner />
                 </>
                 : success && <div className="review_container" style={{ maxWidth: "100%", margin: "8px auto" }}>
-                    <div className="row px-0 m-auto" style={{ maxWidth: "100%" }}>
-                        <div className="col-lg-5 item-photo d-flex flex-column" style={{ height: "100%", marginBottom: "16px", maxWidth: "100%", maxHeight: "90vh" }}>
+                    <div className="row px-0 m-auto" style={{ maxWidth: "100%", background:"whitesmoke" }}>
+                        <div className="col-md-5 col-lg-4 item-photo d-flex flex-row-reverse align-items-center justufy-content-center g-0 px-1 py-2" style={{ height: "100%", marginBottom: "10px", maxWidth: "100%", maxHeight: "90vh"  }}>
 
-                            {success && <img style={{ maxWidth: "90%", maxHeight: "70vh", margin: "0 auto" }} src={imagePrev} alt="img0" />}
+                            {success && <img style={{ maxWidth: "80%", minWidth:"80%", maxHeight: "90vh", height:"65vh", margin: "0 auto", placeItems:"flex-start", objectFit:"cover" }} src={imagePrev} alt="img0" />}
 
 
 
-                            <div style={{ width: "90%", display: "flex", justifyContent: "left", gap: "6px", padding: "3px 0px", maxWidth: "90%", overflow: "auto", margin: "0 auto", marginTop: "6px" }}>
+                            <div style={{ width: "max-content", display: "flex", justifyContent: "left", gap: "6px", padding: "0px 4px", maxWidth: "40%", overflowX: "hidden", margin: "0 auto", marginTop: "5px", flexDirection:"column",  height:"100%", maxHeight:"65vh", overflowY:"auto", alignSelf:"flex-start" }}>
                                 {success && product?.images?.map((img, index) => {
 
                                     return (
@@ -132,117 +132,83 @@ const Product_details = () => {
 
                         </div>
 
+                        <div className="col-md-7 col-lg-8 px-0 pb-0" style={{ border: "4px solid transparent", background: "whitesmoke", maxHeight:"100%" }}>
+                            <div style={{ width: "100%", margin: "5px auto", marginTop: "0", boxShadow: "0 0 5px rgb(236, 235, 235)", padding: "10px 6px", background: "white", borderRadius: "4px" }}>
+                                <h5>{product.title}</h5>
+                                <h6 style={{ color: "#337ab7" }}>Users reviews for <a href="#home">{product.title}</a> · <small style={{ color: "#337ab7" }}>(5054 reviews)</small></h6>
+                                <h6 className="title-price"><small>PRICE</small></h6>
+                                <h3 style={{ marginTop: "4px" }}>INR {product.price}</h3>
+                            </div>
 
-                        <div className="col-lg-7" style={{ border: "0px solid grey" }}>
-                            <h3>{product.title}</h3>
-                            <h5 style={{ color: "#337ab7" }}>Users reviews for <a href="#home">{product.title}</a> · <small style={{ color: "#337ab7" }}>(5054 reviews)</small></h5>
+                            <div style={{ width: "100%", boxShadow: "0 0 5px rgb(236, 235, 235)", padding: "8px 6px", paddingBottom:"10px", background: "white", borderRadius: "4px" }}>
 
-                            <h6 className="title-price"><small>PRICE</small></h6>
-                            <h3 style={{ marginTop: "4px" }}>INR {product.price}</h3>
+                                <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
+                                    <h6 className="title-attr" style={{ marginTop: "15px",  minWidth:"90px", textAlign:"left" }} ><small>COLOR</small></h6>
+                                    <div style={{ width: "50%", paddingTop: "18px", display: "flex", gap: "6px" }}>
 
-                            <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
-                                <h6 className="title-attr" style={{ marginTop: "15px" }} ><small>COLOR</small></h6>
-                                <div style={{ width: "50%", paddingTop: "18px", display: "flex", gap: "6px" }}>
+                                        {
+                                            product.color?.map((cv, ci) => {
+                                                return <div key={ci} style={{ width: "max-content", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderRadius: "0px" }}>
+                                                    <input className="p-0" style={{ width: "max-content", borderRadius:"50%", display:"block", accentColor: `${cv.value}` }} defaultChecked type="radio" name="color" id="color" />
+                                                    <label style={{ color: `grey`, fontSize: "12px" }} htmlFor="color"><small>{cv.value}</small></label>
+                                                </div>
+                                            })
+                                        }
 
-                                    {
-                                        product.color?.map((cv, ci) => {
-                                            return <div key={ci} style={{ width: "max-content", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderRadius: "0px" }}>
-                                                <input style={{ width: "20px", accentColor: "red" }} defaultChecked type="radio" name="color" id="color" />
-                                                <label style={{ color: `${cv.value}`, fontSize: "12px" }} htmlFor="color"><small>{cv.value}</small></label>
+                                    </div>
+                                </div>
+                                <div className="section p-0" style={{ padding: "6px 8px", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
+                                    <h6 className="title-attr" style={{ minWidth:"90px", textAlign:"left"}}><small>SIZE</small></h6>
+                                    <div style={{ width: "50%", display: "flex", flexWrap: "wrap", gap: "4px" }}>
+
+                                        {product.size?.map((sv, si) => {
+                                            return <div key={si} style={{ minWidth: `24px`, width: "max-content", position: "relative", border: "1px solid grey", borderRadius: "2px", whiteSpace: "nowrap" }}>
+                                                <input onChange={(e) => { return size_change_handler(e) }} style={{ width: "100%", height: "100%", accentColor: "red", position: "absolute", opacity: "0", cursor: "pointer" }} defaultChecked value="xs" type="radio" name="size" id="" />
+                                                <span style={{ color: "red", fontSize: "12px", width: "100%", height: "100%", cursor: "pointer", whiteSpace: "nowrap" }}>{sv.value}</span>
                                             </div>
                                         })
-                                    }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div className="section " style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
+                                    <h6 className="title-attr" style={{ minWidth:"90px", textAlign:"left"}}><small>STOCK</small></h6>
+                                    <div style={{ width: "50%", textAlign:"left" }}>
+                                        <div className="attr2 px-0">{product.stock}</div>
+                                    </div>
+                                </div>
+
+
+                                <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
+                                    <h6 className="title-attr" style={{ minWidth:"90px", textAlign:"left"}}><small>QUANTITY</small></h6>
+                                    <div style={{ width: "50%", display: "flex", justifyContent: "flex-start" }}>
+                                        <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger btn-sm mx-0 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                                            <CartX style={{ fontSize: "120%" }} />
+                                        </button>
+                                        <button onClick={() => { return cartQuantity("-") }} className="btn btn-primary  py-0 rounded-0" style={{ marginLeft:"4px", fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                            -
+                                        </button>
+
+                                        <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{quantity}</div>
+
+                                        <button onClick={() => { return cartQuantity("+") }} className="btn btn-primary py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
+                                            +
+                                        </button>
+
+                                        <button onClick={() => addToCart()} className="btn btn-success btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
+                                            <CartPlus style={{ fontSize: "120%" }} />
+                                        </button>
+                                    </div>
 
                                 </div>
                             </div>
-                            <div className="section" style={{ padding: "6px 8px", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
-                                <h6 className="title-attr"><small>SIZE</small></h6>
-                                <div style={{ width: "50%", display: "flex", flexWrap: "wrap", gap: "4px" }}>
-
-                                    {product.size?.map((sv, si) => {
-                                        return <div key={si} style={{ minWidth: `24px`, width: "max-content", position: "relative", border: "1px solid grey", borderRadius: "2px", whiteSpace: "nowrap" }}>
-                                            <input onChange={(e) => { return size_change_handler(e) }} style={{ width: "100%", height: "100%", accentColor: "red", position: "absolute", opacity: "0", cursor: "pointer" }} defaultChecked value="xs" type="radio" name="size" id="" />
-                                            <span style={{ color: "red", fontSize: "12px", width: "100%", height: "100%", cursor: "pointer", whiteSpace: "nowrap" }}>{sv.value}</span>
-                                        </div>
-                                    })
-                                    }
-
-
-                                </div>
-                            </div>
-                            <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
-                                <h6 className="title-attr"><small>STOCK</small></h6>
-                                <div style={{ width: "50%" }}>
-                                    <div className="attr2 px-2">{product.stock}</div>
-
-                                </div>
-                            </div>
-
-
-                            <div className="section" style={{ padding: "6px 0", display: "flex", alignItems: "center", justifyContent: "space-around", marginLeft: "0" }}>
-                                <h6 className="title-attr"><small>QUANTITY</small></h6>
-                                <div style={{ width: "50%", display: "flex", justifyContent: "flex-start" }}>
-                                    <button onClick={() => dispatch(Remove_from_cart_action(product._id))} className="btn btn-danger btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                                        <CartX style={{ fontSize: "120%" }} />
-                                    </button>
-                                    <button onClick={() => { return cartQuantity("-") }} className="btn btn-primary  py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
-                                        -
-                                    </button>
-
-                                    <div id="qty" style={{ background: "whitesmoke", width: "30px", textAlign: "center" }} >{quantity}</div>
-
-                                    <button onClick={() => { return cartQuantity("+") }} className="btn btn-primary py-0 rounded-0" style={{ fontSize: "100%", border: "1px solid grey", position: "relative" }}>
-                                        +
-                                    </button>
-
-                                    <button onClick={() => addToCart()} className="btn btn-success btn-sm mx-1 rounded-0" style={{ display: "flex", gap: "7px", width: "max-content" }}>
-                                        <CartPlus style={{ fontSize: "120%" }} />
-                                    </button>
-                                </div>
-
-                            </div>
-
-                            <div className="mt-3" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "row", gap: "6px", alignItems: "center", justifyContent: "center", width: "100%" }}>
-
+                            <div className="col-lg-7 px-0" style={{ marginLeft: "0", padding: "10px", display: "flex", flexDirection: "row", gap: "6px", alignItems: "flex-start", justifyContent: "center", width: "100%", borderRadius: "4px", background:"white", marginTop:"6px", height:"30%" }}>
                                 <h6 className="mt-2"><a href="#home"><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Agregar a lista de deseos</a></h6>
                             </div>
                         </div>
 
-                        <div className="col-xs-9" style={{ boxShadow: "0 0 3px whitesmoke", margin: "3px auto" }}>
-                            {/* <ul className="menu-items p-0" style={{ display: "flex", justifyContent: "center" }}>
-                            <li className="active">product details</li>
-                            <li>Garantía</li>
-                            <li>Vendedor</li>
-                            <li>Envío</li>
-                        </ul>
-                        <div style={{ width: "100%", borderTop: "1px solid silver" }}>
-
-                            <p style={{ padding: "15px" }}>
-
-                                <small>
-                                    {product.description}
-                                </small>
-                            </p>
-                            <small>
-                                <ul>
-                                    <li>Super AMOLED capacitive touchscreen display with 16M colors</li>
-                                    <li>Available on GSM, AT T, T-Mobile and other carriers</li>
-                                    <li>Compatible with GSM 850 / 900 / 1800; HSDPA 850 / 1900 / 2100 LTE; 700 MHz Class 17 / 1700 / 2100 networks</li>
-                                    <li>MicroUSB and USB connectivity</li>
-                                    <li>Interfaces with Wi-Fi 802.11 a/b/g/n/ac, dual band and Bluetooth</li>
-                                    <li>Wi-Fi hotspot to keep other devices online when a connection is not available</li>
-                                    <li>SMS, MMS, email, Push Mail, IM and RSS messaging</li>
-                                    <li>Front-facing camera features autofocus, an LED flash, dual video call capability and a sharp 4128 x 3096 pixel picture</li>
-                                    <li>Features 16 GB memory and 2 GB RAM</li>
-                                    <li>Upgradeable Jelly Bean v4.2.2 to Jelly Bean v4.3 Android OS</li>
-                                    <li>17 hours of talk time, 350 hours standby time on one charge</li>
-                                    <li>Available in white or black</li>
-                                    <li>Model I337</li>
-                                    <li>Package includes phone, charger, battery and user manual</li>
-                                    <li>Phone is 5.38 inches high x 2.75 inches wide x 0.13 inches deep and weighs a mere 4.59 oz </li>
-                                </ul>
-                            </small>
-                        </div> */}
+                        <div className="col-xs-9" style={{ boxShadow: "0 0 3px whitesmoke", margin: "4px auto", padding:"0px 2px 14px 2px", justifyContent:"flex-start", background:"white", borderRadius:"4px", border:"4px solid whitesmoke" }}>
 
                             <Tabs
                                 defaultActiveKey="1"

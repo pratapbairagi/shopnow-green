@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./productsShop.scss";
-import { clear_success, get_all_products_action } from "../../redux/product/product_actions";
+import { get_all_products_action } from "../../redux/product/product_actions";
 import { useEffect, useState } from "react";
-import { CaretRight, CartCheck, CartPlus, Check2Circle, GenderAmbiguous, GenderFemale, GenderMale, FunnelFill, UiChecksGrid, CurrencyRupee, Check, FilterRight, XLg } from "react-bootstrap-icons"
-import { Add_to_cart_action, Remove_from_cart_action } from "../../redux/cart/cartAction";
+import { GenderAmbiguous, FunnelFill, UiChecksGrid, CurrencyRupee, Check, FilterRight } from "react-bootstrap-icons"
 import { NavLink, useLocation } from "react-router-dom";
 import Spinner from "../../components/spinner/spinner";
-import { Pagination, Radio, Rate, Slider, Space } from "antd";
-import { set } from "mongoose";
+import { Pagination, Radio, Slider, Space } from "antd";
 import HeadingOfFiltersForMobile from "./headingOfFiltersForMobile";
 // import Spinner from "../../components/spinner/Spinner"
 
@@ -24,8 +22,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
     }, [pathname])
 
     const dispatch = useDispatch();
-    const { loading, success, error, product, products, productsFilter, totalProductsWithNoLimit } = useSelector(state => state.product);
-    const { cart } = useSelector(state => state.cart);
+    const { loading, success, products, totalProductsWithNoLimit } = useSelector(state => state.product);
     const [filterValues, setFilterValues] = useState({
         brand: "", color: "", size: ""
     })
@@ -33,11 +30,6 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
         from: 0, to: 9999999
     });
     const [load, setLoad] = useState(false)
-
-    // console.log("loading", loading)
-    // console.log("success", success)
-    // console.log("error", error)
-    // console.log("product", products)
 
     useEffect(() => {
         if (success || products.length > 0) {
@@ -149,9 +141,13 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
         else if (path === "/kids") {
             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, "Y", search_options.gender, search_options.currentpage, search_options.rating, search_options.date, search_options.pricesort))
         }
+        else if (path === "/latest" && typeof path === "string") {
+            dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, search_options.brand, search_options.color, search_options.size, search_options.gender, search_options.currentpage, search_options.rating, -1 , search_options.pricesort))
+        }
         else if (path !== "/shop" && path !== "/women" && path !== "/men" && path !== "/kids" && typeof path === "string") {
             dispatch(get_all_products_action(search_options.name, search_options.category, search_options.price, path.slice(1), search_options.color, search_options.size, search_options.gender, search_options.currentpage, search_options.rating, search_options.date, search_options.pricesort))
         }
+        
 
     }
 
@@ -252,7 +248,7 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
                 <div className="row p-0 px-3" style={{ overflowX: "hidden" }}>
 
                     <div className="col col-12 col-md-3 col-lg-2 p-0 px-md-1">
-                        <div className="row g-0 gap-0 w-100 bootdey_2nd_row px-0 d-flex d-md-row flex-md-column flex-nowrap overflow-auto overflow-md-none" style={{ position: "relative", minWidth: "100%", margin: "auto" }}>
+                        <div className="row gap-0 w-100 bootdey_2nd_row px-0 d-flex d-md-row flex-md-column flex-nowrap overflow-auto overflow-md-none" style={{ position: "relative", minWidth: "100%", margin: "auto" }}>
 
 
                             <div className="col-3  col-md-12 p-0 m-0 mb-2" style={{ height: "max-content", minWidth: "90px" }}>
@@ -436,18 +432,9 @@ const ProductsShop = ({ search_options, setSearch_options }) => {
 
                                             <div className="row mt-2 mx-auto" style={{ maxWidth: "100%" }}>
                                                 <label className="col col-10" style={{ fontWeight: "500", fontSize: "12px", color: "grey", width: "100%", maxWidth: "100%", margin: "0 auto", textAlign: "left", marginBottom: "12px" }}>Date</label>
-                                                {/* <select onChange={(e) => setFilterValues({ ...filterValues, color: e.target.value })} className=" mx-auto col col-10" style={{ appearance: "menulist-button", height: "34px", fontSize: "10px" }}>
-
-                                                    {
-                                                        localStorage.getItem("colors") && JSON.parse(localStorage.getItem("colors")).map((pcv, pci) => {
-                                                            return <option key={pci} value={pcv}>{pcv.length > 0 ? pcv : "All"}</option>
-                                                        })
-                                                    }
-                                                </select> */}
 
                                                 <Radio.Group defaultValue="" name="datesort" onChange={(e) => setSortValues({ ...sortValues, date: e.target.value })}>
                                                     <Space direction="vertical" style={{ minWidth: "100%" }}>
-                                                        {/* <Radio style={{ width: "100%", display: "flex", justifyContent: "space-between", fontSize: "10px", padding: "0 6px", color: "grey" }} value="">None</Radio> */}
                                                         <Radio style={{ width: "100%", display: "flex", justifyContent: "space-between", fontSize: "10px", padding: "0 6px", color: "grey" }} value={1}>Old To New</Radio>
                                                         <Radio style={{ width: "100%", display: "flex", justifyContent: "space-between", fontSize: "10px", padding: "0 6px", color: "grey" }} value={-1}>New To Old</Radio>
                                                     </Space>

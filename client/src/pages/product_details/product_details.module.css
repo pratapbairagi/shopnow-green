@@ -9,6 +9,7 @@ li.active{border-bottom:3px solid silver;}
     margin-bottom:0;
     margin-top:20px;
     background-color: red;
+    /* box-sizing: rgb(236, 235, 235); */
 }
 .btn-success{width:100%;border-radius:0;}
 .section{width:100%;margin-left:-15px;padding:2px;padding-left:15px;padding-right:15px;background:#f8f9f9}

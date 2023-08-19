@@ -5,15 +5,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Auth from './pages/auth/auth';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { user_google_logged_check_action, user_logged_check_action } from './redux/userAction';
+import { user_logged_check_action } from './redux/userAction';
 import Layout from './pages/home/layout';
 import Dashboard from './pages/auth/dashboard';
 import ProtectedRoute from './protectedRoute/protectedRoute';
 import NonProtectedRoute from './protectedRoute/nonProtectedRoute';
-import { clear_success, get_all_products_action } from './redux/product/product_actions';
 import Footer from './components/footer/footer';
 import Product_details from './pages/product_details/product_details';
-import Shop_product from './pages/shop/shop';
 import AboutUs from './pages/about_us/aboutUs';
 import Contact from './pages/contact/contact';
 import ProductsShop from './pages/products_fshop/products_shop';
@@ -21,7 +19,6 @@ import ProductNotificationRoaster from './components/product_notification_toaste
 import UserButton from './components/userButton';
 import { FloatButton } from 'antd';
 import PageNotFound404 from './pages/error404/error404';
-import axios from 'axios';
 import LoginSuccess from './components/loginSuccess/loginSuccess';
 
 function App() {
@@ -30,6 +27,7 @@ function App() {
   const state = useSelector(state => state.user_register);
 
   const [load, setLoad] = useState(false)
+  
   const [search_options, setSearch_options] = useState({
     name: "",
     category: "",
@@ -38,13 +36,8 @@ function App() {
       from: 0,
       to: 999999
     },
-    rating: "",
     brand: "",
     color: [],
-    price: {
-      from: 0,
-      to: 999999
-    },
     size: [],
     currentpage: 1,
     rating: {

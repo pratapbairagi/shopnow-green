@@ -21,6 +21,17 @@ const CartComponent = ({toggleCart}) => {
     }
   }
 
+
+    // cart
+    const [cartAmt, setCartAmt] = useState(0);
+    useEffect(() => {
+        if (cart) {
+            let x = 0;
+            cart.map(v => x += + (v.qty*v.price))
+            setCartAmt(x)
+        }
+    }, [cart])
+
   return (
     <div className="row" style={{ gap: "0", height: "100vh" }}>
       <section className="col col-12 col-md-6 gradient-custom p-0 sec1 m-0">
@@ -150,11 +161,11 @@ const CartComponent = ({toggleCart}) => {
                   <li
                     className="list-group-item d-flex justify-content-between align-items-center border-0 px-3 pb-0 mx-auto" style={{ fontSize: "70%", width: "100%" }}>
                     Products
-                    <span>$53.98</span>
+                    <span>₹ {cartAmt}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between align-items-center px-3" style={{ fontSize: "70%", width: "100%" }}>
                     Shipping
-                    <span>Gratis</span>
+                    <span>₹ {cartAmt > 999 ? 0 : 100}</span>
                   </li>
                   <li
                     className="list-group-item d-flex justify-content-between align-items-center border-0 px-3 mb-2" style={{ fontSize: "75%", width: "100%" }}>
@@ -164,7 +175,7 @@ const CartComponent = ({toggleCart}) => {
                         <p className="mb-0">(including VAT)</p>
                       </strong>
                     </div>
-                    <span><strong>$53.98</strong></span>
+                    <span><strong>$ {cartAmt > 999 ? cartAmt : (cartAmt+100)}</strong></span>
                   </li>
                 </ul>
 
