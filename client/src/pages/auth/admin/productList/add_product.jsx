@@ -47,7 +47,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
             setProductChange({ ...productChange, size: [...productChange.size, c] })
         }
         else {
-          
+
             let y = productChange.size?.find(v => v.value === c.value)
             if (y === undefined) {
                 sizeOptions.push(c)
@@ -57,7 +57,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
 
                 if (productChange.size.length > 0) {
                     sizeOptions = productChange.size.filter(v => v.value !== c.value)
-                   
+
                     setProductChange({ ...productChange, size: sizeOptions })
                 }
                 else {
@@ -81,25 +81,37 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
             <div className="row p-0" style={{ alignContent: "flex-start", marginTop: "2rem", rowGap: "5px" }}>
                 <div className="col col-12 col-md-6" style={{ height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="title">Title</label>
-                    <Input type="text" name="title" id="title" fun={createProduct_handler_} placeholder="Product Title" defaultValue={productChange.title} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
+                    <Input type="text" name="title" id="title" fun={createProduct_handler_} placeholder="Product Title" defaultValue={productChange?.title} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
                 </div>
 
                 <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="category">Category</label>
-                    <Input type="text" name="category" id="category" fun={createProduct_handler_} placeholder="Product category" defaultValue={productChange.category} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
+                    <Input type="text" name="category" id="category" fun={createProduct_handler_} placeholder="Product category" defaultValue={productChange?.category} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
                 </div>
 
-                <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
+                {/* <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="description">Description</label>
-                    <Input type="text" name="description" id="description" fun={createProduct_handler_} placeholder="Product Description" defaultValue={productChange.description} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
+                    <Input type="text" name="description" id="description" fun={createProduct_handler_} placeholder="Product Description" defaultValue={productChange?.description} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
+                </div> */}
+
+                <div className="col col-12" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
+                    <label className="col-12" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="description">Description</label>
+                    <div className="d-flex" style={{ flexWrap: "wrap", gap: "4px" }}>
+                        <textarea type="text" name="features" id="features" onChange={(e)=> setProductChange({ ...productChange, description : {...productChange.description, features: e.target.value }})} placeholder="Product features" defaultValue={productChange?.desription?.features} style={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", flex: "1 0 160px", background: "white" }} />
+                        <textarea type="text" name="warranty" id="warranty" onChange={(e)=> setProductChange({ ...productChange, description : {...productChange.description, features: e.target.value }})} placeholder="Product warranty" defaultValue={productChange?.desription?.warranty} style={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", flex: "1 0 160px", background: "white" }} />
+                        <textarea type="text" name="returnPolicy" id="returnPolicy" onChange={(e)=> setProductChange({ ...productChange, description : {...productChange.description, returnPolicy: e.target.value }})} placeholder="Product returnPolicy" defaultValue={productChange?.desription?.termAndCondition} style={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", flex: "1 0 160px", background: "white" }} />
+                        <textarea type="text" name="sellerAndContact" id="sellerAndContact" onChange={(e)=> setProductChange({ ...productChange, description : {...productChange.description, sellerAndContact: e.target.value }})} placeholder="Product sellerAndContact" defaultValue={productChange?.desription?.sellerAndContact} style={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", flex: "1 0 160px", background: "white" }} />
+                        <textarea type="text" name="other" id="other" onChange={(e)=> setProductChange({ ...productChange, description : {...productChange.description, other: e.target.value }})} placeholder="Product other" defaultValue={productChange?.desription?.other} style={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", flex: "1 0 160px", background: "white" }} />
+                    </div>
                 </div>
+
 
                 <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexWrap: "wrap" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="images">Image (max 3 images allowed)</label>
                     <Input type="file" multi={true} name="images" id="images" fun={createProduct_handler_} placeholder="Product image" defaultValue={""} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "48%" }} />
 
                     <div className="images_upload" style={{ width: "48%", maxWidth: "50%", overflow: "scroll", gap: "2px", display: "flex", justifyContent: "flex-end" }}>
-                        {productChange.images?.length > 0 && productChange.images?.map((im, ind) => {
+                        {productChange?.images?.length > 0 && productChange.images?.map((im, ind) => {
                             return (<img key={ind} style={{ width: "2rem", height: "2rem", placeSelf: "flex-end", border: "1px solid green", display: "block" }} src={im.url} alt={im.url} />)
                         })}
                     </div>
@@ -110,12 +122,12 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
 
                 <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Price</label>
-                    <Input type="number" name="price" id="price" fun={createProduct_handler_} placeholder="Product price" defaultValue={productChange.price} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
+                    <Input type="number" name="price" id="price" fun={createProduct_handler_} placeholder="Product price" defaultValue={productChange?.price} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
                 </div>
 
                 <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Brand</label>
-                    <Input type="text" name="brand" id="brand" fun={createProduct_handler_} placeholder="Product Brand" defaultValue={productChange.brand} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
+                    <Input type="text" name="brand" id="brand" fun={createProduct_handler_} placeholder="Product Brand" defaultValue={productChange?.brand} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
                 </div>
                 {/* waste start */}
                 {/* { productChange.color?.map((v,i)=> <input key={i} onChange={(e)=> { 
@@ -249,7 +261,7 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                 <div className="col col-12 col-md-6" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="price">Size</label>
                     <div style={{ width: "100%", maxWidth: "100%", display: "flex", gap: "4px", margin: "4px 0", overflowX: "auto" }}>
-                    <Select
+                        <Select
                             mode='tags'
                             style={{ width: "100%" }}
                             onSelect={(e) => {
@@ -276,22 +288,24 @@ const Add_product = ({ createProduct_handler_, close_add_product_form_handler, p
                 <div className="col col-6 my-2" style={{ border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Gender</label>
                     {/* <Input type="number" name="size" id="size" fun={updateProduct_handler_} placeholder="Product Size" defaultValue={product.size} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} /> */}
-                    <select name="gender" defaultValue={productChange.gender} onChange={(e) => setProductChange({ ...productChange, gender: e.target.value })} >
+                    <select name="gender" defaultValue={productChange?.gender} onChange={(e) => setProductChange({ ...productChange, gender: e.target.value })} >
                         <option value="">Select Option</option>
                         <option value="m">Male</option>
                         <option value="f">Female</option>
+                        <option value="b">Boy</option>
+                        <option value="g">Girl</option>
                     </select>
                 </div>
 
                 <div className="col " style={{ width: "50%", border: "1px solid white", height: "max-content", display: "flex", flexDirection: "column" }}>
                     <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="stock">Stock</label>
-                    <Input type="number" name="stock" id="stock" fun={createProduct_handler_} placeholder="Product stock" defaultValue={productChange.stock} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
+                    <Input type="number" name="stock" id="stock" fun={createProduct_handler_} placeholder="Product stock" defaultValue={productChange?.stock} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)", width: "100%" }} />
                 </div>
 
                 <label className="m-0" style={{ marginTop: "6px", fontSize: "calc(8px + 0.390625vw)", width: "100%", textAlign: "left" }} htmlFor="offer">Offer Available ?</label>
 
                 <div className="col col-6" style={{ width: "100%", height: "2rem", display: "flex", alignItems: "center", justifyContent: "flext-start", paddingLeft: "13px" }}>
-                    <Input type="number" name="offer" id="offer" fun={createProduct_handler_} placeholder="Product Offer Percentage" defaultValue={productChange.offer?.percentage} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)" }} />
+                    <Input type="number" name="offer" id="offer" fun={createProduct_handler_} placeholder="Product Offer Percentage" defaultValue={productChange?.offer?.percentage} css={{ border: "2px solid rgb(243, 238, 238)", outline: "none", color: "grey", padding: "4px 8px", fontSize: "calc(8px + 0.390625vw)" }} />
                 </div>
 
             </div>

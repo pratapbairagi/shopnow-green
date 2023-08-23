@@ -5,8 +5,8 @@ import Features from "../../components/features.js/features"
 import Trending_sec from "../trending_sec/trendding_sec";
 import Features2 from "../../components/features.js/features2";
 
-const Layout = ({ cart, load, setLoad }) => {
 
+const Layout = ({ cart, load, setLoad }) => {
 
     return (
         <>
@@ -16,6 +16,8 @@ const Layout = ({ cart, load, setLoad }) => {
             <Trending_sec cart={cart} load={load} setLoad={setLoad} />
             <Brands load={load} setLoad={setLoad} />
             <Features2 load={load} setLoad={setLoad} />
+
+            
         </>
     )
 }

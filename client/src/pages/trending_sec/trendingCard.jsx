@@ -21,7 +21,7 @@ const TrendingCard = ({ products }) => {
 
                 <div className="product-links mt-0">
 
-                    <h5 className="card-title p-0 px-1 m-0 text-center" style={{ fontSize: "70%", width: "100%", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", color: "grey" }}>{products.description}</h5>
+                    <h5 className="card-title p-0 px-1 m-0 text-center" style={{ fontSize: "70%", width: "100%", display: "-webkit-box", overflow: "hidden", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", color: "grey" }}>{products.description.features}</h5>
 
                     <NavLink style={{ marginRight: "3px", cursor: "pointer" }} to={`/details/${products._id}`}>
                         <div className="text-center" style={{ marginTop: "8px" }}>

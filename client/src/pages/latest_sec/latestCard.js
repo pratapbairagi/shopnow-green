@@ -31,7 +31,7 @@ const LatestCard = ({ products }) => {
                                 <strong>COLORS</strong>
                                 <div className="colors">
                                     {products.color.map((v, i) => {
-                                        return <div key={i} style={{ background: `${v.value}` }}><span></span></div>
+                                        return <div key={i} style={{ background: "white" }}><span style={{background: `${v.value}`}}></span></div>
                                     })}
                                     {/* <div className="c_red"><span></span></div>
                                     <div className="c_white"><span></span></div>

@@ -135,8 +135,6 @@ exports.create_product = async ( req, res, next ) => {
             });
         };
 
-        console.log("check", req.body)
-
         const product = await Products.create({
             title,
             category, 

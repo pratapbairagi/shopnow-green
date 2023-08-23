@@ -41,7 +41,7 @@ const ProductNotificationRoaster = () => {
                 <div className="productionNotificationToaster-product-listing">
                     <div className="productionNotificationToaster-content">
                         <h1 className="productionNotificationToaster-name">{ success && product?.category}, {product.brand}</h1>
-                        <p className="productionNotificationToaster-info text-start">{success && product?.description}</p>
+                        <p className="productionNotificationToaster-info text-start">{success && product?.description.features}</p>
                         <p className="productionNotificationToaster-price">$ {success && product?.price}</p>
                         <div className="productionNotificationToaster-btn-and-rating-box" style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
                             <div className="productionNotificationToaster-rating" style={{ width: "80%", lineHeight:"175%", textAlign:"left" }}>

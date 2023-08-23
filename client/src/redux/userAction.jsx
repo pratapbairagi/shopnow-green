@@ -102,7 +102,6 @@ export const user_logged_check_action = () => async (dispatch) => {
 
 // user logout
 export const user_logout_action = () => async (dispatch) => {
-    alert("working")
     try {
         dispatch({
             type: USER_LOGOUT_REQUEST

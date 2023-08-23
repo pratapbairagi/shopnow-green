@@ -10,8 +10,27 @@ const productSchema = mongoose.Schema({
         required: [true, "Product category is required !"]
     },
     description: {
-        type: String,
-        required: [true, "Product description is required"]
+        features: {
+            type: String,
+            required: [true, "Product description is required"]
+        },
+        warranty: {
+            type: String,
+            required: [true, "Product description is required"]
+        },
+        returnPolicy: {
+            type: String,
+            required: [true, "Product description is required"]
+        },
+        sellerAndContact: {
+            type: String,
+            required: [true, "Product description is required"]
+        },
+        other: {
+            type: String,
+            required: [true, "Product description is required"]
+        }
+
     },
     images: [
         {

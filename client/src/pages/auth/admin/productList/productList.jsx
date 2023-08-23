@@ -32,7 +32,8 @@ const ProductList = ({search_options, setSearch_options}) => {
     let [product, setProduct] = useState({
         title: "",
         category: "",
-        description: "",
+        // description: "",
+        description: {},
         images: [],
         stock: "",
         price: 0,
@@ -156,7 +157,7 @@ const ProductList = ({search_options, setSearch_options}) => {
             color: [],
             size: [],
             gender: "",
-            description: "",
+            description: {},
             images: [],
             stock: 0,
             offer: 0,
@@ -240,7 +241,7 @@ const ProductList = ({search_options, setSearch_options}) => {
                                             <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "40px" }}>{v.price}</td>
                                             <td style={{ fontWeight: "300", maxWidth: "2rem", fontSize: "calc(5px + 0.390625vw)", minWidth: "50px" }}>{v.category}</td>
                                             <td style={{ fontWeight: "300", width: "max-content", maxWidth: "4rem", fontSize: "calc(5px + 0.390625vw)", overflow: "hidden", minHeight: "2rem", maxHeight: "2rem", height: "40px", minWidth: "50px" }}>
-                                                <span style={{ minWidth: "50px", maxWidth: "100%", overflow: "hidden", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", display: "-webkit-box" }} title={v.description}>{v.description} </span>
+                                                <span style={{ minWidth: "50px", maxWidth: "100%", overflow: "hidden", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", display: "-webkit-box" }} title={v.description.features}>{v.description.features} </span>
                                             </td>
                                             <td ><img src={v.images[0]?.url} style={{ width: "32px", height: "32px" }} alt="" /></td>
                                             <td style={{ fontWeight: "300", fontSize: "calc(5px + 0.390625vw)" }}>{v.stock}</td>

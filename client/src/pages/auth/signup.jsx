@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import Input from "../../asset/atoms";
 import { User_register_action } from "../../redux/userAction";
 import "./signup.css";
+import { Input as InputAntd, Space } from "antd";
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 const Signup = () => {
 
@@ -80,7 +82,17 @@ const Signup = () => {
 
                 <fieldset >
                     <label htmlFor="confirmPassword">Re-Password</label>
-                    <Input placeholder="confirmPassword" id="confirmPassword" css={inputCss} classname="" type="password" name="confirmPassword" defaultValue="" fun={fun} />
+                    {/* <Input placeholder="confirmPassword" id="confirmPassword" css={inputCss} classname="" type="password" name="confirmPassword" defaultValue="" fun={fun} /> */}
+                    <Space direction="vertical" style={{ width: "100%" }}>
+                        <InputAntd.Password
+                            type="confirmPassword"
+                            name="confirmPassword"
+                            onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })}
+                            style={{ width: "100% !important", outline: "none" }}
+                            placeholder="Ex : Abcd123@  atleast 3 characters"
+                            iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                        />
+                    </Space>
                 </fieldset>
 
 
