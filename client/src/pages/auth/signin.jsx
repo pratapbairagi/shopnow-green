@@ -70,7 +70,6 @@ const Signin = () => {
     return (<div id="auth_form_login_col" className="row di-flex flex-column flex-md-row p-0 m-0" style={{ position: "relative", minWidth: "100%", justifyContent: "center", alignContent: "center" }}>
 
         <div className="col noFormCol col-12 col-md-6 signin_auth_form_parent_col" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-
         </div>
 
         <div className="col formCol col-12 col-md-6 px-5 py-2 auth_form_parent_col" style={{ display: "flex", flexDirection: "column", justifyContent: "center", background: "white" }}>

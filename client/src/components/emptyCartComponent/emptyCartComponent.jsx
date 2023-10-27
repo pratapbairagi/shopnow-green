@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const EmptyCartComponent = ({toggleCart}) => {
     const navigate = useNavigate()
     return(
-        <div className="" style={{ display: "flex", flexDirection: "column", alignItems: "center", minHeight: "65vh", justifyContent: "center" }}>
+        <div className="" style={{ display: "flex", flexDirection: "column", alignItems: "center", minHeight: "60vh", justifyContent: "center", margin:"auto" }}>
                   <img style={{ width: "4rem" }} src={noCart} alt="" />
                   <h3 style={{ width: "max-content", padding: "2px 6px", color: "red" }}>No Items</h3>
                   <button className="bg-muted " onClick={()=>{

@@ -104,7 +104,8 @@ const productSchema = mongoose.Schema({
             },
             user: {
                 type: mongoose.Schema.ObjectId,
-                ref: "user"
+                ref: "user",
+                required : true
             },
             name: {
                 type: String
@@ -132,7 +133,9 @@ const productSchema = mongoose.Schema({
     },
     seller: {
         name: {
-            type: String
+            type: mongoose.Schema.ObjectId,
+            ref : "user", 
+            required : true
         },
         id: {
             type: String

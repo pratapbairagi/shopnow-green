@@ -27,10 +27,12 @@
 // }
 @media only screen and ( max-width : 767px){
         .cart-container .row .sec1{
-            height: 65vh;
+            // height: 65vh;
+            height: 85vh;
         }
 .cart-container .row .sec2{
-    height: 31vh !important;
+    // height: 31vh !important;
+    height: 8vh !important;
 }
 .cart-container .row .sec2 .container{
     height: 27vh;

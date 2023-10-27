@@ -6,7 +6,7 @@ import EmptyCartComponent from "../emptyCartComponent/emptyCartComponent";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const CartComponent = ({toggleCart}) => {
+const CartComponent = ({ toggleCart }) => {
   const { cart } = useSelector(state => state.cart)
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -22,24 +22,24 @@ const CartComponent = ({toggleCart}) => {
   }
 
 
-    // cart
-    const [cartAmt, setCartAmt] = useState(0);
-    useEffect(() => {
-        if (cart) {
-            let x = 0;
-            cart.map(v => x += + (v.qty*v.price))
-            setCartAmt(x)
-        }
-    }, [cart])
+  // cart
+  const [cartAmt, setCartAmt] = useState(0);
+  useEffect(() => {
+    if (cart) {
+      let x = 0;
+      cart.map(v => x += + (v.qty * v.price))
+      setCartAmt(x)
+    }
+  }, [cart])
 
   return (
-    <div className="row" style={{ gap: "0", height: "100vh" }}>
-      <section className="col col-12 col-md-6 gradient-custom p-0 sec1 m-0">
-        <div className="container py-1 m-0" style={{ maxHeight: "100%" }}>
+    <div className="row" style={{ gap: "0", height: "100vh", }}>
+      <section className="col col-12 col-md-6 gradient-custom p-0 sec1" style={{ margin:"auto" }}>
+        <div className="container py-1" style={{ maxHeight: "100%", margin:"auto" }}>
 
-          <div className="row d-flex justify-content-center my-0 p-0 py-1" style={{ maxHeight: "max-content", width: "100%", margin: "3px auto" }}>
-            <div className="col-md-8 p-0" style={{ width: "100%" }}>
-              <div className="" style={{ width: "100%", height: "100%", maxHeight: "88vh", overflowY: "auto", gap: "4px", paddingBottom: "22vh" }}>
+          <div className="row d-flex justify-content-center my-0 p-0 py-1" style={{ maxHeight: "max-content", width: "100%", margin:"auto" }}>
+            <div className="col-md-8 p-0" style={{ width: "100%"}}>
+              <div className="" style={{ width: "100%", height: "100%", maxHeight: "88vh", overflowY: "auto", gap: "4px", paddingBottom: "22vh", display:"flex", }}>
 
                 {
                   cart.length === 0 ?
@@ -53,9 +53,9 @@ const CartComponent = ({toggleCart}) => {
 
                           <div className="col-3 col-lg-3 m-0">
                             {/* <!-- Image --> */}
-                            <div className=" rounded p-0" style={{ width: "100%", cursor:"pointer", overflow: "hidden" }} data-mdb-ripple-color="light">
+                            <div className=" rounded p-0" style={{ width: "100%", cursor: "pointer", overflow: "hidden" }} data-mdb-ripple-color="light">
                               <img
-                                onClick={()=> navigate(`/details/${cv._id}`)}
+                                onClick={() => navigate(`/details/${cv._id}`)}
                                 src={cv.images[0].url}
                                 alt={cv.title} style={{ width: "100%", height: "100%", maxHeight: "150px" }} />
                             </div>
@@ -118,9 +118,10 @@ const CartComponent = ({toggleCart}) => {
 
           </div>
         </div>
+
       </section>
 
-      <section className="col col-12 col-md-4 p-0 m-0 sec2" style={{ height: "max-content", background: "white", borderRadius: "0" }}>
+      <section className="col col-12 col-md-4 p-0 m-0 sec2" style={{ height: "max-content", background: "white", borderRadius: "0", border: "1px solid red" }}>
         <div className="container-fluid py-0 m-0 px-0" style={{ maxHeight: "max-content", width: "100%", minWidth: "100%", borderRadius: "0" }}>
 
           <div className="row d-flex justify-content-center m-0 p-0" style={{ overflow: "hidden", width: "100%", gap: "4px", height: "max-content", minWidth: "100%", borderRadius: "0" }}>
@@ -151,13 +152,16 @@ const CartComponent = ({toggleCart}) => {
               </div> */}
 
 
-
-            <div className="card p-0 m-0 mb-1 px-0" style={{ width: "100%", minWidth: "100%", height: "max-content", margin: "auto", borderRadius: "0" }}>
-              <div className="card-header py-1">
+            
+            <div className="card p-0 m-0 mb-1 px-0 d-none d-md-flex" style={{ width: "100%", minWidth: "100%", height: "max-content", margin: "auto", borderRadius: "0" }}>
+            <button type="button" className="btn btn-primary btn-sm btn-block" style={{ minWidth: "100%" }}>
+                  Go to checkout
+                </button>
+              <div className="card-header py-1 d-none d-md-block">
                 <h5 className="mb-0 py-1" style={{ fontSize: "80%" }}>Summary</h5>
               </div>
               <div className="card-body py-0 px-2 m-0" style={{ height: "max-content", minHeight: "max-content" }}>
-                <ul className="list-group list-group-flush">
+                <ul className="list-group list-group-flush d-none d-md-block" style={{border:"1px solid red"}}>
                   <li
                     className="list-group-item d-flex justify-content-between align-items-center border-0 px-3 pb-0 mx-auto" style={{ fontSize: "70%", width: "100%" }}>
                     Products
@@ -179,12 +183,18 @@ const CartComponent = ({toggleCart}) => {
                   </li>
                 </ul>
 
-                <button type="button w-100 mb-0" className="btn btn-primary btn-sm btn-block" style={{ minWidth: "100%" }}>
+                {/* <button type="button w-100 mb-0" className="btn btn-primary btn-sm btn-block" style={{ minWidth: "100%" }}>
                   Go to checkout
-                </button>
+                </button> */}
 
               </div>
+
+              <button type="button" className="btn btn-primary btn-sm btn-block" style={{ minWidth: "100%" }}>
+                  Go to checkout
+                </button>
             </div>
+
+           
 
           </div>
         </div>
